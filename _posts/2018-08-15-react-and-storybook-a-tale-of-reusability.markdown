@@ -30,6 +30,9 @@ For the scope of this introductory blog post, we are going to demonstrate how to
 
 We are going to create the components of an online banking app called Marvel Bank. Let's start by learning how we can setup Storybook in a brand-new `create-react-app` project.
 
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Thrilling news: the next chapter for <a href="https://twitter.com/storybookjs?ref_src=twsrc%5Etfw">@storybookjs</a> with full-time maintenance and a bigger team. I&#39;m over the moon!<a href="https://t.co/xWL3Gp5dzI">https://t.co/xWL3Gp5dzI</a> <a href="https://t.co/T1JJfzNGp6">pic.twitter.com/T1JJfzNGp6</a></p>&mdash; shilman (@mshilman) <a href="https://twitter.com/mshilman/status/1021411688749326338?ref_src=twsrc%5Etfw">July 23, 2018</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
 ## Setting Up a React Project
 
 We are going to use [`create-react-app`](create-react-app) to scaffold easily a new React application.
@@ -163,6 +166,9 @@ If we need to implement a green button, we can consult the design document and c
 Our Team currently has been using a combination of Styles and [CSS Modules](https://github.com/css-modules/css-modules) to manage the styling of the projects. React has unified the three layers of front-end development (HTML, CSS, and JavaScript) under one layer powered by JavaScript, JSX, and CSS-in-JS. For this post, however, we are going to rely on SCSS to create the modular components to minimize the development overhead.
 
 > **Feedback** Would you like to learn how we are using `styled-components` to create a modern component library? Let me know in the comments below and I could make it part of this React series.
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Oh man and a <a href="https://twitter.com/storybookjs?ref_src=twsrc%5Etfw">@storybookjs</a> shoutout as well! Storybook has been indispensable for our component library.</p>&mdash; Maja Wichrowska (@majapw) <a href="https://twitter.com/majapw/status/997143616865828865?ref_src=twsrc%5Etfw">May 17, 2018</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 ## Adding SCSS to `create-react-app`
 
