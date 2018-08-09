@@ -217,3 +217,51 @@ These scripts allow us to compile `.scss` files into `.css` and to keep watching
 On the shell, stop the running `create-react-app` and re-issue the `npm start` command again to include these new scripts in the build process. With that, we are ready to start developing the app.
 
 Before we include any styling or components, we need to create a sound file structure.
+
+## Project Structure
+
+An internal pattern that we use is to have specialized folders to hold the different elements of our React application. In one of our projects, we have the following structure:
+
+```shell
+- root
+    |-- api/
+    |-- features/
+    |-- assets/
+    |-- redux/
+    |-- styles/
+    |-- utils/
+    |-- App.js
+    |-- index.js
+    |-- routes.js
+```
+
+For the initial phase of this project, we only need the `features` and the `styles` folder. The `features` holds our components in a categorized manner. We define features of our applications, such as `search` or `reports`, and create components that power and build that feature. What Storybook will help us solve is the event where feature share components. Instead of duplicating the code across features, the feature will implement the component from a central source. As the name suggests, these common components go into a `common` feature folder.
+
+This is the project structure we want for this phase of the project:
+
+```shell
+- root
+    |-- features/
+    |---- common/
+    |-- styles/
+    |---- _theme.scss
+    |-- App.js
+    |-- App.scss
+    |-- index.js
+    |-- index.scss
+    |-- registerServiceWorker.js
+```
+
+Let's go ahead and create these folders and files:
+
+<p style="text-align: center;">
+  <img src="https://cdn.auth0.com/blog/storybook-intro/file-structure.png" alt="Project structure">
+</p>
+
+This is a good checkpoint. Let's go ahead and commit:
+
+```shell
+git status
+git add .
+git commit -m "Create project structure that integrates with SCSS"
+```
