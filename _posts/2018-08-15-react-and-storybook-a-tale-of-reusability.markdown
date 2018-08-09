@@ -145,6 +145,8 @@ What is a style guide anyway? Marvel has a solid answer: "A style guide clearly 
 
 In this sense, a component library is part of a style guide as it presents our components visually and it is the single source of truth for each component (the master reference). To create a comprehensive style guide, the component library can be accompanied the by design documents that define font styles and sizes as well as primary and secondary user interface colors. A Design Team usually creates a "UI Kit" that is handed to developers for implementation. _Shopify_ explains that a [UI kit is an assortment of graphic files](https://www.shopify.com/partners/blog/104547526-the-benefits-of-using-a-ui-kit) that include UI components (buttons, checkboxes, progress bars, etc.) for the purpose of defining and designing the user interface.
 
+{% include tweet_quote.html quote_text="A component library helps you achieve consistent branding as it becomes the single source of truth for every component not only in the application but for all projects in the organization" %}
+
 For the online banking app that we are going to start creating in this blog post, we are going to use a free Banking UI Kit that [Marvel created for Sketch](https://blog.marvelapp.com/free-banking-ui-kit-for-sketch/). To honor their effort, we named the app `marvel-bank`. The UI Kit looks as follows:
 
 <p style="text-align: center;">
@@ -259,6 +261,8 @@ This is the project structure we want for this phase of the project:
     |-- index.scss
     |-- registerServiceWorker.js
 ```
+
+{% include tweet_quote.html quote_text="Instead of duplicating the component code across features in your project, implement the component from a central source like a component library." %}
 
 Let's go ahead and create these folders and files:
 
@@ -411,6 +415,8 @@ The Storybook CLI will run and create all the necessary files and folder in your
 
 Now, let's explore what the Storybook creators call the "slow start", the local manual installation of Storybook. Through that process, we'll learn how the folders and files installed by the Storybook CLI work.
 
+{% include tweet_quote.html quote_text="npx lets us run one-off invocations of CLI tools available in the npm registry without local installation." %}
+
 ### Install @storybook/react manually
 
 In the shell, let's run the following command:
@@ -543,6 +549,8 @@ storiesOf("UIButton", module).add("with text", () => (
 
 We have the foundation of writing a story. It's time to see if everything is working by running Storybook.
 
+{% include tweet_quote.html quote_text="Similar to testing, Storybook uses declarative language to let us write stories that define the expected presentation and behavior of our components." %}
+
 ### Running Storybook
 
 In the shell, run the following command:
@@ -672,6 +680,8 @@ Let's save our work again and observe the changes:
 </p>
 
 Style changes are well integrated into our workflow. It's truly amazing that we can preview our components this way without having to touch our actual application code. We can develop our component in isolation and then use them in the app whenever we want.
+
+{% include tweet_quote.html quote_text="Just like with `create-react-app`, we can make changes to the structure, content, or style of a React component and it will be updated in Storybook! We can visualize our components without running our app." %}
 
 As discussed before, `UIButton` has three different presentations. The best way to organize that would be through CSS classes and props.
 
