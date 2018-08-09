@@ -163,3 +163,57 @@ If we need to implement a green button, we can consult the design document and c
 Our Team currently has been using a combination of Styles and [CSS Modules](https://github.com/css-modules/css-modules) to manage the styling of the projects. React has unified the three layers of front-end development (HTML, CSS, and JavaScript) under one layer powered by JavaScript, JSX, and CSS-in-JS. For this post, however, we are going to rely on SCSS to create the modular components to minimize the development overhead.
 
 > **Feedback** Would you like to learn how we are using `styled-components` to create a modern component library? Let me know in the comments below and I could make it part of this React series.
+
+## Adding SCSS to `create-react-app`
+
+We [add `SCSS` support to `create-react-app` without having to `eject`](https://techcookbook.com/react/use-scss-with-create-react-app). We need to install a few packages to help us achieve this goal:
+
+npm:
+
+```shell
+npm install --save node-sass-chokidar npm-run-all
+```
+
+yarn:
+
+```shell
+yarn add node-sass-chokidar npm-run-all
+```
+
+[`node-sass-chokidar`](https://www.npmjs.com/package/node-sass-chokidar) is a thin wrapper around node-sass executable to use chokidar instead of Gaze when watching files.
+
+[`npm-run-all`](https://www.npmjs.com/package/npm-run-all) is a CLI tool to run multiple npm-scripts in parallel or sequential.
+
+Next, we need to modify our `package.json` to watch and process `.scss` files into `.css` ones:
+
+```json
+{
+  "name": "marvel-bank",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "node-sass-chokidar": "^1.3.3",
+    "npm-run-all": "^4.1.3",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-scripts": "1.1.4"
+  },
+  "scripts": {
+    "build-css": "node-sass-chokidar src/ -o src/",
+    "watch-css":
+      "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
+    "start-react": "react-scripts start",
+    "start": "npm-run-all -p watch-css start-react",
+    "build-react": "react-scripts build",
+    "build": "npm-run-all -s build-css build-react",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
+```
+
+These scripts allow us to compile `.scss` files into `.css` and to keep watching the `src` folder for changes to the content of existing `.scss` files or the addition of new ones. To complete this task, we need to change the file extension of `App.css` and `index.css` to `.scss`. Depending on your development environment, this can be done in different ways such as renaming the files or refactoring their name or file type.
+
+On the shell, stop the running `create-react-app` and re-issue the `npm start` command again to include these new scripts in the build process. With that, we are ready to start developing the app.
+
+Before we include any styling or components, we need to create a sound file structure.
