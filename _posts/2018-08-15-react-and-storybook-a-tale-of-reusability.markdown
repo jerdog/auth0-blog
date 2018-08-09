@@ -314,3 +314,39 @@ git commit -m "Create app theme variables"
 ```
 
 It's time to start creating components!
+
+## Creating A Reusable Button Using React
+
+To take see the benefits that Storybook gives us, we need to have components to visualize. Right now, we have none.
+
+Recall that the Marvel UI Kit offers us the definition of a button that has three presentations:
+
+<p style="text-align: center;">
+  <img src="https://cdn.auth0.com/blog/storybook-intro/ui-button.png" alt="UI Button with three different presentations expressed through styling">
+</p>
+
+These presentations can be summarized as follows:
+
+- Active State (Fill): The button is green, pops up, and has white text.
+- Active State (No-Fill): The button shares the background of the parent container, and it has blue color for text and border.
+- Disabled State: The button looks suppressed and has a light blue color for text and border.
+
+The button itself has two status: active or disabled. The relationship between presentation and state is something that we can express easily with Storybook. First, we need to plan the component. How are we going to approach its engineering?
+
+Let's start with creating the basic structure of the component: a rounded rectangle that contains a label. Create a file named `UIButton` under the `common` folder and populate it with this:
+
+```javascript
+// src/features/common/UIButton.js
+
+import React from "react";
+
+const UIButton = props => <div>{props.label}</div>;
+
+export default UIButton;
+```
+
+Now that we have a component, we go back to one of the questions that we asked ourselves when creating components:
+
+- How should a prototype of the component be created? Should a blank page with mock data be used?
+
+Traditionally, we would compose the component into a visible element of the UI to preview it. This time, we are going to use Storybook.
