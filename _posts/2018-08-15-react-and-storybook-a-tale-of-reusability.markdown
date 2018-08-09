@@ -843,4 +843,12 @@ git add .
 git commit -m "Add three states to UIButton component"
 ```
 
+### Next Steps
+
+We have just barely scratched the surface of what can be done with Storybook! There's a lot more we can do with this amazing tool to make the creation, testing, and documentation of React components much faster. Storybook is also a highly configurable tool that relies on add-ons to boost its offerings.
+
+In the next posts of these series, we are going to create more components for the Marvel Bank app as we explore how to integrate Storybook into our development workflow and team culture. Afterward, we are going to be learning how we can use a cool feature called **Storyshots** to make the testing of React components easier.
+
+At Auth0, different teams are making extensive use of Storybook as a development and design tool. In the final chapter of this series, we are going to explore how we are converging designers and developers into a Design Systems team that is letting us iterate faster and developer better products for our cherished customers.
+
 {% include asides/about-auth0.markdown %}
