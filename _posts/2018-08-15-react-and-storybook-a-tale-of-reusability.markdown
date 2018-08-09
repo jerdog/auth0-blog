@@ -723,3 +723,76 @@ export default UIButton;
 Using a combination of ternary operators we process the state of the button. If `props.active` is true, we check if `props.fill` is true or not and apply the corresponding class to the component. If `props.active` is false, there are no extra decisions to make, we apply the default `disabled` class.
 
 To see this in action, let's create new stories in our Storybook!
+
+## Creating Multiple Stories for a Component in Storybook
+
+Let's head to `stories/index.js` and remove the current story that we have defined there, `with text` as it isn't telling too much of a story:
+
+```
+// stories/index.js
+
+import React from "react";
+import { storiesOf } from "@storybook/react";
+import UIButton from "../src/features/common/UIButton";
+
+storiesOf("UIButton", module);
+```
+
+Next, let's add three new stories that clearly define the three presentations that we want `UIButton` to have depending on different state flags:
+
+```javascript
+// stories/index.js
+
+import React from "react";
+import { storiesOf } from "@storybook/react";
+import UIButton from "../src/features/common/UIButton";
+
+storiesOf("UIButton", module)
+  .add("active with fill", () => (
+    <UIButton label={`continue`} fill={true} active={true} />
+  ))
+  .add("active with no fill", () => (
+    <UIButton label={`sign up`} fill={false} active={true} />
+  ))
+  .add("disabled", () => <UIButton label={`continue`} active={false} />);
+```
+
+Let's save our work and we'll see Storybook update to show the three new stories under `UIButton`:
+
+<p style="text-align: center;">
+  <img src="https://cdn.auth0.com/blog/storybook-intro/storybook-component-with-three-stories.png" alt="Storybook showing three stories for a component">
+</p>
+
+Each story renders an isolated instance of `UIButton` whose presentation depends on the `props` values that are passed to it. This is where we can see the value proposition of Storybook at play.
+
+Without Storybook, we would need to add `UIButton` in our app somewhere and test its rendering by passing it different props. We would then need to remove the component. What if we need to change the structure or style of the component? We'd need to start the process all over again.
+
+With Storybook, a component and all of its different states can be staged in a centralized location. What we see in Storybook will be seen in all the areas of the application that use the component, giving us confidence that we'll preserve presentational consistency throughout our application.
+
+Let's click around the different stories and see how the component changes on each. The UI Kit graphic definition of the user interface button is not alive in code.
+
+UI Button active with fill:
+
+<p style="text-align: center;">
+  <img src="https://cdn.auth0.com/blog/storybook-intro/ui-button-active-fill.png" alt="UI Button active with fill">
+</p>
+
+UI Button active with no fill:
+
+<p style="text-align: center;">
+  <img src="https://cdn.auth0.com/blog/storybook-intro/ui-button-active-no-fill.png" alt="UI Button active with no fill">
+</p>
+
+UI Button disabled:
+
+<p style="text-align: center;">
+  <img src="https://cdn.auth0.com/blog/storybook-intro/ui-button-disabled.png" alt="UI Button disabled">
+</p>
+
+We have a solid `UIButton` component that communicates its state clearly through its presentation. Let's go ahead and commit these changes:
+
+```shell
+git status
+git add .
+git commit -m "Add three states to UIButton component"
+```
