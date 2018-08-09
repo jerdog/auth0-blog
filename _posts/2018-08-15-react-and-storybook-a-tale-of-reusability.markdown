@@ -350,3 +350,193 @@ Now that we have a component, we go back to one of the questions that we asked o
 - How should a prototype of the component be created? Should a blank page with mock data be used?
 
 Traditionally, we would compose the component into a visible element of the UI to preview it. This time, we are going to use Storybook.
+
+## Setting Up Storybook
+
+There are two options available to us for adding Storybook: we can install the platform globally or we can start the platform locally. Which installation path should we take?
+
+Our colleague, Matt Machuga, an Engineering Lead in our R&D Team, suggests that "CLI tools that are not project specific are good candidates for global installation." In practice, Matt tries to "scope everything else into local. So the version being used is kept recorded and installed via `npm install`."
+
+Matt Machuga, one of our Engineering Leads in the R&D team, suggests
+
+### Install @storybook/react
+
+We want to keep Storybook in the scope of our application, hence, we are going to install it locally.
+
+In the shell, let's run the following command:
+
+npm:
+
+```shell
+npm install --save-dev @storybook/react
+```
+
+yarn:
+
+```shell
+yarn add @storybook/react --dev
+```
+
+### Storybook NPM Script
+
+To run Storybook, we need to add the following `script` to `package.json`:
+
+```json
+"storybook": "start-storybook -p 9001 -c .storybook"
+```
+
+```json
+{
+  "name": "marvel-bank",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "node-sass-chokidar": "^1.3.3",
+    "npm-run-all": "^4.1.3",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-scripts": "1.1.4"
+  },
+  "scripts": {
+    "build-css": "node-sass-chokidar src/ -o src/",
+    "watch-css":
+      "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
+    "storybook": "start-storybook -p 9001 -c .storybook",
+    "start-react": "react-scripts start",
+    "start": "npm-run-all -p watch-css start-react",
+    "build-react": "react-scripts build",
+    "build": "npm-run-all -s build-css build-react",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "@storybook/react": "^3.4.8"
+  }
+}
+```
+
+### Create A Storybook Configuration File
+
+[As explained in the Storybook docs](https://storybook.js.org/basics/guide-react/), the platform is flexible and can be configured in different ways. We can control that configuration through a config directory. In our `storybook` `npm` script, we added a `-c` option followed by `.storybook` which tells Storybook to look for configuration options in the `.storybook` hidden folder.
+
+Having our project root folder as the current working directory, let's go ahead and create that folder:
+
+macOS/Linux/Windows:
+
+```shell
+mkdir .storybook
+```
+
+Next, we need to create a `config.js` file inside `.storybook` to hold the configuration. Let's start it with the following code:
+
+```javascript
+import { configure } from "@storybook/react";
+
+function loadStories() {
+  require("../stories/index.js");
+  // You can require as many stories as you need.
+}
+
+configure(loadStories, module);
+```
+
+Storybook works in a similar way to testing tools. The `config.js` loads the `configure` method, which takes as argument a function called `loadStories` and a `module`. `loadStories` will have **stories** defined on its body. A **story** is a single state of a component. We want to write a story for each state a component will have.
+
+We are going to write and load the stories from `stories/index.js` which will be under the root folder. Let's create such folder and file to write our first story.
+
+> `.storybook` is used solely for configuration files. Do not put your `stories` folder inside this hidden folder.
+
+### Writing a Story in Storybook
+
+Open the recently created `index.js` under `.storybook/stories` and populate it with the following code:
+
+```javascript
+// .storybook/stories/index.js
+
+import React from "react";
+import { storiesOf } from "@storybook/react";
+```
+
+So far, there's not much going on. We import `React` and a `storiesOf` that will help us create stories of a component of our choice. We need that component. Let's import `UIButton` here:
+
+```javascript
+// .storybook/stories/index.js
+
+import React from "react";
+import { storiesOf } from "@storybook/react";
+import UIButton from "../../src/features/common/UIButton";
+```
+
+Storybook has a declarative language, what we are going to do next is to tell it that we want stories of `UIButton`:
+
+```javascript
+// .storybook/stories/index.js
+
+import React from "react";
+import { storiesOf } from "@storybook/react";
+import UIButton from "../../src/features/common/UIButton";
+
+storiesOf("UIButton", module);
+```
+
+If we were thinking in terms of an actual book, this is the book's binding and cover. We need to fill it with pages full of stories. We do that declarative too using the `add` method:
+
+```javascript
+// .storybook/stories/index.js
+
+import React from "react";
+import { storiesOf } from "@storybook/react";
+import UIButton from "../../src/features/common/UIButton";
+
+storiesOf("UIButton", module).add("with text", () => (
+  <UIButton label={`Continue`} />
+));
+```
+
+`add` acts like adding a chapter to a book that has a story. We want to give each chapter a title. In this case, we are creating a story titled `with text`. `add` takes as argument the story title and a function that renders the component being staged.
+
+We have the foundation of writing a story. It's time to see if everything is working by running Storybook.
+
+### Running Storybook
+
+In the shell, run the following command:
+
+npm:
+
+```shell
+npm run storybook
+```
+
+yarn:
+
+```shell
+yarn storybook
+```
+
+If everything runs successfully, you will see this message in the shell:
+
+```shell
+info Storybook started on => http://localhost:9001/
+```
+
+Let's open that URL, [`http://localhost:9001/`](http://localhost:9001/) in the browser. Let is load... and there we have it in its full glory: our own Storybook!
+
+Right now it's pretty basic but this is a great start!
+
+<p style="text-align: center;">
+  <img src="https://cdn.auth0.com/blog/storybook-intro/first-storybook.png" alt="A working Storybook">
+</p>
+
+This is a good time to make another commit. We are going to create two commits to address the integration of Storybook and the creation of the `UIButton` component:
+
+```shell
+git status
+git add src/features/
+git commit -m "Create UIButton component"
+```
+
+```shell
+git status
+git add package-lock.json package.json .storybook/ stories/
+git commit -m "Integrate Storybook"
+```
