@@ -365,8 +365,6 @@ There are two options available to us for adding Storybook: we can install the p
 
 Our colleague, Matt Machuga, an Engineering Lead in our R&D Team, suggests that "CLI tools that are not project specific are good candidates for global installation." In practice, Matt tries to "scope everything else into local. So the version being used is kept recorded and installed via `npm install`."
 
-Matt Machuga, one of our Engineering Leads in the R&D team, suggests
-
 ### Install @storybook/react
 
 We want to keep Storybook in the scope of our application, hence, we are going to install it locally.
