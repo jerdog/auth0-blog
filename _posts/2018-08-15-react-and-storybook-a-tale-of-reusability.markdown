@@ -131,3 +131,35 @@ git commit -m "Initial commit"
 ```
 
 We'll get a reply by `git` showing all the files that were changed and the insertions that were made. Having a well-thought commit history in place will let us go back in time if we ever need to use an older version of our code. `CTRL/CMD + Z` can only go so far back!
+
+## Using a Style Guide for Consistent Branding
+
+Using a style guide can lead to better application design and development. As explain by the [Marvel Design team](https://blog.marvelapp.com/style-guides-better-design-development/), "during the design phase style guides encourage consistency in the visual identity and help keep the interface system as logical as possible, which makes for a better UX."
+
+What is a style guide anyway? Marvel has a solid answer: "A style guide clearly demonstrates how all interface elements and components are to be visually represented. It’s essentially a master reference for the user interface (UI)."
+
+In this sense, a component library is part of a style guide as it presents our components visually and it is the single source of truth for each component (the master reference). To create a comprehensive style guide, the component library can be accompanied the by design documents that define font styles and sizes as well as primary and secondary user interface colors. A Design Team usually creates a "UI Kit" that is handed to developers for implementation. _Shopify_ explains that a [UI kit is an assortment of graphic files](https://www.shopify.com/partners/blog/104547526-the-benefits-of-using-a-ui-kit) that include UI components (buttons, checkboxes, progress bars, etc.) for the purpose of defining and designing the user interface.
+
+For the online banking app that we are going to start creating in this blog post, we are going to use a free Banking UI Kit that [Marvel created for Sketch](https://blog.marvelapp.com/free-banking-ui-kit-for-sketch/). To honor their effort, we named the app `marvel-bank`. The UI Kit looks as follows:
+
+<p style="text-align: center;">
+  <img src="https://cdn.auth0.com/blog/storybook-intro/marvel-banking-ui-kit.png" alt="Marvel Banking UI Kit">
+</p>
+
+The UI Kit is designed for iOS, but we are going to adapt it for usage in a responsive web application. To make it users for developers to understand the UI Kit, we created a design document where we can get the font names, the sizing, the color hex codes, etc: [Marvel Bank Style Guide](https://auth0.github.io/marvel-bank-styleguide/).
+
+In the following excerpt, notice how is much easier to understand the guidelines that a developer would need to follow when creating the components presented in the UI Kit:
+
+<p style="text-align: center;">
+  <img src="https://cdn.auth0.com/blog/storybook-intro/design-document.png" alt="Design document excerpt">
+</p>
+
+If we need to implement a green button, we can consult the design document and copy the hex code of `$green`; however, it would be much easier if we could code the elements of the design document into our application in a modular way and reusable way. We have plenty of options to do that:
+
+- We could use CSS variables, also known as [custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables).
+- We could use [SCSS](https://sass-lang.com/) or [Stylus](http://stylus-lang.com/) to create style partials and variables.
+- We could also opt for using [CSS-in-JS](https://reactjs.org/docs/faq-styling.html) through a library like [`styled-components`](https://www.styled-components.com/).
+
+Our Team currently has been using a combination of Styles and [CSS Modules](https://github.com/css-modules/css-modules) to manage the styling of the projects. React has unified the three layers of front-end development (HTML, CSS, and JavaScript) under one layer powered by JavaScript, JSX, and CSS-in-JS. For this post, however, we are going to rely on SCSS to create the modular components to minimize the development overhead.
+
+> **Feedback** Would you like to learn how we are using `styled-components` to create a modern component library? Let me know in the comments below and I could make it part of this React series.
