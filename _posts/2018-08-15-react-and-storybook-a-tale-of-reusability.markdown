@@ -365,23 +365,63 @@ There are two options available to us for adding Storybook: we can install the p
 
 Our colleague, Matt Machuga, an Engineering Lead in our R&D Team, suggests that "CLI tools that are not project specific are good candidates for global installation." In practice, Matt tries to "scope everything else into local. So the version being used is kept recorded and installed via `npm install`."
 
-### Install @storybook/react
+We have different options for installing Storybook: a global install, an install using `npx`, and a local manual install. I'll explore those options with you and let you decide which one is right for you. However, I do recommend that you walk with me through the local manual install as it let us learn a great deal about how Storybook works.
 
-We want to keep Storybook in the scope of our application, hence, we are going to install it locally.
+### Install `@storybook/react` Globally
+
+To install and run Storybook from your shell follow these quick steps:
+
+- In the shell, make your project directory your current working directory:
+
+```shell
+cd my-project-directory
+```
+
+- Next, install `@storybook/cli` globally:
+
+```shell
+npm i -g @storybook/cli
+```
+
+> Above, we used a few `npm` argument shortcuts. `i` stands for `install` and `-g` stands for the flag `--global`.
+
+- Restart your shell. You can do that by closing the existing window or tab and opening a new one.
+
+- Finally run the `getstorybook` command to have the Storybook CLI scaffold all the necessary files and folders to work with Storybook in your project. These include the `.storybook` folder under the root project and the `stories` folder under the `src` folder.
+
+Let's see how this can be done without a global install using `npx`.
+
+### Install `@storybook/react` Using `npx`
+
+We can emulate the same behavior of the global installation of Storybook but without the actual global installation. If you have `npm >= 5.2` installed in your system, you have `npx` available!
+
+- In the shell, make your project directory your current working directory:
+
+```shell
+cd my-project-directory
+```
+
+- Run the `getstorybook` command using `npx`:
+
+```shell
+npx @storybook/cli getstorybook
+```
+
+The Storybook CLI will run and create all the necessary files and folder in your project just as in the previous section. This method is the fastest way to get up and running!
+
+Now, let's explore what the Storybook creators call the "slow start", the local manual installation of Storybook. Through that process, we'll learn how the folders and files installed by the Storybook CLI work.
+
+### Install @storybook/react manually
 
 In the shell, let's run the following command:
 
 npm:
 
 ```shell
-npm install --save-dev @storybook/react
+npm i -D @storybook/react
 ```
 
-yarn:
-
-```shell
-yarn add @storybook/react --dev
-```
+> Another `npm` argument shortcut. `-D` stands for `--save-dev`.
 
 ### Storybook NPM Script
 
