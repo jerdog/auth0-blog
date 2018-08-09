@@ -26,9 +26,11 @@ related:
   - 
 ---
 
-For the scope of this introductory blog post, we are going to demonstrate how to start a new project using Storybook to get familiar with its platform and mechanics. In a follow-up post, we are going to explore deeper into our "storybook-driven development" practices.
+[Storybook](https://storybook.js.org/) is a development environment for UI components. It let us browse a component library, view the different states of its components, and interactively develop and test them. Storybook runs outside of our application; therefore, we can develop UI components in isolation without worrying about any project dependencies and requirements.
 
-We are going to create the components of an online banking app called Marvel Bank. Let's start by learning how we can setup Storybook in a brand-new `create-react-app` project.
+For the scope of this introductory blog post, we are going to demonstrate how to start a new project using Storybook to get familiar with its platform and mechanics. In a follow-up post, we are going to explore deeper into the "Storybook-Driven Development" practices that we have developed at Auth0 within the Customer Success Infrastructure team.
+
+Throughout these series, we are going to create the components of an online banking app called Marvel Bank. Let's start by learning how we can setup Storybook in a brand-new `create-react-app` project.
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Thrilling news: the next chapter for <a href="https://twitter.com/storybookjs?ref_src=twsrc%5Etfw">@storybookjs</a> with full-time maintenance and a bigger team. I&#39;m over the moon!<a href="https://t.co/xWL3Gp5dzI">https://t.co/xWL3Gp5dzI</a> <a href="https://t.co/T1JJfzNGp6">pic.twitter.com/T1JJfzNGp6</a></p>&mdash; shilman (@mshilman) <a href="https://twitter.com/mshilman/status/1021411688749326338?ref_src=twsrc%5Etfw">July 23, 2018</a></blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
