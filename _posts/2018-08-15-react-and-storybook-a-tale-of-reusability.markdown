@@ -265,3 +265,52 @@ git status
 git add .
 git commit -m "Create project structure that integrates with SCSS"
 ```
+
+## Creating Application Theme
+
+`_theme.scss` is an SCSS partial that will be imported by any other component stylesheet that needs to apply the defined theme based on the [Marvel Banking Style Guide]. You can copy and paste the following definitions to your local `_theme.scss` file:
+
+```scss
+// src/styles/_theme.scss
+
+// Fonts
+$primary-font: "Lato", sans-serif;
+$secondary-font: "Open Sans", sans-serif;
+
+// Font Colors
+$color-text: #4f6c8d;
+$color-text-light: #a3adb4;
+$color-text-lighter: #ccd6e1;
+
+$color-text-contrast: #ffffff;
+$color-text-contrast-light: #a7b5c6;
+$color-text-contrast-lighter: #5f5f63;
+
+// Primary Colors
+$blue: #506e8d;
+$white: #ffffff;
+$green: #6bbfab;
+$red: #f96b6b;
+
+// Dark Primary Colors
+$dark-blue: #33475c;
+$dark-white: #f0f0f0;
+$dark-green: #5ba392;
+$dark-red: #de5e5e;
+
+// Auxiliary Colors
+$bright-blue: #5db8eb;
+$opaque-blue: #4770d6;
+$opaque-yellow: #f3c416;
+$opaque-red: #dd765f;
+```
+
+Since this is a significant checkpoint, let's commit again:
+
+```shell
+git status
+git add .
+git commit -m "Create app theme variables"
+```
+
+It's time to start creating components!
