@@ -540,3 +540,186 @@ git status
 git add package-lock.json package.json .storybook/ stories/
 git commit -m "Integrate Storybook"
 ```
+
+## Integrating CSS with Storybook
+
+To communicate the presentation and state of the `UIButton` component, we need to add styling to it. Under `src/features/common`, let's create `UIButton.scss` and populate it with the following code:
+
+```scss
+// src/features/common/UIButton.scss
+
+@import "../../styles/theme";
+
+.UIButton {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  height: 40px;
+  width: 160px;
+  border: 2px solid $blue;
+  border-radius: 60px;
+
+  font-family: $primary-font;
+  font-size: 16px;
+  color: $blue;
+  letter-spacing: 1.27px;
+  text-align: center;
+
+  text-transform: uppercase;
+}
+```
+
+Next, let's import that stylesheet into `UIButton.js` and add `UIButton` as a `className` for the `UIButton` component:
+
+```javascript
+import React from "react";
+
+import "./UIButton.css";
+
+const UIButton = props => <div className="UIButton">{props.label}</div>;
+
+export default UIButton;
+```
+
+Let's save our work. We should see now how Storybook has refreshed the board and shows the updated component now styled:
+
+<p style="text-align: center;">
+  <img src="https://cdn.auth0.com/blog/storybook-intro/storybook-with-component-with-style.png" alt="Storybook staged a component with styling applied.">
+</p>
+
+Just like with `create-react-app`, we can make changes to the structure, content, or style of the component and they will be updated in Storybook. Let's change the background, font color and border of `UIButton` to see this in action:
+
+```scss
+// src/features/common/UIButton.scss
+
+@import "../../styles/theme";
+
+.UIButton {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  background: $green;
+
+  height: 40px;
+  width: 160px;
+
+  border-radius: 60px;
+
+  font-family: $primary-font;
+  font-size: 16px;
+  color: white;
+  letter-spacing: 1.27px;
+  text-align: center;
+
+  text-transform: uppercase;
+}
+```
+
+Let's save our work again and observe the changes:
+
+<p style="text-align: center;">
+  <img src="https://cdn.auth0.com/blog/storybook-intro/updated-component-in-storybook.png" alt="Update component in Storybook">
+</p>
+
+Style changes are well integrated into our workflow. It's truly amazing that we can preview our components this way without having to touch our actual application code. We can develop our component in isolation and then use them in the app whenever we want.
+
+As discussed before, `UIButton` has three different presentations. The best way to organize that would be through CSS classes and props.
+
+We want the `UIButton` component to know:
+
+- Its active state: `active` / `disables`
+- Its style state: `fill` / `no-fill`
+
+Let's update `UIButton.scss` with classes that represnet these states:
+
+```scss
+// src/features/common/UIButton.scss
+
+@import "../../styles/theme";
+
+.UIButton {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  height: 40px;
+  width: 160px;
+
+  border-radius: 60px;
+
+  font-family: $primary-font;
+  font-size: 16px;
+
+  letter-spacing: 1.27px;
+  text-align: center;
+
+  text-transform: uppercase;
+}
+
+.active {
+}
+
+.disabled {
+  border: 2px solid $color-text-lighter;
+
+  color: $color-text-lighter;
+  letter-spacing: 1.64px;
+}
+
+.fill {
+  background: $green;
+  box-shadow: 0 6px 8px 0 rgba(103, 194, 172, 0.5);
+
+  color: $white;
+  letter-spacing: 1.61px;
+}
+
+.no-fill {
+  border: 2px solid $blue;
+
+  color: $blue;
+  letter-spacing: 1.27px;
+}
+```
+
+Let's briefly review what we are doing here since it's important how this impacts component staging in Storybook:
+
+- `.UIButton` has all the style properties share by all instances of `UIButton`.
+- `.active` is not on use right now but it could be used to provide unique properties to an active button.
+- `.disabled` has the style properties for any instance of `UIButton` that becomes disabled.
+- `fill` and `no-fill` apply distinct styling to an active button.
+
+We need to integrate this style logic into our component logic as follows:
+
+```javascript
+// src/features/common/UIButton.js
+
+import React from "react";
+
+import "./UIButton.css";
+
+const UIButton = props => (
+  <div
+    className={`UIButton ${
+      props.active
+        ? props.fill
+          ? `active fill`
+          : `active no-fill`
+        : `disabled`
+    }`}
+  >
+    {props.label}
+  </div>
+);
+
+export default UIButton;
+```
+
+Using a combination of ternary operators we process the state of the button. If `props.active` is true, we check if `props.fill` is true or not and apply the corresponding class to the component. If `props.active` is false, there are no extra decisions to make, we apply the default `disabled` class.
+
+To see this in action, let's create new stories in our Storybook!
