@@ -178,11 +178,11 @@ Next, we need to modify our `package.json` to watch and process `.scss` files in
 
 These scripts allow us to compile `.scss` files into `.css` and to keep watching the `src` folder for changes to the content of existing `.scss` files or the addition of new ones. To complete this task, we need to change the file extension of `App.css` and `index.css` to `.scss`. Depending on our development environment, this can be done in different ways such as renaming the files or refactoring their name or file type.
 
-Storybook will only understand changes made or applied in `.css` files. If we were to make a change in a `.scss` file, we could need to compile it into `.css` for Storybook to be notified of the styling changes.
+Storybook will only understand changes made or applied in `.css` files. If we were to make a change in a `.scss` file, we would need to compile it into `.css` for Storybook to be notified of the styling changes.
 
 Normally, such compilation is a build step in our development workflow triggered by running `npm start`. However, I made the promise that we wouldn't have to run our React app in order to use Storybook in this blog post. I am keeping that promise and `npm start` is off-limits. What can we use instead? `watch-css`.
 
-As stated earlier, `watch-css` compiles our SCSS into CSS files using the `build-css` script and it keeps monitoring all the SCSS files present under the `src` directory to detect any changes. Anytime a SCSS file is changed, that file is compiled and Storybook is able to see and apply the styling changes into the component preview (as we'll see soon!).
+As stated earlier, `watch-css` compiles our SCSS into CSS files using the `build-css` script and it keeps monitoring all the SCSS files present under the `src` directory to detect any changes. Anytime an SCSS file is changed, that file is compiled and Storybook is able to see and apply the styling changes into the component preview (as we'll see soon!).
 
 With this in mind, on the shell run the following command:
 
@@ -405,7 +405,7 @@ npm i -g @storybook/cli
 
 - Restart your shell. You can do that by closing the existing window or tab and opening a new one.
 
-- Finally run the `getstorybook` command to have the Storybook CLI scaffold all the necessary files and folders to work with Storybook in your project. These include the `.storybook` folder under the root project and the `stories` folder under the `src` folder.
+- Finally, run the `getstorybook` command to have the Storybook CLI scaffold all the necessary files and folders to work with Storybook in your project. These include the `.storybook` folder under the root project and the `stories` folder under the `src` folder.
 
 Let's see how this can be done without a global install using `npx`.
 
