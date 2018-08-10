@@ -107,7 +107,7 @@ For the online banking app that we are going to start creating in this blog post
   <img src="https://cdn.auth0.com/blog/storybook-intro/marvel-banking-ui-kit.png" alt="Marvel Banking UI Kit">
 </p>
 
-The UI Kit is designed for iOS, but we are going to adapt it for usage in a responsive web application. To make it users for developers to understand the UI Kit, we created a design document where we can get the font names, the sizing, the color hex codes, etc: [Marvel Bank Style Guide](https://auth0.github.io/marvel-bank-styleguide/).
+The UI Kit is designed for iOS, but we are going to adapt it for usage in a responsive web application. To make it easier for developers to understand the UI Kit, I created a design document where we can get the font names, the sizing, the color hex codes, etc: [Marvel Bank Style Guide](https://auth0.github.io/marvel-bank-styleguide/).
 
 In the following excerpt, notice how is much easier to understand the guidelines that a developer would need to follow when creating the components presented in the UI Kit:
 
@@ -121,16 +121,16 @@ If we need to implement a green button, we can consult the design document and c
 - We could use [SCSS](https://sass-lang.com/) or [Stylus](http://stylus-lang.com/) to create style partials and variables.
 - We could also opt for using [CSS-in-JS](https://reactjs.org/docs/faq-styling.html) through a library like [`styled-components`](https://www.styled-components.com/).
 
-Our Team currently has been using a combination of Styles and [CSS Modules](https://github.com/css-modules/css-modules) to manage the styling of the projects. React has unified the three layers of front-end development (HTML, CSS, and JavaScript) under one layer powered by JavaScript, JSX, and CSS-in-JS. For this post, however, we are going to rely on SCSS to create the modular components to minimize the development overhead.
+Our Team currently has been using a combination of Stylus and [CSS Modules](https://github.com/css-modules/css-modules) to manage the styling of the projects. React has unified the three layers of front-end development (HTML, CSS, and JavaScript) under one layer powered by JavaScript, JSX, and CSS-in-JS. For this post, however, we are going to rely on SCSS to create the modular components to minimize the development overhead.
 
-> **Feedback** Would you like to learn how we are using `styled-components` to create a modern component library? Let me know in the comments below and I could make it part of this React series.
+> **Feedback:** Would you like to learn how we are using `styled-components` to create a modern component library? Let me know in the comments below and I could make it part of this React series.
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Oh man and a <a href="https://twitter.com/storybookjs?ref_src=twsrc%5Etfw">@storybookjs</a> shoutout as well! Storybook has been indispensable for our component library.</p>&mdash; Maja Wichrowska (@majapw) <a href="https://twitter.com/majapw/status/997143616865828865?ref_src=twsrc%5Etfw">May 17, 2018</a></blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 ## Adding SCSS to `create-react-app`
 
-We [add `SCSS` support to `create-react-app` without having to `eject`](https://techcookbook.com/react/use-scss-with-create-react-app). We need to install a few packages to help us achieve this goal:
+We can [add `SCSS` support to `create-react-app` without having to `eject`](https://techcookbook.com/react/use-scss-with-create-react-app). We need to install a few packages to help us achieve that goal:
 
 npm:
 
@@ -138,17 +138,11 @@ npm:
 npm install --save node-sass-chokidar npm-run-all
 ```
 
-yarn:
+[`node-sass-chokidar`](https://www.npmjs.com/package/node-sass-chokidar) is a thin wrapper around the node-sass executable to use chokidar instead of Gaze when watching files.
 
-```shell
-yarn add node-sass-chokidar npm-run-all
-```
+[`npm-run-all`](https://www.npmjs.com/package/npm-run-all) is a CLI tool to run multiple npm-scripts in parallel or sequentially.
 
-[`node-sass-chokidar`](https://www.npmjs.com/package/node-sass-chokidar) is a thin wrapper around node-sass executable to use chokidar instead of Gaze when watching files.
-
-[`npm-run-all`](https://www.npmjs.com/package/npm-run-all) is a CLI tool to run multiple npm-scripts in parallel or sequential.
-
-Next, we need to modify our `package.json` to watch and process `.scss` files into `.css` ones:
+Next, we need to modify our `package.json` `"scripts"` property to watch and process `.scss` files into `.css` ones:
 
 ```json
 {
@@ -196,21 +190,21 @@ This is a good point to make our first `git` commit.
 
 Our project is in a good place for its first `git` commit. But before we do so, let's ensure that we have everything we need to ignore specified in the `.gitignore` file. If you are using an IDE like WebStorm, for example, there are extra files that the IDE creates that is better to keep out of the `git` repo.
 
-I personally like to use [`gitignore.io`](https://www.gitignore.io/) to create my `.gitignore` file automatically. The categories that I choose to create the file are WebStorm, IntelliJ, OSX, Windows, and Visual Studio Code, since they are the tools and platforms that are most commonly used. You may head to that site, enter those categories, and copy/paste the output into the `.gitignore` file present in our project.
+I personally like to use [`gitignore.io`](https://www.gitignore.io/) to generate the content of my `.gitignore` file automatically. The categories that I choose to create the file are WebStorm, IntelliJ, OSX, Windows, and Visual Studio Code, since they are the tools and platforms that are most commonly used. You may head to that site, enter those categories, and copy/paste the output at the end of the `.gitignore` file present in our project.
 
 Since our `.css` files are built automatically under our project configuration, we do not need to include them in version control. In the `.gitignore` file add the following rule at the end:
 
 ```text
 // .gitignore
 
-//...
+// ...
 
 src/**/*.css
 ```
 
 This rule ensures that none of the `.css` files under the `src` folder are tracked by `git`.
 
-With a comprehensive `.gitignore` file in place, let's initialize a `git` repository (make sure that `marvel-app` is the current working directory):
+With a comprehensive `.gitignore` file in place, let's initialize a `git` repository (make sure that `marvel-app` directory is the current working directory):
 
 ```shell
 git init
@@ -228,7 +222,7 @@ Let's go ahead and add these files shown to `git` in order to include them in ou
 git add .
 ```
 
-We used a shortcut here to add all the files that were being untracked, the `.` after the `add` command.
+We used a shortcut here to add all the files that were being untracked using the `.` after the `add` command.
 
 > If you want a `git` refresher, I highly recommend this amazing [_Git & Version Control_](https://www.git-tower.com/learn/) tutorial by the folks at [Git Tower](https://www.git-tower.com/).
 
@@ -247,7 +241,7 @@ This all looks good to me ([LGTM™](https://knowyourmeme.com/memes/lgtm)), but 
 An internal pattern that we use is to have specialized folders to hold the different elements of our React application. In one of our projects, we have the following structure:
 
 ```shell
-- root
+- src
     |-- api/
     |-- features/
     |-- assets/
@@ -259,12 +253,12 @@ An internal pattern that we use is to have specialized folders to hold the diffe
     |-- routes.js
 ```
 
-For the initial phase of this project, we only need the `features` and the `styles` folder. The `features` holds our components in a categorized manner. We define features of our applications, such as `search` or `reports`, and create components that power and build that feature. What Storybook will help us solve is the event where feature share components. Instead of duplicating the code across features, the feature will implement the component from a central source. As the name suggests, these common components go into a `common` feature folder.
+For the initial phase of this project, we only need the `features` and the `styles` folder. The `features` folder holds our components in a categorized manner. We define features of our applications, such as `search` or `reports` in its subfolders, and create components that power and build that feature. What Storybook will help us solve is the event where features share components. Instead of duplicating the code across features, the feature will implement the component from a central source: our component library. As the name suggests, these common components go into a `common` feature folder.
 
-This is the project structure we want for this phase of the project:
+This is the project structure we want for the `src` folder in this phase of the project:
 
 ```shell
-- root
+- src
     |-- features/
     |---- common/
     |-- styles/
@@ -276,7 +270,7 @@ This is the project structure we want for this phase of the project:
     |-- registerServiceWorker.js
 ```
 
-{% include tweet_quote.html quote_text="Instead of duplicating the component code across features in your project, implement the component from a central source like a component library." %}
+{% include tweet_quote.html quote_text="Instead of duplicating the component code across features in your project, implement the component from a central source, like a component library." %}
 
 Let's go ahead and create these folders and files:
 
@@ -284,7 +278,7 @@ Let's go ahead and create these folders and files:
   <img src="https://cdn.auth0.com/blog/storybook-intro/file-structure.png" alt="Project structure">
 </p>
 
-This is a good checkpoint. Let's go ahead and commit:
+We'll be using `_theme.scss` in a moment. This is a good checkpoint. Let's go ahead and commit:
 
 ```shell
 git status
@@ -292,9 +286,11 @@ git add .
 git commit -m "Create project structure that integrates with SCSS"
 ```
 
-## Creating Application Theme
+> Noticed something different this time? Since the `features` folder and its `common` subfolder are currently empty, they were not included as part of the commit bundle by git. We could place an `index.js` file inside `common` that exports all of the components within that folder using what is known as a [barrel export](https://medium.com/@klauskpm/do-a-barrel-export-aa5b79b76b05). For this blog post, we are not going to use that just yet.
 
-`_theme.scss` is an SCSS partial that will be imported by any other component stylesheet that needs to apply the defined theme based on the [Marvel Banking Style Guide]. You can copy and paste the following definitions to your local `_theme.scss` file:
+## Creating the Application Theme
+
+`_theme.scss` is an SCSS partial that will be imported by any other component stylesheet that needs to apply the defined theme based on the [Marvel Banking Style Guide](https://auth0.github.io/marvel-bank-styleguide/). You can copy and paste the following definitions to your local `_theme.scss` file:
 
 ```scss
 // src/styles/_theme.scss
@@ -311,6 +307,9 @@ $color-text-lighter: #ccd6e1;
 $color-text-contrast: #ffffff;
 $color-text-contrast-light: #a7b5c6;
 $color-text-contrast-lighter: #5f5f63;
+
+// Background Colors
+$gray: #bec9d1;
 
 // Primary Colors
 $blue: #506e8d;
@@ -343,7 +342,7 @@ It's time to start creating components!
 
 ## Creating A Reusable Button Using React
 
-To take see the benefits that Storybook gives us, we need to have components to visualize. Right now, we have none.
+To see the benefits and value that Storybook provides us, we need to have components to visualize. Right now, we have none.
 
 Recall that the Marvel UI Kit offers us the definition of a button that has three presentations:
 
@@ -354,28 +353,36 @@ Recall that the Marvel UI Kit offers us the definition of a button that has thre
 These presentations can be summarized as follows:
 
 - Active State (Fill): The button is green, pops up, and has white text.
-- Active State (No-Fill): The button shares the background of the parent container, and it has blue color for text and border.
-- Disabled State: The button looks suppressed and has a light blue color for text and border.
+- Active State (No-Fill): The button shares the background of the parent container, and it has a blue color for its text and border.
+- Disabled State: The button looks suppressed and has a light blue color for its text and border.
 
 The button itself has two status: active or disabled. The relationship between presentation and state is something that we can express easily with Storybook. First, we need to plan the component. How are we going to approach its engineering?
 
-Let's start with creating the basic structure of the component: a rounded rectangle that contains a label. Create a file named `UIButton` under the `common` folder and populate it with this:
+Let's start with creating the basic structure of the component: a rounded rectangle that contains a label. Create a file named `Button.js` under the `common` folder and populate it with this:
 
 ```javascript
-// src/features/common/UIButton.js
+// src/features/common/Button.js
 
 import React from "react";
 
-const UIButton = props => <div>{props.label}</div>;
+const Button = props => <div>{props.label}</div>;
 
-export default UIButton;
+export default Button;
 ```
 
-Now that we have a component, we go back to one of the questions that we asked ourselves when creating components:
+Now that we have a component, we go back to one of the questions that we have been asking ourselves in our team when creating components:
 
-- How should a prototype of the component be created? Should a blank page with mock data be used?
+- How should a prototype of the component be presented? Should a blank page with mock data be used?
 
 Traditionally, we would compose the component into a visible element of the UI to preview it. This time, we are going to use Storybook.
+
+Let's quickly commit the creating of the `Button` component:
+
+```shell
+git status
+git add .
+git commit -m "Create Button component"
+```
 
 ## Setting Up Storybook
 
@@ -389,11 +396,7 @@ We have different options for installing Storybook: a global install, an install
 
 To install and run Storybook from your shell follow these quick steps:
 
-- In the shell, make your project directory your current working directory:
-
-```shell
-cd my-project-directory
-```
+- In the shell, make sure that your project directory your current working directory, `marvel-app`.
 
 - Next, install `@storybook/cli` globally:
 
@@ -405,7 +408,7 @@ npm i -g @storybook/cli
 
 - Restart your shell. You can do that by closing the existing window or tab and opening a new one.
 
-- Finally, run the `getstorybook` command to have the Storybook CLI scaffold all the necessary files and folders to work with Storybook in your project. These include the `.storybook` folder under the root project and the `stories` folder under the `src` folder.
+- Finally, with `marvel-app` again as your current working directory, run the `getstorybook` command to have the Storybook CLI scaffold all the necessary files and folders to work with Storybook in your project. These include the `.storybook` folder under the root project and the `stories` folder under the `src` folder.
 
 Let's see how this can be done without a global install using `npx`.
 
@@ -413,11 +416,7 @@ Let's see how this can be done without a global install using `npx`.
 
 We can emulate the same behavior of the global installation of Storybook but without the actual global installation. If you have `npm >= 5.2` installed in your system, you have `npx` available!
 
-- In the shell, make your project directory your current working directory:
-
-```shell
-cd my-project-directory
-```
+- In the shell, make sure that your project directory your current working directory, `marvel-app`.
 
 - Run the `getstorybook` command using `npx`:
 
@@ -427,9 +426,9 @@ npx @storybook/cli getstorybook
 
 The Storybook CLI will run and create all the necessary files and folder in your project just as in the previous section. This method is the fastest way to get up and running!
 
-Now, let's explore what the Storybook creators call the "slow start", the local manual installation of Storybook. Through that process, we'll learn how the folders and files installed by the Storybook CLI work.
-
 {% include tweet_quote.html quote_text="npx lets us run one-off invocations of CLI tools available in the npm registry without local installation." %}
+
+Now, let's explore what the Storybook creators call the "slow start", the local manual installation of Storybook. Through that process, we'll learn how the folders and files installed by the Storybook CLI work.
 
 ### Install @storybook/react manually
 
@@ -445,7 +444,7 @@ npm i -D @storybook/react
 
 ### Storybook NPM Script
 
-To run Storybook, we need to add the following `script` to `package.json`:
+After `@storybook/react` has finished its installation. We need to add the following `script` to `package.json` to run Storybook:
 
 ```json
 "storybook": "start-storybook -p 9001 -c .storybook"
@@ -496,66 +495,70 @@ mkdir .storybook
 Next, we need to create a `config.js` file inside `.storybook` to hold the configuration. Let's start it with the following code:
 
 ```javascript
+// .storybook/config.js
+
 import { configure } from "@storybook/react";
 
 function loadStories() {
-  require("../stories/index.js");
+  require("../src/stories/index.js");
   // You can require as many stories as you need.
 }
 
 configure(loadStories, module);
 ```
 
-Storybook works in a similar way to testing tools. The `config.js` loads the `configure` method, which takes as argument a function called `loadStories` and a `module`. `loadStories` will have **stories** defined on its body. A **story** is a single state of a component. We want to write a story for each state a component will have.
+Storybook works in a similar way to testing tools. The `config.js` loads the `configure` method, which takes as argument a function called `loadStories` and a `module`. `loadStories` will have **stories** defined on its body. A **story** describes the single state of a component. We want to write a story for each state a component will have.
 
-We are going to write and load the stories from `stories/index.js` which will be under the root folder. Let's create such folder and file to write our first story.
+> Stories are similar to how [`it` methods run tests](https://jestjs.io/docs/en/api.html#testname-fn-timeout) in testing libraries like Jest.
+
+We are going to write and load the stories from `../src/stories/index.js` which will be under the root folder. Let's create such folder and file to write our first story. Under the `src` folder let's create a `stories` subfolder and then create an `index.js` file inside it.
 
 > `.storybook` is used solely for configuration files. Do not put your `stories` folder inside this hidden folder.
 
 ### Writing a Story in Storybook
 
-Open the recently created `index.js` under `.storybook/stories` and populate it with the following code:
+Open the recently created `index.js` under `src/stories` and populate it with the following code:
 
 ```javascript
-// .storybook/stories/index.js
+// src/stories/index.js
 
 import React from "react";
 import { storiesOf } from "@storybook/react";
 ```
 
-So far, there's not much going on. We import `React` and a `storiesOf` that will help us create stories of a component of our choice. We need that component. Let's import `UIButton` here:
+So far, there's not much going on. We import `React` and a `storiesOf` method that will help us create stories for a component. We need that component. Let's import `Button` here:
 
 ```javascript
-// .storybook/stories/index.js
+// src/stories/index.js
 
 import React from "react";
 import { storiesOf } from "@storybook/react";
-import UIButton from "../../src/features/common/UIButton";
+import Button from "../../src/features/common/Button";
 ```
 
-Storybook has a declarative language, what we are going to do next is to tell it that we want stories of `UIButton`:
+Storybook has a declarative language. What we are going to do next is to tell it that we want stories of `Button`:
 
 ```javascript
-// .storybook/stories/index.js
+// src/stories/index.js
 
 import React from "react";
 import { storiesOf } from "@storybook/react";
-import UIButton from "../../src/features/common/UIButton";
+import Button from "../../src/features/common/Button";
 
-storiesOf("UIButton", module);
+storiesOf("Button", module);
 ```
 
 If we were thinking in terms of an actual book, this is the book's binding and cover. We need to fill it with pages full of stories. We do that declarative too using the `add` method:
 
 ```javascript
-// .storybook/stories/index.js
+// src/stories/index.js
 
 import React from "react";
 import { storiesOf } from "@storybook/react";
-import UIButton from "../../src/features/common/UIButton";
+import Button from "../../src/features/common/Button";
 
-storiesOf("UIButton", module).add("with text", () => (
-  <UIButton label={`Continue`} />
+storiesOf("Button", module).add("with text", () => (
+  <Button label={`Continue`} />
 ));
 ```
 
@@ -575,19 +578,13 @@ npm:
 npm run storybook
 ```
 
-yarn:
-
-```shell
-yarn storybook
-```
-
-If everything runs successfully, you will see this message in the shell:
+If everything runs successfully, we will see this message in the shell:
 
 ```shell
 info Storybook started on => http://localhost:9001/
 ```
 
-Let's open that URL, [`http://localhost:9001/`](http://localhost:9001/) in the browser. Let is load... and there we have it in its full glory: our own Storybook!
+Let's open that URL, [`http://localhost:9001/`](http://localhost:9001/) in the browser. Let it load... and there we have it in its full glory: our own Storybook!
 
 Right now it's pretty basic but this is a great start!
 
@@ -595,30 +592,24 @@ Right now it's pretty basic but this is a great start!
   <img src="https://cdn.auth0.com/blog/storybook-intro/first-storybook.png" alt="A working Storybook">
 </p>
 
-This is a good time to make another commit. We are going to create two commits to address the integration of Storybook and the creation of the `UIButton` component:
+This is a good time to make another commit to address the integration of Storybook:
 
 ```shell
 git status
-git add src/features/
-git commit -m "Create UIButton component"
-```
-
-```shell
-git status
-git add package-lock.json package.json .storybook/ stories/
+git add .
 git commit -m "Integrate Storybook"
 ```
 
 ## Integrating CSS with Storybook
 
-To communicate the presentation and state of the `UIButton` component, we need to add styling to it. Under `src/features/common`, let's create `UIButton.scss` and populate it with the following code:
+To communicate the presentation and state of the `Button` component, we need to add styling to it. Under `src/features/common`, let's create `Button.scss` and populate it with the following code:
 
 ```scss
-// src/features/common/UIButton.scss
+// src/features/common/Button.scss
 
 @import "../../styles/theme";
 
-.UIButton {
+.Button {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -639,32 +630,32 @@ To communicate the presentation and state of the `UIButton` component, we need t
 }
 ```
 
-Next, let's import that stylesheet into `UIButton.js` and add `UIButton` as a `className` for the `UIButton` component:
+Next, let's import that stylesheet into `Button.js` and add `Button` as a `className` for the `Button` component:
 
 ```javascript
 import React from "react";
 
-import "./UIButton.css";
+import "./Button.css";
 
-const UIButton = props => <div className="UIButton">{props.label}</div>;
+const Button = props => <div className="Button">{props.label}</div>;
 
-export default UIButton;
+export default Button;
 ```
 
-Let's save our work. We should see now how Storybook has refreshed the board and shows the updated component now styled:
+Let's save our work. We should see now how Storybook has refreshed the board and shows the updated component with styling applied:
 
 <p style="text-align: center;">
   <img src="https://cdn.auth0.com/blog/storybook-intro/storybook-with-component-with-style.png" alt="Storybook staged a component with styling applied.">
 </p>
 
-Just like with `create-react-app`, we can make changes to the structure, content, or style of the component and they will be updated in Storybook. Let's change the background, font color and border of `UIButton` to see this in action:
+Just like with `create-react-app`, we can make changes to the structure, content, or style of a component and they will be updated in Storybook. Let's change the background, font color and border of `Button` to see this in action:
 
 ```scss
-// src/features/common/UIButton.scss
+// src/features/common/Button.scss
 
 @import "../../styles/theme";
 
-.UIButton {
+.Button {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -693,25 +684,25 @@ Let's save our work again and observe the changes:
   <img src="https://cdn.auth0.com/blog/storybook-intro/updated-component-in-storybook.png" alt="Update component in Storybook">
 </p>
 
-Style changes are well integrated into our workflow. It's truly amazing that we can preview our components this way without having to touch our actual application code. We can develop our component in isolation and then use them in the app whenever we want.
+Style changes are well integrated into our workflow. It's truly amazing that we can preview our components this way without having to run our application. We can develop our component in isolation and then use them in the app whenever we want.
 
 {% include tweet_quote.html quote_text="Just like with `create-react-app`, we can make changes to the structure, content, or style of a React component and it will be updated in Storybook! We can visualize our components without running our app." %}
 
-As discussed before, `UIButton` has three different presentations. The best way to organize that would be through CSS classes and props.
+As discussed before, `Button` has three different presentations. The best way to organize that would be through CSS classes and props.
 
-We want the `UIButton` component to know:
+We want the `Button` component to know:
 
-- Its active state: `active` / `disables`
+- Its active state: `active` / `disabled`
 - Its style state: `fill` / `no-fill`
 
-Let's update `UIButton.scss` with classes that represnet these states:
+Let's update `Button.scss` with classes that represent these states:
 
 ```scss
-// src/features/common/UIButton.scss
+// src/features/common/Button.scss
 
 @import "../../styles/theme";
 
-.UIButton {
+.Button {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -759,23 +750,23 @@ Let's update `UIButton.scss` with classes that represnet these states:
 
 Let's briefly review what we are doing here since it's important how this impacts component staging in Storybook:
 
-- `.UIButton` has all the style properties share by all instances of `UIButton`.
-- `.active` is not on use right now but it could be used to provide unique properties to an active button.
-- `.disabled` has the style properties for any instance of `UIButton` that becomes disabled.
+- `.Button` has all the style properties shared by all instances of `Button`.
+- `.active` is not in use right now but it could be used to provide unique properties to an active button.
+- `.disabled` has the style properties for any instance of `Button` that becomes disabled.
 - `fill` and `no-fill` apply distinct styling to an active button.
 
 We need to integrate this style logic into our component logic as follows:
 
 ```javascript
-// src/features/common/UIButton.js
+// src/features/common/Button.js
 
 import React from "react";
 
-import "./UIButton.css";
+import "./Button.css";
 
-const UIButton = props => (
+const Button = props => (
   <div
-    className={`UIButton ${
+    className={`Button ${
       props.active
         ? props.fill
           ? `active fill`
@@ -787,94 +778,94 @@ const UIButton = props => (
   </div>
 );
 
-export default UIButton;
+export default Button;
 ```
 
-Using a combination of ternary operators we process the state of the button. If `props.active` is true, we check if `props.fill` is true or not and apply the corresponding class to the component. If `props.active` is false, there are no extra decisions to make, we apply the default `disabled` class.
+Using a combination of ternary operators we process the state of the button. If `props.active` is true, we check if `props.fill` is true or not and apply the corresponding class to the component. If `props.active` is false, there are no extra decisions to make and we apply the default `disabled` class.
 
 To see this in action, let's create new stories in our Storybook!
 
 ## Creating Multiple Stories for a Component in Storybook
 
-Let's head to `stories/index.js` and remove the current story that we have defined there, `with text` as it isn't telling too much of a story:
-
-```
-// stories/index.js
-
-import React from "react";
-import { storiesOf } from "@storybook/react";
-import UIButton from "../src/features/common/UIButton";
-
-storiesOf("UIButton", module);
-```
-
-Next, let's add three new stories that clearly define the three presentations that we want `UIButton` to have depending on different state flags:
+Let's head to `src/stories/index.js` and remove the current story that we have defined there, `with text` as it isn't telling too much of a story:
 
 ```javascript
 // stories/index.js
 
 import React from "react";
 import { storiesOf } from "@storybook/react";
-import UIButton from "../src/features/common/UIButton";
+import Button from "../../src/features/common/Button";
 
-storiesOf("UIButton", module)
-  .add("active with fill", () => (
-    <UIButton label={`continue`} fill={true} active={true} />
-  ))
-  .add("active with no fill", () => (
-    <UIButton label={`sign up`} fill={false} active={true} />
-  ))
-  .add("disabled", () => <UIButton label={`continue`} active={false} />);
+storiesOf("Button", module);
 ```
 
-Let's save our work and we'll see Storybook update to show the three new stories under `UIButton`:
+Next, let's add three new stories that clearly define the three presentations that we want `Button` to have depending on different state flags:
+
+```javascript
+// stories/index.js
+
+import React from "react";
+import { storiesOf } from "@storybook/react";
+import Button from "../../src/features/common/Button";
+
+storiesOf("Button", module)
+  .add("active with fill", () => (
+    <Button label={`continue`} fill={true} active={true} />
+  ))
+  .add("active with no fill", () => (
+    <Button label={`sign up`} fill={false} active={true} />
+  ))
+  .add("disabled", () => <Button label={`continue`} active={false} />);
+```
+
+Let's save our work and we'll see Storybook update to show the three new stories under `Button`:
 
 <p style="text-align: center;">
   <img src="https://cdn.auth0.com/blog/storybook-intro/storybook-component-with-three-stories.png" alt="Storybook showing three stories for a component">
 </p>
 
-Each story renders an isolated instance of `UIButton` whose presentation depends on the `props` values that are passed to it. This is where we can see the value proposition of Storybook at play.
+Each story renders an isolated instance of `Button` whose presentation depends on the `props` values that are passed to it. This is where we can see the value proposition of Storybook at play.
 
-Without Storybook, we would need to add `UIButton` in our app somewhere and test its rendering by passing it different props. We would then need to remove the component. What if we need to change the structure or style of the component? We'd need to start the process all over again.
+Without Storybook, we would need to add `Button` in our app somewhere and test its rendering by passing it different props. We would then need to remove the component. What if we need to change the structure or style of the component? We'd need to start that process all over again.
 
-With Storybook, a component and all of its different states can be staged in a centralized location. What we see in Storybook will be seen in all the areas of the application that use the component, giving us confidence that we'll preserve presentational consistency throughout our application.
+With Storybook, a component and all of its different states can be staged in a centralized location. What we see in Storybook will be seen in all the areas of the application that use the component, giving us confidence that we'll have presentational consistency throughout our application.
 
-Let's click around the different stories and see how the component changes on each. The UI Kit graphic definition of the user interface button is not alive in code.
+Let's click around the different stories and see how the component changes on each one. The UI Kit graphic definition of the user interface button is now alive in code.
 
-UI Button active with fill:
+"Button active with fill":
 
 <p style="text-align: center;">
   <img src="https://cdn.auth0.com/blog/storybook-intro/ui-button-active-fill.png" alt="UI Button active with fill">
 </p>
 
-UI Button active with no fill:
+"Button active with no fill":
 
 <p style="text-align: center;">
   <img src="https://cdn.auth0.com/blog/storybook-intro/ui-button-active-no-fill.png" alt="UI Button active with no fill">
 </p>
 
-UI Button disabled:
+"Button disabled":
 
 <p style="text-align: center;">
   <img src="https://cdn.auth0.com/blog/storybook-intro/ui-button-disabled.png" alt="UI Button disabled">
 </p>
 
-We have a solid `UIButton` component that communicates its state clearly through its presentation. Let's go ahead and commit these changes:
+We have a solid `Button` component that communicates its state clearly through its presentation. Let's go ahead and commit these changes:
 
 ```shell
 git status
 git add .
-git commit -m "Add three states to UIButton component"
+git commit -m "Add three states to Button component"
 ```
 
 ### Next Steps
 
 We have just barely scratched the surface of what can be done with Storybook! There's a lot more we can do with this amazing tool to make the creation, testing, and documentation of React components much faster. Storybook is also a highly configurable tool that relies on add-ons to boost its offerings.
 
-In the next posts of these series, we are going to create more components for the Marvel Bank app as we explore how to integrate Storybook into our development workflow and team culture. Afterward, we are going to be learning how we can use a cool feature called **Storyshots** to make the testing of React components easier.
+In the next posts of these series, we are going to create more components for the Marvel Bank app as we explore how to integrate Storybook into our development workflow and team culture. Afterward, we are going to be learning how we can use a cool add-on called **Storyshots** to make the testing of React components easier.
 
-At Auth0, different teams are making extensive use of Storybook as a development and design tool. In the final chapter of this series, we are going to explore how we are converging designers and developers into a Design Systems team that is letting us iterate faster and developer better products for our cherished customers.
+At Auth0, different teams are making extensive use of Storybook as a development and design tool. In the final chapter of this series, we are going to explore how we are converging designers and developers into a Design Systems team that is letting us iterate faster and develop better products for our cherished customers.
 
-Feel free to grab the source code of the project we have created so far from the [Marvel Bank App GitHub repo](https://github.com/auth0/marvel-bank-app).
+Feel free to grab the source code of the project we have created so far from the [Marvel Bank App GitHub repo](https://github.com/auth0-blog/marvel-bank-app).
 
 {% include asides/about-auth0.markdown %}
