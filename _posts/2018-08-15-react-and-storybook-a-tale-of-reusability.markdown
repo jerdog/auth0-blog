@@ -589,7 +589,7 @@ Let's open that URL, [`http://localhost:9001/`](http://localhost:9001/) in the b
 Right now it's pretty basic but this is a great start!
 
 <p style="text-align: center;">
-  <img src="https://cdn.auth0.com/blog/storybook-intro/first-storybook.png" alt="A working Storybook">
+  <img src="https://cdn.auth0.com/blog/storybook-introduction/first-storybook.png" alt="A working Storybook">
 </p>
 
 This is a good time to make another commit to address the integration of Storybook:
@@ -645,7 +645,7 @@ export default Button;
 Let's save our work. We should see now how Storybook has refreshed the board and shows the updated component with styling applied:
 
 <p style="text-align: center;">
-  <img src="https://cdn.auth0.com/blog/storybook-intro/storybook-with-component-with-style.png" alt="Storybook staged a component with styling applied.">
+  <img src="https://cdn.auth0.com/blog/storybook-introduction/storybook-with-component-with-style.png" alt="Storybook staged a component with styling applied.">
 </p>
 
 Just like with `create-react-app`, we can make changes to the structure, content, or style of a component and they will be updated in Storybook. Let's change the background, font color and border of `Button` to see this in action:
@@ -681,7 +681,7 @@ Just like with `create-react-app`, we can make changes to the structure, content
 Let's save our work again and observe the changes:
 
 <p style="text-align: center;">
-  <img src="https://cdn.auth0.com/blog/storybook-intro/updated-component-in-storybook.png" alt="Update component in Storybook">
+  <img src="https://cdn.auth0.com/blog/storybook-introduction/component-updated-in-storybook.png" alt="Updated component in Storybook">
 </p>
 
 Style changes are well integrated into our workflow. It's truly amazing that we can preview our components this way without having to run our application. We can develop our component in isolation and then use them in the app whenever we want.
@@ -821,7 +821,7 @@ storiesOf("Button", module)
 Let's save our work and we'll see Storybook update to show the three new stories under `Button`:
 
 <p style="text-align: center;">
-  <img src="https://cdn.auth0.com/blog/storybook-intro/storybook-component-with-three-stories.png" alt="Storybook showing three stories for a component">
+  <img src="https://cdn.auth0.com/blog/storybook-introduction/storybook-component-with-three-stories.png" alt="Storybook showing three stories for a component">
 </p>
 
 Each story renders an isolated instance of `Button` whose presentation depends on the `props` values that are passed to it. This is where we can see the value proposition of Storybook at play.
@@ -835,19 +835,19 @@ Let's click around the different stories and see how the component changes on ea
 "Button active with fill":
 
 <p style="text-align: center;">
-  <img src="https://cdn.auth0.com/blog/storybook-intro/ui-button-active-fill.png" alt="UI Button active with fill">
+  <img src="https://cdn.auth0.com/blog/storybook-introduction/button-active-fill-state.png" alt="Button active with fill">
 </p>
 
 "Button active with no fill":
 
 <p style="text-align: center;">
-  <img src="https://cdn.auth0.com/blog/storybook-intro/ui-button-active-no-fill.png" alt="UI Button active with no fill">
+  <img src="https://cdn.auth0.com/blog/storybook-introduction/button-active-no-fill.png" alt="Button active with no fill">
 </p>
 
 "Button disabled":
 
 <p style="text-align: center;">
-  <img src="https://cdn.auth0.com/blog/storybook-intro/ui-button-disabled.png" alt="UI Button disabled">
+  <img src="https://cdn.auth0.com/blog/storybook-introduction/button-disabled-view.png" alt="Button disabled">
 </p>
 
 We have a solid `Button` component that communicates its state clearly through its presentation. Let's go ahead and commit these changes:
