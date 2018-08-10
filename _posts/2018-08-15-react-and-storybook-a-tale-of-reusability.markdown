@@ -44,7 +44,6 @@ We can run `create-react-app` using `npx` which comes bundled with `npm 5.2+` an
 ```shell
 npx create-react-app marvel-bank
 cd marvel-bank
-npm start
 ```
 
 If you use `npm 5.1` or earlier, you can't use `npx`. Instead, install `create-react-app` globally:
@@ -58,10 +57,11 @@ And then run:
 ```shell
 create-react-app marvel-bank
 cd marvel-bank
-npm start
 ```
 
-If a browser window or tab doesn't open automatically, open [`http://localhost:3000/`](http://localhost:3000/) to see the app. Open the newly created `marvel-app` folder on your preferred code editor or IDE.
+> Notice that we are not running `npm start`. As mentioned earlier, we don't need to have a running React application to use Storybook.
+
+Open the newly created `marvel-app` folder on your preferred code editor or IDE.
 
 Within `marvel-bank`, the `src` folder contains the core business logic of our React application. Let's do some housekeeping and remove files and code that we don't need.
 
@@ -176,9 +176,19 @@ Next, we need to modify our `package.json` to watch and process `.scss` files in
 }
 ```
 
-These scripts allow us to compile `.scss` files into `.css` and to keep watching the `src` folder for changes to the content of existing `.scss` files or the addition of new ones. To complete this task, we need to change the file extension of `App.css` and `index.css` to `.scss`. Depending on your development environment, this can be done in different ways such as renaming the files or refactoring their name or file type.
+These scripts allow us to compile `.scss` files into `.css` and to keep watching the `src` folder for changes to the content of existing `.scss` files or the addition of new ones. To complete this task, we need to change the file extension of `App.css` and `index.css` to `.scss`. Depending on our development environment, this can be done in different ways such as renaming the files or refactoring their name or file type.
 
-On the shell, stop the running `create-react-app` and re-issue the `npm start` command again to include these new scripts in the build process. With that, we are ready to start developing the app. Storybook can be used without running our React app, but since we need to compile the SCSS files into CSS, we need to keep this process running in the background.
+Storybook will only understand changes made or applied in `.css` files. If we were to make a change in a `.scss` file, we could need to compile it into `.css` for Storybook to be notified of the styling changes.
+
+Normally, such compilation is a build step in our development workflow triggered by running `npm start`. However, I made the promise that we wouldn't have to run our React app in order to use Storybook in this blog post. I am keeping that promise and `npm start` is off-limits. What can we use instead? `watch-css`.
+
+As stated earlier, `watch-css` compiles our SCSS into CSS files using the `build-css` script and it keeps monitoring all the SCSS files present under the `src` directory to detect any changes. Anytime a SCSS file is changed, that file is compiled and Storybook is able to see and apply the styling changes into the component preview (as we'll see soon!).
+
+With this in mind, on the shell run the following command:
+
+```shell
+npm run watch-css
+```
 
 This is a good point to make our first `git` commit.
 
