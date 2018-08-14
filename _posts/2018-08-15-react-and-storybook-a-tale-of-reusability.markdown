@@ -16,6 +16,7 @@ tags:
   - react
   - storybook
   - frontend
+  - component
   - ui
   - ux
   - engineering
@@ -37,7 +38,7 @@ Throughout these series, we are going to create the components of an online bank
 
 ## Setting Up a React Project
 
-We are going to use [`create-react-app`](create-react-app) to scaffold easily a new React application.
+We are going to use [`create-react-app`](https://github.com/facebook/create-react-app) to scaffold easily a new React application.
 
 We can run `create-react-app` using `npx` which comes bundled with `npm 5.2+` and higher:
 
@@ -93,11 +94,11 @@ Why are we removing testing files? Testing is super important! We agree. We have
 
 ## Using a Style Guide for Consistent Branding
 
-Using a style guide can lead to better application design and development. As explain by the [Marvel Design team](https://blog.marvelapp.com/style-guides-better-design-development/), "during the design phase style guides encourage consistency in the visual identity and help keep the interface system as logical as possible, which makes for a better UX."
+Using a style guide can lead to better application design and development. As explained by the [Marvel Design team](https://blog.marvelapp.com/style-guides-better-design-development/), "during the design phase style guides encourage consistency in the visual identity and help keep the interface system as logical as possible, which makes for a better UX."
 
 What is a style guide anyway? Marvel has a solid answer: "A style guide clearly demonstrates how all interface elements and components are to be visually represented. It’s essentially a master reference for the user interface (UI)."
 
-In this sense, a component library is part of a style guide as it presents our components visually and it is the single source of truth for each component (the master reference). To create a comprehensive style guide, the component library can be accompanied the by design documents that define font styles and sizes as well as primary and secondary user interface colors. A Design Team usually creates a "UI Kit" that is handed to developers for implementation. _Shopify_ explains that a [UI kit is an assortment of graphic files](https://www.shopify.com/partners/blog/104547526-the-benefits-of-using-a-ui-kit) that include UI components (buttons, checkboxes, progress bars, etc.) for the purpose of defining and designing the user interface.
+In this sense, a component library is part of a style guide as it presents our components visually and it is the single source of truth for each component (the master reference). To create a comprehensive style guide, the component library can be accompanied by design documents that define font styles and sizes as well as primary and secondary user interface colors. A Design Team usually creates a "UI Kit" that is handed to developers for implementation. _Shopify_ explains that a [UI kit is an assortment of graphic files](https://www.shopify.com/partners/blog/104547526-the-benefits-of-using-a-ui-kit) that include UI components (buttons, checkboxes, progress bars, etc.) for the purpose of defining and designing the user interface.
 
 {% include tweet_quote.html quote_text="A component library helps you achieve consistent branding as it becomes the single source of truth for every component not only in the application but for all projects in the organization" %}
 
@@ -118,27 +119,27 @@ In the following excerpt, notice how is much easier to understand the guidelines
 If we need to implement a green button, we can consult the design document and copy the hex code of `$green`; however, it would be much easier if we could code the elements of the design document into our application in a modular way and reusable way. We have plenty of options to do that:
 
 - We could use CSS variables, also known as [custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables).
-- We could use [SCSS](https://sass-lang.com/) or [Stylus](http://stylus-lang.com/) to create style partials and variables.
+- We could use [SCSS](https://sass-lang.com/), [LESS](http://lesscss.org/), or [Stylus](http://stylus-lang.com/) to create style partials and variables.
 - We could also opt for using [CSS-in-JS](https://reactjs.org/docs/faq-styling.html) through a library like [`styled-components`](https://www.styled-components.com/).
 
 Our Team currently has been using a combination of Stylus and [CSS Modules](https://github.com/css-modules/css-modules) to manage the styling of the projects. React has unified the three layers of front-end development (HTML, CSS, and JavaScript) under one layer powered by JavaScript, JSX, and CSS-in-JS. For this post, however, we are going to rely on SCSS to create the modular components to minimize the development overhead.
 
-> **Feedback:** Would you like to learn how we are using `styled-components` to create a modern component library? Let me know in the comments below and I could make it part of this React series.
+> **Feedback:** Would you like to learn how we are using `styled-components` to create a modern component library? Let us know in the comments below and we could make it part of this React series.
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Oh man and a <a href="https://twitter.com/storybookjs?ref_src=twsrc%5Etfw">@storybookjs</a> shoutout as well! Storybook has been indispensable for our component library.</p>&mdash; Maja Wichrowska (@majapw) <a href="https://twitter.com/majapw/status/997143616865828865?ref_src=twsrc%5Etfw">May 17, 2018</a></blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 ## Adding SCSS to `create-react-app`
 
-We can [add `SCSS` support to `create-react-app` without having to `eject`](https://techcookbook.com/react/use-scss-with-create-react-app). We need to install a few packages to help us achieve that goal:
+We can [add `SCSS` support to `create-react-app`](https://techcookbook.com/react/use-scss-with-create-react-app) without having to `eject` to a custom setup. We need to install a few packages to help us achieve that goal:
 
-npm:
+NPM:
 
 ```shell
 npm install --save node-sass-chokidar npm-run-all
 ```
 
-[`node-sass-chokidar`](https://www.npmjs.com/package/node-sass-chokidar) is a thin wrapper around the node-sass executable to use chokidar instead of Gaze when watching files.
+[`node-sass-chokidar`](https://www.npmjs.com/package/node-sass-chokidar) is a thin wrapper around the node-sass executable to use [chokidar](https://github.com/paulmillr/chokidar) instead of [Gaze](https://github.com/shama/gaze) when watching files.
 
 [`npm-run-all`](https://www.npmjs.com/package/npm-run-all) is a CLI tool to run multiple npm-scripts in parallel or sequentially.
 
@@ -424,7 +425,7 @@ We can emulate the same behavior of the global installation of Storybook but wit
 npx @storybook/cli getstorybook
 ```
 
-The Storybook CLI will run and create all the necessary files and folder in your project just as in the previous section. This method is the fastest way to get up and running!
+[`npx` downloads and executes the binary on the fly](https://alligator.io/workflow/npx/). The Storybook CLI will run and create all the necessary files and folder in your project just as in the previous section. This method is the fastest way to get up and running!
 
 {% include tweet_quote.html quote_text="npx lets us run one-off invocations of CLI tools available in the npm registry without local installation." %}
 
@@ -787,7 +788,7 @@ To see this in action, let's create new stories in our Storybook!
 
 ## Creating Multiple Stories for a Component in Storybook
 
-Let's head to `src/stories/index.js` and remove the current story that we have defined there, `with text` as it isn't telling too much of a story:
+Let's head to `src/stories/index.js` and remove the current story that we have defined there, `with text`, as it isn't telling too much of a story:
 
 ```javascript
 // stories/index.js
