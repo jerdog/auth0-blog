@@ -6,7 +6,7 @@ date: 2018-08-30 8:30
 category: Auth0-based Tutorial, Authentication, Cross-Marketing
 design: 
   bg_color: "#1A1A1A"
-  image: https://cdn.auth0.com/blog/angular/logo3.png
+  image: https://cdn.auth0.com/blog/auth0-webhooks-announcements/hooks_logo.png
 author:
   name: Joel Lord
   url: https://twitter.com/joel__lord
