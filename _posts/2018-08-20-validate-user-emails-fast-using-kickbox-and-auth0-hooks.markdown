@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Validate User Emails Fast using Kickbox and Auth0 Hooks"
-description: "Learn how to create Angular applications secured by Auth0 using StackBlitz, an online cloud IDE for Angular and React web applications powered by Visual Studio Code."
+description: "Learn how to ensure that only real users are registering to your applications using Kickbox and Auth0 Hooks."
 date: 2018-08-30 8:30
 category: Auth0-based Tutorial, Authentication, Cross-Marketing
 design: 
