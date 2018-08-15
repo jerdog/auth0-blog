@@ -31,3 +31,9 @@ related:
 ---
 
 When building an application, it is critical to ensure that the users who are signing up for services or products are real users. By using Auth0, email verification services are provided out of the box; however, wouldn't it be better if verification emails didn't have to be sent at all? By using a combination of [Kickbox](https://kickbox.com/) and [Auth0 Hooks](https://auth0.com/docs/hooks), user email address can be validated without sending any emails.
+
+## How does Kickbox work?
+
+Kickbox is an [email technology company](https://kickbox.com/about) with products that help verify email addresses and prevent fake sign-ups to your applications.
+
+To create your free account, we can visit the [Kickbox sign-up page](https://app.kickbox.com/signup).
