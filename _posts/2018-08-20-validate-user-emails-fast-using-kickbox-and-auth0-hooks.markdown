@@ -27,7 +27,9 @@ tags:
   - universal-login
   - registration
 related:
-  - 
+  - 2017-02-15-introducing-auth0-hooks
+  - 2018-07-19-how-auth0-makes-your-apps-more-secure
+  - 2018-02-16-the-6-billion-reason-your-business-needs-advanced-fraud-protection
 ---
 
 When building an application, it is critical to ensure that the users who are signing up for services or products are real users. By using Auth0, email verification services are provided out of the box; however, wouldn't it be better if verification emails didn't have to be sent at all? By using a combination of [Kickbox](https://kickbox.com/) and [Auth0 Hooks](https://auth0.com/docs/hooks), user email address can be validated without sending any emails.
