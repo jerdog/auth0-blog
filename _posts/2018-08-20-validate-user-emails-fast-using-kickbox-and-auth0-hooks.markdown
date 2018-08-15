@@ -167,3 +167,5 @@ Using this code will send back a generic error message to the end-user on the [A
 ## Taking the User Experience One Step Further
 
 This workflow may not create the most user-friendly experience. In order to show a more meaningful message, we could use the [Auth0 Hosted Pages editor](https://auth0.com/docs/hosted-pages#customize-your-hosted-page). Now that we have access to the Kickbox email data, we could still let our users login but ask them for an email verification if we are feeling unsure. There are many other options that we can add to this workflow from here on. There is no limit at what we can do using the Auth0 hooks! I encourage everyone to give them a try.
+
+{% include asides/about-auth0.markdown %}
