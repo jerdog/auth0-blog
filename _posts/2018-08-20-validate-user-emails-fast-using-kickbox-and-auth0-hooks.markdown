@@ -38,6 +38,8 @@ Kickbox is an [email technology company](https://kickbox.com/about) with product
 
 To create your free account, we can visit the [Kickbox sign-up page](https://app.kickbox.com/signup).
 
+{% include tweet_quote.html quote_text="Kickbox ensures we only send email to real users and helps us separate the low-quality addresses from high-value contacts." %}
+
 ## Creating an Auth0 Application
 
 First off, let's start by building a [regular application in Auth0](https://auth0.com/docs/applications). We can use any existing application or we can create a new one. To do so, let's go to the _Applications_ section and click on **Create Application**. For the purpose of this example, we can pick a Single Page Application as the application type. We can then pick the framework of our choice on the next screen as we will only use the Auth0 Management Dashboard to do all of our configurations.
@@ -163,6 +165,8 @@ module.exports = function(user, context, callback) {
 In this case, we are looking at the Sendex score only. If the Sendex score is over `0.75`, we assume that the email address is safe and good to go. There are various other checks that we could make to decide if we want to accept the user not.
 
 Using this code will send back a generic error message to the end-user on the [Auth0 Universal Login page](https://auth0.com/docs/hosted-pages/login) when the user is trying to sign up with an invalid email.
+
+{% include tweet_quote.html quote_text="Auth0 Hooks are a new extensibility mechanism in Auth0 that allows us to customize the behavior of the Auth0 platform using Node.js." %}
 
 ## Taking the User Experience One Step Further
 
