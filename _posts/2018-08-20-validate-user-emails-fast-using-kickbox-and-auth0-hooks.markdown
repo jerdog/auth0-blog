@@ -32,11 +32,11 @@ related:
   - 2018-02-16-the-6-billion-reason-your-business-needs-advanced-fraud-protection
 ---
 
-When building an application, it is critical to ensure that the users who are signing up for services or products are real users. By using Auth0, email verification services are provided out of the box; however, wouldn't it be better if verification emails didn't have to be sent at all? By using a combination of [Kickbox](https://kickbox.com/) and [Auth0 Hooks](https://auth0.com/docs/hooks), user email address can be validated without sending any emails.
+When building an application, it is critical to ensure that the users who are signing up for services or products are real users. By using Auth0, email verification services are provided out of the box; however, wouldn't it be better if verification emails didn't have to be sent at all? By using a combination of [Kickbox](https://kickbox.com/) and [Auth0 Hooks](https://auth0.com/docs/hooks), user email addresses can be validated without sending any emails.
 
 ## How does Kickbox work?
 
-Kickbox is an [email technology company](https://kickbox.com/about) with products that help verify email addresses and prevent fake sign-ups to your applications.
+Kickbox is an [email technology company](https://kickbox.com/about) with products that help verify email addresses and prevent fake sign-ups applications.
 
 To create your free account, we can visit the [Kickbox sign-up page](https://app.kickbox.com/signup).
 
@@ -44,9 +44,9 @@ To create your free account, we can visit the [Kickbox sign-up page](https://app
 
 ## Creating an Auth0 Application
 
-First off, let's start by building a [regular application in Auth0](https://auth0.com/docs/applications). We can use any existing application or we can create a new one. To do so, let's go to the _Applications_ section and click on **Create Application**. For the purpose of this example, we can pick a Single Page Application as the application type. We can then pick the framework of our choice on the next screen as we will only use the Auth0 Management Dashboard to do all of our configurations.
+First off, let's start by building a [regular application in Auth0](https://auth0.com/docs/applications). We can use any existing application or we can create a new one. To do so, let's click on **Applications** in the left sidebar of the Auth0 Dashboard and then click on **Create Application**. For the purpose of this example, we can pick a Single Page Application as the application type. We can then pick the framework of our choice on the next screen as we will only use the Auth0 Management Dashboard to do all of our configurations.
 
-Since we don’t want the email verification sent any more, we can deactivate easily. On the left sidebar, let's click on **Emails** first and then on **Templates** to get to the [Email Templates section](https://manage.auth0.com/#/emails). In this section, The **Verification Email** template should be selected by default. Find the **Status** toggle and turn it off.
+Since we don’t want the email verification sent any more, we need to deactivate that option. On the left sidebar, let's click on **Emails** first and then on **Templates** to get to the [Email Templates section](https://manage.auth0.com/#/emails). In this section, The **Verification Email** template should be selected by default. Find the **Status** toggle and turn it off.
 
 <p style="text-align: center;">
   <img src="https://cdn.auth0.com/blog/kickbox-auth0/auth0-email-templates.png" alt="Auth0 Email Templates">
@@ -74,7 +74,7 @@ To create a new hook let's do the following:
 
 - Click on the "Create" button.
 
-Our newly created Auth0 hook will be shown under the "Pre User Registration" with a green dot before its name. To edit it, let's click on the pencil button in the row below it.
+Our newly created Auth0 hook will be shown under the "Pre User Registration" section with a green dot before its name. To edit it, let's click on the pencil button in the row below it.
 
 <p style="text-align: center;">
   <img src="https://cdn.auth0.com/blog/kickbox-auth0/newly-created-auth0-hook.png" alt="Newly created Auth0 Hook with an active indicator">
@@ -108,11 +108,11 @@ module.exports = function(user, context, callback) {
 };
 ```
 
-The [Kickbox email verification API](https://docs.kickbox.com/v2.0/reference) is fairly simple to use. We simply make a GET call to the following endpoint:
+The [Kickbox email verification API](https://docs.kickbox.com/v2.0/reference) is fairly simple to use. We simply make a `GET` call to the following endpoint:
 
-`https://api.kickbox.com/v2/verify?email={{email}}&apikey={{API_KEY}}`
+`https://api.kickbox.com/v2/verify?email=<email>&apikey=<API_KEY>`
 
-In the URL above, `{{email}}` is the address that we want to verify and `{{API_KEY}}` is our [Kickbox API key](https://docs.kickbox.com/docs/using-the-api).
+In the URL above, `<email>` is the address that we want to verify and `<API_KEY>` is our [Kickbox API key](https://docs.kickbox.com/docs/using-the-api).
 
 Let’s build the `GET` request:
 
@@ -164,7 +164,7 @@ module.exports = function(user, context, callback) {
 };
 ```
 
-In this case, we are looking at the Sendex score only. If the Sendex score is over `0.75`, we assume that the email address is safe and good to go. There are various other checks that we could make to decide if we want to accept the user not.
+In this case, we are looking at the Sendex score only. If the Sendex score is over `0.75`, we assume that the email address is safe and good to go. There are various other checks that we could make to decide if we want to accept the user or not.
 
 Using this code will send back a generic error message to the end-user on the [Auth0 Universal Login page](https://auth0.com/docs/hosted-pages/login) when the user is trying to sign up with an invalid email.
 
@@ -172,6 +172,6 @@ Using this code will send back a generic error message to the end-user on the [A
 
 ## Taking the User Experience One Step Further
 
-This workflow may not create the most user-friendly experience. In order to show a more meaningful message, we could use the [Auth0 Hosted Pages editor](https://auth0.com/docs/hosted-pages#customize-your-hosted-page). Now that we have access to the Kickbox email data, we could still let our users login but ask them for an email verification if we are feeling unsure. There are many other options that we can add to this workflow from here on. There is no limit at what we can do using the Auth0 hooks! I encourage everyone to give them a try.
+This workflow may not create the most user-friendly experience. In order to show a more meaningful message, we could use the [Auth0 Hosted Pages editor](https://auth0.com/docs/hosted-pages#customize-your-hosted-page). Now that we have access to the Kickbox email data, we could still let our users login but we could perform email verification if we are feeling unsure. There are many other options that we can add to this workflow from here on. There is no limit at what we can do using the Auth0 hooks! I encourage everyone to give them a try.
 
 {% include asides/about-auth0.markdown %}
