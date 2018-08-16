@@ -42,11 +42,13 @@ To create a free account, we can visit the [Kickbox sign-up page](https://app.ki
 
 {% include tweet_quote.html quote_text="Kickbox ensures we only send email to real users and helps us separate the low-quality addresses from high-value contacts." %}
 
-## Creating an Auth0 Application
+## Preparing an Auth0 Tenant to Integrate with Kickbox
 
-First off, let's start by building a [regular application in Auth0](https://auth0.com/docs/applications). We can use any existing application or we can create a new one. To do so, let's click on [**Applications**](https://manage.auth0.com/#/applications) in the left sidebar of the Auth0 Dashboard and then click on **Create Application**. For the purpose of this example, we can pick a Single Page Application as the application type. We can then pick the framework of our choice on the next screen as we will only use the Auth0 Management Dashboard to do all of our configurations.
+To demonstrate the integration of Kickbox with Auth0, we are going to use an existing [Auth0 Tenant](https://auth0.com/docs/getting-started/the-basics#account-and-tenants).
 
-Since we don’t want the email verification sent any more, we need to deactivate that option. On the left sidebar, let's click on **Emails** first and then on **Templates** to get to the [Email Templates section](https://manage.auth0.com/#/emails). In this section, The **Verification Email** template should be selected by default. Find the **Status** toggle and turn it off.
+> If you haven't already done so, <a href="https://auth0.com/signup" data-amp-replace="CLIENT_ID" data-amp-addparams="anonId=CLIENT_ID(cid-scope-cookie-fallback-name)">sign up for a free Auth0 account here</a>.
+
+Since we don’t want an email verification to be sent any more, we need to deactivate that option in the tenant. On the left sidebar of the Auth0 Dashboard, let's click on **Emails** first and then on **Templates** to get to the [Email Templates section](https://manage.auth0.com/#/emails). In this section, the **Verification Email** template should be selected by default. Find the **Status** toggle and turn it off.
 
 <p style="text-align: center;">
   <img src="https://cdn.auth0.com/blog/kickbox-auth0/auth0-email-templates.png" alt="Auth0 Email Templates">
@@ -54,13 +56,33 @@ Since we don’t want the email verification sent any more, we need to deactivat
 
 We are now ready to add an Auth0 hook and integrate Kickbox.
 
+## Kickbox Sendex™ Email Quality
+
+As stated in the Kickbox documentation, Kickbox provides us with a [Sendex value](https://docs.kickbox.com/docs/the-sendex) which is an indicator of the quality of an email address. The existence or syntactical correctness of an email address does not indicate its quality. For example, `john.smith@example.com` can generally be seen as a higher quality email address than `sdfsdfsdf@example.com`.
+
+Kickbox uses a number of algorithms, derived from the millions of email transactions it performs each hour, to determine the overall quality of an email address. These are some of the characteristics Kickbox considers when classifying the quality of an email address:
+
+- Is the email address similar to a known, high-quality, valid email address? The Kickbox platform is always evaluating and learning what patterns good email addresses employ. Its evolving data is used to provide insight into the overall quality of a given address.
+
+- Is the email address domain a commercial domain (example: `acme.com`) or a personal domain (`example: yahoo.com`)?
+
+- Does the email address appear to be associated with a role (example: `postmaster@example.com`) instead of a person (example: `bob.smith@example.com`)?
+
+The Sendex value ranges from a `0` (no quality) to `1` (excellent quality). The value of a good Sendex score depends on the specific purpose of the application. For a transactional email the following criteria may be applied:
+
+- 1.00 - 0.55 = Good
+
+- 0.54 - 0.20 = Fair
+
+- 0.19 - 0.00 = Poor
+
+We are going to integrate the Sendex value with Auth0 through a pre-registration hook. Before a user registration is complete, we are going to obtain the Sendex score of the email address and we'll determine if we either create the user account or send an error at the moment of the sign-up.
+
 ## Building an Auth Hook
 
 [Auth0 Hooks](https://auth0.com/docs/hooks) allow us to customize the behavior of Auth0 using [Node.js](https://nodejs.org/en/) code that is executed against extensibility points (which are comparable to webhooks that come with a server). Hooks give us modularity when configuring our Auth0 implementation and extend the functionality of base Auth0 features.
 
 On the left sidebar in the Auth0 Dashboard, let's click on [Hooks](https://manage.auth0.com/#/hooks). In the Hooks page, we will find different places where we can add a hook in the user login or sign-up life cycle. The one we are interested in is the **Pre User Registration** hook. We want to verify a user email before they register into our system.
-
-Kickbox can provide us with a [Sendex score](https://docs.kickbox.com/docs/the-sendex) when we verify an email address. Based on this score, we will either create the user or send them an error at the moment of the sign-up.
 
 To create a new hook, let's do the following:
 
