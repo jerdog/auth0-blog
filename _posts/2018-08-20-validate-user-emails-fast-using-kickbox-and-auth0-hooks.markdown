@@ -176,7 +176,8 @@ module.exports = function(user, context, callback) {
     // Add the sendex code as part of the user metadata
     response.user.user_metadata.sendex = body.sendex;
 
-    if (body.sendex > 0.75) {
+    if (body.sendex >= 0.55) {
+      // Good email
       console.log("This email is safe, run the callback");
       callback(null, response);
     } else {
