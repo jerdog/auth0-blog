@@ -5,8 +5,8 @@ description: "Learn how to ensure that only real users are registering to your a
 date: 2018-08-30 8:30
 category: Auth0-based Tutorial, Authentication, Cross-Marketing
 design: 
-  bg_color: "#1A1A1A"
-  image: https://cdn.auth0.com/blog/auth0-webhooks-announcements/hooks_logo.png
+  bg_color: "#4A4A4A"
+  image: https://cdn.auth0.com/blog/validate-user-emails-fast-using-kickbox-and-auth0-hooks/kickbox.png
 author:
   name: Joel Lord
   url: https://twitter.com/joel__lord
