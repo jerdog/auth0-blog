@@ -1,0 +1,25 @@
+---
+layout: post
+title: Persisting Data at Auth0
+metatitle: Persisting Data at Auth0
+description: Shorter shown underneath the title on the post itself and on blog feed - must be less than 110 characters
+metadescription: Richer, longer description that shows in search engines - must be less than 160 characters
+date: 2018-09-25 13:26
+category: Auth0 Engineering
+author:
+  name: <YOUR NAME>
+  url: <YOUR URL>
+  mail: <YOUR MAIL>
+  avatar: <LINK TO PROFILE PIC>
+design:
+  bg_color: <A HEX BACKGROUND COLOR>
+  image: <A PATH TO A 200x200 IMAGE>
+tags:
+- hyphenated-tags
+related:
+- <ADD SOME RELATED POSTS FROM AUTH0'S BLOG>
+---
+
+**TL;DR:** A brief synopsis that includes link to a [github repo](http://www.github.com/).
+
+---
