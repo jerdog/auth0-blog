@@ -87,4 +87,6 @@ I have been doing software development for years and being a Scout had already p
   <img src="https://cdn.auth0.com/blog/scout-approach-to-software-development/Binary-Tree.png" alt="Code grows organically and gradually like a tree.">
 </p>
 
+{% include profile_card.html picture="https://cdn.auth0.com/blog/auziros/Jose-Romaniello.png" name="José F. Romaniello" title="Head of Engineering" team="Office of the CTO" location="Córdoba, Argentina" body="I started working at Auth0 before the first line of code for our authentication platform existed. I’ve been able to go through the journey of seeing our ideas go from prototype to living production code that impacts millions of people. It’s satisfying to know that my actions here are having a positive impact in solving problems for developers like me." %}
+
 {% include asides/about-auth0.markdown %}
