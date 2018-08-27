@@ -120,12 +120,12 @@ In the future, we plan to keep using PostgreSQL more and more wherever it makes 
 
 ## Redis
 
-I don't have much to say on this one actually. Redis is just so... _awesome_. It's fast, it's stable, and we barely have to think about it, doing tens of thousands of requests per second on surprisingly small instances.
+I don't have much to say on this one actually. [Redis](https://redis.io/) is just so... _awesome_. It's fast, it's stable, and we barely have to think about it, doing tens of thousands of requests per second on surprisingly small instances.
 
-We use Redis for caching, not long-term storage; our "distribution of choice" for the cloud is AWS ElastiCache.
+We use [Redis for caching](https://auth0.com/blog/introduction-to-redis-install-cli-commands-and-data-types/), not long-term storage; our "distribution of choice" for the cloud is [AWS ElastiCache](https://aws.amazon.com/elasticache/).
 
 ## Closing
 
-Auth0 is growing, and it's growing _fast_. Two years ago we were happy with Elasticsearch; now, we outgrew it for some of our use cases; who knows what the next tool we'll pass by is?
+Auth0 is growing, and it's growing _fast_. Two years ago we were happy with Elasticsearch; now, we outgrew it for some of our use cases; who knows what the next tool we'll pass by is.
 
-As we increase in size and scale, we are focusing more and more on performance and reliability testing on the datastores we use. We are starting to use tools like AWS DynamoDB for some secondary operations, and might test others (RockDB?) as we get new exciting use cases and features for our customers!
+As we increase in size and scale, we are focusing more and more on performance and reliability testing on the datastores we use. We are starting to use tools like [AWS DynamoDB](https://aws.amazon.com/dynamodb/) for some secondary operations, and might test others ([RocksDB](https://rocksdb.org/)?) as we get new exciting use cases and features for our customers!
