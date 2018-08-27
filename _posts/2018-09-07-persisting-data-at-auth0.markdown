@@ -94,7 +94,7 @@ We have almost 80 Elasticsearch nodes in the US environment only. If we sum up a
 
 Our application logs clusters are by far the best ones. ES was pretty much made to deal with those kinds of logs, and besides occasional resizes we don't have many problems with them from an infrastructure perspective. We store 2.3TB of data per day on them.
 
-We have had our issues with user metadata and audit logs on Elasticsearch though. Part of the reason is that we outgrew the tool, at least in the use case we have: we need to store hundreds of thousands of different fields for search, completely separated by tenant, and we need to scale for tenants with 1-10 users but also tenants with 6-8 **million** users. Due to the performance and stability issues we have decided to migrate two of those three use cases to PostgreSQL; more on that later.
+We have had our issues with user metadata and audit logs on Elasticsearch though. Part of the reason is that we outgrew the tool, at least in the use case we have: we need to store hundreds of thousands of different fields for search, completely separated by tenant, and we need to scale for tenants with 1-10 users but also tenants with 6-8 **million** users. Due to the performance and stability issues, we have decided to migrate two of those three use cases to PostgreSQL; more on that later.
 
 Elasticsearch shines for general logging; if you use common patterns (daily indexes, metadata templates, hot and cold nodes), it can be a very powerful and stable tool.
 
