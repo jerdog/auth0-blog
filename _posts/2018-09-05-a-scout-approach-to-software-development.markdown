@@ -86,3 +86,5 @@ I have been doing software development for years and being a Scout had already p
 <p style="text-align: center;">
   <img src="https://cdn.auth0.com/blog/scout-approach-to-software-development/Binary-Tree.png" alt="Code grows organically and gradually like a tree.">
 </p>
+
+{% include asides/about-auth0.markdown %}
