@@ -90,3 +90,7 @@ In summary, DevIQ states:
 I have been doing software development for years and being a Scout had already prepared me to transfer that mindset and set of values exposed by Uncle Bob from the campsite to the codebase.
 
 This approach is not an excuse for not allocating time and developers exclusively to fix issues in a codebase; it is just one way to get things to a better state continuously.
+
+<p style="text-align: center;">
+  <img src="https://cdn.auth0.com/blog/scout-approach-to-software-development/Binary-Tree.png" alt="Code grows organically and gradually like a tree.">
+</p>
