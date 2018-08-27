@@ -34,11 +34,13 @@ related:
   - 2018-08-08-introduction-to-redis-install-cli-commands-and-data-types
 ---
 
-Auth0 uses different datastores for different purposes. We have tons of datasets used to serve the wide variety of use cases and features we offer to our customers. In an age where data breaches are unfortunately getting more common, a critical side of choosing and using datastores is to consider reliability, durability, and safety.
+Auth0 uses different datastores for different purposes. We have tons of datasets used to serve the wide variety of use cases and features we offer to our customers. In an age where data breaches are unfortunately getting more common, a critical side of choosing and using datastores is to consider reliability, durability, and safety. Our platform processes thousands of requests per second (1.5 billion logins per month) for customers all around the world &mdash; and we're growing very fast!
 
-Our Site Reliability Engineering team works closely with other teams to define and apply best practices through coding, writing, workshops, training, and leading different initiatives related to reliability, performance, and observability.
+The Site Reliability team is a new initiative aimed at improving reliability and uptime in a data-driven way to support our customers' needs. Our team works closely with other teams to define and apply best practices through coding, writing, workshops, training, and leading different initiatives related to reliability, performance, and observability.
 
 In this post, we will discuss the tools we use, why we use them and show more details about our internal setup. Some of these tools have been with us since the beginning &mdash; like MongoDB &mdash; while others are the result of extensive testing, research, and feature development &mdash; like PostgreSQL. Read on!
+
+> Do you like to get your hands dirty by debugging and fixing issues in production? We are currently hiring engineers to [join the Site Reliability Engineering team](https://auth0.com/careers/positions?areas=Engineering)!
 
 ## MongoDB
 
