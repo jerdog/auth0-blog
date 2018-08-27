@@ -13,8 +13,8 @@ author:
   mail: jose@auth0.com
   avatar: https://cdn.auth0.com/blog/auziros/Jose-Romaniello.png
 design:
-  bg_color: #015900
-  image: https://cdn.auth0.com/blog/logos/auth0-architecture.png
+  bg_color: #333333
+  image: https://cdn.auth0.com/blog/logos/camping.png
 tags:
   - engineering
   - enterprise
