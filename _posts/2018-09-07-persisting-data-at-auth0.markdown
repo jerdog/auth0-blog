@@ -72,7 +72,7 @@ Since the conception of Auth0, MongoDB has been an essential piece of our infras
 
 ## Elasticsearch
 
-We have a long story with Elasticsearch, and not always a happy one. We use Elasticsearch to store three types of data for search:
+We have a long story with [Elasticsearch](https://www.elastic.co/products/elasticsearch), and not always a happy one. We use Elasticsearch to store three types of data for search:
 
 1.  [User metadata](https://auth0.com/docs/metadata)
 2.  [Audit logs](https://auth0.com/docs/logs): logs that our tenants can access via dashboard and API.
@@ -86,37 +86,37 @@ We use three different versions of ES:
 
 We have multiple clusters per environment. For instance, in the US we have:
 
-- 1 cluster with 2.3 for application logs (running Kibana)
+- 1 cluster with 2.3 for application logs (running [Kibana](https://www.elastic.co/products/kibana))
 - 2 clusters with 5.4 for user metadata (regular and enterprise tenants)
 - 2 clusters with 1.6 (for user metadata - tenants that couldn't be migrated to 5.4)
 
-We have almost 80 Elasticsearch nodes in the US environment only. If we sum up all environments and regions, we probably have short of 200 **big** nodes running ES. _Yikes!_ 💸
+We have almost 80 Elasticsearch nodes in the US environment only. If we sum up all environments and regions, we probably have short of **200 big nodes running ES**. _Yikes!_ 💸
 
-Our application logs clusters are by far the best ones. ES was pretty much made to deal with those kinds of logs, and besides occasional resizes we don't have many problems with them from an infrastructure perspective. We store 2.3TB of data per day on them.
+Our application logs clusters are by far the best ones. ES was pretty much made to deal with those kinds of logs, and besides occasional resizes we don't have many problems with them from an infrastructure perspective. **We store 2.3TB of data per day on them**.
 
-We have had our issues with user metadata and audit logs on Elasticsearch though. Part of the reason is that we outgrew the tool, at least in the use case we have: we need to store hundreds of thousands of different fields for search, completely separated by tenant, and we need to scale for tenants with 1-10 users but also tenants with 6-8 **million** users. Due to the performance and stability issues, we have decided to migrate two of those three use cases to PostgreSQL; more on that later.
+We have had our issues with user metadata and audit logs on Elasticsearch though. Part of the reason is that we outgrew the tool, at least in the use case we have: we need to store hundreds of thousands of different fields for search, completely separated by tenant, and we need to scale for tenants with 1-10 users but also tenants with 6-8 **million** users. Due to the performance and stability issues, we have decided to migrate two of those three use cases to PostgreSQL (more on that later).
 
 Elasticsearch shines for general logging; if you use common patterns (daily indexes, metadata templates, hot and cold nodes), it can be a very powerful and stable tool.
 
-Even for cases in which we found it not to be entirely adequate (user metadata and audit log search), it was certainly a great tool while we didn't reach "critical mass": it was [fast and stable for years](https://auth0.engineering/from-slow-queries-to-over-the-top-performance-how-elasticsearch-helped-us-scale-4fe72ffcb823) before we outgrew it.
+Even for cases in which we found it not to be entirely adequate (user metadata and audit log search), it was certainly a great tool while we didn't reach "critical mass". [Elasticsearch helped us scale fast and gave us stability for years](https://auth0.engineering/from-slow-queries-to-over-the-top-performance-how-elasticsearch-helped-us-scale-4fe72ffcb823) before we outgrew it.
 
 ## PostgreSQL
 
-We have three main databases stored in PostgreSQL (running on AWS RDS):
+We have three main databases stored in [PostgreSQL running on AWS RDS](https://aws.amazon.com/rds/postgresql/):
 
 1.  Breached passwords
 1.  User metadata (search v3)
 1.  Tenant audit logs (under development)
 
-Breached password detection protects and notifies your users when their credentials are leaked by a data breach of a third party. You can optionally prevent access until the user has reset their password. This feature uses a big PostgreSQL database as a backend: we have a subscription with a company that provides us with breached data, which we then import for querying.
+Breached password detection protects and notifies your users when their credentials are leaked by a data breach of a third party. You can optionally prevent access until the user has reset their password. This feature uses a big [PostgreSQL database as a backend](https://aws.amazon.com/rds/postgresql/what-is-postgresql/): we have a subscription with a company that provides us with breached data, which we then import for querying.
 
-Given the scalability issues we faced with Elasticsearch, we have completely rewritten the user metadata search feature into what we call [search v3](https://auth0.com/docs/users/search/v3), and we're [gradually migrating](https://auth0.com/docs/users/search/v3#migrate-from-search-engine-v2-to-v3) tenants to that new solution: it uses PostgreSQL instead of Elasticsearch for storage and search.
+Given the scalability issues we faced with Elasticsearch, we have completely rewritten the user metadata search feature into what we call [User Search v3](https://auth0.com/docs/users/search/v3), and we're [gradually migrating tenants](https://auth0.com/docs/users/search/v3#migrate-from-search-engine-v2-to-v3) to that new solution: it uses PostgreSQL instead of Elasticsearch for storage and search.
 
-The performance differences between Elasticsearch and PostgreSQL are massive: instead of 3-5 thousand writes per second per cluster, we can have up to **400 thousand** writes per second, all with roughly the same infrastructure costs but with far less operational overhead (_thank you AWS RDS_ 💖).
+The performance differences between Elasticsearch and PostgreSQL are massive: instead of 3-5 thousand writes per second per cluster, we can have up to **400 thousand writes per second**, all with roughly the same infrastructure costs but with far less operational overhead (_thank you AWS RDS_ 💖).
 
 Given the outstanding results of search v3 regarding performance and stability, we decided also to migrate our tenant logs feature. This is under active development and testing, but we expect great results from it.
 
-In the future, we plan to keep using PostgreSQL more and more wherever it makes sense. As we gain more operational knowledge and build tooling around it, it will definitely become a big contender with MongoDB as the preferred storage choice for new microservices: it's safe, fast, well documented, and very easy to operate.
+In the future, we plan to keep using PostgreSQL more and more wherever it makes sense. As we gain more operational knowledge and build tooling around it, it will definitely become a big contender with MongoDB as the preferred storage choice for [new microservices](https://auth0.com/blog/an-introduction-to-microservices-part-1/): it's safe, fast, well documented, and very easy to operate.
 
 ## Redis
 
