@@ -68,6 +68,8 @@ We use [MongoDB Enterprise](https://www.mongodb.com/products/mongodb-enterprise-
 
 The most challenging side of using MongoDB has been performance testing new queries: since we have multiple environments and regions with a wildly different amount of data, sometimes MongoDB might simply decide to _not_ use an index for some reason. We [rely on `$hint` for specific queries](https://docs.mongodb.com/manual/reference/operator/meta/hint/), but for most of the critical path, we try to ensure we have enough perf-testing coverage.
 
+{% include tweet_quote.html quote_text="The most challenging part of using MongoDB has been performance testing new queries since we have multiple environments and regions with a wildly different amount of data." %}
+
 Since the conception of Auth0, MongoDB has been an essential piece of our infrastructure, and it should continue to be a massive part of our stack for a long time; it allowed us to iterate fast, grow to more than 1.5 billion authentication operations per month &mdash; and more.
 
 ## Elasticsearch
@@ -100,6 +102,8 @@ Elasticsearch shines for general logging; if you use common patterns (daily inde
 
 Even for cases in which we found it not to be entirely adequate (user metadata and audit log search), it was certainly a great tool while we didn't reach "critical mass". [Elasticsearch helped us scale fast and gave us stability for years](https://auth0.engineering/from-slow-queries-to-over-the-top-performance-how-elasticsearch-helped-us-scale-4fe72ffcb823) before we outgrew it.
 
+{% include tweet_quote.html quote_text="Due to performance and stability issues with Elasticsearch, we decided to migrate two of its three use cases to PostgreSQL. It was certainly a great tool while we didn't reach critical mass." %}
+
 ## PostgreSQL
 
 We have three main databases stored in [PostgreSQL running on AWS RDS](https://aws.amazon.com/rds/postgresql/):
@@ -118,11 +122,15 @@ Given the outstanding results of search v3 regarding performance and stability, 
 
 In the future, we plan to keep using PostgreSQL more and more wherever it makes sense. As we gain more operational knowledge and build tooling around it, it will definitely become a big contender with MongoDB as the preferred storage choice for [new microservices](https://auth0.com/blog/an-introduction-to-microservices-part-1/): it's safe, fast, well documented, and very easy to operate.
 
+{% include tweet_quote.html quote_text="The performance differences between Elasticsearch and PostgreSQL are massive: we can have up to 400 thousand writes per second, all with roughly the same infrastructure costs but with far less operational overhead." %}
+
 ## Redis
 
 I don't have much to say on this one actually. [Redis](https://redis.io/) is just so... _awesome_. It's fast, it's stable, and we barely have to think about it, doing tens of thousands of requests per second on surprisingly small instances.
 
 We use [Redis for caching](https://auth0.com/blog/introduction-to-redis-install-cli-commands-and-data-types/), not long-term storage; our "distribution of choice" for the cloud is [AWS ElastiCache](https://aws.amazon.com/elasticache/).
+
+{% include tweet_quote.html quote_text="Redis is... awesome! We use it for caching with a cloud distribution through AWS ElastiCache." %}
 
 ## Closing
 
