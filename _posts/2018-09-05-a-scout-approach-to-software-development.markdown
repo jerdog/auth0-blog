@@ -75,10 +75,18 @@ These small improvements will help my teammates and myself later. The code is no
 
 {% include tweet_quote.html quote_text="Small but powerful actions for teams that improve a codebase gradually: Vague naming? Make it explicit. Confusing code? Make it clearer. No documentation? Add steps to the README. Missing tests? Write one." %}
 
-[_Uncle Bob Martin_](https://twitter.com/unclebobmartin) wrote something important about this principle and how it applies to software development:
+In Chapter 8 of [_97 Things Every Programmer Should Know_](https://www.amazon.com/Things-Every-Programmer-Should-Know/dp/0596809484) by [Kevlin Henney](https://twitter.com/KevlinHenney), the Scout Rule by [_Uncle Bob Martin_](https://twitter.com/unclebobmartin) is presented. A key part of this rule is the following:
 
-> … Some teams take the approach of shutting down all value-adding work and simply trying to clean up the codebase for a week or a month or some other period of time. The Boy Scout Rule suggests an alternative approach, which is to simply try and ensure that with each commit, you leave the code better than you found it. Maybe only slightly. Following this principle, teams can improve the quality of their code over time, while continuing to deliver value to their customers and stakeholders.
+> Indeed, the act of leaving a mess in the code should be as socially unacceptable as littering. It should be something that just isn't done.
 
-I have been doing this in my software development work for years. I don’t remember if I read the article of Bob Martin before I became a software developer or not, but being a Scout had already prepared me to transfer that mindset and set of values from the campsite to the codebase.
+[DevIQ further explains how the scout rule applies to teams](https://deviq.com/boy-scout-rule/) and how it applies to software development:
+
+> Some teams take the approach of shutting down all value-adding work and simply trying to clean up the codebase for a week or a month or some other period of time. The Boy Scout Rule suggests an alternative approach, which is to simply try and ensure that with each commit, you leave the code better than you found it. Maybe only slightly. Following this principle, teams can improve the quality of their code over time, while continuing to deliver value to their customers and stakeholders.
+
+In summary, DevIQ states:
+
+> Leave your code better than you found it.
+
+I have been doing software development for years and being a Scout had already prepared me to transfer that mindset and set of values exposed by Uncle Bob from the campsite to the codebase.
 
 This approach is not an excuse for not allocating time and developers exclusively to fix issues in a codebase; it is just one way to get things to a better state continuously.
