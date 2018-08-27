@@ -34,15 +34,11 @@ related:
   - 2018-08-08-introduction-to-redis-install-cli-commands-and-data-types
 ---
 
-# Databases in Auth0
-
 Auth0 uses different datastores for different purposes. We have tons of datasets used to serve the wide variety of use cases and features we offer to our customers. In an age where data breaches are unfortunately getting more common, a critical side of choosing and using datastores is to consider reliability, durability, and safety.
 
-[Dirceu Tiegs](https://twitter.com/dirceu) is one of the Engineers in the Site Reliability Engineering team. He works closely with other teams to define and apply best practices through coding, writing, workshops, training, and leading different initiatives related to reliability, performance, and observability.
+Our Site Reliability Engineering team works closely with other teams to define and apply best practices through coding, writing, workshops, training, and leading different initiatives related to reliability, performance, and observability.
 
-In this post, Dirceu will discuss the tools we use, why we use them and show more details about our internal setup.
-
-Some of the tools we'll describe on this post have been with us since the beginning - like MongoDB - while others are the result of extensive testing, research, and feature development, like PostgreSQL. Read on!
+In this post, we will discuss the tools we use, why we use them and show more details about our internal setup. Some of these tools have been with us since the beginning &mdash; like MongoDB &mdash; while others are the result of extensive testing, research, and feature development &mdash; like PostgreSQL. Read on!
 
 ## MongoDB
 
