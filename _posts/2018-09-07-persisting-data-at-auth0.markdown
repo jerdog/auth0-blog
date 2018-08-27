@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Persisting Data at Auth0
-metatitle: Persisting Data at Auth0
-description: Shorter shown underneath the title on the post itself and on blog feed - must be less than 110 characters
-metadescription: Richer, longer description that shows in search engines - must be less than 160 characters
+title: Data Reliability and Persistence at Auth0
+metatitle: Data Reliability and Persistence at Auth0
+description: Learn how Auth0 uses different datastores to serve a wide variety of use cases and power critical features.
+metadescription: Learn how Auth0 uses different datastores, including MongoDB and PostgreSQL, to serve a wide variety of use cases and power critical features for customers.
 date: 2018-09-07 13:26
 category: Auth0 Engineering, Stack, Database
 author:
