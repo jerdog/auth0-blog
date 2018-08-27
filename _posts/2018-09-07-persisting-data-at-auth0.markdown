@@ -129,3 +129,5 @@ We use [Redis for caching](https://auth0.com/blog/introduction-to-redis-install-
 Auth0 is growing, and it's growing _fast_. Two years ago we were happy with Elasticsearch; now, we outgrew it for some of our use cases; who knows what the next tool we'll pass by is.
 
 As we increase in size and scale, we are focusing more and more on performance and reliability testing on the datastores we use. We are starting to use tools like [AWS DynamoDB](https://aws.amazon.com/dynamodb/) for some secondary operations, and might test others ([RocksDB](https://rocksdb.org/)?) as we get new exciting use cases and features for our customers!
+
+{% include asides/about-auth0.markdown %}
