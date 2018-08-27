@@ -2,8 +2,8 @@
 layout: post
 title: A Scout Approach to Software Development
 metatitle: A Scout Approach to Software Development
-description: Shorter shown underneath the title on the post itself and on blog feed - must be less than 110 characters
-metadescription: Richer, longer description that shows in search engines - must be less than 160 characters
+description: Learn how to apply the Scout code to software development to get code to a better state continuously.
+metadescription: Learn how to apply the Scout code to software development to get code to a better state continuously.
 date: 2018-09-05 10:30
 category: Auth0 Engineering, Software Development
 auth0_aside: true
