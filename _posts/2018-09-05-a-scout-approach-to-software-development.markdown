@@ -60,6 +60,8 @@ Working on a new feature or a bug feels excellent. Working on a codebase change 
 
 The codebase will host me for hours or days, and I have to respect it. Even if I don't enjoy the codebase too much, I still have to respect it because other people have worked hard on it. It gives me an opportunity to learn new things and to possibly use tools I have never been exposed to before.
 
+{% include tweet_quote.html quote_text="Even if we don't enjoy a codebase too much, we still have to respect it because other people have worked hard on it. We can work on taking little steps to improve it." %}
+
 Once again, I have to assume that other people will get to "camp" in the project after me. People I haven't met yet and probably will never meet. They may be developers, project managers, even end-users. Therefore, not only my work in the codebase needs to be clean, but it should leave the codebase at least a little better than I found it.
 
 These are some examples in which I have applied this improvement of the status quo in a codebase:
@@ -70,6 +72,8 @@ These are some examples in which I have applied this improvement of the status q
 - This function doesn’t have enough tests. Can I add some tests?
 
 These small improvements will help my teammates and myself later. The code is not going to end up perfect, but it will get better than it was before. By following this practice, the code grows in a better direction with every action that you take on it.
+
+{% include tweet_quote.html quote_text="Small but powerful actions for teams that improve a codebase gradually: Vague naming? Make it explicit. Confusing code? Make it clearer. No documentation? Add steps to the README. Missing tests? Write one." %}
 
 [_Uncle Bob Martin_](https://twitter.com/unclebobmartin) wrote something important about this principle and how it applies to software development:
 
