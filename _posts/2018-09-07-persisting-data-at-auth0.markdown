@@ -34,7 +34,7 @@ related:
   - 2018-08-08-introduction-to-redis-install-cli-commands-and-data-types
 ---
 
-Auth0 uses different datastores for different purposes. We have tons of datasets used to serve the wide variety of use cases and features we offer to our customers. In an age where data breaches are unfortunately getting more common, a critical side of choosing and using datastores is to consider reliability, durability, and safety. Our platform processes thousands of requests per second (1.5 billion logins per month) for customers all around the world &mdash; and we're growing very fast!
+Auth0 uses different datastores for different purposes. We have tons of datasets used to serve the wide variety of use cases and features we offer to our customers. In an age where data breaches are unfortunately getting more common, a critical side of choosing and using datastores is to consider reliability, durability, and safety. Our platform processes thousands of requests per second (**1.5 billion logins per month**) for customers all around the world &mdash; and we're growing very fast!
 
 The Site Reliability team is a new initiative aimed at improving reliability and uptime in a data-driven way to support our customers' needs. Our team works closely with other teams to define and apply best practices through coding, writing, workshops, training, and leading different initiatives related to reliability, performance, and observability.
 
@@ -44,11 +44,13 @@ In this post, we will discuss the tools we use, why we use them and show more de
 
 ## MongoDB
 
-MongoDB is our central datastore; it's our "source of truth" for most of the data that matter to our customers. We store settings, connections, rules, users, and much more.
+[MongoDB](https://www.mongodb.com/) is our central datastore; it's our "source of truth" for most of the data that matter to our customers. We store settings, connections, rules, users, and much more.
 
-Our MongoDB clusters serve many thousands of requests per second, but we don't store that much data: our biggest MongoDB database has 30 GB.
+Our MongoDB clusters serve many thousands of requests per second, but we don't store that much data: **our biggest MongoDB database has 30 GB**.
 
-Given that our data sizes are tiny, we're still very comfortable with just a few big machines (tons of RAM and CPU cores, and high-speed disks) and we don't need fancy things like sharding - we can still do much with vertical scaling, and we still don't need horizontal scaling.
+Given that our data sizes are tiny, we're still very comfortable with just a few big machines (tons of RAM and CPU cores, and high-speed disks) and we don't need fancy things like sharding &mdash; we can still do much with vertical scaling, and we still don't need horizontal scaling.
+
+> As explained by David Beaumont from IBM on the article [_How to explain vertical and horizontal scaling in the cloud_](https://www.ibm.com/blogs/cloud-computing/2014/04/09/explain-vertical-horizontal-scaling-cloud/), **vertical scaling** can essentially resize our server with no change to our code while **horizontal scaling** affords the ability to scale wider to deal with traffic.
 
 Each MongoDB cluster has six nodes:
 
@@ -58,15 +60,15 @@ Each MongoDB cluster has six nodes:
 - 2 Replicas on the failover region, hidden
 - 1 Arbiter on the failover region, stopped
 
-(The "main" and "failover" regions are explained in more details on [this blog post](https://auth0.com/blog/auth0-architecture-running-in-multiple-cloud-providers-and-regions/)).
+(The "main" and "failover" regions are explained in more details on our [Running In Multiple Cloud Providers And Regions post](https://auth0.com/blog/auth0-architecture-running-in-multiple-cloud-providers-and-regions/)).
 
 Except for the arbiter on the failover region, all nodes are always connected to the replica set. We have a primary and replica that account for all queries under normal operations, and the nodes for failover regions just for disaster recovery.
 
-We use MongoDB Enterprise for all our cloud deployments: this helps us because of the additional metrics and also because of the excellent support we get from MongoDB.
+We use [MongoDB Enterprise](https://www.mongodb.com/products/mongodb-enterprise-advanced) for all our cloud deployments: this helps us because of the additional metrics and also because of the excellent support we get from MongoDB.
 
-The most challenging side of using MongoDB has been performance testing new queries: since we have multiple environments and regions with a wildly different amount of data, sometimes MongoDB might simply decide to _not_ use an index for some reason. We rely on `$hint` for specific queries, but for most of the critical path, we try to ensure we have enough perf-testing coverage.
+The most challenging side of using MongoDB has been performance testing new queries: since we have multiple environments and regions with a wildly different amount of data, sometimes MongoDB might simply decide to _not_ use an index for some reason. We [rely on `$hint` for specific queries](https://docs.mongodb.com/manual/reference/operator/meta/hint/), but for most of the critical path, we try to ensure we have enough perf-testing coverage.
 
-Since the conception of Auth0, MongoDB has been an essential piece of our infrastructure, and it should continue to be a massive part of our stack for a long time; it allowed us to iterate fast, grow to more than 1.5 billion authentication operations per month - and more.
+Since the conception of Auth0, MongoDB has been an essential piece of our infrastructure, and it should continue to be a massive part of our stack for a long time; it allowed us to iterate fast, grow to more than 1.5 billion authentication operations per month &mdash; and more.
 
 ## Elasticsearch
 
