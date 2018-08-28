@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Data Reliability and Persistence at Auth0
-metatitle: Data Reliability and Persistence at Auth0
+title: How We Store Data in the Cloud at Auth0
+metatitle: How We Store Data in the Cloud at Auth0
 description: Learn how Auth0 uses different datastores to serve a wide variety of use cases and power critical features.
 metadescription: Learn how Auth0 uses different datastores, including MongoDB and PostgreSQL, to serve a wide variety of use cases and power critical features for customers.
 date: 2018-09-07 13:26
