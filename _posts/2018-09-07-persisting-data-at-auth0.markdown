@@ -68,7 +68,7 @@ We use [MongoDB Enterprise](https://www.mongodb.com/products/mongodb-enterprise-
 
 The most challenging side of using MongoDB has been performance testing new queries: since we have multiple environments and regions with a wildly different amount of data, sometimes MongoDB might simply decide to _not_ use an index for some reason. We [rely on `$hint` for specific queries](https://docs.mongodb.com/manual/reference/operator/meta/hint/), but for most of the critical path, we try to ensure we have enough perf-testing coverage.
 
-{% include tweet_quote.html quote_text="The most challenging part of using MongoDB has been performance testing new queries since we have multiple environments and regions with a wildly different amount of data." %}
+{% include tweet_quote.html quote_text="The most challenging part of using MongoDB has been performance testing new queries since we have multiple environments and regions with a wildly different data sets and usage patterns." %}
 
 Since the conception of Auth0, MongoDB has been an essential piece of our infrastructure, and it should continue to be a massive part of our stack for a long time; it allowed us to iterate fast, grow to more than 1.5 billion authentication operations per month &mdash; and more.
 
