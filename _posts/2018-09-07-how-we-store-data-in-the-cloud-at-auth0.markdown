@@ -116,13 +116,13 @@ Breached password detection protects and notifies your users when their credenti
 
 Given the scalability issues we faced with Elasticsearch, we have completely rewritten the user metadata search feature into what we call [User Search v3](https://auth0.com/docs/users/search/v3), and we're [gradually migrating tenants](https://auth0.com/docs/users/search/v3#migrate-from-search-engine-v2-to-v3) to that new solution: it uses PostgreSQL instead of Elasticsearch for storage and search.
 
-The performance differences between Elasticsearch and PostgreSQL are massive: instead of 3-5 thousand writes per second per cluster, we can have up to **400 thousand writes per second**, all with roughly the same infrastructure costs but with far less operational overhead (_thank you AWS RDS_ 💖).
+The performance differences between Elasticsearch and PostgreSQL are massive: instead of 300 thousand metadata writes per minute per cluster, we can have up to **10 million writes per minute** (on bulk operations), all with roughly the same infrastructure costs but with far less operational overhead (_thank you AWS RDS_ 💖).
 
 Given the outstanding results of search v3 regarding performance and stability, we decided also to migrate our tenant logs feature. This is under active development and testing, but we expect great results from it.
 
 In the future, we plan to keep using PostgreSQL more and more wherever it makes sense. As we gain more operational knowledge and build tooling around it, it will definitely become a big contender with MongoDB as the preferred storage choice for [new microservices](https://auth0.com/blog/an-introduction-to-microservices-part-1/): it's safe, fast, well documented, and very easy to operate.
 
-{% include tweet_quote.html quote_text="The performance differences between Elasticsearch and PostgreSQL are massive: we can have up to 400 thousand writes per second, all with roughly the same infrastructure costs but with far less operational overhead." %}
+{% include tweet_quote.html quote_text="The performance differences between Elasticsearch and PostgreSQL are massive: we can have up to 10 million writes per minute, all with roughly the same infrastructure costs but with far less operational overhead." %}
 
 ## Redis
 
