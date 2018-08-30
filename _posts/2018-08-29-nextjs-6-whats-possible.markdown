@@ -1,7 +1,9 @@
 ---
 layout: post
-title: "Next.js 6: A Practical Feature Analysis"
-description: What's possible in Next.js 6? What improvements were made? Learn how to build highly performant Universal JavaScript apps with this new release.
+title: "Next.js 6: A Practical Feature Introduction"
+metatitle: "What's new in Next.js 6?"
+description: What's possible in Next.js 6? What improvements were made? Learn how to build highly performant Universal JavaScript apps with the latest Next.js release.
+metadescription: "How to build Universal JavaScript apps with Next.js 6"
 date: 2018-08-29 08:30
 category: Hot Topics, Frameworks, Next.js
 design:
@@ -20,7 +22,7 @@ tags:
 related:
 - 2016-11-01-building-universal-apps-with-nextjs
 - 2017-04-24-build-better-universal-apps-with-nextjs2
-- 2016-10-05-build-your-first-app-with-polymer-and-web-components
+- 2017-09-27-nextjs-3-release-what-is-new
 ---
 
 ---
@@ -33,7 +35,7 @@ related:
 
 The term *Universal* simply means the ability to run the same code on the server, browsers, mobile devices and any other platform. *Universal Javascript* is a term people are leaning towards these days. A lot of developers also call it **Isomorphic JavaScript**. Check out the excellent blog post on [Universal JavaScript](https://medium.com/@mjackson/universal-javascript-4761051b7ae9#.ij2c0zh8j) written by [Michael Jackson](https://twitter.com/mjackson).
 
-## Next.js 6 Features
+## Introduction to Next.js 6 Features
 
 ### 1. Zero Config Static Exports
 
@@ -61,16 +63,14 @@ With the command in place, you can simply run `npm run export` and it will build
 
 ### 2. Babel 7 Support
 
-Next.js now runs on Babel 7. Babel provided a way for developers to use the latest JavaScript syntax while allowing them to not worry about how to make it backwards compatible for their users by translating it.
+Next.js now runs on Babel 7. Babel provides a way for developers to use the latest JavaScript syntax while allowing them to not worry about how to make it backwards compatible for their users by translating it.
 
 Babel 7 is faster and ships with a lot of new features such as:
 
 1. More options for minification.
-2. JSX Fragments
+2. JSX Fragments.
 3. A new upgrade tool, `babel-upgrade` that tries to automatically make upgrade changes.
-4. A lot of TC39 Proposals support
-
-and so many others.
+4. Implementation of several TC39 proposals.
 
 ### 3. New JSX Fragment Syntax Support
 
@@ -102,7 +102,7 @@ Before now, Next.js shipped with the ability to include `_document.js` for exten
 
 In Next.js 6, a new extension file, `_app.js`, can be added to a Next.js 6 app within the `pages` directory to provide better extensibility that allows hooking into the runtime lifecycle and data fetching. Check out some case studies it enables:
 
-**1. Better Error handling**––In Next.js, you can use the React `componentDidCatch` component method to handle exceptions. However, the logic is best placed in `_app.js`. Check out the example below:
+* **Better Error handling**––In Next.js, you can use the React `componentDidCatch` component method to handle exceptions. However, the logic is best placed in `_app.js`. Check out the example below:
 
 
 _pages/_app.js_
@@ -119,9 +119,9 @@ export default class MyApp extends App {
 }
 ```
 
-**2. Page Transitions**––Smooth animations are possible on the client side and it's possible via the use of `_app.js`. Check out the [next version of page transitions app](https://github.com/xavczen/nextjs-page-transitions).
+* **Page Transitions**––Smooth animations are possible on the client side and it's possible via the use of `_app.js`. Check out the [next version of page transitions app](https://github.com/xavczen/nextjs-page-transitions).
 
-**3. Better Integrations from third party tools**––With `_app.js`, it's easy to integrate state management frameworks like [Apollo](https://github.com/zeit/next.js/tree/canary/examples/with-apollo) and [Redux](https://github.com/zeit/next.js/tree/canary/examples/with-redux).
+* **Better Integrations from third party tools**––With `_app.js`, it's easy to integrate state management frameworks like [Apollo](https://github.com/zeit/next.js/tree/canary/examples/with-apollo) and [Redux](https://github.com/zeit/next.js/tree/canary/examples/with-redux).
 
 ### 5. TypeScript Support
 
@@ -143,15 +143,108 @@ src/
 
 ## Securing a Next.js 6 App with Auth0
 
-We can secure a Next.js app with Auth0 by using the [Auth0.js library](https://github.com/auth0/auth0.js). If you don't already have an Auth0 account, <a href="https://auth0.com/signup" data-amp-replace="CLIENT_ID" data-amp-addparams="anonId=CLIENT_ID(cid-scope-cookie-fallback-name)">sign up</a> for one now. Navigate to the Auth0 [management dashboard](https://manage.auth0.com/), click on `New client` by the right hand side, select Regular Web App from the dialog box and then go ahead to the `Settings` tab where the client ID, client Secret and Domain can be retreived.
+I'll use the [app](https://github.com/auth0-blog/next3-auth0) from our [previous Next.js article](https://auth0.com/blog/nextjs-3-release-what-is-new/). Obviously, a lot of things have changed since Next.js 3. Therefore, we'll make a lot of changes step-by-step. Check out the [upgraded Next.js 6 app on GitHub](https://github.com/auth0-blog/next6-auth0) if you want to dive straight into the code.
+
+We can secure a Next.js app with Auth0 by using the [auth0.js library](https://github.com/auth0/auth0.js). If you don't already have an Auth0 account, <a href="https://auth0.com/signup" data-amp-replace="CLIENT_ID" data-amp-addparams="anonId=CLIENT_ID(cid-scope-cookie-fallback-name)">sign up</a> for one now. Navigate to the Auth0 [management dashboard](https://manage.auth0.com/), click on `New client` by the right hand side, select Regular Web App from the dialog box and then go ahead to the `Settings` tab where the client ID, client Secret and Domain can be retreived.
 
 > [Auth0 offers a generous **free tier**](https://auth0.com/pricing) to get started with modern authentication.
 
-**Note:** Make sure you set the  `Allowed Callback URLs` to `http://localhost:3000/auth/signed-in` or whatever url/port you are running on. Furthermore; set the `Allowed Logout URLs` to `http://localhost:3000/`.
+**Note:** Make sure you set the  `Allowed Callback URLs` to `http://localhost:3000/auth/signed-in` or whatever url and port you are running on. Furthermore, set the `Allowed Logout URLs` to `http://localhost:3000/`.
 
-Check out the [complete app on GitHub](https://github.com/auth0-blog/next6-auth0).
+> Don't forget to rename the `config.sample.json` file to `config.json` and add your credentials.
 
-**Note**: Don't forget to rename the `config.sample.json` file to `config.json` and add your credentials.
+We have put the necessary things in place to secure our app. Now, let's make the changes required for the app to run on Next.js 6 before we test our authentication toolkit.
+
+1. Re-install _next_, _react-dom_, _react_, _babel-plugin-styled-components_, and _styled-components_ to have the latest respective package versions.
+
+2. Update `babel.rc` like so:
+
+    ```js
+    {
+      "presets": [
+        "next/babel"
+      ],
+      "plugins": [
+        [
+          "babel-plugin-styled-components",
+          {
+            "ssr": true,
+            "displayName": false
+          }
+        ]
+      ]
+    }
+    ```
+
+3. `React.Proptypes` has moved into a different package since React v15.5. Go ahead and install the new `prop-types` library.
+
+    ```bash
+      npm install prop-types
+    ```
+
+4. Update every file that imports `Proptypes` from React to import `Proptypes` from the new library like this:
+
+    ```js
+    ...
+    // Before
+    import React, { PropTypes } from 'react'
+
+    // Now
+    import React from 'react'
+    import PropTypes from 'prop-types'
+    ...
+    ```
+
+5. In `/hocs/defaultPage.js`, there's a block code of code that ensures our page is styled immediately it server-renders. Without this block of code, a flash of unstyled page is shown to the user everytime the page is reloaded.
+
+    ```js
+    ...
+    {!process.browser && (
+      <style>
+        {styleSheet.getCSS()}
+      </style>
+    )}
+    ...
+    ```
+
+Delete the code. We'll take advantage of `_document.js` to implement style flushing for server-side rendering. Now, create a new `_document.js` file in the `pages` directory and add the following code:
+
+```js
+import Document, { Head, Main, NextScript } from 'next/document'
+import { ServerStyleSheet } from 'styled-components'
+
+export default class MyDocument extends Document {
+  static getInitialProps ({ renderPage }) {
+    const sheet = new ServerStyleSheet()
+    const page = renderPage(App => props => sheet.collectStyles(<App {...props} />))
+    const styleTags = sheet.getStyleElement()
+    return { ...page, styleTags }
+  }
+
+  render () {
+    return (
+      <html>
+        <Head>
+          <title>Next.js + auth0</title>
+          {this.props.styleTags}
+        </Head>
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </html>
+    )
+  }
+}
+```
+
+The code above enables server side rendering of the styles. It does two things:
+
+1. Hook into the `renderPage` method to parse the child component’s styles server-side
+2. It hooks into the Document on the initial page load so that the app can update the `<head>` with the `<style>` tags that are required by the components.
+
+
+#### Authentication Process
 
 _utils/auth.js_
 
@@ -205,6 +298,8 @@ export const getUserFromLocalCookie = () => {
 }
 ```
 
+The code above sets and unsets a cookie with the token gotten from the Auth0 server.
+
 _utils/auth0.js_
 
 ```js
@@ -231,6 +326,8 @@ export const authorize = () => getAuth0().authorize(getOptions())
 export const logout = () => getAuth0().logout({ returnTo: getBaseUrl() })
 export const parseHash = (callback) => getAuth0().parseHash(callback)
 ```
+
+The code above makes a request to Auth0 server to initiate and authorize a user.
 
 _pages/auth/sign-in.js_
 
@@ -397,7 +494,7 @@ export default defaultPage(Index)
 
 The index page is server-rendered. It checks whether the user is authenticated or not and renders content based on the status.
 
-The [secret page](https://github.com/auth0-blog/next3-auth0/blob/master/pages/secret.js) too checks if the user is logged in and determines content based on the user's status.
+The [secret page](https://github.com/auth0-blog/next6-auth0/blob/master/pages/secret.js) too checks if the user is logged in and determines content based on the user's status.
 
 ![Secret page unauthorized](https://cdn.auth0.com/blog/secret/notloggedin.png)
 _Not displaying valid content because the user cant access the secret page without signing in_
