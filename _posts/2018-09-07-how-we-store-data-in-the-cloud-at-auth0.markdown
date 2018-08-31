@@ -66,7 +66,7 @@ Except for the arbiter on the failover region, all nodes are always connected to
 
 We use [MongoDB Enterprise](https://www.mongodb.com/products/mongodb-enterprise-advanced) for all our cloud deployments: this helps us because of the additional metrics and also because of the excellent support we get from MongoDB.
 
-The most challenging side of using MongoDB has been performance testing new queries: since we have multiple environments and regions with a wildly different amount of data, sometimes MongoDB might simply decide to _not_ use an index for some reason. We [rely on `$hint` for specific queries](https://docs.mongodb.com/manual/reference/operator/meta/hint/), but for most of the critical path, we try to ensure we have enough perf-testing coverage.
+The most challenging side of using MongoDB has been performance testing new queries: since we have multiple environments and regions with a wildly different datasets and usage patterns, sometimes MongoDB might simply decide to _not_ use an index for some reason. We [rely on `$hint` for specific queries](https://docs.mongodb.com/manual/reference/operator/meta/hint/) and focus on performance testing for the critical collections and code paths.
 
 {% include tweet_quote.html quote_text="The most challenging part of using MongoDB has been performance testing new queries since we have multiple environments and regions with a wildly different data sets and usage patterns." %}
 
@@ -112,7 +112,7 @@ We have three main databases stored in [PostgreSQL running on AWS RDS](https://a
 1.  User metadata (search v3)
 1.  Tenant audit logs (under development)
 
-Breached password detection protects and notifies your users when their credentials are leaked by a data breach of a third party. You can optionally prevent access until the user has reset their password. This feature uses a big [PostgreSQL database as a backend](https://aws.amazon.com/rds/postgresql/what-is-postgresql/): we have a subscription with a company that provides us with breached data, which we then import for querying.
+[Breached password detection](https://auth0.com/breached-passwords) protects and notifies your users when their credentials are leaked by a data breach of a third party. You can optionally prevent access until the user has reset their password. This feature uses a big [PostgreSQL database as a backend](https://aws.amazon.com/rds/postgresql/what-is-postgresql/): we have a subscription with a company that provides us with breached data, which we then import for querying.
 
 Given the scalability issues we faced with Elasticsearch, we have completely rewritten the user metadata search feature into what we call [User Search v3](https://auth0.com/docs/users/search/v3), and we're [gradually migrating tenants](https://auth0.com/docs/users/search/v3#migrate-from-search-engine-v2-to-v3) to that new solution: it uses PostgreSQL instead of Elasticsearch for storage and search.
 
@@ -134,8 +134,8 @@ We use [Redis for caching](https://auth0.com/blog/introduction-to-redis-install-
 
 ## Recap
 
-Auth0 is growing, and it's growing _fast_. Two years ago we were happy with Elasticsearch; now, we outgrew it for some of our use cases; who knows what the next tool we'll pass by is.
+Auth0 is growing, and it's growing _fast_. Two years ago we were happy with Elasticsearch; now, we outgrew it for some of our use cases.
 
-As we increase in size and scale, we are focusing more and more on performance and reliability testing on the datastores we use. We are starting to use tools like [AWS DynamoDB](https://aws.amazon.com/dynamodb/) for some secondary operations, and might test others ([RocksDB](https://rocksdb.org/)?) as we get new exciting use cases and features for our customers!
+As we increase in size and scale, we are focusing more and more on performance and reliability testing on the datastores we use and some that we might use in the future. We are starting to use tools like [AWS DynamoDB](https://aws.amazon.com/dynamodb/) for some secondary operations, and might test others ([RocksDB](https://rocksdb.org/)?) as we get new exciting use cases and features for our customers!
 
 {% include asides/about-auth0.markdown %}
