@@ -30,7 +30,6 @@ related:
 
 ---
 
-
 ## The Modern Application Paradigm
 
 Present day applications utilize the client-server design. This architectural design isolates software development into two major groups,**clients** and **servers**. These classifications are also known as **front end** and **back end**. APIs are developed and served from the back end, while the front end consumes them.
