@@ -41,163 +41,493 @@ These days, most JavaScript applications are packaged and deployed as Single Pag
 
 ## Introduction to GraphQL
 
-GraphQL is a query language for APIs created by Facebook that offers declarative data fetching in the client and is already used by companies such as Coursera and GitHub.
+GraphQL is a typed query language for your API. It enables the client to express its data requirements declaratively and the server to send back only what the client requests. It's heavily in use by companies such as Coursera, Shopify and GitHub.
 
-A GraphQL server exposes a schema that describes its API including queries to fetch data and mutations, to modify data.
-
-This allows clients to specify their data requirements with queries and send it to one GraphQL endpoint, instead of collecting information from multiple endpoints as is typical with REST. While queries are a very easy and quick way for clients to get exactly the data they need in one request, the GraphQL server has to parse and validate the query, check which fields are included and return the underlying data from the database.
+A GraphQL server exposes a schema that describes its API including queries to fetch data and mutations to modify data. This allows clients to specify their data requirements with queries and send it to one GraphQL endpoint, instead of collecting information from multiple endpoints as is typical with REST. While queries are a very easy and quick way for clients to get exactly the data they need in one request, the GraphQL server has to parse and validate the query, check which fields are included and return the underlying data from the database.
 
 The type-safe schema unlocks new possibilities for tooling, as demonstrated by GraphQL which is maintained by Facebook. Check out how GitHub employs [GraphQL for its API](https://githubengineering.com/the-github-graphql-api/).
 
-
 ## What we'll build
 
-We want to build an application that displays a list of movies with the appropriate poster, title and user ratings. Everyone should be able to see the ratings of these movies, but only the reviewers can add movies and ratings. We'll assume there is a poll of user votes where the reviewers just get the ratings in form of percentages and add to the platform.
+We'll build an application called **EasyReads**. **GoodReads** is a popular web application where users can actually review the books that they have read over time. These reviews help new users determine whether to embark on reading a book or not.
 
-We'll make use of GraphQL to build the data schema for the application. In fact, we don't need to worry about spinning up our own backend with a custom database and configuring the APIs. We'll make use of [Graphcool](https://graph.cool). Graphcool gives developers a production-ready GraphQL backend to build better apps faster.
+**EasyReads** is an application that displays a list of books with the appropriate book cover image, title and average user ratings. Everyone should be able to see the ratings of these books, but only an authenticated user can add a new book with ratings. We'll assume there is a poll of user votes where the authenticated users just get the ratings and add to the platform.
 
-## Enter Apollo
+We'll make use of GraphQL to build the API for the application. GraphQL’s strongly typed query language enables developers to take advantage of incredible tooling for exploring GraphQL APIs. Developers can query a GraphQL schema for information about what queries and types it supports because of the built-in introspection system.
 
-## Building Rotten Tomatoes Schema
 
-Let's build out the schema for our application.
+## Building Easy Reads GraphQL API
+
+### Schema First Driven Development
+
+Schema First Driven development is a recommended approach for designing and building modern UIs that involves the frontend and backend teams agreeing on a Schema first, which serves as a contract between the UI and the backend before any API development commences. GraphQL schemas are at their best when they are designed around the needs of client applications. We'll take this approach in designing a Schema for our API.
+
+### Building Easy Reads Schema
+
+At the core of any GraphQL server is a schema. The schema defines types and their relationships. It also specifies which queries can be made against the server. Let's build out the schema for **Easy Reads**.
+
+Create a `src/server.js`file in the _api_ directory. Our schema will live here.
 
 The Schema for our application will look like this:
 
+
 ```bash
+ const typeDefs = gql`
+    type Author {
+      id: Int!
+      first_name: String!
+      last_name: String!
+      books: [Book]!
+    }
 
-type User {
-  id: ID! @isUnique
-  email: String! @isUnique
-  name: String!
-  movies: [Movie!]! @relation(name: "MovieReviewer")
-  createdAt: DateTime!
-  updatedAt: DateTime!
-}
+    type Book {
+      id: Int!
+      title: String!
+      cover_image_url: String!
+      average_rating: Float!
+      author: Author!
+    }
 
-type Movie {
-  id: ID! @isUnique
-  description: String!
-  imageUrl: String!
-  avgRating: Int!
-  reviewer: User @relation(name: "MovieReviewer")
-  updatedAt: DateTime!
-  createdAt: DateTime!
-}
+    type Query {
+      books: [Book!]!,
+      book(id: Int!): Book!
 
+    }
+
+    type Mutation {
+      addBook(title: String!, cover_image_url: String!, average_rating: Float!, authorId: Int!): Book!
+    }
+  `;
 ```
 
-We have the User and the Movie types. The User in our case is a movie reviewer that consists of the field above for more information on the individual.
+The `typeDefs` string defines our schema in the [GraphQL Schema Definition Language](https://www.apollographql.com/docs/apollo-server/v2/essentials/schema.html#sdl).
 
-In our app, a reviewer will be able to upload new movies with a description, rating and movie image cover. With our GraphQL schema, if we want to retrieve all movies, we will do something like this:
+We have the `Author`, `Book`, `Query` and `Mutation` type. The `Query` type informs the server about the queries. that users are allowed to make. The `gql` tag is a JavaScript template literal tag that parses GraphQL queries into an abstract syntax tree during the process of execution by the GraphQL engine.
+
+The users of our app should be able to see all the books available at once. This is where the `books` query becomes useful. If we want to retrieve all books, we'll write a query like this:
 
 ```bash
 
 query {
- allMovies {
+ books {
     id
-    description
-    imageUrl
-    avgRating
- }
-}
-
-```
-
-This query will return a response from the GraphQL Server (Graphcool) like this:
-
-```bash
-
-{
-  "data": {
-    "allMovies": [
-      {
-        "id": "cj4jacx4qjdj10189hinqsies",
-        "description": "Box Bunny",
-        "imageUrl": "https://pmcvariety.files.wordpress.com/2017/03/baywatch-reboot.jpg",
-        "avgRating": 75
-      },
-      {
-        "id": "cj4jba3g8jyyj01896bugy9qy",
-        "description": "Nice one",
-        "imageUrl": "https://resizing.flixster.com/PTWb8cveEQtMkpDSq3ypCZBuGoU=/300x300/v1.bjsxNTE4NzE4O2o7MTczODc7MTIwMDszMDAwOzIwMDA",
-        "avgRating": 0
-      },
-      {
-        "id": "cj4jeiadylp6d0121muaunls7",
-        "description": "Wonder Man",
-        "imageUrl": "http://t1.gstatic.com/images?q=tbn:ANd9GcQcCAOmt-FsRsR8GebIzI67qSvdQ2JLYDRLxeAcbH-541fzqq1H",
-        "avgRating": 60
-      },
-      {
-        "id": "cj4jeiuvgm33101425xpeqmpq",
-        "description": "Wonder Man",
-        "imageUrl": "http://t1.gstatic.com/images?q=tbn:ANd9GcQcCAOmt-FsRsR8GebIzI67qSvdQ2JLYDRLxeAcbH-541fzqq1H",
-        "avgRating": 93
-      }
-    ]
+    title
+    cover_image_url
+    author {
+      first_name
+      last_name
+    }
   }
 }
 
 ```
 
-Without much ado, let's go ahead and build our application.
-
-## Use Graphcool
-
-[Graphcool](https://www.graph.cool) is a serverless GraphQL backend that enables mobile and web developers to build production ready apps faster. You don't have spin up your own GraphQL server or think of spinning up a separate database.
-
-Go ahead and install graphcool:
+This query will return a GraphQL response like this:
 
 ```bash
-npm install -g graphcool
+
+{
+  "data": {
+    "books": [
+      {
+        "id": 1,
+        "title": "The trials of Brother Jero",
+        "cover_image_url": "https://pmcvariety.files.wordpress.com/2017/03/baywatch-reboot.jpg",
+        "author": {
+          "first_name": "Wole",
+          "last_name": "Soyinka"
+        }
+      },
+      {
+        "id": 2,
+        "title": "Half of a Yellow Sun",
+        "cover_image_url": "https://resizing.flixster.com/PTWb8cveEQtMkpDSq3ypCZBuGoU=/300x300/v1.bjsxNTE4NzE4O2o7MTczODc7MTIwMDszMDAwOzIwMDA",
+        "author": {
+          "first_name": "Chimamanda",
+          "last_name": "Adichie"
+        }
+      },
+      {
+        "id": 3,
+        "title": "Americanah",
+        "cover_image_url": "http://t1.gstatic.com/images?q=tbn:ANd9GcQcCAOmt-FsRsR8GebIzI67qSvdQ2JLYDRLxeAcbH-541fzqq1H",
+        "author": {
+          "first_name": "Chimamanda",
+          "last_name": "Adichie"
+        }
+      },
+      {
+        "id": 4,
+        "title": "King Baabu ",
+        "cover_image_url": "http://t1.gstatic.com/images?q=tbn:ANd9GcQcCAOmt-FsRsR8GebIzI67qSvdQ2JLYDRLxeAcbH-541fzqq1H",
+        "author": {
+          "first_name": "Wole",
+          "last_name": "Soyinka"
+        }
+      }
+    ]
+  }
+}
 ```
 
-Then, run the following command:
+For the query to return this response, a couple of things such as resolvers, a form of data source (database or external API), and a GraphQL server to execute the schema need to be available.
+
+Resolvers provide the instructions for turning a GraphQL operation into data. They are organized into a one to one mapping to the fields in a GraphQL schema. Without much ado, let's add an in-app memory data source!
+
 
 ```bash
-graphcool init
+
+const books = [
+    { id: 1, title: 'The Trials of Brother Jero',  cover_image_url: 'ssdsds', average_rating: 8, authorId: 1 },
+    { id: 2, title: 'Half of a Yellow Sun',  cover_image_url: 'dsdsds', average_rating: 9, authorId: 3 },
+    { id: 3, title: 'Americanah',  cover_image_url: 'dsdsds', average_rating: 9, authorId: 3 },
+    { id: 4, title: 'King Baabu',  cover_image_url: 'sdsds', average_rating: 7, authorId: 1 },
+    { id: 5, title: 'Children of Blood and Bone',  cover_image_url: 'sdsds', average_rating: 7, authorId: 2 },
+  ];
+
+  const authors = [
+    { id: 1, first_name: 'Wole', last_name: 'Soyinka' },
+    { id: 2, first_name: 'Tomi', last_name: 'Adeyemi' },
+    { id: 3, first_name: 'Chimamanda', last_name: 'Adichie' },
+  ];
+
+ const typeDefs = gql`
+    type Author {
+      id: Int!
+      first_name: String!
+      last_name: String!
+      books: [Book]!
+    }
+
+    type Book {
+      id: Int!
+      title: String!
+      cover_image_url: String!
+      average_rating: Float!
+      author: Author!
+    }
+
+    type Query {
+      books: [Book!]!,
+      author(id: Int!): Author!
+
+    }
+
+    type Mutation {
+      addBook(title: String!, cover_image_url: String!, average_rating: Float!, authorId: Int!): Book!
+    }
+  `;
 ```
 
-It will create a `project.graphcool` file that contains a default Schema. Go ahead and edit the schema to be like this:
+In the code above, we have the `books` and `authors` data source. We'll go ahead to write the resolvers that fetches data from the data source above before progressing to hooking up our GraphQL API with a proper database.
+
+### Writing the Resolvers
+
+Resolvers are functions that connects schema fields and types to various backends. As I mentioned earlier, they provide the instructions for turning a GraphQL operation into data. They can retrieve or write data from either an SQL, a No-SQL, graph database, a micro-service or a REST API. Resolvers can also return strings, ints, null, and other primitives.
+
+```js
+const { find, filter } = require('lodash');
+...
+...
+
+let book_id = 5;
+let author_id = 3;
+
+const resolvers = {
+  Query: {
+    books: () => books,
+    book: (_, { id }) => find(books, { id: id }),
+    author: (_, { id }) => find(authors, { id: id }),
+  },
+  Mutation: {
+   addBook: (_, {title, cover_image_url, average_rating, authorId }) => {
+      book_id++;
+
+      const newBook = {
+        id: book_id,
+        title,
+        cover_image_url,
+        average_rating,
+        author_id
+      };
+
+      books.push(newBook);
+      console.log(books);
+      return newBook;
+  },
+  Author: {
+    books: (author) => filter(books, { authorId: author.id }),
+  },
+  Book: {
+    author: (book) => find(authors, { id: book.authorId }),
+  },
+};
+```
+
+At this stage, I'm sure you are yearning to see it work. Before shedding more light on each of the resolver functions, go ahead and install `apollo-server`, `graphql`, and `lodash`.
 
 ```bash
-....
-....
-
-type User implements Node {
-  id: ID! @isUnique
-  email: String! @isUnique
-  name: String!
-  movies: [Movie!]! @relation(name: "MovieReviewer")
-  createdAt: DateTime!
-  updatedAt: DateTime!
-}
-
-type Movie implements Node {
-  id: ID! @isUnique
-  description: String!
-  imageUrl: String!
-  avgRating: Int!
-  reviewer: User @relation(name: "MovieReviewer")
-  updatedAt: DateTime!
-  createdAt: DateTime!
-}
-
-type File implements Node {
-  id: ID! @isUnique
-  createdAt: DateTime!
-  updatedAt: DateTime!
-  contentType: String!
-  name: String!
-  secret: String! @isUnique
-  size: Int!
-  url: String! @isUnique
-}
-
+npm install apollo-server graphql lodash
 ```
 
-Run `graphcool push` from your terminal to update the schema on your Graphcool backend. You can go to the [Playground on Graphcool](https://console.graph.cool) to try out GraphQL queries for your newly created Schema.
+> [Apollo Server](https://www.apollographql.com/docs/apollo-server) provides GraphQL schemas written with it the privilege to be deployed anywhere that other Node.js projects can be deployed. It also has variants, such as apollo-server-express, apollo-server-hapi, apollo-server-koa and others to support serverless deployment with AWS Lambda. Apollo Server has built-in support for GraphQL subscriptions, powerful error handling tools, schema stitching, file uploads, mocking, schema directives and easy monitoring integration.
+
+The full `server.js` should look like this now:
+
+```js
+
+const { ApolloServer, gql } = require('apollo-server');
+const { find, filter } = require('lodash');
+
+const books = [
+    { id: 1, title: 'The Trials of Brother Jero',  cover_image_url: 'ssdsds', average_rating: 8, authorId: 1 },
+    { id: 2, title: 'Half of a Yellow Sun',  cover_image_url: 'dsdsds', average_rating: 9, authorId: 3 },
+    { id: 3, title: 'Americanah',  cover_image_url: 'dsdsds', average_rating: 9, authorId: 3 },
+    { id: 4, title: 'King Baabu',  cover_image_url: 'sdsds', average_rating: 7, authorId: 1 },
+    { id: 5, title: 'Children of Blood and Bone',  cover_image_url: 'sdsds', average_rating: 7, authorId: 2 },
+  ];
+
+  const authors = [
+    { id: 1, first_name: 'Wole', last_name: 'Soyinka' },
+    { id: 2, first_name: 'Tomi', last_name: 'Adeyemi' },
+    { id: 3, first_name: 'Chimamanda', last_name: 'Adichie' },
+  ];
+
+ const typeDefs = gql`
+    type Author {
+      id: Int!
+      first_name: String!
+      last_name: String!
+      books: [Book]!
+    }
+
+    type Book {
+      id: Int!
+      title: String!
+      cover_image_url: String!
+      average_rating: Float!
+      author: Author!
+    }
+
+    type Query {
+      books: [Book!]!,
+      book(id: Int!): Book!
+      author(id: Int!): Author!
+
+    }
+
+    type Mutation {
+      addBook(title: String!, cover_image_url: String!, average_rating: Float!, authorId: Int!): Book!
+    }
+  `;
+
+  let book_id = 5;
+  let author_id = 3;
+
+  const resolvers = {
+    Query: {
+      books: () => books,
+      book: (_, { id }) => find(books, { id: id }),
+      author: (_, { id }) => find(authors, { id: id }),
+    },
+    Mutation: {
+     addBook: (_, {title, cover_image_url, average_rating, authorId }) => {
+        book_id++;
+
+        const newBook = {
+          id: book_id,
+          title,
+          cover_image_url,
+          average_rating,
+          author_id
+        };
+
+        books.push(newBook);
+        console.log(books);
+        return newBook;
+    },
+    Author: {
+      books: (author) => filter(books, { authorId: author.id }),
+    },
+    Book: {
+      author: (book) => find(authors, { id: book.authorId }),
+    },
+  };
+
+  const server = new ApolloServer({
+    typeDefs,
+    resolvers
+  });
+
+  server.listen().then(({ url }) => {
+    console.log(`🚀  Server ready at ${url}`);
+  });
+```
+
+Run `node src/server.js` and check out the URL in your browser, `http://localhost:4000/`. You can run several queries to test your API in the GraphQL Playground, just like you can test your REST API endpoints with Postman.
+
+Back to the resolver functions! We have resolver functions for all the fields in the `Query` and `Mutation` type. If you're following the tutorial step by step, you might have noticed this is a one-to-many relationship. One Author has many books, and many books belong to one author. Resolving the field in `Author`, and `Book` type enables us to get the right data when we have nested queries such as this:
+
+```bash
+
+{
+  author(id: 3) {
+    first_name
+    last_name
+    books {
+      title
+      cover_image_url
+      average_rating
+    }
+  }
+
+  book(id: 2) {
+    title
+    author {
+      id
+      first_name
+      last_name
+    }
+  }
+}
+```
+
+Experiment with the queries in the browser and play around with the resolvers to get a clearer picture. Check out [this excellent article on how GraphQL turns a query into a response](https://blog.apollographql.com/graphql-explained-5844742f195e).
+
+
+### Connect to a Database
+
+Let's swap out the arrays for a proper database. In this tutorial, we'll make use of SQLite and Sequelize. Go ahead and install them via npm:
+
+```
+npm install sequelize sqlite --save
+```
+
+Create a `store.js` file within the `src` directory and a `coolreads.sqlite` file within the root directory. The `sqlite` file is our database store.
+
+Add code to `store.js` like so:
+
+```js
+const Sequelize = require('sequelize');
+const casual = require('casual');
+import _ from 'lodash';
+
+const db = new Sequelize('coolreads', null, null, {
+  dialect: 'sqlite',
+  storage: './coolreads.sqlite',
+});
+
+const AuthorModel = db.define('author', {
+  first_name: { type: Sequelize.STRING },
+  last_name: { type: Sequelize.STRING },
+});
+
+const BookModel = db.define('book', {
+  title: { type: Sequelize.STRING },
+  cover_image_url: { type: Sequelize.STRING },
+  average_rating: { type: Sequelize.STRING },
+});
+
+AuthorModel.hasMany(BookModel);
+BookModel.belongsTo(AuthorModel);
+
+// create mock data with a seed, so we always get the same
+casual.seed(123);
+db.sync({ force: true }).then(() => {
+  _.times(10, () => {
+    return AuthorModel.create({
+      first_name: casual.first_name,
+      last_name: casual.last_name,
+    }).then((author) => {
+      return author.createBook({
+        title: casual.title,
+        cover_image_url: casual.url,
+        average_rating: casual.integer(-10, 10),
+      });
+    });
+  });
+});
+
+const Author = db.models.author;
+const Book = db.models.book;
+
+export { Author, Book };
+```
+
+In the code above, we initialized our database, created the `Author` and `Book` models, established the relationship, and built a seeder for provisioning the database with initial data!
+
+Install `casual`:
+
+```
+npm install casual
+```
+
+**Note:** `casual` is a package that generates random fake data.
+
+Run your server again. From the terminal, you should see data been added added to the database. However, you can't view the data in the _sqlite_ file unless you use a SQLite browser.
+
+Go ahead and install the [SQLite browser](https://github.com/sqlitebrowser/sqlitebrowser). It will prove very useful!
+
+Open the _sqlite_ file via the SQLite browser. You'll see all the data in it. Now, go ahead and replace that data with the initial data we started with, `books` and `authors` array.
+
+![Books Section](https://cdn.auth0.com/blog/sqlite/books.png)
+_SQLite: Coolreads database, Books table_
+
+![Authors Section](https://cdn.auth0.com/blog/sqlite/authors.png)
+_SQLite: Coolreads database, Authors table_
+
+
+### Rewrite the Resolvers
+
+Open up `src/server.js` file. Import the models from the store:
+
+```js
+...
+import { Author, Book } from './store';
+```
+
+Rewrite the resolvers to use the database model methods in fetching data from the SQLite database:
+
+```js
+...
+Query: {
+  books: () => Book.findAll(),
+  book: (_, args ) => Book.find({ where: args }),
+  author: (_, args) => Author.find({ where: args })
+},
+
+Author: {
+  books: (author) => author.getBooks(),
+},
+
+Book: {
+ author: (book) => book.getAuthor(),
+},
+
+Mutation: {
+  addBook: (_, {title, cover_image_url, average_rating, authorId }) => {
+
+   return Book.create({
+      title: title,
+      cover_image_url: cover_image_url,
+      average_rating: average_rating,
+      authorId: authorId
+    }).then(book => {
+      return book;
+    });
+  }
+}
+};
+```
+
+* `Book.findAll` - Fetches all the books from the `books` table.
+* `Book.find` - Fetches the book that has a certain `id`.  `args` is an object in the [resolver signature](https://www.apollographql.com/docs/graphql-tools/resolvers#Resolver-function-signature) that contains arguments passed to the book field as declared in the schema. In this case, `args` is `{ id }`.
+* `Author.find` - Fetches the author with a certain `id`.
+* `author.getBooks` - Selects and returns the books that belongs to a particular author.
+* `book.getAuthor` - Fetches the author that wrote a certain book.
+* `Book.create` -  Creates a new book, writes it to the database and returns the details of the new book that was just created.
+
+
 
 ### Build The Frontend
 
