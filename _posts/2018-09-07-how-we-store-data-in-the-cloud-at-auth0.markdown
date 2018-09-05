@@ -1,4 +1,3 @@
----
 layout: post
 title: How We Store Data in the Cloud at Auth0
 metatitle: How We Store Data in the Cloud at Auth0
@@ -34,7 +33,7 @@ related:
   - 2018-08-08-introduction-to-redis-install-cli-commands-and-data-types
 ---
 
-Auth0 uses different datastores for different purposes. We have tons of datasets used to serve the wide variety of use cases and features we offer to our customers. In an age where data breaches are unfortunately getting more common, a critical side of choosing and using datastores is to consider reliability, durability, and safety. Our platform processes thousands of requests per second (**1.5 billion logins per month**) for customers all around the world &mdash; and we're growing very fast!
+Auth0 uses different datastores for different purposes. We have tons of datasets used to serve the wide variety of use cases and features we offer to our customers. In an age where data breaches are unfortunately getting more common, a critical side of choosing and using datastores is to consider reliability, durability, and safety. Our platform processes thousands of requests per second (**billions of logins per month**) for customers all around the world &mdash; and we're growing very fast!
 
 The Site Reliability team is a new initiative aimed at improving reliability and uptime in a data-driven way to support our customers' needs. Our team works closely with other teams to define and apply best practices through coding, writing, workshops, training, and leading different initiatives related to reliability, performance, and observability.
 
@@ -76,21 +75,11 @@ Since the conception of Auth0, MongoDB has been an essential piece of our infras
 
 We have a long story with [Elasticsearch](https://www.elastic.co/products/elasticsearch), and not always a happy one. We use Elasticsearch to store three types of data for search:
 
-1.  [User metadata](https://auth0.com/docs/metadata)
+1.  [User metadata](https://auth0.com/docs/metadata).
 2.  [Audit logs](https://auth0.com/docs/logs): logs that our tenants can access via dashboard and API.
-3.  Application logs: logs from our micro-services and "off-the-shelf" solutions like NGINX and MongoDB.
+3.  Application logs: logs from our micro-services and "off-the-shelf" solutions like NGINX and MongoDB (running [Kibana](https://www.elastic.co/products/kibana)).
 
-We use three different versions of ES:
-
-1.  1.6, for certain tenants that we couldn't migrate yet to 5.4.
-2.  2.3, for application logs.
-3.  5.4, for user metadata.
-
-We have multiple clusters per environment. For instance, in the US we have:
-
-- 1 cluster with 2.3 for application logs (running [Kibana](https://www.elastic.co/products/kibana))
-- 2 clusters with 5.4 for user metadata (regular and enterprise tenants)
-- 2 clusters with 1.6 (for user metadata - tenants that couldn't be migrated to 5.4)
+Those are kept in completely separate clusters with different permissions, backup strategies, and Elasticsearch configuration. We have 3-5 clusters per environment.
 
 We have almost 80 Elasticsearch nodes in the US environment only. If we sum up all environments and regions, we probably have short of **200 big nodes running ES**. _Yikes!_ 💸
 
