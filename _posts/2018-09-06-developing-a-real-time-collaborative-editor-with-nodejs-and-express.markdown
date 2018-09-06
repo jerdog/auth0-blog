@@ -124,15 +124,19 @@ The following is a run down of what some of the packages will help you achieve:
 
 Don't worry if all these don't make that much sense now. As you go through the article, you will learn how to use them.
 
-## Setting up a Pusher TextSync Account
-Previously, i stated we'll be using a library called TextSync to build our application, so let's go ahead and create an account to enable us make use of TextSync. Go to this [link](https://pusher.com/textsync) and sign up.
+## Setting Up a Pusher TextSync Account
 
-Now we've signed up, let's create a new TextSync instance, this will enable us to get a `secret_key` and an `instance_locator` which we'll make use of later on. Click on `Create new instance` in the TextSync tab and provide a name for the instance, give it anything you want.
+As mentioned earlier, you will use a feature from Pusher called TextSync to support the real-time characteristics of your application. As such, you will need a Pusher account to keep building your app. So, [head to TextSync's webpage and sign up for a new account](https://dash.pusher.com/authenticate/register).
 
-With that covered, copy the `instance_locator` and `secret_key`. These are important as
-they'll enable us to communicate with the TextSync instance we created previously.
+![Signing up for a Pusher/TextSync account.](https://cdn.auth0.com/blog/pusher-textsync/signup.png)
 
-****** Image of the instance_locator and secret_key key ******
+After signing up, you can head to [the _TextSync_ section of your new Pusher account](https://dash.pusher.com/textsync) and hit the _Create_ button. Hitting this button will make Pusher show a dialog where it will ask you for a name for your new TextSync instance. In this dialog, you can input something like "Collaborative Real-Time Editor" and hit the _Create_ button.
+
+![Creating a TextSync instance on Pusher](https://cdn.auth0.com/blog/pusher-textsync/creating-a-textsync-instance-on-pusher.png)
+
+Pusher will take less than a second to create the new instance for you and, after doing so, will redirect you to a page where it will show some instructions on how you can use this instance. Although these instructions are useful, right now, you are not interested on them. What you are interested in is the box called _Credentials_ in this page. This box will have two keys that you will have to use soon: _Instance Locator_ and _Secret Key_. So, before heading back to your code, find this box and leave the page open.
+
+![Copying Instance Locator and Secret Key from your TextSync instance on Pusher](https://cdn.auth0.com/blog/pusher-textsync/copying-instance-locator-and-secret-key-from-pusher.png)
 
 ## Setting up Views with Pug
 Next up, we'll create our server-side templates with Pug, Pug provides a lot of features 
