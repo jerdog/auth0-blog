@@ -32,7 +32,7 @@ related:
 - real-time-charts-using-angular-d3-and-socket-io
 ---
 
-**TL;DR:** In this article, we'll learn how to build a collaborative note editor application. This means that we'll be able to work on a document with anyone, anywhere in the world, at the same time. Let's dive in.
+**TL;DR:** In this article, you will learn how to build a real-time, collaborative note editor application that enables multiple users to work on the same document simultaneously. To create this app, you will use tools like Node.js, Express, Pusher, and Auth0. If needed, [you can find the code of the final app in this GitHub repository](https://github.com/auth0-blog/collaborative-real-time-editor).
 
 ## What is Pusher?
 Pusher is a hosted service that makes it relatively easy to add real-time functionality to a web or mobile application, It provides kits/libraries that help to seamlessly build chat applications, real-time charts, etc... More information about Pusher and the features it provides can be found on the [Pusher website](www.pusher.com).
