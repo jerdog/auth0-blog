@@ -34,6 +34,33 @@ related:
 
 **TL;DR:** In this article, you will learn how to build a real-time, collaborative note editor application that enables multiple users to work on the same document simultaneously. To create this app, you will use tools like Node.js, Express, Pusher, and Auth0. If needed, [you can find the code of the final app in this GitHub repository](https://github.com/auth0-blog/collaborative-real-time-editor).
 
+## What Will you Build?
+
+As you can guess by the title of the article, you are going to build a real-time, web editor that enables different users to work on the same document from different places collaboratively. That is, you and one or more friends (for example) will be able to type and edit the same document at the same time. Just like if you were editing a Google Docs word but built by yourself. How cool is that?
+
+Anyway, to build this web application, you will use tools like:
+
+- [Node.js](https://nodejs.org/en/): a runtime engine based on Chrome's V8 processor that enables you to use the JavaScript programming language on your computer and on servers (i.e., outside web browsers).
+- [Express](https://expressjs.com/): a fast and minimalist web framework for Node.js.
+- [Pusher](https://pusher.com/): a hosted service that helps you build real-time apps with less code.
+- [Auth0](https://auth0.com/): a universal authentication & authorization platform for web, mobile, and legacy applications.
+
+Will you have to pay for these services and tools? No, you won't. Node.js and Express are open-source projects that you can use for free to build whatever you want to build. Pusher and Auth0 do have paid tiers where you can use advanced features to build better apps, but they also include some cool free tiers. You will be able to build amazing apps in no time with these services without paying a dime for quite a while. Unless your app becomes too popular, but that's hardly a problem, right?
+
+## Pre-Requisites
+
+To follow this article along, you will need some basic knowledge of JavaScript and related technologies like HTML and CSS. Also, you will need to have installed in your machine Node.js and NPM. If you don't have, you can [go to the official download page of Node.js and follow the instructions](https://nodejs.org/en/download/) there. NPM comes bundled into Node.js.
+
+After installing Node.js and NPM, open a terminal and issue the following commands to guarantee you have everything set up:
+
+```bash
+node -v
+# output will be similar to v9.11.1
+
+npm -v
+# output will be similar to 5.6.0
+```
+
 ## What is Pusher?
 Pusher is a hosted service that makes it relatively easy to add real-time functionality to a web or mobile application, It provides kits/libraries that help to seamlessly build chat applications, real-time charts, etc... More information about Pusher and the features it provides can be found on the [Pusher website](www.pusher.com).
 
