@@ -139,12 +139,13 @@ Pusher will take less than a second to create the new instance for you and, afte
 ![Copying Instance Locator and Secret Key from your TextSync instance on Pusher](https://cdn.auth0.com/blog/pusher-textsync/copying-instance-locator-and-secret-key-from-pusher.png)
 
 ## Setting up Views with Pug
-Next up, we'll create our server-side templates with Pug, Pug provides a lot of features 
-we won't be exploring in this article, more information about these features can be found [here](https://pugjs.org/). We'll create three Pug files :
 
-```html
-views/layout.pug
+Next up, you will create your server-side templates with Pug. Pug provides a lot of features 
+that you won't explore in this article. So, if you need more information about these features, you can [find them here](https://pugjs.org/).
 
+Having that in mind, the first thing you will have to do is to create the `views` directory in your project root, and create a file called `layout.pug` inside it. After that, insert the following code into this file:
+
+```pug
 doctype html
 html(lang="en")
   head
@@ -156,6 +157,39 @@ html(lang="en")
   body.main
     block content
 ```
+
+This is what a Pug file looks like. If this is not clear enough, here it goes a better explanation of what Pug does with this file.
+
+Pug facilitates writing HTML files by enabling you to structure your documents in a way-less-verbose syntax. In this case specifically, Pug will:
+
+1. transform `doctype html` into a `<!DOCTYPE html>` element;
+2. transform `html(lang="en")` into `<html lang="en"></html>`;
+3. transform `head` into `<head></head>` and, because it is indented below `html`, it will add into the `<html></html>`;
+4. transform every single child element of `head` (i.e., `meta`, `link`, and `title`) and add into it;
+5. and transform `body.main` into `<body class="main"></body>` and insert inside `<html></html>`.
+
+Well, you get the idea, right? Anyway, to better illustrate, here it goes the output of the file above:
+
+{% highlight html %}
+{% raw %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/css/main.css">
+    <title>Real Time Editor</title>
+</head>
+
+<body class="main"></body>
+</html>
+{% endraw %}
+{% endhighlight %}
+
+Very easy isn't it? But wait! What about the `block content`. Well, this is easy too, this is a placeholder for the real content. [This placeholder is called _Template Inheritance_ by Pug](https://pugjs.org/language/inheritance.html). On their own words:
+
+> Pug supports template inheritance. Template inheritance works via the `block` and `extends` keywords. In a template, a block is simply a "block" of Pug that a child template may replace. - [Pug's Template Inheritance](https://pugjs.org/language/inheritance.html)
 
 ### Creating Unique URL's
 
