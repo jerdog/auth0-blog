@@ -230,7 +230,7 @@ block content
   script(type="text/javascript").
     var user = "#{user.displayName}";
   script(type="text/javascript" src="https://static.pusherplatform.com/textsync/us1/textsync.js")
-  script(type="text/javascript" src="/js/app.js")
+  script(type="text/javascript" src="/assets/app.js")
 ```
 
 In this case, you are defining that the `editor.pug` file will use two scripts:
@@ -351,15 +351,13 @@ form input {
 
 For the views of your app, this is what you need. Next, you will create the JavaScript code to control the editor view.
 
-### Pusher TextSync Editor Configuration
-Let's set up our TextSync editor, create a file `app.js` and paste in the following code,
-We'll go through the code in detail right after.
+### Integrating your App with TextSync
+
+To integrate your view with TextSync, you will create a file called `app.js` inside the `assets` directory and add this code:
 
 ```js
-assets/js/app.js
-
 const textSyncInstance = new TextSync({
-  instanceLocator: "YOUR PUSHER INSTANCE_LOCATOR"
+  instanceLocator: "YOUR PUSHER INSTANCE LOCATOR"
 });
 
 //Creates an instance of the TextSync editor
@@ -391,23 +389,25 @@ const editor = textSyncInstance.createEditor({
 });
 ```
 
-In the code above, replace the `instanceLocator` property with the one gotten after creating the TextSync instance. We'll use that to connect and interact with the TextSync instance we created previously. So, the next step is to create the TextSync editor, a few Configuration arguments are required to set this up. Specifically, the TextSync editor requires 3 arguments :
+> **Note:** In the code above, you will have to replace the value passed to the `instanceLocator` property with the one you have in your Pusher dashboard. The call to the `TextSync` function will use this value to connect and interact with the TextSync instance you created on Pusher.
 
-* docId : This is the ID of the document that will be loaded into the editor on creation. Previously, we created a slug which we use to create a unique URL. The function `document.URL.slice(document.URL.lastIndexOf("/") + 1)` gets the part of the URL after the last slash, e.g from the URL `localhost:3000/note/yajdzfr2w78`, it extracts `yajdzfr2w78` and that gets loaded as the `docId` into the editor on creation. This is important because the `docId` enables other users join the same editing session. Essentially, all TextSync editors with the same `docId` belong to the same editing session.
+As you can see in the file above, you are calling `textSyncInstance.createEditor` to create the real-time, collaborative editor. Also, there are a few other things that you are passing to this function that you should know about:
 
-* element :  The DOM element that will contain the text editor. This may be either a CSS selector or a reference to the element object.
+* `docId`: This is the ID of the document that will be loaded into the editor on creation. Previously, you created a `slug` which you used to create a unique URL. The function `document.URL.slice(document.URL.lastIndexOf("/") + 1)` gets the part of the URL after the last slash (e.g., from the URL `localhost:3000/note/yajdzfr2w78`, it extracts `yajdzfr2w78`) and that gets loaded as the `docId` into the editor on creation. This is important because the `docId` enables other users join the same editing session. Essentially, all TextSync editors with the same `docId` belong to the same editing session.
 
-* authEndpoint : The URL of the endpoint on our server where the TextSync library can obtain authorization tokens. We'll see exactly how this works later on.
+* `element`: This is the DOM element that will contain the text editor. This may be either a CSS selector or a reference to the element object.
 
-There are also optional configuration arguments we use in our application :
+* `authEndpoint`: This is the URL of the endpoint on your server where the TextSync library can obtain authorization tokens. You will see exactly how this works later on.
 
-* userName : A name to be displayed to other collaborators working in the same editing session.
+There are also optional configuration arguments you use in your application:
 
-* onCollaboratorsJoined : This function is called whenever a user joins this editing session,we'll add this user to the list of active users and update the UI accordingly.
+* `userName`: The name of the current user to be displayed to other collaborators working in the same editing session.
 
-* onCollaboratorsLeft : This function is called whenever a user leaves the editing session,we'll remove the user from the list of active users and update the UI accordingly.
+* `onCollaboratorsJoined`: This function is called whenever a user joins this editing session. You will use this function to add the new user to the list of active users and update the UI accordingly.
 
-For a broader list of the TextSync configuration properties, visit the [docs](https://docs.pusher.com/textsync/reference/js)
+* `onCollaboratorsLeft`: This function is called whenever a user leaves the editing session. You will use this function to remove a user from the list of active users and update the UI accordingly.
+
+For a broader list of the configuration properties, visit the [official TextSync docs](https://docs.pusher.com/textsync/reference/js).
 
 ## Setting up Routes with Express
 In this section, we'll be focusing on the server-side of our application, let's dive in.
