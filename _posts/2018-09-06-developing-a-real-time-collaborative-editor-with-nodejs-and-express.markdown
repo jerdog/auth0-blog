@@ -409,23 +409,22 @@ There are also optional configuration arguments you use in your application:
 
 For a broader list of the configuration properties, visit the [official TextSync docs](https://docs.pusher.com/textsync/reference/js).
 
-## Setting up Routes with Express
-In this section, we'll be focusing on the server-side of our application, let's dive in.
+## Implementing your Express App
 
-Let's create a file `variables.env` to hold our environmental variables. Copy both the `instance_locator` and `secret_key` gotten from the TextSync instance and paste it there.
+In this section, you will focus on the server side of your application. First, you will create a file called `variables.env` to hold your environment variables. Add this file in the project root and then add two variables into it:
 
-```js
-variables.env
-
-INSTANCE_LOCATOR={YOUR TEXTSYNC INSTANCE_LOCATOR}
-KEY={YOUR TEXTSYNC SECRET_KEY}
+```bash
+INSTANCE_LOCATOR=<YOUR_INSTANCE_LOCATOR>
+KEY=<YOUR_SECRET_KEY>
 ```
 
-Create another file `server.js`, this will contain all our server-side code. The file will be a bit long, so for easier comprehension we'll break it down and explain it bit by bit. First let's import the packages we previously installed and also add some basic configuration.
+> **Note:** You will have to replace `<YOUR_INSTANCE_LOCATOR>` and `<YOUR_SECRET_KEY>` with the values that Pusher presented for your TextSync instance.
+
+After that, you will have to create a file called `server.js` in the project root. This file will contain your server's code. As the file will be a bit long, you will go through it step by step for easier comprehension.
+
+First, your file will import the packages you installed previously and it will create an Express server:
 
 ```js
-server.js
-
 const path = require('path');
 
 const bodyParser = require('body-parser');
@@ -435,46 +434,51 @@ const passport = require('passport');
 const Auth0Strategy = require('passport-auth0');
 const TextSync = require('textsync-server-node');
 
-//Load the enviromental variables into process.env
+// Load the enviromental variables into process.env
 require("dotenv").config({ path: "variables.env" });
 
 const app = express();
 app.set('view engine', 'pug');
+```
 
-//Allow access from a different origin
+Note how, after requiring all the libraries you installed, you make Node.js load the properties from the `variables.env` file. You will use these variables soon. Also, note that you make your Express instance (i.e., `app`) use (or understand) the Pug view engine. With that in place, you make an Express app be able to serve Pug views.
+
+Now, you will make your Express app use some middleware:
+
+```js
+// ... the code above ...
+
+// allow access from a different origin
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
   next();
 });
+
+// configuring some middleware
 app.use(express.static(path.join(__dirname, 'assets')));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
-//We'll make use of sessions to keep track of logged in Users
+// you make use of sessions to keep track of logged in users
 app.use(session({
   secret: "--ENTER CUSTOM SESSION SECRET--",
   resave: false,
   saveUninitialized: false
 }));
-
-const textSync = new TextSync({
-  instanceLocator: process.env.INSTANCE_LOCATOR,
-  key: process.env.KEY
-});
-
-  ...
 ```
 
-In the code above, the `key` config property is the secret key gotten from the previously
-created TextSync instance. 
+As you can see, first, you configure your server to tell browsers that it accepts AJAX requests from any (`*`) origins. After that, you are configuring three middleware in your server:
 
-Now, let's set up some routes.
+1. `express.static`: This middleware makes your Express app serve files under the `assets` directory as static files (i.e., it makes your Express app simply return their values without any modification when requested).
+2. `bodyParser.urlencoded`: This makes your Express app parse `urlencoded` bodies.
+3. `bodyParser.json`: This makes your Express app parse JSON bodies.
+4. `session`: This middleware makes your Express app provide session to your users (for a production-ready app, you will want to change the value passed to `secret`).
+
+After configuring this file, you will add some routes to your server:
 
 ```js
-server.js
-  
-  ...
+// ... the code above ...
 
 function loggedIn(req, res, next) {
   req.session.user ? next() : res.redirect("/login");
@@ -492,20 +496,13 @@ app.post('/note', loggedIn, (req, res) => {
 app.get('/note/:slug', loggedIn, (req, res) => {
   res.render('editor', {user: req.session.user})
 });
-
-  ...
 ```
 
-In the file above, we set up three routes, let's go through them;
+In this case, the first thing you are doing is defining a custom middleware that will check if incoming requests have an active session. If they don't you redirect them to the `/login` route. After that, you are defining three routes:
 
-1. The `/` route : This displays a form that enables the user to create a new document and editing session.
-
-2. The `/note` route : When the form in `index.pug` is submitted, a POST request is made to this route, which sends along the `slug`, we retrieve that with `req.body.slug` and use the slug to create a new, unique route/URL. The user is redirected to this new route.
-
-3. The `/note/:slug` : This is the new route created and also where the collaboration takes place. The `:slug` in this route represents the unique slug we sent over previously. This route is unique to each editing session and anyone invited to join a particular session does so through this route.
-
-We also have a function `loggedIn`, all that the function does is : 
-When a user tries to access any of the routes it checks if the user is already logged in, if the user isn't logged in they are redirected to the `/login` route. That route hasn't been created just yet, we'll do that when we're hooking up our authentication middleware.
+1. `/`: This route makes your server render the `index.pug` file (`res.render('index', ...)`) with the logged in user (`req.session.user`). As you remember, the `index.pug` file is a view that renders a form so users can create new editing sessions.
+2. `/note`: When the form in `index.pug` is submitted, a POST request is made to this route, which sends along the `slug`. This route retrieves this value from `req.body.slug` and uses it to create a new, unique route. The user is then redirected to this new route.
+3. `/note/:slug`: This is the new route created and also where the collaboration takes place. The `:slug` in this route represents the unique slug defined previously. This route is unique to each editing session and anyone invited to join a particular session does so through this route.
 
 ### TextSync User Authorization
 Remember, when we configured our TextSync editor, we added a property `authEndpoint` that supposedly handles TextSync authorization, what this means is that any user that intends to join an editing session must be authorized through this endpoint, this is done to ensure maximum flexibility while also keeping the document secure, but how exactly is this done?
@@ -515,13 +512,14 @@ When a user tries to join an editing session, a POST request is made to this end
 Let's implement the route that handles this authorization next;
 
 ```js
-server.js
-  
-  ...
+const textSync = new TextSync({
+  instanceLocator: process.env.INSTANCE_LOCATOR,
+  key: process.env.KEY
+});
   
 app.post('/textsync/tokens', (req, res) => {
-  //Certain Users can be restricted to either READ or WRITE access on the document
-  //to keep this demo simple, all users are granted READ and WRITE access to the document
+  // Certain Users can be restricted to either READ or WRITE access on the document
+  // to keep this demo simple, all users are granted READ and WRITE access to the document
   const permissionsFn = () => {
     return Promise.resolve([
       TextSync.Permissions.READ,
@@ -529,7 +527,7 @@ app.post('/textsync/tokens', (req, res) => {
     ]);
   };
 
-  //Set authentication token to expire in 20 minutes
+  // Set authentication token to expire in 20 minutes
   const options = { tokenExpiry: 60 * 20 };
 
   textSync.authorizeDocument(req.body, permissionsFn, options)
@@ -537,9 +535,8 @@ app.post('/textsync/tokens', (req, res) => {
       res.json(token);
     });
 });
-
-  ...
 ```
+
 That's all for the TextSync authorization.
 
 > ***Note*** : The TextSync authorization we implemented above was basic, but if you plan on implementing something more complex, visit the [TextSync docs](https://docs.pusher.com/textsync/authorization)
