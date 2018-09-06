@@ -152,7 +152,7 @@ html(lang="en")
     meta(charset="UTF-8")
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
     meta(http-equiv="X-UA-Compatible" content="ie=edge")
-    link(rel="stylesheet" href="/css/main.css")
+    link(rel="stylesheet" href="/main.css")
     title Real Time Editor
   body.main
     block content
@@ -191,11 +191,11 @@ Very easy isn't it? But wait! What about the `block content`. Well, this is easy
 
 > Pug supports template inheritance. Template inheritance works via the `block` and `extends` keywords. In a template, a block is simply a "block" of Pug that a child template may replace. - [Pug's Template Inheritance](https://pugjs.org/language/inheritance.html)
 
-### Creating Unique URL's
+### Creating your Pug Views
+
+Now that you have your Pug template, you will create your Pug views and a file to style them. For starters, you can create a file that contains a form that will be used to create a new document and an editing session. So, create a new file called `index.pug` inside the `views` directory and add the following code into it:
 
 ```html
-views/index.pug
-
 extends layout
 
 block content
@@ -211,13 +211,13 @@ block content
     document.querySelector('input[name="slug"]').value = slug
 ```
 
-The file above contains a form which will be used to create a new document and an editing session. Importantly, it contains a variable `slug` which holds a random, unique alphanumeric string. When the form is submitted, the `slug` will be sent over to the server-side, and used to create a unique link/URL, other users will be able to join the editing session through that link only. This may not be clear now but later on we'll see exactly how this is done.
+> **Note:** Have you seen the `extends layout` line in this file? This is telling Pug that this view is using (or extending) the `layout.pug` template you created before. Also, `block content` in this file is telling Pug that the children of this element will go inside the `block content` element of the template.
 
-Finally,
+What is important in the `index.pug` file is that it contains a variable called `slug` that holds a random, alphanumeric string. When the form created by this view is submitted, the `slug` is sent to the server-side. Then, in your server, you will use it to create a unique link (URL) that other users will refer to when they join an ongoing session. This may not be very clear now but, soon enough, you will get the idea.
+
+As you can see, the goal of the `index.pug` file is to create a view where users can start new editing sessions (so they can share with their friends). Now, you have to create the view that is going to show the editor itself. As such, create a new file called `editor.pug` inside the `views` directory and insert the following code into it:
 
 ```html
-views/editor.pug
-
 extends layout
 
 block content
@@ -233,11 +233,21 @@ block content
   script(type="text/javascript" src="/js/app.js")
 ```
 
-Lastly, let's create a file `main.css` which will contain all our styles.
+In this case, you are defining that the `editor.pug` file will use two scripts:
+
+1. `textsync.js`: A JavaScript file provided by Pusher so you can easily use its TextSync feature.
+2. `app.js`: A file that you will create soon to control the logic of this view.
+
+Besides these scripts, your new view is defining two sections:
+
+1. A `div` element with the `sidebar` class: This is where users will see who else is online with them.
+2. A `div` element with the `main_content` class: This is where you will add the editor (i.e., in the `#text_editor` element).
+
+Lastly, your view is defining a JavaScript library called `user` that will get the name of the logged in user (`user.displayName`). While working on your server code, you will fill the `#{user.displayName}` placeholder with the name of the user returned by Auth0.
+
+With this file in place, you can create a file which will contain the CSS rules to style your application. So, create a file called `main.css` inside a new directory called `assets` (create this one in the project root, alongside with `views`) and insert this code into it:
 
 ```css
-assets/css/main.css
-  
 * {
   box-sizing: border-box;
   margin: 0;
@@ -337,8 +347,9 @@ form input {
   border: 1px solid white;
   background: linear-gradient(325deg, rgb(39, 107, 130) 0px, rgb(49, 84, 129) 100%);
 }
-
 ```
+
+For the views of your app, this is what you need. Next, you will create the JavaScript code to control the editor view.
 
 ### Pusher TextSync Editor Configuration
 Let's set up our TextSync editor, create a file `app.js` and paste in the following code,
