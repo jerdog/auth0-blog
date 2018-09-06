@@ -67,36 +67,44 @@ Pusher is a hosted service that makes it very easy to add real-time functionalit
 
 In this article, you will use [a feature provided by Pusher called TextSync](https://docs.pusher.com/textsync) to build your application. Basically, TextSync provides the functionality that enables users work on a document in real-time with others, it will also handle authorization and a few other things you will see as you build your application.
 
-## Scaffolding our Project
-First, let's create a directory for our application. Run the following command in your terminal :
+## Scaffolding your Project
 
-```bashmkdir
-$ mkdir pusher-note-auth0
-```
-
-Our application isn't complex, so our directory structure will be fairly simple :
-
-```
--- assets
----- css
----- main.css
---- js
----- app.js
--- views
----- editor.pug
----- index.pug
----- layout.pug
--- package.json
--- server.js
--- variables.env
-```
-
-The `assets` folder will contain all our stylesheets and front-end JavaScript code, the `views` folder will contain all our front-end views, the `server.js` file will contain all the server-side code and the `variables.env` file will hold the global environmental variables. As we go on, we'll see how these files fit in to our application.
-
-Next, let's initialize our project by running : 
+First, you will have to create a directory for your application. So, on a terminal, move to the directory where you like to save your work and run the following commands:
 
 ```bash
-$ npm init
+# create a directory for your project
+mkdir collaborative-real-time-editor
+
+# move into it
+cd collaborative-real-time-editor
+```
+
+The app that you will build won't be complex. As such, the directory structure of this app will be fairly simple as well:
+
+```bash
++ assets
+ - css
+ - main.css
++ js
+ - app.js
+ - views
+ - editor.pug
+ - index.pug
+ - layout.pug
++ package.json
++ server.js
++ variables.env
+```
+
+The `assets` directory will contain all your stylesheets (CSS rules) and front-end JavaScript code. The `views` directory will contain all your front-end views (HTML code). The `server.js` file will contain the server-side code to run your app. The `variables.env` file will hold some global environment variables (some keys that you will need to run your app). And the `.pug` files are your HTML files. As you go on, you will see how these files fit into your application.
+
+> **Note:** If you don't know why you are going to use `.pug` files, don't worry. Pug is a template engine for Node.js that facilitates the process of writing HTML files. Using Pug is really easy, as you will see.
+
+Next, you can use NPM to initialize your directory as a Node.js project by running:
+
+```bash
+# from your project's directory
+npm init -y
 ```
 
 ### Installing Packages
