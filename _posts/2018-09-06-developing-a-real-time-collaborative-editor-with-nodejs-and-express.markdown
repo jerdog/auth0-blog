@@ -62,9 +62,10 @@ npm -v
 ```
 
 ## What is Pusher?
-Pusher is a hosted service that makes it relatively easy to add real-time functionality to a web or mobile application, It provides kits/libraries that help to seamlessly build chat applications, real-time charts, etc... More information about Pusher and the features it provides can be found on the [Pusher website](www.pusher.com).
 
-In this article, we'll be using a library provided by Pusher called TextSync to build our application. Basically, TextSync provides the functionality that enables us work on a document in real-time with others, it will also handle authorization and a few other things we'll see as we build our application.
+Pusher is a hosted service that makes it very easy to add real-time functionality to a web or mobile application. This service provides libraries that help to seamlessly build chat applications, real-time charts, collaborative editors, etc. You can find more information about Pusher and the features it provides [on their website](https://www.pusher.com).
+
+In this article, you will use [a feature provided by Pusher called TextSync](https://docs.pusher.com/textsync) to build your application. Basically, TextSync provides the functionality that enables users work on a document in real-time with others, it will also handle authorization and a few other things you will see as you build your application.
 
 ## Scaffolding our Project
 First, let's create a directory for our application. Run the following command in your terminal :
