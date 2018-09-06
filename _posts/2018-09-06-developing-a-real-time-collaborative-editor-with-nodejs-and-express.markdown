@@ -107,14 +107,22 @@ Next, you can use NPM to initialize your directory as a Node.js project by runni
 npm init -y
 ```
 
-### Installing Packages
-Now with that done, let's install the necessary packages that'll help us build certain parts of our application. Run the command below in your terminal :
+### Installing Dependencies
+
+With the directory properly initiated, you will have to install the necessary packages that will help you build certain parts of your application. To do so, run the commands below in your terminal:
 
 ```bash
-$ npm install body-parser dotenv express express-session passport passport-auth0 pug textsync-server-node
+npm install body-parser dotenv express express-session passport passport-auth0 pug textsync-server-node
 ```
 
-A run down of what some of the packages will help us achieve. We'll use the `passport` and `passport-auth0` packages to implement user authentication with Auth0, `textsync-server-node` to handle the Pusher TextSync authorization, `dotenv` to load environmental variables from the `variables.env` file into `process.env` and finally we'll use `pug` for our server-side templates. Don't worry if all these don't make much sense now, as we go on it would become much clearer.
+The following is a run down of what some of the packages will help you achieve:
+
+1. You will use the `passport` and `passport-auth0` packages to implement user authentication with Auth0.
+2. You will use `textsync-server-node` to handle the Pusher TextSync authorization.
+3. You will use `dotenv` to load environment variables from the `variables.env` file into Node.js's `process.env` object.
+4. You will use `pug` for your server-side templates.
+
+Don't worry if all these don't make that much sense now. As you go through the article, you will learn how to use them.
 
 ## Setting up a Pusher TextSync Account
 Previously, i stated we'll be using a library called TextSync to build our application, so let's go ahead and create an account to enable us make use of TextSync. Go to this [link](https://pusher.com/textsync) and sign up.
