@@ -67,7 +67,7 @@ npm -v
 
 Pusher is a hosted service that makes it very easy to add real-time functionality to a web or mobile application. This service provides libraries that help to seamlessly build chat applications, real-time charts, collaborative editors, etc. You can find more information about Pusher and the features it provides [on their website](https://www.pusher.com).
 
-In this article, you will use [a feature provided by Pusher called TextSync](https://docs.pusher.com/textsync) to build your application. Basically, TextSync provides the functionality that enables users work on a document in real-time with others, it will also handle authorization and a few other things you will see as you build your application.
+In this article, you will use [a feature provided by Pusher called TextSync](https://docs.pusher.com/textsync) to build your application. Basically, TextSync provides the functionality that enables users to work on a document in real-time with others. Besides that, it will also handle authorization and a few other things you will see as you build your application.
 
 ## Scaffolding your Project
 
@@ -115,7 +115,7 @@ With the directory properly initiated, you will have to install the necessary pa
 npm install body-parser dotenv express express-session passport passport-auth0 pug textsync-server-node
 ```
 
-The following is a run down of what some of the packages will help you achieve:
+The following is a rundown of what some of the packages will help you achieve:
 
 1. You will use the `passport` and `passport-auth0` packages to implement user authentication with Auth0.
 2. You will use `textsync-server-node` to handle the Pusher TextSync authorization.
@@ -134,7 +134,7 @@ After signing up, you can head to [the _TextSync_ section of your new Pusher acc
 
 ![Creating a TextSync instance on Pusher](https://cdn.auth0.com/blog/pusher-textsync/creating-a-textsync-instance-on-pusher.png)
 
-Pusher will take less than a second to create the new instance for you and, after doing so, will redirect you to a page where it will show some instructions on how you can use this instance. Although these instructions are useful, right now, you are not interested on them. What you are interested in is the box called _Credentials_ in this page. This box will have two keys that you will have to use soon: _Instance Locator_ and _Secret Key_. So, before heading back to your code, find this box and leave the page open.
+Pusher will take less than a second to create the new instance for you and, after doing so, will redirect you to a page where it will show some instructions on how you can use this instance. Although these instructions are useful, right now, you are not interested in them. What you are interested in is the box called _Credentials_ in this page. This box will have two keys that you will have to use soon: _Instance Locator_ and _Secret Key_. So, before heading back to your code, find this box and leave the page open.
 
 ![Copying Instance Locator and Secret Key from your TextSync instance on Pusher](https://cdn.auth0.com/blog/pusher-textsync/copying-instance-locator-and-secret-key-from-pusher.png)
 
@@ -187,7 +187,7 @@ Well, you get the idea, right? Anyway, to better illustrate, here it goes the ou
 {% endraw %}
 {% endhighlight %}
 
-Very easy isn't it? But wait! What about the `block content`. Well, this is easy too, this is a placeholder for the real content. [This placeholder is called _Template Inheritance_ by Pug](https://pugjs.org/language/inheritance.html). On their own words:
+Very easy isn't it? But wait! What about the `block content`. Well, this is easy too, this is a placeholder for the real content. [This placeholder is called _Template Inheritance_ by Pug](https://pugjs.org/language/inheritance.html). In their own words:
 
 > Pug supports template inheritance. Template inheritance works via the `block` and `extends` keywords. In a template, a block is simply a "block" of Pug that a child template may replace. - [Pug's Template Inheritance](https://pugjs.org/language/inheritance.html)
 
@@ -393,7 +393,7 @@ const editor = textSyncInstance.createEditor({
 
 As you can see in the file above, you are calling `textSyncInstance.createEditor` to create the real-time, collaborative editor. Also, there are a few other things that you are passing to this function that you should know about:
 
-* `docId`: This is the ID of the document that will be loaded into the editor on creation. Previously, you created a `slug` which you used to create a unique URL. The function `document.URL.slice(document.URL.lastIndexOf("/") + 1)` gets the part of the URL after the last slash (e.g., from the URL `localhost:3000/note/yajdzfr2w78`, it extracts `yajdzfr2w78`) and that gets loaded as the `docId` into the editor on creation. This is important because the `docId` enables other users join the same editing session. Essentially, all TextSync editors with the same `docId` belong to the same editing session.
+* `docId`: This is the ID of the document that will be loaded into the editor on creation. Previously, you created a `slug` which you used to create a unique URL. The function `document.URL.slice(document.URL.lastIndexOf("/") + 1)` gets the part of the URL after the last slash (e.g., from the URL `localhost:3000/note/yajdzfr2w78`, it extracts `yajdzfr2w78`) and that gets loaded as the `docId` into the editor on creation. This is important because the `docId` enables other users to join the same editing session. Essentially, all TextSync editors with the same `docId` belong to the same editing session.
 
 * `element`: This is the DOM element that will contain the text editor. This may be either a CSS selector or a reference to the element object.
 
@@ -411,7 +411,7 @@ For a broader list of the configuration properties, visit the [official TextSync
 
 ## Implementing your Express App
 
-In this section, you will focus on the server side of your application. First, you will create a file called `variables.env` to hold your environment variables. Add this file in the project root and then add two variables into it:
+In this section, you will focus on the server side of your application. First, you will create a file called `variables.env` to hold your environment variables. Add this file in the project root and then add two variables to it:
 
 ```bash
 INSTANCE_LOCATOR=<YOUR_INSTANCE_LOCATOR>
@@ -422,7 +422,7 @@ KEY=<YOUR_SECRET_KEY>
 
 After that, you will have to create a file called `server.js` in the project root. This file will contain your server's code. As the file will be a bit long, you will go through it step by step for easier comprehension.
 
-First, your file will import the packages you installed previously and it will create an Express server:
+First, your file will import the packages you installed previously, and it will create an Express server:
 
 ```js
 const path = require('path');
@@ -473,7 +473,7 @@ As you can see, first, you configure your server to tell browsers that it accept
 1. `express.static`: This middleware makes your Express app serve files under the `assets` directory as static files (i.e., it makes your Express app simply return their values without any modification when requested).
 2. `bodyParser.urlencoded`: This makes your Express app parse `urlencoded` bodies.
 3. `bodyParser.json`: This makes your Express app parse JSON bodies.
-4. `session`: This middleware makes your Express app provide session to your users (for a production-ready app, you will want to change the value passed to `secret`).
+4. `session`: This middleware makes your Express app provide a session to your users (for a production-ready app, you will want to change the value passed to `secret`).
 
 After configuring this file, you will add some routes to your server:
 
@@ -498,11 +498,11 @@ app.get('/note/:slug', loggedIn, (req, res) => {
 });
 ```
 
-In this case, the first thing you are doing is defining a custom middleware that will check if incoming requests have an active session. If they don't you redirect them to the `/login` route. After that, you are defining three routes:
+In this case, the first thing you are doing is defining a custom middleware that will check if incoming requests have an active session. If they don't, you redirect them to the `/login` route. After that, you are defining three routes:
 
 1. `/`: This route makes your server render the `index.pug` file (`res.render('index', ...)`) with the logged in user (`req.session.user`). As you remember, the `index.pug` file is a view that renders a form so users can create new editing sessions.
 2. `/note`: When the form in `index.pug` is submitted, a POST request is made to this route, which sends along the `slug`. This route retrieves this value from `req.body.slug` and uses it to create a new, unique route. The user is then redirected to this new route.
-3. `/note/:slug`: This is the new route created and also where the collaboration takes place. The `:slug` in this route represents the unique slug defined previously. This route is unique to each editing session and anyone invited to join a particular session does so through this route.
+3. `/note/:slug`: This is the new route created and also where the collaboration takes place. The `:slug` in this route represents the unique slug defined previously. This route is unique to each editing session, and anyone invited to join a particular session does so through this route.
 
 ### TextSync User Authorization
 
@@ -565,7 +565,7 @@ After informing these values to Auth0, you can hit the _Create_ button. Clicking
 
 ![Configuring your Auth0 Application](https://cdn.auth0.com/blog/pusher-textsync/configuring-the-auth0-application.png)
 
-Now that you are on the _Settings_ tab, search for a field called _Allowed Callback URLs_. In this field, add `http://localhost:3000/callback`. In case your are wondering, what this field does is to add an extra layer of security by telling Auth0 that the only URL allowed to be called back after authentication is the ones you input there. When releasing your app to the world, you will have to change from `localhost` to your public domain. But that is not the case here.
+Now that you are on the _Settings_ tab, search for a field called _Allowed Callback URLs_. In this field, add `http://localhost:3000/callback`. In case you are wondering, what this field does is to add an extra layer of security by telling Auth0 that the only URL allowed to be called back after authentication is the ones you input there. When releasing your app to the world, you will have to change from `localhost` to your public domain. But that is not the case here.
 
 Then, after adding this URL into the field mentioned, you can hit the _Save Changes_ button. With that in place, open your `variables.env` file and update it as follows:
 
@@ -629,7 +629,7 @@ app.listen(process.env.PORT || 3000, () => {
 
 As you can see by the comments, the first two lines configure `passport` middleware in your `app`. After that, you define two functions to serialize and deserialize `user` instances to and from the session. Then, you configure Auth0 and Passport together by calling `Auth0Strategy` and passing your environment variables to it. With that in place, you add two new endpoints:
 
-1. `/login`: When users hit this endpoint, your server will redirect them to the [Auth0 Login Page](https://auth0.com/docs/hosted-pages/login) so they can log in.
+1. `/login`: When users hit this endpoint, your server will redirect them to the [Auth0 Login Page](https://auth0.com/docs/hosted-pages/login), so they can log in.
 2. `/callback`: After these users authenticate on Auth0, they get redirected to this endpoint (i.e., to `http://localhost:3000/callback`). So, in this endpoint, you finish the integration with Auth0 by passing the request through Passport (`passport.authenticate`) and by setting the user session (`req.session.user`).
 
 Lastly, you start your Express server by making it listen to port `3000`.
