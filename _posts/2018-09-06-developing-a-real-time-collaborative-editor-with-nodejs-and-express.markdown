@@ -83,11 +83,9 @@ The app that you will build won't be complex. As such, the directory structure o
 
 ```bash
 + assets
- - css
- - main.css
-+ js
  - app.js
- - views
+ - main.css
++ views
  - editor.pug
  - index.pug
  - layout.pug
@@ -230,7 +228,7 @@ block content
   script(type="text/javascript").
     var user = "#{user.displayName}";
   script(type="text/javascript" src="https://static.pusherplatform.com/textsync/us1/textsync.js")
-  script(type="text/javascript" src="/assets/app.js")
+  script(type="text/javascript" src="/app.js")
 ```
 
 In this case, you are defining that the `editor.pug` file will use two scripts:
@@ -652,3 +650,6 @@ Wondering how the collaborative editing works? Copy the unique URL you got and o
 
 ## Conclusion
 
+In this article, you learned how to create a collaborative, real-time editor where different users can work on the same document at the same time. To do so, you used tools like Node.js, Express, Pusher, and Auth0. Although the example is simple and it does not persist the edited content on databases, it was enough to give you a pretty solid foundation to build production-ready and secure applications that have real-time capabilities.
+
+What do you think? Did you enjoy using this tools? Let me know in the comments box below!
