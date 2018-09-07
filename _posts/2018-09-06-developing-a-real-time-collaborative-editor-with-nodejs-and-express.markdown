@@ -8,7 +8,7 @@ date: 2018-09-06 07:48
 category: Technical Guide, First Application, Pusher
 post_length: 2
 author:
-  name: Godson
+  name: Obielum Godson
   url: https://twitter.com/devGson
   mail: "godsonobielum@yahoo.com"
   avatar: https://pbs.twimg.com/profile_images/1022409389272129536/YObVPEqr.jpg
@@ -577,85 +577,78 @@ AUTH0_CLIENT_SECRET=<YOUR-CLIENT-SECRET>
 
 > **Note:** You will have to replace `<YOUR-CLIENT-ID>`, `<YOUR-DOMAIN>`, and `<YOUR-CLIENT-SECRET>` with the values that Auth0 shows for the application you created there. That is, you will have to replace these placeholders with _Client ID_, _Domain_, and _Client Secret_ respectively.
 
-### Authentication with Passport
-Passport is an authentication middleware for Node, it makes use of strategies eg Local strategy for local username and password or social strategies e.g Facebook or Twitter,etc.. In this article we'll make use of the Auth0 strategy using the `passport-auth0` package.
+### Setting Up Auth0 in your Code
 
-Paste the code below and we'll go into the details after;
+To integrate your backend server with Auth, you will use [Passport.js](http://www.passportjs.org/) and the `passport-auth0` library. As you already installed both, you can focus on the code. So, in your `server.js` file, add the following code:
 
 ```js
-server.js
-  ...
+// ... the code above ...
 
-// This middleware is required to initialize passport
+// this middleware is required to initialize passport
 app.use(passport.initialize());
 
-//We use sessions in our application so this middleware is required
+// as you use sessions in your server this middleware is required
 app.use(passport.session());
 
-//Serialize the User into the session
-passport.serializeUser( (user, done) => {
+// middleware that serializes the user into the session
+passport.serializeUser((user, done) => {
   done(null, user);
 });
 
-passport.deserializeUser( (user, done) => {
+// middleware that deserializes user's info
+passport.deserializeUser((user, done) => {
   done(null, user);
 });
 
-// Passport middleware that initializes the Auth0 strategy
+// passport middleware that initializes the Auth0 strategy
 passport.use(new Auth0Strategy({
-domain: process.env.AUTH0_DOMAIN,
-clientID: process.env.AUTH0_CLIENT_ID,
-clientSecret: process.env.AUTH0_CLIENT_SECRET,
-callbackURL: 'http://localhost:3000/callback'
+  domain: process.env.AUTH0_DOMAIN,
+  clientID: process.env.AUTH0_CLIENT_ID,
+  clientSecret: process.env.AUTH0_CLIENT_SECRET,
+  callbackURL: 'http://localhost:3000/callback'
 }, (accessToken, refreshToken, extraParams, profile, done) => {
-// accessToken is useful if we're calling the Auth0 API(not needed in this article)
 // profile contains the information of the user
-return done(null, profile);
+  return done(null, profile);
 }));
 
-app.get('/login', passport.authenticate('auth0',{
+app.get('/login', passport.authenticate('auth0', {
   //The scope parameter determines the user information the server sends
-  scope: "openid profile"
-}) );
+  scope: 'openid profile',
+}));
 
 app.get('/callback', passport.authenticate('auth0'), (req, res) => {
   req.session.user = req.user;
-  res.redirect('/')
+  res.redirect('/');
 });
 
 //Listen to connections on port 3000
 app.listen(process.env.PORT || 3000, () => {
   console.log("Server listening on port 3000.");
 });
-
 ```
 
-In order to use an authentication strategy, we must must first configure it. So let's configure the Auth0 strategy, we do that using the `passport.use()` function. The Auth0 strategy takes in a several required arguments and a verify callback function we'll use later.
+As you can see by the comments, the first two lines configure `passport` middleware in your `app`. After that, you define two functions to serialize and deserialize `user` instances to and from the session. Then, you configure Auth0 and Passport together by calling `Auth0Strategy` and passing your environment variables to it. With that in place, you add two new endpoints:
 
-All users are authenticated through the `/login` route, when a user tries to log in they're immediately redirected to an Auth0 page to log in through one of the identity providers. 
-If that is successful, Auth0 will redirect the user to the callback route/URL(`http://localhost:3000/callback`) we provided when setting up the Auth0 strategy. This route contains middleware that triggers Passport to authenticate the request.
+1. `/login`: When users hit this endpoint, your server will redirect them to the [Auth0 Login Page](https://auth0.com/docs/hosted-pages/login) so they can log in.
+2. `/callback`: After these users authenticate on Auth0, they get redirected to this endpoint (i.e., to `http://localhost:3000/callback`). So, in this endpoint, you finish the integration with Auth0 by passing the request through Passport (`passport.authenticate`) and by setting the user session (`req.session.user`).
 
-When Passport authenticates a request, it parses the credentials contained in the request and invokes the verify callback function we configured in our Auth0 strategy with these credentials as arguments--five arguments to be precise. In this article we're only interested in the `profile` argument as that contains the user profile. So we call the `done` function passing along the authenticated user's profile as the second argument, the user profile is attached to the request object and sent to the next middleware. 
-
-We then retrieve the user profile from the request object, store these details in the session and then redirect the user to the `/` route where they can create new editing sessions.
-
-For more information about Passport, how it works and other available strategies, visit the [docs](http://www.passportjs.org/docs/authenticate/).
-
-And that's all for the user authentication, the last thing we'll do is run our app and see how it works. To keep this article short and fairly simple, we'll test our application locally
-and in the second part of this article we'll deploy to a hosted service such as heroku.
+Lastly, you start your Express server by making it listen to port `3000`.
 
 ## Testing our app
-In the project directory run :
 
-```bashmdir
-$ node server.js
+That's it. With these last changes to `server.js`, your app is ready for prime time. So, back in your terminal, issue this command:
+
+```bash
+node server
 ```
 
-With the server up and running, visit `localhost:3000/` in the browser and then log in.
+Then, open [`http://localhost:3000/`](http://localhost:3000/) in a web browser. There, you will see that you get redirected to Auth0 so you can log in and, after logging in, you will see a screen where you can start an editing session.
 
-When you're done with that, create a new note, a new editing session will be created and you'll be redirected to a new URL. We're running this locally so in order to test this, copy the URL of the already created editing session, open up a different browser, paste the link, sign in and you can start contributing!.
+![TextSync app up and running locally.](https://cdn.auth0.com/blog/pusher-textsync/textsync-app-up-and-running.png)
 
-****** GIF of the application ******
+Now, if you a define a title for your editing session and hit the create button, you will be redirected to the screen where you can start editing the new document.
+
+Wondering how the collaborative editing works? Copy the unique URL you got and open on another browser. Then, after authenticating, paste the URL again (this time you will have an active session) and you will be able to see that two users are on the current editing session. Cool, isn't it?
 
 ## Conclusion
-We've been able to build an application with TextSync and uncover the powerful feature it provides. We went further and added user authentication to our application. In the second part of this article we'll deploy our application to a service such as Heroku and truly collaborate from anywhere in the world!.
+
