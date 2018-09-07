@@ -52,6 +52,10 @@ Given that our data sizes are tiny, we're still very comfortable with just a few
 
 > As explained by David Beaumont from IBM on the article [_How to explain vertical and horizontal scaling in the cloud_](https://www.ibm.com/blogs/cloud-computing/2014/04/09/explain-vertical-horizontal-scaling-cloud/), **vertical scaling** can essentially resize our server with no change to our code while **horizontal scaling** affords the ability to scale wider to deal with traffic.
 
+<p style="text-align: center;">
+  <img src="https://cdn.auth0.com/blog/how-we-store-data-in-the-cloud-at-auth0/scalability.png" alt="Vertical and horizontal server scalability">
+</p>
+
 Each MongoDB cluster has six nodes:
 
 - 1 Primary on the main region
