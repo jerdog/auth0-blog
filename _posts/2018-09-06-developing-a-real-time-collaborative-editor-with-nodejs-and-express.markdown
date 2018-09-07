@@ -435,7 +435,7 @@ const Auth0Strategy = require('passport-auth0');
 const TextSync = require('textsync-server-node');
 
 // Load the enviromental variables into process.env
-require("dotenv").config({ path: "variables.env" });
+require('dotenv').config({ path: 'variables.env' });
 
 const app = express();
 app.set('view engine', 'pug');
@@ -450,8 +450,8 @@ Now, you will make your Express app use some middleware:
 
 // allow access from a different origin
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   next();
 });
 
@@ -462,7 +462,7 @@ app.use(bodyParser.json());
 
 // you make use of sessions to keep track of logged in users
 app.use(session({
-  secret: "--ENTER CUSTOM SESSION SECRET--",
+  secret: '--ENTER CUSTOM SESSION SECRET--',
   resave: false,
   saveUninitialized: false
 }));
@@ -481,7 +481,7 @@ After configuring this file, you will add some routes to your server:
 // ... the code above ...
 
 function loggedIn(req, res, next) {
-  req.session.user ? next() : res.redirect("/login");
+  req.session.user ? next() : res.redirect('/login');
 }
 
 app.get('/', loggedIn, (req, res) => {
@@ -505,20 +505,23 @@ In this case, the first thing you are doing is defining a custom middleware that
 3. `/note/:slug`: This is the new route created and also where the collaboration takes place. The `:slug` in this route represents the unique slug defined previously. This route is unique to each editing session and anyone invited to join a particular session does so through this route.
 
 ### TextSync User Authorization
-Remember, when we configured our TextSync editor, we added a property `authEndpoint` that supposedly handles TextSync authorization, what this means is that any user that intends to join an editing session must be authorized through this endpoint, this is done to ensure maximum flexibility while also keeping the document secure, but how exactly is this done?
 
-When a user tries to join an editing session, a POST request is made to this endpoint. The server(ours) then responds with a secure token describing the rights and permissions the user has to the document they are trying to access. The token is signed with a shared secret and so if it get's modified in any way, the token becomes invalid. The TextSync library then sends this token along when making a request to the TextSync server and if all goes well, the user is allowed to access the document with the appropriate rights and permissions exclusive to that user.
+Remember that, while configuring the TextSync editor, you added a property called `authEndpoint` to handle TextSync authorization? What this means is that any user that intends to join an editing session must be authorized through this endpoint. But how?
 
-Let's implement the route that handles this authorization next;
+When a user tries to join an editing session, a POST request is made to this endpoint. The server (yours) then responds with a secure token describing the rights and permissions that the user has in relation to the document they are trying to access. The TextSync library then sends this token along when making a request to the TextSync server (Pusher's) and, if all goes well, the user is allowed to access the document with the appropriate rights and permissions exclusive to that user.
+
+With that in mind, what you have to do next is to implement, in your Express server, an endpoint that will decide whether users are allowed or not to join a session. To do so, add the following code at the bottom of the `server.js` file:
 
 ```js
+// ... the code above ...
+
 const textSync = new TextSync({
   instanceLocator: process.env.INSTANCE_LOCATOR,
   key: process.env.KEY
 });
   
 app.post('/textsync/tokens', (req, res) => {
-  // Certain Users can be restricted to either READ or WRITE access on the document
+  // certain users can be restricted to either READ or WRITE access on the document
   // to keep this demo simple, all users are granted READ and WRITE access to the document
   const permissionsFn = () => {
     return Promise.resolve([
@@ -527,7 +530,7 @@ app.post('/textsync/tokens', (req, res) => {
     ]);
   };
 
-  // Set authentication token to expire in 20 minutes
+  // set authentication token to expire in 20 minutes
   const options = { tokenExpiry: 60 * 20 };
 
   textSync.authorizeDocument(req.body, permissionsFn, options)
@@ -537,11 +540,11 @@ app.post('/textsync/tokens', (req, res) => {
 });
 ```
 
-That's all for the TextSync authorization.
+As you can see, the first change you made to your server is related to creating a `textSync` object with your environment keys. This is the object that you will use to communicate with your TextSync instance at Pusher. After that, you defined the `/textsync/tokens` endpoint so your frontend app can issue the POST requests, as previously configured.
 
-> ***Note*** : The TextSync authorization we implemented above was basic, but if you plan on implementing something more complex, visit the [TextSync docs](https://docs.pusher.com/textsync/authorization)
+What is interesting about this endpoint is that it defines a function called `permissionsFn` to define what type of access users will have. For the sake of simplicity, you defined that all users will have the `READ` and `WRITE` permissions. However, if you are going to keep enhancing your app after you finish this article, you will probably want to add some logic in this specific function to be more restrictive somehow.
 
-Lastly, we'll set up user authentication, Auth0 handles this seamlessly.
+Lastly, you made the new endpoint call `authorizeDocument` to generate a new token to your user so the can join the editing session. This token is then sent back as a response to the POST request submitted by the frontend app.
 
 ## Authentication with Auth0
 ### What is Auth0
