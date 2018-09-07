@@ -546,32 +546,36 @@ What is interesting about this endpoint is that it defines a function called `pe
 
 Lastly, you made the new endpoint call `authorizeDocument` to generate a new token to your user so the can join the editing session. This token is then sent back as a response to the POST request submitted by the frontend app.
 
-## Authentication with Auth0
-### What is Auth0
-Auth0 provides authentication and authorization as a service. This means we could easily add authentication to our application without being concerned about the nitty-gritty of security, Auth0 handles all of this for us. Auth0 offers a variety of identity providers eg Social connections(Twitter,facebook,etc..), passwordless and a lot more. These identity providers are simply strategies in which users leverage to log in to our application and become authenticated. We can then hook this up to our application through one of the Auth0 SDK's(or our API). More information about Auth0 can be found [here](www.auth0.com).
+## Handling Authentication
 
-### Setting up an Auth0 account
-We'll need an Auth0 account to manage authentication. Sign up for a free Auth0 account [here](https://auth0.com/signup). After that, we'll create an Auth0 application, think of this as 
-similar to an instance, This will interface with our local application and enable us track and manage users amongst other things. This application also provides a client ID, secret key and a few other required values that'll be useful in setting up authentication.
+So far, you haven't actually secured your application. In the previous section, you did add an endpoint that handles _authorization_, but _authentication_ is something different. Authenticating users means recognizing them, authorizing users means allowing them to do stuff. So, in other words, what you did so far is to simply add an endpoint that allows any visitor to join any editing session in your app.
 
-### Creating an Auth0 application
-1. After Signing up, go to the Auth0 Dashboard and click the *New application* button.
-2. Name the new app, don't choose any *Application Type*, then click the *Create* button.
-3. Go to the *Settings* tab of the newly created application, add `http://localhost:3000/callback` to the `Allowed Callback URLs` field. Finally, copy the `Domain`, `Client ID`, `Client Secret` values and add those to the `variables.env` file.
+As such, now, you will have to handle authentication and, for that, you will use Auth0.
 
-```js
-variables.env
+### Setting Up an Auth0 Account
 
-AUTH0_CLIENT_ID={YOUR CLIENT_ID}
-AUTH0_DOMAIN={YOUR DOMAIN}
-AUTH0_CLIENT_SECRET={YOUR CLIENT_SECRET}
+For starter, you will have to <a href="https://auth0.com/signup" data-amp-replace="CLIENT_ID" data-amp-addparams="anonId=CLIENT_ID(cid-scope-cookie-fallback-name)">sign up for a free Auth0 account</a>. After signing up, you will head to [the _Applications_ section on your dashboard](https://manage.auth0.com/#/applications) and hit the _Create Application_ button. After clicking on this button, Auth0 will show you a dialog where it will ask you for two things:
+
+1. The _Name_ of your application: Here, you can add any descriptive name. For example: "Collaborative Real-Time Editor".
+2. The _Application Type_: For this, you will have to choose _Regular Web Applications_.
+
+![Creating an Auth0 Application](https://cdn.auth0.com/blog/pusher-textsync/creating-an-auth0-application.png)
+
+After informing these values to Auth0, you can hit the _Create_ button. Clicking on it will make Auth0 redirect you to the _Quick Start_ section of your new application. From there, you can head to the _Settings_ tab, where you will configure your app.
+
+![Configuring your Auth0 Application](https://cdn.auth0.com/blog/pusher-textsync/configuring-the-auth0-application.png)
+
+Now that you are on the _Settings_ tab, search for a field called _Allowed Callback URLs_. In this field, add `http://localhost:3000/callback`. In case your are wondering, what this field does is to add an extra layer of security by telling Auth0 that the only URL allowed to be called back after authentication is the ones you input there. When releasing your app to the world, you will have to change from `localhost` to your public domain. But that is not the case here.
+
+Then, after adding this URL into the field mentioned, you can hit the _Save Changes_ button. With that in place, open your `variables.env` file and update it as follows:
+
+```bash
+AUTH0_CLIENT_ID=<YOUR-CLIENT-ID>
+AUTH0_DOMAIN=<YOUR-DOMAIN>
+AUTH0_CLIENT_SECRET=<YOUR-CLIENT-SECRET>
 ```
 
-4. Click the "Save Changes" button.
-
-Let's set up some social connections. Go to the Auth0 Dashboard, then click on the *Connections* tab and enable some connections. In our application we'll use the Github, Twitter and Google social connections.
-
-That's all, let's go ahead and hook this up to our application.
+> **Note:** You will have to replace `<YOUR-CLIENT-ID>`, `<YOUR-DOMAIN>`, and `<YOUR-CLIENT-SECRET>` with the values that Auth0 shows for the application you created there. That is, you will have to replace these placeholders with _Client ID_, _Domain_, and _Client Secret_ respectively.
 
 ### Authentication with Passport
 Passport is an authentication middleware for Node, it makes use of strategies eg Local strategy for local username and password or social strategies e.g Facebook or Twitter,etc.. In this article we'll make use of the Auth0 strategy using the `passport-auth0` package.
