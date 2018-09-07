@@ -34,6 +34,8 @@ related:
 
 **TL;DR:** In this article, you will learn how to build a real-time, collaborative note editor application that enables multiple users to work on the same document simultaneously. To create this app, you will use tools like Node.js, Express, Pusher, and Auth0. If needed, [you can find the code of the final app in this GitHub repository](https://github.com/auth0-blog/collaborative-real-time-editor).
 
+{% include tweet_quote.html quote_text="Building real-time, collaborative apps is easy with the right tools." %}
+
 ## What Will you Build?
 
 As you can guess by the title of the article, you are going to build a real-time, web editor that enables different users to work on the same document from different places collaboratively. That is, you and one or more friends (for example) will be able to type and edit the same document at the same time. Just like if you were editing a Google Docs word but built by yourself. How cool is that?
@@ -647,6 +649,8 @@ Then, open [`http://localhost:3000/`](http://localhost:3000/) in a web browser. 
 Now, if you a define a title for your editing session and hit the create button, you will be redirected to the screen where you can start editing the new document.
 
 Wondering how the collaborative editing works? Copy the unique URL you got and open on another browser. Then, after authenticating, paste the URL again (this time you will have an active session) and you will be able to see that two users are on the current editing session. Cool, isn't it?
+
+{% include tweet_quote.html quote_text="I just built real-time, collaborative web editor. So awesome and so easy!" %}
 
 ## Conclusion
 
