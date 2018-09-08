@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "Developing a Real-Time, Collaborative Editor with Node.js and Express"
-metatitle: "Developing a Real-Time, Collaborative Editor with Node.js"
+title: "Developing a Real-Time, Collaborative Editor with Pusher"
+metatitle: "Developing a Real-Time, Collaborative Editor with Pusher"
 description: "Learn how to develop a real-time web app that enables multiple users to work on the same document with ease."
-metadescription: "Learn how to use Node.js and Express to develop a real-time web app that enables multiple users to work on the same document with ease."
+metadescription: "Learn how to use Pusher, Auth0, Node.js and Express to develop a real-time web app that enables multiple users to work on the same document with ease."
 date: 2018-09-06 07:48
 category: Technical Guide, First Application, Pusher
 post_length: 2
@@ -16,9 +16,9 @@ design:
   bg_color: "#333333"
   image: https://cdn.auth0.com/blog/logos/node.png
 tags:
+- pusher
 - node.js
 - express
-- pusher
 - auth0
 - real-time
 - collaborative
