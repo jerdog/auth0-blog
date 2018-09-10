@@ -175,6 +175,9 @@ For the query to return this response, a couple of things such as resolvers, a f
 Resolvers provide the instructions for turning a GraphQL operation into data. They are organized into a one to one mapping to the fields in a GraphQL schema. Without much ado, let's add an in-app memory data source!
 
 
+{% include tweet_quote.html quote_text="Resolvers provide the instructions for turning a GraphQL operation into data." %}
+
+
 ```bash
 
 const books = [
@@ -271,6 +274,9 @@ npm install apollo-server graphql lodash
 ```
 
 > [Apollo Server](https://www.apollographql.com/docs/apollo-server) provides GraphQL schemas written with it the privilege to be deployed anywhere that other Node.js projects can be deployed. It also has variants, such as apollo-server-express, apollo-server-hapi, apollo-server-koa and others to support serverless deployment with AWS Lambda. Apollo Server has built-in support for GraphQL subscriptions, powerful error handling tools, schema stitching, file uploads, mocking, schema directives and easy monitoring integration.
+
+
+{% include tweet_quote.html quote_text="Apollo Server provides GraphQL schemas written with it the privilege to be deployed anywhere that other Node.js projects can be deployed." %}
 
 The full `server.js` should look like this now:
 
@@ -454,9 +460,7 @@ const Book = db.models.book;
 export { Author, Book };
 ```
 
-In the code above, we initialized our database, created the `Author` and `Book` models, established the relationship, and built a seeder for provisioning the database with initial data!
-
-Install `casual`:
+In the code above, we initialized our database, created the `Author` and `Book` models, established the relationship, and built a seeder for provisioning the database with initial data! What do we do next? Go ahead and install `casual`:
 
 ```
 npm install casual
@@ -528,28 +532,20 @@ Mutation: {
 * `Book.create` -  Creates a new book, writes it to the database and returns the details of the new book that was just created.
 
 
-
 ### Build The Frontend
 
-We'll use ReactJS to build the frontend. Go ahead and flesh out a new app.
+We'll use ReactJS library to build the frontend. Create a new app like so:
 
-If you dont have the [CRA tool](https://github.com/facebookincubator/create-react-app), go ahead and install it globally:
-
-```bash
-
-npm install -g create-react-app
-
-```
 
 After installing globally, go ahead and scaffold a new **ReactJS** app like so:
 
 ```bash
 
-create-react-app rottentomatoes
+create-react-app coolreads
 
 ```
 
-> **Note:** We have a custom React script that comes bundled with Auth0 authentication. So you can use create-react-app to boostrap an app with authentication support like this `create-react-app my-app --scripts-version auth0-react-scripts`
+**Note:** If you dont have the [CRA tool](https://github.com/facebookincubator/create-react-app), go ahead and install it globally, `npm install -g create-react-app`.
 
 
 Then open [`http://localhost:3000`](http://localhost:3000) to see your app.
@@ -558,14 +554,107 @@ Then open [`http://localhost:3000`](http://localhost:3000) to see your app.
 
 **Note:** `create-react-app` automatically invokes Yarn for installation. If you don't have Yarn installed, it falls back to use npm.
 
-## Build the Nav Component
+Before we start fleshing out new components, we'll set up `Apollo Client` in our React app. The simplest way to get started with Apollo Client is by using Apollo Boost, a starter kit that configures your client for you with our recommended settings. Apollo Boost includes packages that we think are essential for building an Apollo app, like our in memory cache, local state management, and error handling. It’s also flexible enough to handle features like authentication.
 
-The `Nav.js` file is our Nav component. Go ahead and add code to it like so:
+Install the following packages:
+
+```bash
+npm install apollo-boost react-apollo graphql --save
+```
+
+* **apollo-boost:** Package containing everything you need to set up Apollo Client.
+* **react-apollo:** View layer integration for React.
+* **graphql:** Also parses your GraphQL queries.
+
+We'll need to do some routing and styling in this app. Go ahead and install the following:
+
+```bash
+npm install tachyons react-router react-router-dom --save
+```
+
+* **tachyons:** is a CSS toolkit for styling applications
+* **react-router-dom:** is a router library for react
+
+## Setup Apollo Client and Routing
+
+Open up `index.js` and rewrite the code to be this:
 
 ```js
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from "./App";
+import { BrowserRouter } from 'react-router-dom';
+import ApolloClient from "apollo-boost";
+import { ApolloProvider } from "react-apollo";
 
+import 'tachyons';
+import './index.css';
+
+import registerServiceWorker from './registerServiceWorker';
+
+const client = new ApolloClient({
+  uri: "http://localhost:4000/graphql"
+});
+
+ReactDOM.render(
+  <BrowserRouter>
+    <ApolloProvider client={client}>
+      <App />
+    </ApolloProvider>
+  </BrowserRouter>,
+  document.getElementById('root')
+);
+
+registerServiceWorker();
+```
+
+To connect Apollo Client to React, you will need to use the `ApolloProvider` component exported from `react-apollo` like we did in the code above. The `ApolloProvider` is similar to React’s `context` provider. It wraps your React app and places the client on the context, which allows you to access it from anywhere in your component tree.
+
+In the code above, we also configured routing by using the `BrowserRoute` component to wrap the `ApolloProvider ` component in the render method.
+
+Open up `App.js` and rewrite the code to be this:
+
+```js
 import React, { Component } from 'react';
-import { Link } from 'react-router';
+import {Route, withRouter} from 'react-router-dom';
+import Nav from './components/Nav';
+import ListBook from './components/ListBook';
+import CreateBook from './components/CreateBook';
+import './App.css';
+
+class App extends Component {
+
+  render() {
+    return (
+      <div>
+        <Nav />
+        <Route exact path='/' component={ListBook} />
+        <Route exact path='/create' component={CreateBook} />
+      </div>
+    );
+  }
+}
+
+export default withRouter(App);
+```
+
+Next, let's start building our components. We need to build 4 major components:
+
+* **CreateBook:** This component will be for uploading a reviewed book.
+* **ListBook:** This component will be for listing all the reviewed books.
+* **Nav:** This component will be strictly for navigation.
+* **Callback:** This special component is for handling authentication while retrieving tokens from the Auth0 server. You'll understand why this component later in the tutorial.
+
+
+These components will reside in a `src/components` directory. Go ahead and create that directory.
+
+## Build the Nav Component
+
+Create a `Nav.js` file in the `src/components` directory. This will house the Nav component. Go ahead and add code to it like so:
+
+```js
+import React, { Component } from 'react';
+import { Link, withRouter } from 'react-router-dom';
 import '../App.css';
 
 class Nav extends Component {
@@ -574,362 +663,230 @@ class Nav extends Component {
     return (
       <nav className="navbar navbar-default">
         <div className="navbar-header">
-          <Link className="navbar-brand" to="/">Rotten Tomatoes</Link>
+          <Link className="navbar-brand" to="/">COOL READS</Link>
         </div>
         <ul className="nav navbar-nav">
           <li>
-            <Link to="/">All Movie Ratings</Link>
+            <Link to="/">All Book Ratings</Link>
           </li>
           <li>
-           <Link to="/create">Add New Movies</Link>
+            <Link to="/create">Upload a Rated Book</Link>
           </li>
         </ul>
         <ul className="nav navbar-nav navbar-right">
           <li><button className="btn btn-info log">Log In</button></li>
-          <li><button className="btn btn-danger log">Log out </button></li>
         </ul>
       </nav>
     );
   }
 }
 
-export default Nav;
-
+export default withRouter(Nav);
 ```
 
-**Note:** Open up your terminal and install `react-router` like so: `npm install react-router@3.0.0 --save`. At the time of this writing, `react-router` is in 4.0 alpha, so you can explore its features.
+**Note:** The `withRouter` is a HOC that allows a component to have access to the history object's properties. It will pass updated `match`, `location`, and `history` props to the wrapped component whenever it renders. Once we add authentication to this app, you'll understand why it's useful. For now, don't think too much about it, just flow with the tutorial.
 
-## Build the DisplayMovie and CreateMovie Component
+## Build the ListBook and CreateBook Component
 
-The `DisplayMovie` component will be responsible for displaying the details of each movie. Create a `components/DisplayMovie.js` file and the following code:
+The `ListBook` component will be responsible for displaying the details of each book. Create a `components/CreateBook.js` file and add the following code:
 
 ```js
-
-import React from 'react'
+import React from 'react';
+import { Query } from "react-apollo";
+import { gql } from "apollo-boost";
 import '../App.css';
 
-class DisplayMovie extends React.Component {
-
-  render () {
-    return (
-
-      <div className='pa3 bg-black-05 ma3'>
-        <div
-        {% raw %}
-          style={{
-            backgroundImage: `url(${this.props.movie.imageUrl})`,
-            backgroundSize: 'cover',
-            paddingBottom: '100%',
-          }}
-        {% endraw %}
-        />
-        <div>
-          <div className='movie'>
-            <h3><span className='movie-title'>Movie Title: </span> {this.props.movie.description}&nbsp; </h3>
-            <h2><span className='movie-title'>Rating: </span> { this.props.movie.avgRating }% </h2>
-          </div>
-        </div>
-      </div>
-    )
-  }
-}
-
-
-export default DisplayMovie
-
-```
-
-In the code above, you can see how we access the properties of the movie schema in form of props. You'll get to know how it works that way soon.
-
-The `CreateMovie` component will be responsible for adding new movies to our platform. So go ahead and create a `components/CreateMovie.js` file. Add the following code to it:
-
-```js
-
-import React from 'react'
-import { withRouter } from 'react-router'
-import { graphql } from 'react-apollo'
-import gql from 'graphql-tag'
-import Nav from './Nav';
-
-class CreateMovie extends React.Component {
-
-  state = {
-    description: '',
-    imageUrl: '',
-    avgRating: 0,
-  }
-
-  render () {
-    return (
-      <div>
-        <Nav />
-        <h3 className="text-center"> Add Rotten Movie Ratings!</h3>
-        <hr/>
-        <div className='w-100 pa4 flex justify-center'>
-        {% raw %}
-          <div style={{ maxWidth: 400 }} className=''>
-        {% endraw %}
-            <label> Movie Title: </label>
-            <input
-              className='w-100 pa3 mv2'
-              value={this.state.description}
-              placeholder='Title of the movie'
-              onChange={(e) => this.setState({description: e.target.value})}
-            />
-            <label> Movie Cover Image: </label>
-            <input
-              className='w-100 pa3 mv2'
-              value={this.state.imageUrl}
-              placeholder='Image Url'
-              onChange={(e) => this.setState({imageUrl: e.target.value})}
-            />
-            <label> Movie Rating as decided by Popular votes: </label>
-            <input
-              className='w-100 pa3 mv2'
-              value={this.state.avgRating}
-              type="number"
-              placeholder='Average Rating'
-              onChange={(e) => this.setState({avgRating: parseInt(e.target.value)})}
-            />
-
-            {this.state.imageUrl &&
-              <img src={this.state.imageUrl} role='presentation' className='w-100 mv3' />
-            }
-            {this.state.description && this.state.imageUrl &&
-              <button className='btn btn-info btn-lg' onClick={this.handleMovie}>Add New Movie</button>
-            }
-          </div>
-        </div>
-      </div>
-    )
-  }
-
-  handleMovie = () => {
-    const {description, imageUrl, avgRating} = this.state
-    this.props.addMovie({ description, imageUrl, avgRating })
-      .then(() => {
-        this.props.router.push('/')
-    })
-  }
-}
-
-const addMutation = gql`
-  mutation addMovie($description: String!, $imageUrl: String!, $avgRating: Int!) {
-    createMovie(description: $description, imageUrl: $imageUrl, avgRating: $avgRating) {
+const LIST_BOOKS = gql`
+  query AllBooks {
+    books {
       id
-      description
-      imageUrl
-      avgRating
+      title
+      cover_image_url
+      average_rating
     }
   }
 `
 
-export default graphql(addMutation, {
-  props: ({ ownProps, mutate }) => ({
-    addMovie: ({ description, imageUrl, avgRating }) =>
-      mutate({
-        variables: { description, imageUrl, avgRating },
-      })
-  })
-})(withRouter(CreateMovie))
+export default () => (
+  <Query query={LIST_BOOKS}>
+    {({ loading, error, data }) => {
+      if (loading) return <p>Loading...</p>;
+      if (error) return <p>Error...</p>;
 
-```
-
-In the code above, we have new buddies. The `graphql-tag` and `react-apollo` packages. Apollo is a GraphQL client. Install these new packages like so:
-
-```
-npm install graphql-tag react-apollo apollo-client
-```
-
-**Note:** I added one more package for us to install via the terminal. The [Apollo Client](http://dev.apollodata.com/react). I'll explain what it does later on in the article.
-
-* `graphql-tag` provides functionality for parsing the JavaScript template literals that will contain our GraphQL queries and mutations.
-* `react-apollo` implements React-specific bindings for Apollo
-* `apollo-client` is one of the most popular GraphQL clients available. It makes interacting with a GraphQL backend seamless. It comes bundled with features like caching, query batching, and realtime updates via subscriptions.
-
-```js
-
-const addMutation = gql`
-  mutation addMovie($description: String!, $imageUrl: String!, $avgRating: Int!) {
-    createMovie(description: $description, imageUrl: $imageUrl, avgRating: $avgRating) {
-      id
-      description
-      imageUrl
-      avgRating
-    }
-  }
-`
-
-```
-
-This code above represents a new mutation with `gql`.
-
-```js
-
-export default graphql(addMutation, {
-  props: ({ ownProps, mutate }) => ({
-    addMovie: ({ description, imageUrl, avgRating }) =>
-      mutate({
-        variables: { description, imageUrl, avgRating },
-      })
-  })
-})(withRouter(CreateMovie))
-
-```
-
-This code above injects the `addMovie` function to the props of our `CreateMovie` component and makes it possible for a create operation query to happen on the backend with the values of the movie `description`, `imageUrl` and `avgRating`. Adding mutations to React components is similar to adding queries, but instead of injected data, functions are injected for each mutation. It's that simple!
-
-## Build the ListMovie Component
-
-The `ListMovie` component will be responsible for displaying the list of movies on the landing page. Create a `components/ListMovie.js` file and the following code:
-
-```js
-
-import React from 'react'
-import DisplayMovie from './DisplayMovie'
-import { graphql } from 'react-apollo'
-import gql from 'graphql-tag'
-import Nav from './Nav';
-
-class ListMovie extends React.Component {
-
-  render () {
-
-    if (this.props.data.loading) {
-      return (<div>Loading</div>)
-    }
-
-    return (
-      <div>
-        <Nav />
-        <h3 className="text-center"> Latest Rotten Movie Ratings!</h3>
-        <hr/>
+      return (
         <div className="col-sm-12">
-          {this.props.data.allMovies.map((movie, index) => (
-            <div className="col-sm-4" key={index}>
-              <DisplayMovie key={movie.id} movie={movie} refresh={() => this.props.data.refetch()} />
-            </div>
-          ))}
+          {!loading &&
+            data.books.map(book => (
+              <div className="col-sm-4" key={book.id}>
+                <div className='pa3 bg-black-05 ma3'>
+                  <div
+                  {% raw %}
+                    style={{
+                      backgroundImage: `url(${book.cover_image_url})`,
+                      backgroundSize: 'cover',
+                      paddingBottom: '100%',
+                    }}
+                  {% endraw %}
+                  />
+                  <div>
+                    <div className='book'>
+                      <h3 align="center"> { book.title }&nbsp; </h3>
+                      <h4 align="center">Average Rating:  { book.average_rating } / 10 </h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
         </div>
-      </div>
-    )
-  }
-}
-
-const FeedQuery = gql`query allMovies {
-  allMovies(orderBy: createdAt_DESC) {
-    id
-    description
-    imageUrl
-    avgRating
-  }
-}`
-
-export default graphql(FeedQuery)(ListMovie)
-
+      );
+    }}
+  </Query>
+);
 ```
 
-This component above is responsible for displaying the list of movies on the landing page.
+Let's analyze the code above carefully:
 
-This query fetches all the movies from Graphcool and orders them.
+* **Query**: The `Query` component from `react-apollo` is a React component that uses the _render prop_ pattern to share GraphQL data with your UI.
+* **gql**: The `gql` function is a JavaScript template tag that parses GraphQL queries into an abstract syntax tree (AST).
+
+Then the query, _LIST_BOOKS_, is for querying the GraphQL API for the list of books available:
 
 ```js
-
-const FeedQuery = gql`query allMovies {
-  allMovies(orderBy: createdAt_DESC) {
-    id
-    description
-    imageUrl
-    avgRating
+const LIST_BOOKS = gql`
+  query AllBooks {
+    books {
+      id
+      title
+      cover_image_url
+      average_rating
+    }
   }
-}`
-
+`
 ```
 
-## Set up Apollo Client and Routing
+**Note:** The query operation name, `AllBooks`, is very useful for logging and debugging when something goes wrong in a GraphQL server.
 
-Open up `src/index.js` and modify the code to be like so:
+In the function below the query, we passed the GraphQL query to the `query` prop on the `Query` component. Then, we provided a function to the Query component’s children prop to determine what to render, which Query will call with an object containing `loading`, `error`, and `data` properties. Apollo Client tracks error and loading state for you, which will be reflected in the loading and error properties. Once the result of your query comes back, it will be attached to the `data` property.
+
+Now, let's create the `CreateBook` component! Create a `components/CreateBook.js` file and add the following code to it:
 
 ```js
-
 import React from 'react';
-import ReactDOM from 'react-dom';
-import ListMovie from './components/ListMovie'
-import CreateMovie from './components/CreateMovie'
-import { Router, Route, browserHistory } from 'react-router'
-import ApolloClient, { createNetworkInterface } from 'apollo-client'
-import { ApolloProvider } from 'react-apollo'
-import 'tachyons'
-import './index.css';
-import registerServiceWorker from './registerServiceWorker';
-import { requireAuth } from './utils/AuthService';
+import { Mutation } from "react-apollo";
+import { gql } from "apollo-boost";
 
-
-const networkInterface = createNetworkInterface({
-  uri: 'https://api.graph.cool/simple/v1/cj4j8xezmtdvv0130l95q2gkk'
-})
-
-// For Authentication
-networkInterface.use([{
-  applyMiddleware (req, next) {
-    if (!req.options.headers) {
-      req.options.headers = {}
+const ADD_BOOK = gql`
+  mutation addBook($title: String!, $cover_image_url: String!, $average_rating: Float!, $authorId: Int!){
+    addBook(title: $title, cover_image_url: $cover_image_url, average_rating: $average_rating, authorId: $authorId){
+      id
+      title
+      cover_image_url
+      average_rating
     }
-    // get the authentication token from local storage if it exists
-    if (localStorage.getItem('id_token')) {
-      req.options.headers.authorization = `Bearer ${localStorage.getItem('id_token')}`
-    }
-    next()
-  },
-}])
+  }
+`
 
-const client = new ApolloClient({
-  networkInterface
-})
+export default () => (
+  <Mutation mutation={ADD_BOOK} onCompleted={() => window.location.href="/" }>
+      {(addBook, { data, loading, error }) => (
+        <div>
+          <div className='w-100 pa4 flex justify-center'>
+            <form
+              onSubmit={e => {
+                e.preventDefault();
+                addBook({ variables: {
+                  title: this.title.value,
+                  cover_image_url: this.coverImage.value,
+                  average_rating: parseFloat(this.rating.value),
+                  authorId: parseInt(this.authorId.value)
+                }});
 
-ReactDOM.render((
-  <ApolloProvider client={client}>
-    <Router history={browserHistory}>
-      <Route path='/' component={ListMovie} />
-      <Route path='/create' component={CreateMovie} />
-    </Router>
-  </ApolloProvider>
-  ), document.getElementById('root'));
-registerServiceWorker();
+                this.title.value = "";
+                this.coverImage.value = "";
+                this.rating.value = "";
+                this.authorId.value = "";
+              }}
+            >
 
+            <div style={{ maxWidth: 400 }} className=''>
+              <label> Book Title: </label>
+              <input
+                className='w-100 pa3 mv2'
+                type="text"
+                required
+                placeholder='Title of the book'
+                ref={node => this.title = node} />
+
+              <label> Book Cover Image: </label>
+              <input
+                className='w-100 pa3 mv2'
+                type="url"
+                required
+                placeholder='Image Url'
+                ref={node => this.coverImage = node} />
+
+              <label> Book Rating as decided by Popular votes: </label>
+              <input
+                className='w-100 pa3 mv2'
+                type="number"
+                required
+                min="1"
+                max="10"
+                placeholder='Average Rating'
+                ref={node => this.rating = node} />
+
+              <label> Author: </label>
+              <select
+                ref={select => this.authorId = select}
+                name="authorId" required>
+                <option value="">Select an author</option>
+                <option value="1">Wole Soyinka</option>
+                <option value="2">Tomi Adeyemi</option>
+                <option value="3">Chimamanda Adichie</option>
+              </select>
+            </div>
+            {loading && <p>Loading...</p> }
+            {error && <p>Error :( Please try again</p>}
+
+            <button type="submit">Add Book</button>
+            </form>
+          </div>
+        </div>
+      )}
+  </Mutation>
+);
 ```
 
-Let's take a good look at the code above. It's very important to understand what is happening here. The call to our GraphQL backend is made possible here.
+Let's analyze the code above carefully:
+
+* **Mutation**: The `Mutation` component from `react-apollo` is a React component that uses the _render prop_ pattern to trigger mutations from your UI. React will call the _render prop_ function you provide with a mutate function and an object with your mutation result containing `loading`, `error`, and `data` properties
+
+Then the `Mutation` query, _ADD_BOOK_, is for mutating the GraphQL API:
 
 ```js
-
-const networkInterface = createNetworkInterface({
-  uri: 'https://api.graph.cool/simple/v1/cj4j8xezmtdvv0130l95q2gkk'
-})
-
+const ADD_BOOK = gql`
+  mutation addBook($title: String!, $cover_image_url: String!, $average_rating: Float!, $authorId: Int!){
+    addBook(title: $title, cover_image_url: $cover_image_url, average_rating: $average_rating, authorId: $authorId){
+      id
+      title
+      cover_image_url
+      average_rating
+    }
+  }
+`
 ```
 
-Replace the `uri` with your Graphcool endpoint. A network interface is created and passed to the Apollo Client. Now, the `ApolloProvider` is wrapping our Router to ensure that all child components can access the functionality from Apollo Client to send queries and perform mutations.
+In the function below the `Mutation`, we passed the mutation query to the `mutation` prop on the `Mutation` component.
 
-```js
-// For Authentication
-networkInterface.use([{
-  applyMiddleware (req, next) {
-    if (!req.options.headers) {
-      req.options.headers = {}
-    }
-    // get the authentication token from local storage if it exists
-    if (localStorage.getItem('id_token')) {
-      req.options.headers.authorization = `Bearer ${localStorage.getItem('id_token')}`
-    }
-    next()
-  },
-}])
-```
+The mutate function optionally takes `variables`, `optimisticResponse`, `refetchQueries`, and `update`; however, you can also pass in those values as props to the `Mutation` component. In the form, the mutate function, `addBook`, is used to submit the form with variables from the form itself.
 
-The code above is for authentication purposes. This ensures that only an authenticated person can perform a certain operation. We'll go into more details in the authentication section.
+The second argument to the render prop function is an object with your mutation result on the `data` property, as well as booleans for loading and if the mutate function was called, in addition to error. If you’d like to ignore the result of the mutation, pass ignoreResults as a prop to the mutation component.
 
-One more thing. We need to reference bootstrap for styling. Add the link to bootstrap in `public/index.html` file.
+In the code above, we passed a `onCompleted` prop to the `Mutation` component. The function passed to this prop is invoked when the mutation has finished execution. And in our app, it simply redirects to the root route once the mutation completes.
+
+## Styling
+
+We need to reference bootstrap for styling. Add the link to bootstrap in `public/index.html` file.
 
 ```bash
 ...
@@ -937,184 +894,310 @@ One more thing. We need to reference bootstrap for styling. Add the link to boot
 ...
 ```
 
-Modify the `src/App.css` file to contain the code [here](https://github.com/auth0-blog/rottentomatoes-clone/blob/master/src/App.css).
+Modify the `src/App.css` file to contain the code [here](https://github.com/auth0-blog/book-app-client/blob/master/src/App.css).
 
-Now, run your app. There should be nothing on the landing page because you haven't added any movies. Head over to the `/create` URL and add a new movie.
+Now, run your app. There should be a list of books on the landing page. The existing data from our backend is fetched and rendered on our client app.
 
-![Add movies](https://cdn.auth0.com/blog/rottentomatoes/addmovies.png)
+![List books](https://cdn.auth0.com/blog/coolreads/landing-page.png)
 
-Add a few movies. Now your landing page should look like this:
+Try, to add a book by going to the `/create` route and using the form:
 
-![List movies](https://cdn.auth0.com/blog/rottentomatoes/list.png)
+![Create book](https://cdn.auth0.com/blog/coolreads/createbook.png)
 
-Awesome! Right now, everyone can view and create movies. Next, let's make sure only authenticated users can add movies.
+Awesome! Right now, you can create books. Next, let's make sure only authenticated users can add books.
 
-## Add Authentication to Your App
+## Secure your GraphQL API with Auth0
 
-Auth0 allows us to issue [JSON Web Tokens (JWTs)](https://jwt.io). If you don't already have an Auth0 account, <a href="https://auth0.com/signup" data-amp-replace="CLIENT_ID" data-amp-addparams="anonId=CLIENT_ID(cid-scope-cookie-fallback-name)">sign up</a> for a free one now.
-
-Login to your Auth0 [management dashboard](https://manage.auth0.com) and create a new client. Change the **Client Type** to `Regular Web Application` and **Token Endpoint Authentication Method** to `Basic`. Scroll down to `Advanced Settings > OAuth`, ensure the **JsonWebToken Signature Algorithm** is set to `HS256`.
-
-### Create the Auth Service
-
-We'll create an authentication service to handle everything about authentication in our app. Go ahead and create an `AuthService.js` file inside the `utils` directory.
-
-Before we add code, you need to install `jwt-decode` and `auth0-js` node packages like so:
+Auth0 allows us to easily add authentication to applications. Let's get started with securing our GraphQL API. Open your GraphQL API terminal and install the following libraries:
 
 ```bash
-
-npm install jwt-decode auth0-js --save
-
+npm install jsonwebtoken jwks-rsa --save
 ```
 
-Open up the `AuthService.js` file and add code to it like so:
+* **[jsonwebtoken](https://github.com/auth0/node-jsonwebtoken)**: JsonWebToken implementation for Node.js
+* **[jwks-rsa](https://github.com/auth0/node-jwks-rsa)**: A library to retrieve RSA public keys from a JWKS (JSON Web Key Set) endpoint.
+
+Open up `src/server.js` and import them:
 
 ```js
-import decode from 'jwt-decode';
-import { browserHistory } from 'react-router';
-import auth0 from 'auth0-js';
-const ID_TOKEN_KEY = 'id_token';
-
-const CLIENT_ID = '{AUTH0_CLIENT_ID}';
-const CLIENT_DOMAIN = 'AUTH0_DOMAIN';
-const REDIRECT = 'YOUR_CALLBACK_URL';
-const SCOPE = 'openid email profile';
-const AUDIENCE = 'https://<AUTH0_DOMAIN>/userinfo';
-
-var auth = new auth0.WebAuth({
-  clientID: CLIENT_ID,
-  domain: CLIENT_DOMAIN
-});
-
-export function login() {
-  auth.authorize({
-    responseType: 'id_token',
-    redirectUri: REDIRECT,
-    audience: AUDIENCE,
-    scope: SCOPE
-  });
-}
-
-export function logout() {
-  clearIdToken();
-  clearProfile();
-  browserHistory.push('/');
-}
-
-export function requireAuth(nextState, replace) {
-  if (!isLoggedIn()) {
-    replace({pathname: '/'});
-  }
-}
-
-export function getIdToken() {
-  return localStorage.getItem(ID_TOKEN_KEY);
-}
-
-function clearIdToken() {
-  localStorage.removeItem(ID_TOKEN_KEY);
-}
-
-function clearProfile() {
-  localStorage.removeItem('profile');
-  localStorage.removeItem('userId');
-}
-
-// Helper function that will allow us to extract the id_token
-export function getAndStoreParameters() {
-  auth.parseHash(window.location.hash, function(err, authResult) {
-    if (err) {
-      return console.log(err);
-    }
-
-    setIdToken(authResult.idToken);
-  });
-}
-
-export function getEmail() {
-  return getProfile().email;
-}
-
-export function getName() {
-  return getProfile().nickname;
-}
-
-// Get and store id_token in local storage
-function setIdToken(idToken) {
-  localStorage.setItem(ID_TOKEN_KEY, idToken);
-}
-
-export function isLoggedIn() {
-  const idToken = getIdToken();
-  return !!idToken && !isTokenExpired(idToken);
-}
-
-export function getProfile() {
-  const token = decode(getIdToken());
-  return token;
-}
-
-function getTokenExpirationDate(encodedToken) {
-  const token = decode(encodedToken);
-  if (!token.exp) { return null; }
-
-  const date = new Date(0);
-  date.setUTCSeconds(token.exp);
-
-  return date;
-}
-
-function isTokenExpired(token) {
-  const expirationDate = getTokenExpirationDate(token);
-  return expirationDate < new Date();
-}
+const { ApolloServer, gql, AuthenticationError } = require('apollo-server');
+const jwt = require('jsonwebtoken');
+const jwksClient = require('jwks-rsa');
+...
+...
 ```
 
-In the code above, we are using an hosted version of Auth0 in the `login` method and passed in our credentials.
+Now, let's add the code to verify a token:
 
-The auth0 package calls the Auth0's `authorize` endpoint. With all the details we passed to the method, our client app will be validated and authorized to perform authentication. You can learn more about the specific values that can be passed to the authorize method [here](https://auth0.com/docs/libraries/auth0js/v8#login).
+```js
+const { ApolloServer, gql, AuthenticationError } = require('apollo-server');
+const jwt = require('jsonwebtoken');
+const jwksClient = require('jwks-rsa');
+const { find, filter } = require('lodash');
+import { Author, Book } from './store';
 
-The parameters that you do not have yet are the `{AUTH0_CLIENT_ID}` and the `{YOUR_CALLBACK_URL}`. Copy the **CLIENT ID** of your newly created client on the Auth0 dashboard and replace it with the value of `AUTH0_CLIENT_ID` in the variable `CLIENT_ID`. Replace your callback url with `http://localhost:3000/callback`. Don't forget to add that to the **Allowed Callback URLs** and `http://localhost:3000` to the **Allowed Origins (CORS)**.
+
+const client = jwksClient({
+  jwksUri: `https://<YOUR_AUTH0_DOMAIN>/.well-known/jwks.json`
+});
+
+function getKey(header, cb){
+  client.getSigningKey(header.kid, function(err, key) {
+    var signingKey = key.publicKey || key.rsaPublicKey;
+    cb(null, signingKey);
+  });
+}
+
+const options = {
+  audience: '<YOUR_AUTH0_CLIENT_ID>',
+  issuer: `https://<YOUR_AUTH0_DOMAIN>/`,
+  algorithms: ['RS256']
+};
+
+...
+```
+
+Replace `<YOUR_AUTH0_DOMAIN>` with the value in the **Domain** field of your Auth0 application (e.g. `kabiyesi.auth0.com`). Also, replace the `<YOUR_AUTH0_CLIENT_ID>` placeholder with the value presented in the **Client ID** field of your Auth0 Application.
+
+In GraphQL, there's no set standard on how to perform authentication and authorization for APIs. However, Apollo has an [excellent guide for access control in GraphQL](https://www.apollographql.com/docs/guides/access-control.html).
+
+One of the ways of adding authentication to GraphQL APIs according to the guide is putting user information on the **context**. Let's go ahead and do that right away!
+
+_src/server.js_
+
+```js
+...
+...
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  context: ({ req }) => {
+    // simple auth check on every request
+    const token = req.headers.authorization;
+    const user = new Promise((resolve, reject) => {
+      jwt.verify(token, getKey, options, (err, decoded) => {
+        if(err) {
+          return reject(err);
+        }
+        resolve(decoded.email);
+      });
+    });
+
+    return {
+      user
+    };
+  },
+});
+
+...
+```
+
+In the Apollo Server constructor above, we pass a function to build our `context` object. The context object is one that gets passed to every single resolver at every level, so we can access it anywhere in our schema code. It’s where we can store things like data fetchers, database connections, and information about the user making the request.
+
+Since the context is generated again with every new request, we don’t have to worry about cleaning up user data at the end of execution.
+
+The context function here looks at the request headers, pulls off the header named authorization, and stores it to a `token` variable. It then calls the `jwt.verify` method to validate the token by using the `getKey` callback. A promise is resolved with the user's email if the token is valid and a promise is rejected with an error if the token is not a valid one. After that, it returns a context object containing the (potential) user, for all of our resolvers to use.
+
+Now, let's get the user from the context object in our Mutation resolver!
+
+```js
+const { ApolloServer, gql, AuthenticationError } = require('apollo-server');
+
+...
+...
+...
+const resolvers = {
+  ...
+
+  Mutation: {
+    addBook: async (_, {title, cover_image_url, average_rating, authorId }, { user }) => {
+       try {
+        const email = await user; // catching the reject from the user promise.
+        const book = await Book.create({
+          title: title,
+          cover_image_url: cover_image_url,
+          average_rating: average_rating,
+          authorId: authorId
+        });
+
+        return book;
+       } catch(e) {
+           throw new AuthenticationError('You must be logged in to do this');
+       }
+    }
+  }
+};
+```
+
+The third argument in a resolver is the `context` object. In the code above, we retrieved `{ user }` passed from the context in Apollo Server constructor in the `addBook` resolver.
+
+```js
+const email = await user;
+```
+
+This line of code above waits for the user promise to resolve and stores the email of the user in an `email` variable. If there's an error, the `catch` block gets the error and throws an `AuthenticationError`. Wait a minute? Where's the `AuthenticationError` coming from? We imported it from Apollo Server.
+
+Apollo Server 2.0 provides a couple of predefined errors, including `AuthenticationError`, `ForbiddenError`, `UserInputError` and a generic `ApolloError`. These errors are designed to enhance errors thrown before and during GraphQL execution. The provided errors focus on debugging a Apollo server as well as enabling the client to take specific action based on an error. When an [error occurs in Apollo server both inside and outside of resolvers](https://blog.apollographql.com/full-stack-error-handling-with-graphql-apollo-5c12da407210), each error inside of the errors array will contain an object at extensions that contains the information added by Apollo server.
+
+Now, run your server and try to perform a mutation with a fake token!
+
+![GraphQL API error](https://cdn.auth0.com/blog/coolreadsapi/errors.png)
+_GraphQL API Error_
+
+## Secure your React App
+
+Auth0 allows us to easily add authentication to applications. Login to your Auth0 [management dashboard](https://manage.auth0.com) and create a [new application](https://manage.auth0.com/#/applications). In the dialog shown, enter the name and select **Single Page Application** as its type**
+
+![Select Application](https://cdn.auth0.com/blog/coolreads/selectapp.png)
+_Select application_
+
+![Check Settings](https://cdn.auth0.com/blog/coolreads/settings.png)
+_Grab client id_
+
+In the Settings tab, add `http://localhost:3000/callback` in the **Allowed Callback URLs** and `http://localhost:3000` to the **Allowed Origins (CORS)**.
 
 Ensure you also replace the value of `<AUTH0_DOMAIN>` in `const AUDIENCE = 'https://<AUTH0_DOMAIN>/userinfo';` to your auth0 domain.
 
-We also checked whether the token has expired via the `getTokenExpirationDate` and `isTokenExpired` methods. The `isLoggedIn` method returns `true` or `false` based on the presence and validity of a user `id_token`.
+### Create the Auth Service
 
-Finally, we implemented a middleware, the `requireAuth` method. We'll use this method to protect the `/special` route from being accessed for non-loggedIn users.
+We'll create an authentication service to handle everything about authentication in our app. Go ahead and create an `Auth.js` file in the root directory.
+
+Before we add code, you need to install `auth0-js` package like so:
+
+```bash
+npm install auth0-js --save
+```
+
+Open up the `Auth.js` file and add code to it like so:
+
+```js
+import auth0 from 'auth0-js';
+
+class Auth {
+  constructor() {
+    this.auth0 = new auth0.WebAuth({
+      domain: '<YOUR_AUTH0_DOMAIN>',
+      clientID: '<YOUR_AUTH0_CLIENT_ID>',
+      redirectUri: 'http://localhost:3000/callback',
+      audience: 'https://<YOUR_AUTH0_DOMAIN>/userinfo',
+      responseType: 'token id_token',
+      scope: 'openid email'
+    });
+
+    this.login = this.login.bind(this);
+    this.logout = this.logout.bind(this);
+    this.handleAuthentication = this.handleAuthentication.bind(this);
+    this.isAuthenticated = this.isAuthenticated.bind(this);
+  }
+
+  login() {
+    this.auth0.authorize();
+  }
+
+  getIdToken() {
+    return this.idToken;
+  }
+
+  handleAuthentication() {
+    return new Promise((resolve, reject) => {
+      this.auth0.parseHash((err, authResult) => {
+        if (err) return reject(err);
+        if (!authResult || !authResult.idToken) {
+          return reject(err);
+        }
+        this.setSession(authResult);
+        resolve();
+      });
+    })
+  }
+
+  setSession(authResult) {
+    this.idToken = authResult.idToken;
+    console.log(this.idToken);
+    // set the time that the id token will expire at
+    this.expiresAt = authResult.expiresIn * 1000 + new Date().getTime();
+  }
+
+  logout() {
+    this.auth0.logout({
+      returnTo: 'http://localhost:3000',
+      clientID: '<YOUR_AUTH0_CLIENT_ID>',
+    });
+  }
+
+  silentAuth() {
+    return new Promise((resolve, reject) => {
+      this.auth0.checkSession({}, (err, authResult) => {
+        if (err) return reject(err);
+        this.setSession(authResult);
+        resolve();
+      });
+    });
+  }
+
+  isAuthenticated() {
+    // Check whether the current time is past the token's expiry time
+    return new Date().getTime() < this.expiresAt;
+  }
+}
+
+const auth = new Auth();
+
+export default auth;
+```
+
+**Note:** Replace the `<YOUR_AUTH0_CLIENT_ID>` and `<YOUR_AUTH0_DOMAIN>` with the values from your Auth0 application.
+
+Let's analyze what's going on in the authentication code above:
+
+* **constructor:** An instance of `auth0.WebAuth` is created and initialized with your Auth0 values and define some other important configurations. For example, you are defining that Auth0 will redirect users (redirectUri) to the `http://localhost:3000/callback` URL (the same one you inserted in the Allowed Callback URLs field previously).
+* **getIdToken:** This method returns the `idToken` generated by Auth0 for the current user.
+* **handleAuthentication:** This is the method that your app will call right after the user is redirected from Auth0. This method simply reads the hash segment of the URL to fetch the user details and the id token.
+* **isAuthenticated:** This method returns whether there is an authenticated user or not.
+* **login:** This method initializes the authentication process. This method sends your users to the Auth0 login page.
+* **logout:** This method signs a user out.
 
 Let's go update the `Nav` component to hide/show the `login` and `logout` buttons based on the user's authentication status.
 
-Now, your `Nav` component should look like this:
+Now, your `Nav` component should be refactored to look like this:
 
 ```js
 import React, { Component } from 'react';
-import { Link } from 'react-router';
-import { login, logout, isLoggedIn } from '../utils/AuthService';
+import { Link, withRouter } from 'react-router-dom';
+import auth from '../Auth';
 import '../App.css';
 
 class Nav extends Component {
+
+  constructor(props){
+    super(props);
+  }
+
+  logout = () => {
+    auth.logout();
+    this.props.history.replace('/');
+  };
 
   render() {
     return (
       <nav className="navbar navbar-default">
         <div className="navbar-header">
-          <Link className="navbar-brand" to="/">Rotten Tomatoes</Link>
+          <Link className="navbar-brand" to="/">COOL READS</Link>
         </div>
         <ul className="nav navbar-nav">
           <li>
-            <Link to="/">All Movie Ratings</Link>
-
+            <Link to="/">All Book Ratings</Link>
           </li>
           <li>
             {
-              ( isLoggedIn() ) ? <Link to="/create">Add Movies</Link> :  ''
+              ( auth.isAuthenticated() ) ? <Link to="/create">Upload a Rated Book</Link> :  ''
             }
           </li>
         </ul>
         <ul className="nav navbar-nav navbar-right">
           <li>
             {
-             (isLoggedIn()) ? ( <button className="btn btn-danger log" onClick={() => logout()}>Log out </button> ) : ( <button className="btn btn-info log" onClick={() => login()}>Log In</button> )
+             (auth.isAuthenticated()) ? (<button className="btn btn-danger log" onClick={() => this.logout()}>Log out </button>) : (<button className="btn btn-info log" onClick={() => auth.login()}>Log In</button>)
             }
           </li>
         </ul>
@@ -1123,207 +1206,166 @@ class Nav extends Component {
   }
 }
 
-export default Nav;
+export default withRouter(Nav);
 ```
-
-We imported `login`, `logout` and `isLoggedIn` functions from the `AuthService`. Then, we attached the `login()` and `logout()` functions to the `login` and `logout` buttons respectively.
-
-We also hid the `/create` link by checking the authentication status of the user via the `isLoggedIn()` function.
 
 ### Add A Callback Component
 
-We will create a new component and call it `Callback.js`. This component will be activated when the `localhost:3000/callback` route is called and it will process the redirect from Auth0 and ensure we received the right data back after a successful authentication. The component will store the `id_token`.
+We will create a new component in the `src/components` directory and call it `Callback.js`. This component will be activated when the `localhost:3000/callback` route is called and it will process the redirect from Auth0 and ensure we received the right data back after a successful authentication.
 
 _Callback.js_
 
 ```js
-import { Component } from 'react';
-import { withRouter } from 'react-router'
-import { getAndStoreParameters, getIdToken, getEmail, getName } from '../utils/AuthService';
-import { graphql } from 'react-apollo'
-import gql from 'graphql-tag'
+import React, { Component } from 'react';
+import {withRouter} from 'react-router-dom';
+import loading from '../loading.svg';
+import auth from '../Auth';
 
 class Callback extends Component {
 
-  componentDidMount() {
-    getAndStoreParameters();
-    this.createUser();
-  }
-
-  createUser = () => {
-    const variables = {
-      idToken: getIdToken(),
-      email: getEmail(),
-      name: getName()
-    }
-
-    this.props.createUser({ variables })
-      .then((response) => {
-          console.log("Response from create user", response);
-          localStorage.setItem('userId', response.data.createUser.id);
-          this.props.router.replace('/')
-      }).catch((e) => {
-        console.error("Error of life ", e)
-        this.props.router.replace('/')
-      })
+  async componentDidMount() {
+    await auth.handleAuthentication();
+    this.props.history.replace('/');
   }
 
   render() {
-    return null;
+    const style = {
+      position: 'absolute',
+      display: 'flex',
+      justifyContent: 'center',
+      height: '100vh',
+      width: '100vw',
+      top: 0,
+      bottom: 0,
+      left: 0,
+      right: 0,
+      backgroundColor: 'white',
+    }
+
+    return (
+      <div style={style}>
+        <img src={loading} alt="loading"/>
+      </div>
+    );
   }
 }
 
-const createUser = gql`
-  mutation ($idToken: String!, $name: String!, $email: String!){
-    createUser(authProvider: {auth0: {idToken: $idToken}}, name: $name, email: $email) {
-      id
-    }
-  }
-`
-
-const userQuery = gql`
-  query {
-    user {
-      id
-    }
-  }
-`
-
-export default graphql(createUser, {name: 'createUser'})(
-  graphql(userQuery, { options: { fetchPolicy: 'network-only' }})(withRouter(Callback))
-)
+export default withRouter(Callback);
 ```
 
-Once a user is authenticated, Auth0 will redirect back to our application and call the `/callback` route. Auth0 will also append the `id_token` to this request, and our Callback component will make sure to properly process and store the token in localStorage. If all is well, meaning we received an `id_token`, we will be redirected back to the `/` page and will be in a logged-in state.
+Once a user is authenticated, Auth0 will redirect back to our application and call the `/callback` route. Auth0 will also append the `id_token` to this request, and our Callback component will make sure to properly process and store the token in the in-app memory. Then, the app will be redirected back to the `/` page and will be in a logged-in state.
 
-### Add some values to Auth0 Dashboard
-
-Just before you try to log in or sign up, head over to your [Auth0 dashboard](https://manage.auth0.com/#/) and add `http://localhost:3000/callback` to the **Allowed Callback URLs** and `http://localhost:3000` to **Allowed Origins (CORS)**.
-
-### Secure The Special Route
-
-We need to ensure that no one can go to the browser and just type `/create` to access the movie route.
-
-Open up `index.js` and add an `onEnter` prop with a value of `requireAuth` to the `/create` route like so:
-
-```js
-....
-....
-ReactDOM.render((
-  <ApolloProvider client={client}>
-    <Router history={browserHistory}>
-      <Route path='/' component={ListMovie} />
-      <Route path='/create' component={CreateMovie} onEnter={requireAuth} />
-      <Route path="/callback" component={Callback} />
-    </Router>
-  </ApolloProvider>
-  ), document.getElementById('root'));
-registerServiceWorker();
-
-```
-_index.js_
-
-Go ahead and login.
-
-![Lock Login Widget](https://cdn.auth0.com/blog/rottentomatoes/login.png)
-_Hosted Lock Login Widget_
-
-![Logged in Page](https://cdn.auth0.com/blog/rottentomatoes/loginout.png)
-_Logged in Page_
-
-Now you are logged in. Perfect!
-
-
-We have successfully handled authentication on the frontend, but something is missing. Our GraphQL endpoints are not secured. Anybody can get access to our endpoints and make fetch queries and mutations.
-
-### Secure GraphQL endpoints
-
-Head over to Graphcool. Thankfully, it ships with Permission systems and Auth0. Click on the `User System` as shown below. Also, click on the `Configure Auth Provider` highlighted below:
-
-![Configure Auth Provider](https://cdn.auth0.com/blog/rottentomatoes/configure-auth-provider.png)
-
-Click on Integrations and enable Auth0
-
-![Click on Integrations](https://cdn.auth0.com/blog/rottentomatoes/activate.png)
-
-![Integrations Dialog Box](https://cdn.auth0.com/blog/rottentomatoes/enable-auth0.png)
-
-Copy your Auth0 Client Credentials and paste it here.
-![Add Client Details](https://cdn.auth0.com/blog/rottentomatoes/add-client-details.png)
-
-After you are done correctly configuring and integrating Auth0, try to sign up a new user.
-
-A new user will be created in your graphcool dashboard. Remember our createUser mutation? Yes, it creates a new user in the graphcool backend.
-
-Now, head back to graphcool and click on Permissions. We need to restrict permission on the type of user that can perform certain operations.
-
-![Permissions](https://cdn.auth0.com/blog/rottentomatoes/permissions.png)
-
-Right now, everyone can create movies. Let's change that to ensure only authenticated users can!
-
-![Everyone can create movies](https://cdn.auth0.com/blog/rottentomatoes/everyonecreate.png)
-
-Click on the `Everyone` field and update it to make sure only `Authenticated` users can create.
-
-![Update permissions](https://cdn.auth0.com/blog/rottentomatoes/updatepermissions.png)
-
-Now, if a user isn't authenticated, he or she can't create movies.
-
-![Authenticated Users can create movies](https://cdn.auth0.com/blog/rottentomatoes/authenticatedcancreatemovies.png)
-
-Head back to your app. Open up `src/index.js` file and remove the `onEnter` hook for the `/create` route.
-
-Now, run your app and try to create a movie. Aha! Something went wrong, it doesn't work. Check your console.
-
-![Insufficient Permission](https://cdn.auth0.com/blog/rottentomatoes/insufficient-permission.png)
-
-GraphQL has now made it impossible for just any user to create a movie. You have to be authenticated to have the privilege. Let's fix that.
-
-Open the `createMovie.js` file and update it to send the userId of the logged-in user while creating a new movie:
+Now, go ahead and add the `/callback` route in `App.js`.
 
 ```js
 ...
-state = {
-    description: '',
-    imageUrl: '',
-    avgRating: 0,
-    reviewer: localStorage.getItem('userId')
-}
+import Callback from './components/Callback';
 ...
-...
-handleMovie = () => {
-    const {description, imageUrl, avgRating, reviewer } = this.state
-    this.props.addMovie({ description, imageUrl, avgRating, reviewer })
-      .then(() => {
-        this.props.router.push('/')
-    })
-}
 
-const addMutation = gql`
-  mutation addMovie($description: String!, $imageUrl: String!, $avgRating: Int!, $reviewer: ID!) {
-    createMovie(description: $description, imageUrl: $imageUrl, avgRating: $avgRating, reviewerId: $reviewer) {
-      id
-      description
-      imageUrl
-      avgRating
-    }
+class App extends Component {
+
+  render() {
+    return (
+      <div>
+        <Nav />
+        <Route exact path='/' component={ListBook} />
+        <Route exact path='/create' component={CreateBook} />
+        <Route exact path='/callback' component={Callback} />
+      </div>
+    );
   }
-`
+}
 
-export default graphql(addMutation, {
-  props: ({ ownProps, mutate }) => ({
-    addMovie: ({ description, imageUrl, avgRating, reviewer }) =>
-      mutate({
-        variables: { description, imageUrl, avgRating, reviewer },
-      })
-  })
-})(withRouter(CreateMovie))
+export default withRouter(App);
 ```
 
-Now, try to create a movie again. You'll discover that you can create a movie successfully without any issues.
+### Send Token Via Headers From Apollo Client
+
+Open `index.js` and modify it to be this:
+
+```js
+...
+...
+const client = new ApolloClient({
+  uri: "http://localhost:4000/graphql",
+  request: operation => {
+    operation.setContext(context => ({
+      headers: {
+        ...context.headers,
+        authorization: auth.getIdToken(),
+      },
+    }));
+  },
+});
+...
+```
+
+In the code above, we're setting the authorization header to the value of the `id_token` and sending it to the GraphQL API endpoint. Now try, to add a reviewed book again!
+
+### Keeping Users Signed In
+
+Right now, once you reload the application, the users automatically gets logged out because the user's credentials are stored in the app's memory. Let's keep the users logged in!
+
+We'll use the [Silent Authentication](https://auth0.com/docs/api-auth/tutorials/silent-authentication) provided by Auth0. Whenever your application is loaded, it will send a silent request to Auth0 to check if the current user (actually the browser) has a valid session. If they do, Auth0 will send back to you an `idToken` and an `idTokenPayload,` just like it does on the authentication callback.
+
+Head over to the [Applications section](https://manage.auth0.com/#/applications) of your Auth0 dashboard and update the following:
+
+* **Allowed Web Origins**: Add `localhost:3000` to the field. Without this value there, Auth0 would deny any AJAX request coming from your app.
+* **Social Connections**: Auth0 auto-configure all new accounts to use development keys registered at Google for the social login. We expect developers to replace these keys with theirs once they start using Auth0 in more capacity. Furthermore, every time an app tries to perform a silent authentication, and that app is still using the development keys, Auth0 returns that there is no session active (even though this is not true). Head over to the [Social connections on your dashboard](https://manage.auth0.com/#/connections/social), and update the _Client ID_ and _Client Secret_ fields with the new keys gotten from [Connect your app to Google documentation provided by Auth0.](https://auth0.com/docs/connections/social/google).
+
+**Note:** If you don't want to use your Google keys, you can deactivate this social connection and rely only on users that sign up to your app through [Auth0's Username and Password Authentication](https://manage.auth0.com/#/connections/database).
+
+Check out the `silentAuth` function in the `Auth.js` file:
+
+```js
+...
+silentAuth() {
+  return new Promise((resolve, reject) => {
+    this.auth0.checkSession({}, (err, authResult) => {
+      if (err) return reject(err);
+      this.setSession(authResult);
+      resolve();
+    });
+  });
+}
+...
+```
+
+This method is responsible for performing the Silent Authentication. It makes a request to AuthO's `checkSession` function and sets a new session. To make sure everything works properly, we need to update one more file.
+
+Head over to `src/components/Callback.js` and update it like so:
+
+```js
+import React, { Component } from 'react';
+import {withRouter} from 'react-router-dom';
+import loading from '../loading.svg';
+import auth from '../Auth';
+
+class Callback extends Component {
+
+  async componentDidMount() {
+    await auth.handleAuthentication();
+    this.props.history.replace('/');
+  }
+
+  render() {
+    ...
+  }
+}
+
+export default withRouter(Callback);
+```
+
+If the requested route is `/callback`, the app does nothing. This is the correct behavior because, when users are requesting for the `/callback` route, they do so because they are getting redirected by Auth0 after the authentication process. In this case, you can leave the Callback component handle the process.
+
+If the requested route is anything else, the app wants to try a `silentAuth`. Then, if no error occurs, the app calls `forceUpdate` so the user can see its name and that they are signed in.
+
+If there is an error on the `silentAuth`, the app checks if the error is `login_required`. If this is the case, the app does nothing because it means the user is not signed in (or that you are using development keys, which you shouldn't).
+
+If there is an error that is not `login_required`, the error is simply logged to the console. Actually, in this case, it would be better to notify someone about the error so they could check what is happening.
+
+Try to authenticate your app. Then, refresh your browser and you'll discover that you won't have to loose your session again. Perfect!
 
 ## Conclusion
 
-In this tutorial, we covered how easy it is to build a product with a backend like Graphcool and add authentication to it easily using Auth0.
-
-In addition, Auth0 can help secure your apps with more than just username-password authentication. It provides features like [multifactor auth](https://auth0.com/docs/multifactor-authentication), [anomaly detection](https://auth0.com/docs/anomaly-detection), [enterprise federation](https://auth0.com/docs/identityproviders), [single sign on (SSO)](https://auth0.com/docs/sso), and more. <a href="https://auth0.com/signup" data-amp-replace="CLIENT_ID" data-amp-addparams="anonId=CLIENT_ID(cid-scope-cookie-fallback-name)">Sign up</a> today so you can focus on building features unique to your app.
+In this tutorial, we covered how easy it is to build a product with a GraphQL using great tools like Apollo Client, Apollo Server, React and Auth0. What a time to be alive! If you want to learn more about using GraphQL, check out the [excellent Apollo guides](https://www.apollographql.com/docs/guides).
