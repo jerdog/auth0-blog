@@ -4,7 +4,7 @@ title: How Two-Factor Authentication (2FA) Can Help Financial Institutions Reduc
 description: "Getting customers to opt in is key."
 longdescription: "Despite the proven ability of 2FA to reduce the threat of a security breach, getting customers to opt in is key."
 date: 2018-06-18 14:50
-category: Growth, Security
+category: Business, Fintech, Multi-factor Authentication
 is_non-tech: true
 author:
   name: Martin Gontovnikas
