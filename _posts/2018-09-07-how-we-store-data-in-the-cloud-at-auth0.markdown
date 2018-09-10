@@ -132,4 +132,6 @@ Auth0 is growing, and it's growing _fast_. Two years ago we were happy with Elas
 
 As we increase in size and scale, we are focusing more and more on performance and reliability testing on the datastores we use and some that we might use in the future. We are starting to use tools like [AWS DynamoDB](https://aws.amazon.com/dynamodb/) for some secondary operations, and might test others ([RocksDB](https://rocksdb.org/)?) as we get new exciting use cases and features for our customers!
 
+{% include profile_card.html picture="https://cdn.auth0.com/blog/auziro/Dirceu-Tiegs.jpg" name="Dirceu Tiegs" title="Engineer" team="Site Reliability Engineering Team" location="Florianópolis, Brazil" body="The thing I like the most about working at Auth0 is that it allows me to deal with and learn from problems that only happen in a large scale environment. It's really exciting to work on scaling up complex projects to several thousands of requests per second!" %}
+
 {% include asides/about-auth0.markdown %}
