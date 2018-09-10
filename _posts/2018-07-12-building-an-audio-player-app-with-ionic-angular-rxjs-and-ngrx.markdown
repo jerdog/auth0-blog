@@ -3,7 +3,7 @@ layout: post
 title: "Building An Audio Player App with Ionic, Angular, RxJS, and NgRx"
 description: "Learn how to develop modern mobile apps with Angular, Ionic, RxJS and NgRx. Follow this tutorial to create a mobile audio player app."
 date: 2018-07-12 08:30
-category: Technical Guide, Deep Dive, Ionic, Angular
+category: Technical Guide, Deep Dive, Ionic
 author:
   name: "Indermohan Singh"
   url: "https://twitter.com/imsinghk7"
