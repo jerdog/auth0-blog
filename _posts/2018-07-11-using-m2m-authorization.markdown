@@ -3,7 +3,7 @@ layout: post
 title: "Using Machine to Machine (M2M) Authorization"
 description: "How to set up non-interactive apps using the client credentials grant and Auth0 to perform IoT device, CLI tool, and more machine to machine API authorization."
 date: 2018-07-11 08:30
-category: Technical Guide, Identity
+category: Technical Guide, Authentication, M2M
 post_length: 2
 author:
   name: Sebastián Peyrott
