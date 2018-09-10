@@ -3,7 +3,7 @@ layout: post
 title: Auth0 Bolsters Executive Team with New VP of Engineering
 description: Industry thought leader Christian McCarrick brings more than 20 years of experience
 date: 2018-07-30 08:12
-category: Announcements, Press
+category: PR, Hires, Engineering
 press_release: true
 is_non-tech: true
 author:
