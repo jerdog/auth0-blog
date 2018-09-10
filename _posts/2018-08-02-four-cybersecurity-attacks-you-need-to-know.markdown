@@ -3,7 +3,7 @@ layout: post
 title: "Four Cybersecurity Attacks Your Employees Need to Know"
 description: "Information and tools to help you mitigate risk against cyber attacks and data breaches. Learn more about Malware Infiltration, Phishing, USB Traps, and Mobile Attacks."
 date: 2018-08-02 8:30
-category: Security, Cybersecurity, Enterprise
+category: Hot Topics, Security, Vulnerabilities
 design: 
   bg_color: "#222228"
   image: https://cdn.auth0.com/blog/security-whitepaper/logo.png

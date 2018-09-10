@@ -4,7 +4,7 @@ title: "Are You GDPR-Ready?"
 description: "Cut through all the GDPR noise with Auth0's GDPR Assessment Tool that will measure your readiness across 26 specific areas governed by GDPR."
 longdescription: "Cut through all the GDPR noise with Auth0's GDPR Assessment Tool. Created with the help of legal compliance company Cordery Compliance, this tool will help you discover your percent of readiness across 26 specific areas provisioned in GDPR."
 date: 2018-02-09 8:30
-category: GDPR
+category: PR, Identity, GDPR
 is_non-tech: true
 banner:
   text: "Auth0 makes it easy to add authentication to your ___ application."

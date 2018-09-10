@@ -3,7 +3,7 @@ layout: post
 title: "Naranja Chooses Auth0 for Identity Management Across New Digital Offerings"
 description: "Argentina’s largest credit card issuer uses Auth0 for authentication of financial services"
 date: 2018-08-13 10:30
-category: Announcements, Press
+category: PR, Customers, Financial
 press_release: true
 is_non-tech: true
 author:

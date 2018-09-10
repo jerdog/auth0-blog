@@ -4,7 +4,7 @@ title: "Auth0 Joins the Google Cloud Partner Program"
 description: "Feature-rich end-to-end identity management service now available to all Google Cloud users."
 longdescription: "Feature-rich end-to-end identity management service now available to all Google Cloud users."
 date: 2018-02-12 8:30
-category: Announcements, Press
+category: PR, Program, Google Cloud
 press_release: true
 is_non-tech: true
 author:

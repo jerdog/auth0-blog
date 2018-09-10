@@ -3,7 +3,7 @@ layout: post
 title: Auth0 CISO Joan Pepin to Speak at WWC Portland Networking Night
 description: Auth0 CISO Joan Pepin to speak Women Who Code Portland’s Networking Night + leadership advice video.
 date: 2018-08-13 10:00
-category: Announcements, Press
+category: PR, Hires, Operations
 is_non-tech: true
 author:
   name: "Jenny O'Brien"

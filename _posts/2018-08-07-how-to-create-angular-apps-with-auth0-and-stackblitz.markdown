@@ -3,7 +3,7 @@ layout: post
 title: "Create Secure Angular Apps in the Cloud with StackBlitz and Auth0"
 description: "Learn how to create Angular applications secured by Auth0 using StackBlitz, an online cloud IDE for Angular and React web applications powered by Visual Studio Code."
 date: 2018-08-07 8:30
-category: Angular, Cloud, Authentication, Co-Marketing
+category: Technical Guide, First Application, Angular
 design: 
   bg_color: "#1A1A1A"
   image: https://cdn.auth0.com/blog/angular/logo3.png

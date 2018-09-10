@@ -4,7 +4,7 @@ title: "Webpack 4.0 Release: What's New?"
 description: "Webpack 4.0 has officially been released. What's new? What improvements were made? Learn how to build faster web applications with this new release."
 longdescription: "Webpack 4.0 is a major release to the most powerful module bundler for JavaScript applications. Legato (Webpack 4.0's codename) ships with notable additions and ensures build times are now about 98% faster."
 date: 2018-02-26 08:30
-category: Technical Guide, JavaScript, Webpack
+category: Technical Guide, Whats New, Webpack
 design:
   bg_color: "#165B91"
   image: https://cdn.auth0.com/blog/logos/webpack.png

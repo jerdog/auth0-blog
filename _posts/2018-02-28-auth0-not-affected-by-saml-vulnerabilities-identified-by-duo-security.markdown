@@ -4,7 +4,7 @@ title: "Auth0 Not Affected by SAML Vulnerabilities Identified by Duo Security"
 description: "Duo Security announced the discovery of a new class of SAML response vulnerability affecting SSO. Auth0 is not vulnerable to this issue."
 longdescription: "Duo Security announced the discovery SAML response vulnerabilities affecting SSO, allowing an authenticated attacker to impersonate another user. Auth0 as a Service Provider is not vulnerable, but developers should update other libraries if processing SAML responses in their own code."
 date: 2018-02-28 8:30
-category: Hot Topics, Security
+category: Hot Topics, Security, Vulnerabilities
 is_non-tech: true
 banner:
   text: "Auth0 makes it easy to add authentication to your application."
