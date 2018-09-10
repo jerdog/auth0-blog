@@ -78,7 +78,13 @@ The Sendex value ranges from a `0` (no quality) to `1` (excellent quality). The 
 
 - 0.19 - 0.00 = Poor
 
-We are going to integrate the Sendex value with Auth0 through a pre-registration hook. Before a user registration is complete, we are going to obtain the Sendex score of the email address and we'll determine if we either create the user account or send an error at the moment of the sign-up.
+While the Sendex code is useful to verify the quality of an email address, using it in a pre-registration hook could be problematic.  In our case, we will want to validate the authenticity of the email, not the quality.  To achieve this, Kickbox provides us with other useful information.  We will use two of the properties that are provided by Kickbox to validate the email: 
+
+* The `undeliverable` property will tell us if this email will actually be delivered. 
+
+* The `disposable` property will tell us if this email comes from a service that offers disposable email addresses.
+
+Using these two properties with a pre-registration hook, we'll determine if we'll either create the user account or send an error at the moment of the sign-up.
 
 ## Building an Auth Hook
 
@@ -158,7 +164,7 @@ module.exports = function(user, context, callback) {
 };
 ```
 
-Now we only need to check the Sendex code to decide whether we accept the user registration or not:
+Now, we will automatically reject any email address that comes from a disposable email service or email addresses that are known to be undeliverable:
 
 ```javascript
 const request = require("request");
@@ -175,12 +181,10 @@ module.exports = function(user, context, callback) {
 
     // Add the user_metadata property if not present already
     if (!response.user.user_metadata) response.user.user_metadata = {};
-    // Add the sendex code as part of the user metadata
-    response.user.user_metadata.sendex = body.sendex;
-
-    if (body.sendex >= 0.55) {
+    
+    if (body.result != "undeliverable" && !body.disposable) {
       // Good email
-      console.log("This email is safe, run the callback");
+      console.log("This email is valid, run the callback");
       callback(null, response);
     } else {
       console.log("Probably not a valid email address");
