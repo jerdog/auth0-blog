@@ -3,7 +3,7 @@ layout: post
 title: Momentum Building for a More Streamlined Customer Login Experience, According to Auth0
 description: Passwordless and Multifactor Authentication motivate companies to shift their approach to customer logins.
 date: 2018-07-09 07:00
-category: Announcements, Press
+category: PR, Features, Passwordless, Multifactor
 press_release: true
 is_non-tech: true
 author:
