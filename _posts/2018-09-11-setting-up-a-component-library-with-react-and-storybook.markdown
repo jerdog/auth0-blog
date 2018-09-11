@@ -5,7 +5,8 @@ metatitle: "Setting Up a Component Library with React and Storybook"
 description: "Learn how to set up a component library with React and Storybook to create modular and reusable components that can be shared across projects."
 metadescription: "Building the foundation of a component library with React and Storybook. Learn how to create reusable design components that can be shared across projects."
 date: 2018-09-11 8:30
-category: Technical Guide, Architecture, Frontend, React, Auth0 Engineering
+category: Technical Guide, Auth0 Engineering, React
+auth0_aside: true
 design: 
   bg_color: "#222228"
   image: https://cdn.auth0.com/blog/logos/storybook-react.png
