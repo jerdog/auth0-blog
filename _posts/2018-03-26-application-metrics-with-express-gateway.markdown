@@ -4,7 +4,7 @@ title: "Application Specific Metrics with Express Gateway"
 description: "Express Gateway is an API gateway that sits at the heart of any microservices architecture, securing your microservices and exposing them through APIs."
 longdescription: "Express Gateway is an API gateway that sits at the heart of any microservices architecture (regardless of what language or platform is being used), securing microservices and exposing them through APIs. In this tutorial, I'll show you how an API gateway can collect application specific metrics for you."
 date: 2018-03-26 10:00
-category: Technical Guide, Backend, NodeJS
+category: Technical Guide, Deep Dive, Express Gateway
 author:
   name: "Vincenzo Chianese"
   url: "https://twitter.com/d3dvincent"

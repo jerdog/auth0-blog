@@ -4,7 +4,7 @@ title: "Open Auth Standards: Your Secret to Success With the PSD2 Initiative"
 description: "In the new world of open banking, secure APIs are just the beginning."
 longdescription: "The Payment Services Directive for the European Union went into effect on January 13th, 2018 and third-party providers (TPPs) will finally be able to start handling finances for consumers, read this post to learn more about it."
 date: 2018-03-02 12:30
-category: Growth, Certifications
+category: Business, Compliance, PSD2
 author:
   name: "Diego Poza"
   url: "https://twitter.com/diegopoza"

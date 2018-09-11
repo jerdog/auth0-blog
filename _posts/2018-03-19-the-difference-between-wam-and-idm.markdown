@@ -4,7 +4,7 @@ title: The Difference Between Web Access Management and Identity Management
 description: "The risks of legacy authentication and why you should migrate to IAM"
 longdescription: "Organizations are migrating from Web Access Management systems to more integrated Identity Management (IdM) and Identity and Access Management (IAM) solutions. Learn the difference between Web Access Management and Identity Management"
 date: 2018-03-19 10:31
-category: Growth, Identity
+category: Business, Identity, IAM
 is_non-tech: true
 author:
   name: "Diego Poza"

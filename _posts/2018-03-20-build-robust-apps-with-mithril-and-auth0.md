@@ -4,7 +4,7 @@ title: "Build Robust Apps with Mithril and Auth0"
 description: "Mithril is a small, fast JavaScript framework for building Single Page Applications, and can be learned in just 10 minutes."
 longdescription: Mithril positions itself as a compact but powerful modern client-side JavaScript framework. In this tutorial, we are going to use Mithril to build a fairly complex web interface to store data about conferences and authenticate it with Auth0. 
 date: 2018-03-20 8:30
-category: Technical Guide, Frontend, JavaScript
+category: Technical Guide, Stack, Frontend
 banner:
   text: "Auth0 makes it easy to add authentication to your Single Page Application."
 author:

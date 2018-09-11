@@ -4,7 +4,7 @@ title: "Community at Auth0 begins a new chapter"
 description: "A new chapter for the Auth0 Community begins."
 longdescription: "Today marks a new chapter in the Community at Auth0 as we move to a new platform and dedicate a team."
 date: 2018-03-01 19:00
-category: Announcements, Program
+category: PR, Program, Discourse
 author:
   name: "Jeremy Meiss"
   url: "https://twitter.com/IAmJerdog"
