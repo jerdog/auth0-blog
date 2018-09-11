@@ -102,7 +102,7 @@ Authentication logic on the front end is handled with an `AuthService` authentic
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import * as auth0 from 'auth0-js';
-import { environment } from '../../environments/environment';
+import { environment } from './../../environments/environment';
 import { Router } from '@angular/router';
 import { TokenData } from './tokendata.model';
 
@@ -164,7 +164,7 @@ export class AuthService {
     if (window.location.hash && !this.authenticated) {
       this.parseHash$.subscribe(
         authResult => {
-          this._streamSession(authResult);
+          this._setAuth(authResult);
           window.location.hash = '';
           this.router.navigate([this.onAuthSuccessUrl]);
         },
@@ -173,7 +173,7 @@ export class AuthService {
     }
   }
 
-  private _streamSession(authResult) {
+  private _setAuth(authResult) {
     // Emit values for auth observables
     this.tokenData$.next({
       expiresAt: authResult.expiresIn * 1000 + Date.now(),
@@ -184,10 +184,14 @@ export class AuthService {
     localStorage.setItem(this._authFlag, JSON.stringify(true));
   }
 
+  get authenticated(): boolean {
+    return JSON.parse(localStorage.getItem(this._authFlag));
+  }
+
   renewAuth() {
     if (this.authenticated) {
       this.checkSession$.subscribe(
-        authResult => this._streamSession(authResult),
+        authResult => this._setAuth(authResult),
         err => {
           localStorage.removeItem(this._authFlag);
           this.router.navigate([this.onAuthFailureUrl]);
@@ -208,10 +212,6 @@ export class AuthService {
     });
   }
 
-  get authenticated(): boolean {
-    return JSON.parse(localStorage.getItem(this._authFlag));
-  }
-
   private _handleError(err) {
     if (err.error_description) {
       console.error(`Error: ${err.error_description}`);
@@ -227,7 +227,7 @@ This service uses the auth config variables from `environment.ts` to instantiate
 
 We will use [RxJS `BehaviorSubject`s](https://github.com/ReactiveX/rxjs/blob/master/doc/subject.md#behaviorsubject) to provide streams of authentication events (token data and user profile data) that you can subscribe to anywhere in the app. We'll also store some paths for navigation so the app can easily determine where to send users when authentication succeeds, fails, or the user has logged out.
 
-The next thing that we'll do is [create _observables_](https://angular.io/guide/observables) of the auth0.js methods [`parseHash()` (which allows us to extract authentication data from the hash upon login)](https://auth0.com/docs/libraries/auth0js/v9#extract-the-authresult-and-get-user-info) and [`checkSession()` (which allows us to acquire new tokens when a user has an existing session with the authorization server)](https://auth0.com/docs/libraries/auth0js/v9#using-checksession-to-acquire-new-tokens). Using observables with these methods allows us to easily publish authentication events and subscribe to them within our Angular application.
+The next thing that we'll do is [create _observables_](https://angular.io/guide/observables) of the `auth0.js` methods [`parseHash()` (which allows us to extract authentication data from the hash upon login)](https://auth0.com/docs/libraries/auth0js/v9#extract-the-authresult-and-get-user-info) and [`checkSession()` (which allows us to acquire new tokens when a user has an existing session with the authorization server)](https://auth0.com/docs/libraries/auth0js/v9#using-checksession-to-acquire-new-tokens). Using observables with these methods allows us to easily publish authentication events and subscribe to them within our Angular application.
 
 The `login()` method authorizes the authentication request with Auth0 using the environment config variables. A [login page](https://auth0.com/docs/hosted-pages/login) will be shown to the user and they can then authenticate.
 
