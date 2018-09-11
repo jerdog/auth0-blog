@@ -1,8 +1,10 @@
 ---
 layout: post
-title: "React and Storybook: A Tale of Reusability (Part 1)"
-description: "Create modular and reusable components that can be shared across projects by building a component library with React and Storybook."
-date: 2018-08-15 8:30
+title: "Setting Up a Component Library with React and Storybook"
+metatitle: "Setting Up a Component Library with React and Storybook"
+description: "Learn how to set up a component library with React and Storybook to create modular and reusable components that can be shared across projects."
+metadescription: "Building the foundation of a component library with React and Storybook. Learn how to create reusable design components that can be shared across projects."
+date: 2018-09-11 8:30
 category: Technical Guide, Architecture, Frontend, React, Auth0 Engineering
 design: 
   bg_color: "#222228"
@@ -24,12 +26,14 @@ tags:
   - reusability
   - banking
 related:
-  - 
+  - 2018-09-04-our-engineering-experience-with-react-and-storybook
+  - 2018-08-28-react-tutorial-building-and-securing-your-first-app
+  - 2018-08-14-react-context-api-managing-state-with-ease
 ---
 
 [Storybook](https://storybook.js.org/) is a development environment for UI components. It let us browse a component library, view the different states of its components, and interactively develop and test them. Storybook runs outside of our application; therefore, we can develop UI components in isolation without worrying about any project dependencies and requirements.
 
-We are producing a blog post series on how some teams are using React at Auth0. In this post, we are going to explore how to organize a basic project, how to implement a styleguide to help us achieve consistent branding, and how to build the foundation of a component library to make our components reusable and easy to maintain.
+We are producing a blog post series on how some teams are using React at Auth0. We've shared about [our experience using React and Storybook to better manage components](https://auth0.com/blog/our-engineering-experience-with-react-and-storybook/). In this post, we are going to explore how to organize a basic project, how to implement a style guide to help us achieve consistent branding, and how to build the foundation of a component library to make our components reusable and easy to maintain.
 
 Throughout these series, we are going to be building an online banking web application. In the next posts, we'll learn about using Storybook to easily create component libraries, how to better test React applications, and much more!
 
@@ -115,7 +119,7 @@ The UI Kit is designed for iOS, but we are going to adapt it for usage in a resp
 In the following excerpt, notice how is much easier to understand the guidelines that a developer would need to follow when creating the components presented in the UI Kit:
 
 <p style="text-align: center;">
-  <img src="https://cdn.auth0.com/blog/storybook-intro/design-document.png" alt="Design document excerpt">
+  <img src="https://cdn.auth0.com/blog/storybook-intro/design-document.png" alt="Style guide design - typography and color palette">
 </p>
 
 If we need to implement a green button, we can consult the design document and copy the hex code of `$green`; however, it would be much easier if we could code the elements of the design document into our application in a modular way and reusable way. We have plenty of options to do that:
@@ -278,7 +282,7 @@ This is the project structure we want for the `src` folder in this phase of the 
 Let's go ahead and create these folders and files:
 
 <p style="text-align: center;">
-  <img src="https://cdn.auth0.com/blog/storybook-intro/file-structure.png" alt="Project structure">
+  <img src="https://cdn.auth0.com/blog/storybook-intro/file-structure.png" alt="Demo banking app file and code structure">
 </p>
 
 We'll be using `_theme.scss` in a moment. This is a good checkpoint. Let's go ahead and commit:
@@ -350,7 +354,7 @@ To see the benefits and value that Storybook provides us, we need to have compon
 Recall that the Marvel UI Kit offers us the definition of a button that has three presentations:
 
 <p style="text-align: center;">
-  <img src="https://cdn.auth0.com/blog/storybook-intro/ui-button.png" alt="UI Button with three different presentations expressed through styling">
+  <img src="https://cdn.auth0.com/blog/storybook-intro/ui-button.png" alt="Styling UI buttons - Primary, secondary, tertiary - Active and Disabled state buttons">
 </p>
 
 These presentations can be summarized as follows:
@@ -389,7 +393,7 @@ Traditionally, we would compose the component into a visible element of the UI t
 
 ### Next Steps
 
-We have built a foundation to help us create our online banking web app with consistent branding by implementing a styleguide. In the next part of this series, we are going to learn how to use Storybook to create a sustainable component library that will act as the single source of truth for any component that we create.
+We have built a foundation to help us create our online banking web app with consistent branding by implementing a style guide. In the next part of this series, we are going to learn how to use Storybook to create a sustainable component library that will act as the single source of truth for any component that we create.
 
 At Auth0, different teams are making extensive use of Storybook as a development and design tool. In the final chapter of this series, we are going to explore how we are converging designers and developers into a Design Systems team that is letting us iterate faster and develop better products for our cherished customers.
 
