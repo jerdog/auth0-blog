@@ -24,7 +24,7 @@ related:
 
 ---
 
-**TL;DR:** Modern applications require a different paradigm in the way they are crafted and deployed. GraphQL in particular enables developers to take advantage of incredible tooling like the [Apollo platform](https://www.apollographql.com/docs/fundamentals/platform.html) for crafting flexible APIs and shipping client apps with optimistic UI. In this tutorial, we'll explore how to build an application with GraphQL and React. And we'll wrap it up with learning how to add authentication. The [completed code is available on GitHub](https://github.com/auth0-blog/conference-app).
+**TL;DR:** Modern applications require a different paradigm in the way they are crafted and deployed. GraphQL, in particular, enables developers to take advantage of incredible tooling like the [Apollo platform](https://www.apollographql.com/docs/fundamentals/platform.html) for crafting flexible APIs and shipping client apps with optimistic UI. In this tutorial, we'll explore how to build an application with GraphQL and React. And we'll wrap it up with learning how to add authentication. The [completed code is available on GitHub](https://github.com/auth0-blog/conference-app).
 
 {% include tweet_quote.html quote_text="Learn how to develop and secure modern applications with GraphQL, React and Auth0." %}
 
@@ -36,7 +36,7 @@ Present day applications utilize the client-server design. This architectural de
 
 The client-server architecture aids productivity by permitting the option of having different clients devour the responses from an API on the server. These clients could be anything from Single Page Applications (SPAs), portable applications, to non-interactive clients such as CLIs or Daemons.
 
-These days, most JavaScript applications are packaged and deployed as Single Page Applications running on Vanilla JS, Vue, React, Polymer, Angular, consuming and pusing information to a backend app running on the server. The front end/back end model of developing software is very common and goes way beyond the JavaScript community.
+These days, most JavaScript applications are packaged and deployed as Single Page Applications running on Vanilla JS, Vue, React, Polymer, Angular, consuming and pushing information to a backend app running on the server. The front end/back end model of developing software is very common and goes way beyond the JavaScript community.
 
 
 ## Introduction to GraphQL
@@ -49,24 +49,23 @@ The type-safe schema unlocks new possibilities for tooling, as demonstrated by G
 
 ## What we'll build
 
-We'll build an application called **EasyReads**. **GoodReads** is a popular web application where users can actually review the books that they have read over time. These reviews help new users determine whether to embark on reading a book or not.
+We'll build an application called **CoolReads**. **CoolReads** is a popular web application where users can actually review the books that they have read over time. These reviews help new users determine whether to embark on reading a book or not.
 
-**EasyReads** is an application that displays a list of books with the appropriate book cover image, title and average user ratings. Everyone should be able to see the ratings of these books, but only an authenticated user can add a new book with ratings. We'll assume there is a poll of user votes where the authenticated users just get the ratings and add to the platform.
+**CoolReads** is an application that displays a list of books with the appropriate book cover image, title, and average user ratings. Everyone should be able to see the ratings of these books, but only an authenticated user can add a new book with ratings. We'll assume there is a poll of user votes where the authenticated users just get the ratings and add to the platform.
 
 We'll make use of GraphQL to build the API for the application. GraphQL’s strongly typed query language enables developers to take advantage of incredible tooling for exploring GraphQL APIs. Developers can query a GraphQL schema for information about what queries and types it supports because of the built-in introspection system.
 
-
-## Building Easy Reads GraphQL API
+## Building CoolReads GraphQL API
 
 ### Schema First Driven Development
 
 Schema First Driven development is a recommended approach for designing and building modern UIs that involves the frontend and backend teams agreeing on a Schema first, which serves as a contract between the UI and the backend before any API development commences. GraphQL schemas are at their best when they are designed around the needs of client applications. We'll take this approach in designing a Schema for our API.
 
-### Building Easy Reads Schema
+### Building CoolReads Schema
 
-At the core of any GraphQL server is a schema. The schema defines types and their relationships. It also specifies which queries can be made against the server. Let's build out the schema for **Easy Reads**.
+At the core of any GraphQL server is a schema. The schema defines types and their relationships. It also specifies which queries can be made against the server. Let's build out the schema for **CoolReads**.
 
-Create a `src/server.js`file in the _api_ directory. Our schema will live here.
+Create an `src/server.js`file in the _api_ directory. Our schema will live here.
 
 The Schema for our application will look like this:
 
@@ -222,11 +221,11 @@ const books = [
   `;
 ```
 
-In the code above, we have the `books` and `authors` data source. We'll go ahead to write the resolvers that fetches data from the data source above before progressing to hooking up our GraphQL API with a proper database.
+In the code above, we have the `books` and `authors` data source. We'll go ahead to write the resolvers that fetch data from the data source above before progressing to hooking up our GraphQL API with a proper database.
 
 ### Writing the Resolvers
 
-Resolvers are functions that connects schema fields and types to various backends. As I mentioned earlier, they provide the instructions for turning a GraphQL operation into data. They can retrieve or write data from either an SQL, a No-SQL, graph database, a micro-service or a REST API. Resolvers can also return strings, ints, null, and other primitives.
+Resolvers are functions that connect schema fields and types to various backends. As I mentioned earlier, they provide the instructions for turning a GraphQL operation into data. They can retrieve or write data from either an SQL, a No-SQL, graph database, a micro-service or a REST API. Resolvers can also return strings, ints, null, and other primitives.
 
 ```js
 const { find, filter } = require('lodash');
@@ -270,10 +269,10 @@ const resolvers = {
 At this stage, I'm sure you are yearning to see it work. Before shedding more light on each of the resolver functions, go ahead and install `apollo-server`, `graphql`, and `lodash`.
 
 ```bash
-npm install apollo-server graphql lodash
+npm install apollo-server graphql lodash --save
 ```
 
-> [Apollo Server](https://www.apollographql.com/docs/apollo-server) provides GraphQL schemas written with it the privilege to be deployed anywhere that other Node.js projects can be deployed. It also has variants, such as apollo-server-express, apollo-server-hapi, apollo-server-koa and others to support serverless deployment with AWS Lambda. Apollo Server has built-in support for GraphQL subscriptions, powerful error handling tools, schema stitching, file uploads, mocking, schema directives and easy monitoring integration.
+> [Apollo Server](https://www.apollographql.com/docs/apollo-server) provides GraphQL schemas written with it the privilege to be deployed anywhere that other Node.js projects can be deployed. It also has variants, such as apollo-server-express, apollo-server-hapi, apollo-server-koa, and others to support serverless deployment with AWS Lambda. Apollo Server has built-in support for GraphQL subscriptions, powerful error handling tools, schema stitching, file uploads, mocking, schema directives, and easy monitoring integration.
 
 
 {% include tweet_quote.html quote_text="Apollo Server provides GraphQL schemas written with it the privilege to be deployed anywhere that other Node.js projects can be deployed." %}
@@ -468,7 +467,7 @@ npm install casual
 
 **Note:** `casual` is a package that generates random fake data.
 
-Run your server again. From the terminal, you should see data been added added to the database. However, you can't view the data in the _sqlite_ file unless you use a SQLite browser.
+Run your server again. From the terminal, you should see data been added to the database. However, you can't view the data in the _sqlite_ file unless you use an SQLite browser.
 
 Go ahead and install the [SQLite browser](https://github.com/sqlitebrowser/sqlitebrowser). It will prove very useful!
 
@@ -527,7 +526,7 @@ Mutation: {
 * `Book.findAll` - Fetches all the books from the `books` table.
 * `Book.find` - Fetches the book that has a certain `id`.  `args` is an object in the [resolver signature](https://www.apollographql.com/docs/graphql-tools/resolvers#Resolver-function-signature) that contains arguments passed to the book field as declared in the schema. In this case, `args` is `{ id }`.
 * `Author.find` - Fetches the author with a certain `id`.
-* `author.getBooks` - Selects and returns the books that belongs to a particular author.
+* `author.getBooks` - Selects and returns the books that belong to a particular author.
 * `book.getAuthor` - Fetches the author that wrote a certain book.
 * `Book.create` -  Creates a new book, writes it to the database and returns the details of the new book that was just created.
 
@@ -545,7 +544,7 @@ create-react-app coolreads
 
 ```
 
-**Note:** If you dont have the [CRA tool](https://github.com/facebookincubator/create-react-app), go ahead and install it globally, `npm install -g create-react-app`.
+**Note:** If you don't have the [CRA tool](https://github.com/facebookincubator/create-react-app), go ahead and install it globally, `npm install -g create-react-app`.
 
 
 Then open [`http://localhost:3000`](http://localhost:3000) to see your app.
@@ -554,7 +553,7 @@ Then open [`http://localhost:3000`](http://localhost:3000) to see your app.
 
 **Note:** `create-react-app` automatically invokes Yarn for installation. If you don't have Yarn installed, it falls back to use npm.
 
-Before we start fleshing out new components, we'll set up `Apollo Client` in our React app. The simplest way to get started with Apollo Client is by using Apollo Boost, a starter kit that configures your client for you with our recommended settings. Apollo Boost includes packages that we think are essential for building an Apollo app, like our in memory cache, local state management, and error handling. It’s also flexible enough to handle features like authentication.
+Before we start fleshing out new components, we'll set up `Apollo Client` in our React app. The simplest way to get started with Apollo Client is by using Apollo Boost, a starter kit that configures your client for you with our recommended settings. Apollo Boost includes packages that we think are essential for building an Apollo app, like our in-memory cache, local state management, and error handling. It’s also flexible enough to handle features like authentication.
 
 Install the following packages:
 
@@ -646,7 +645,7 @@ Next, let's start building our components. We need to build 4 major components:
 * **Callback:** This special component is for handling authentication while retrieving tokens from the Auth0 server. You'll understand why this component later in the tutorial.
 
 
-These components will reside in a `src/components` directory. Go ahead and create that directory.
+These components will reside in an `src/components` directory. Go ahead and create that directory.
 
 ## Build the Nav Component
 
@@ -684,7 +683,7 @@ class Nav extends Component {
 export default withRouter(Nav);
 ```
 
-**Note:** The `withRouter` is a HOC that allows a component to have access to the history object's properties. It will pass updated `match`, `location`, and `history` props to the wrapped component whenever it renders. Once we add authentication to this app, you'll understand why it's useful. For now, don't think too much about it, just flow with the tutorial.
+**Note:** The `withRouter` is a HOC that allows a component to have access to the history object's properties. It will pass the updated `match`, `location`, and `history` props to the wrapped component whenever it renders. Once we add authentication to this app, you'll understand why it's useful. For now, don't think too much about it, just flow with the tutorial.
 
 ## Build the ListBook and CreateBook Component
 
@@ -859,7 +858,7 @@ export default () => (
 
 Let's analyze the code above carefully:
 
-* **Mutation**: The `Mutation` component from `react-apollo` is a React component that uses the _render prop_ pattern to trigger mutations from your UI. React will call the _render prop_ function you provide with a mutate function and an object with your mutation result containing `loading`, `error`, and `data` properties
+* **Mutation**: The `Mutation` component from `react-apollo` is a React component that uses the _render prop_ pattern to trigger mutations from your UI. React will call the _render prop_ function you provide with a `mutate` function and an object with your mutation result containing `loading`, `error`, and `data` properties
 
 Then the `Mutation` query, _ADD_BOOK_, is for mutating the GraphQL API:
 
@@ -882,7 +881,7 @@ The mutate function optionally takes `variables`, `optimisticResponse`, `refetch
 
 The second argument to the render prop function is an object with your mutation result on the `data` property, as well as booleans for loading and if the mutate function was called, in addition to error. If you’d like to ignore the result of the mutation, pass ignoreResults as a prop to the mutation component.
 
-In the code above, we passed a `onCompleted` prop to the `Mutation` component. The function passed to this prop is invoked when the mutation has finished execution. And in our app, it simply redirects to the root route once the mutation completes.
+In the code above, we passed an `onCompleted` prop to the `Mutation` component. The function passed to this prop is invoked when the mutation has finished execution. And in our app, it simply redirects to the root route once the mutation completes.
 
 ## Styling
 
@@ -1037,7 +1036,7 @@ const email = await user;
 
 This line of code above waits for the user promise to resolve and stores the email of the user in an `email` variable. If there's an error, the `catch` block gets the error and throws an `AuthenticationError`. Wait a minute? Where's the `AuthenticationError` coming from? We imported it from Apollo Server.
 
-Apollo Server 2.0 provides a couple of predefined errors, including `AuthenticationError`, `ForbiddenError`, `UserInputError` and a generic `ApolloError`. These errors are designed to enhance errors thrown before and during GraphQL execution. The provided errors focus on debugging a Apollo server as well as enabling the client to take specific action based on an error. When an [error occurs in Apollo server both inside and outside of resolvers](https://blog.apollographql.com/full-stack-error-handling-with-graphql-apollo-5c12da407210), each error inside of the errors array will contain an object at extensions that contains the information added by Apollo server.
+Apollo Server 2.0 provides a couple of predefined errors, including `AuthenticationError`, `ForbiddenError`, `UserInputError` and a generic `ApolloError`. These errors are designed to enhance errors thrown before and during GraphQL execution. The provided errors focus on debugging an _Apollo_ server as well as enabling the client to take specific action based on an error. When an [error occurs in Apollo server both inside and outside of resolvers](https://blog.apollographql.com/full-stack-error-handling-with-graphql-apollo-5c12da407210), each error inside of the errors array will contain an object at extensions that contains the information added by Apollo server.
 
 Now, run your server and try to perform a mutation with a fake token!
 
@@ -1304,7 +1303,7 @@ In the code above, we're setting the authorization header to the value of the `i
 
 ### Keeping Users Signed In
 
-Right now, once you reload the application, the users automatically gets logged out because the user's credentials are stored in the app's memory. Let's keep the users logged in!
+Right now, once you reload the application, the users automatically get logged out because the user's credentials are stored in the app's memory. Let's keep the users logged in!
 
 We'll use the [Silent Authentication](https://auth0.com/docs/api-auth/tutorials/silent-authentication) provided by Auth0. Whenever your application is loaded, it will send a silent request to Auth0 to check if the current user (actually the browser) has a valid session. If they do, Auth0 will send back to you an `idToken` and an `idTokenPayload,` just like it does on the authentication callback.
 
@@ -1381,7 +1380,7 @@ If there is an error on the `silentAuth`, the app checks if the error is `login_
 
 If there is an error that is not `login_required`, the error is simply logged to the console. Actually, in this case, it would be better to notify someone about the error so they could check what is happening.
 
-Try to authenticate your app. Then, refresh your browser and you'll discover that you won't have to loose your session again. Perfect!
+Try to authenticate your app. Then, refresh your browser and you'll discover that you won't have to lose your session again. Perfect!
 
 
 ### Secure the Create Route
