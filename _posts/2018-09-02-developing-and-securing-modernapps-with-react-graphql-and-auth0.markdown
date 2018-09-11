@@ -24,7 +24,7 @@ related:
 
 ---
 
-**TL;DR:** Modern applications require a different paradigm in the way they are crafted and deployed. GraphQL, in particular, enables developers to take advantage of incredible tooling like the [Apollo platform](https://www.apollographql.com/docs/fundamentals/platform.html) for crafting flexible APIs and shipping client apps with optimistic UI. In this tutorial, we'll explore how to build an application with GraphQL and React. And we'll wrap it up with learning how to add authentication. The [completed code is available on GitHub](https://github.com/auth0-blog/conference-app).
+**TL;DR:** Modern applications require a different paradigm in the way they are crafted and deployed. GraphQL, in particular, enables developers to take advantage of incredible tooling like the [Apollo platform](https://www.apollographql.com/docs/fundamentals/platform.html) for crafting flexible APIs and shipping client apps with optimistic UI. In this tutorial, we'll explore how to build an application with GraphQL and React. And we'll wrap it up with learning how to add authentication. The [completed code is available on GitHub](https://github.com/auth0-blog/book-app).
 
 {% include tweet_quote.html quote_text="Learn how to develop and secure modern applications with GraphQL, React and Auth0." %}
 
@@ -36,7 +36,7 @@ Present day applications utilize the client-server design. This architectural de
 
 The client-server architecture aids productivity by permitting the option of having different clients devour the responses from an API on the server. These clients could be anything from Single Page Applications (SPAs), portable applications, to non-interactive clients such as CLIs or Daemons.
 
-These days, most JavaScript applications are packaged and deployed as Single Page Applications running on Vanilla JS, Vue, React, Polymer, Angular, consuming and pushing information to a backend app running on the server. The front end/back end model of developing software is very common and goes way beyond the JavaScript community.
+These days, most JavaScript applications are packaged and deployed as Single Page Applications running on vanilla JavaScript, Vue, React, Polymer, Angular, consuming and pushing information to a backend app running on the server. The front end/back end model of developing software is very common and goes way beyond the JavaScript community.
 
 
 ## Introduction to GraphQL
@@ -54,6 +54,15 @@ We'll build an application called **CoolReads**. **CoolReads** is a popular web 
 **CoolReads** is an application that displays a list of books with the appropriate book cover image, title, and average user ratings. Everyone should be able to see the ratings of these books, but only an authenticated user can add a new book with ratings. We'll assume there is a poll of user votes where the authenticated users just get the ratings and add to the platform.
 
 We'll make use of GraphQL to build the API for the application. GraphQL’s strongly typed query language enables developers to take advantage of incredible tooling for exploring GraphQL APIs. Developers can query a GraphQL schema for information about what queries and types it supports because of the built-in introspection system.
+
+## Prerequisites
+
+Before building the GraphQL API, make sure you have the following installed :
+
+* **Node.js and npm**: At least [Node.js v8.0 and npm v5](https://nodejs.org/en/download).
+* **nodemon**: Ensure that you have [nodemon](https://www.npmjs.com/package/nodemon) installed globally.
+
+After that, create a directory and run `npm init --y` to create a `package.json` file. Then install the [esm](https://www.npmjs.com/package/esm) package. This package allows us to use ES6 style imports and exports at will.
 
 ## Building CoolReads GraphQL API
 
@@ -211,8 +220,8 @@ const books = [
 
     type Query {
       books: [Book!]!,
+      book: Book!
       author(id: Int!): Author!
-
     }
 
     type Mutation {
@@ -254,8 +263,8 @@ const resolvers = {
       };
 
       books.push(newBook);
-      console.log(books);
       return newBook;
+    }
   },
   Author: {
     books: (author) => filter(books, { authorId: author.id }),
@@ -348,8 +357,8 @@ const books = [
         };
 
         books.push(newBook);
-        console.log(books);
         return newBook;
+      }
     },
     Author: {
       books: (author) => filter(books, { authorId: author.id }),
@@ -369,7 +378,7 @@ const books = [
   });
 ```
 
-Run `node src/server.js` and check out the URL in your browser, `http://localhost:4000/`. You can run several queries to test your API in the GraphQL Playground, just like you can test your REST API endpoints with Postman.
+Run `nodemon -r esm src/server.js"` and check out the URL in your browser, `http://localhost:4000/`. You can run several queries to test your API in the GraphQL Playground, just like you can test your REST API endpoints with Postman.
 
 Back to the resolver functions! We have resolver functions for all the fields in the `Query` and `Mutation` type. If you're following the tutorial step by step, you might have noticed this is a one-to-many relationship. One Author has many books, and many books belong to one author. Resolving the field in `Author`, and `Book` type enables us to get the right data when we have nested queries such as this:
 
