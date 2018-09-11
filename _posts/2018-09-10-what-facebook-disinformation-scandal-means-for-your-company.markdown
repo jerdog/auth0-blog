@@ -1,12 +1,12 @@
 ---
 layout: post
-title: What the Facebook Disinformation Scandal Means for Your Company
-metatitle: What the Facebook Disinformation Scandal Means for Your Company
-description: 
-metadescription: 
+title: "What the Facebook Disinformation Scandal Means for Your Company"
+metatitle: "How the Facebook Disinformation Scandal Affects Your Company"
+description: "Learn how company data breach incidents could be avoided using strong identity management tools"
+metadescription: "Learn how implementing strong identity management tools from Auth0 could help to avoid company data breach incidents as you scale"
 date: 2018-09-10 14:38
 category: Hot Topics, Security, Breaches
-post_length: 
+post_length: 1
 is_non-tech: true
 author:
   name: Martin Gontovnikas
@@ -17,7 +17,17 @@ design:
   bg_color: "#6B5282"
   image: https://cdn.auth0.com/blog/mitigate/security-measures-main.png
 tags:
-- hyphenated-tags
+  - security
+  - data
+  - breach
+  - data-breach
+  - facebook
+  - enterprise
+  - mfa
+  - two-factor
+  - authentication
+  - identity
+  - 2fa
 related:
 - 2018-09-07-3-critical-lessons-from-the-t-mobile-data-breach
 - 2018-08-24-what-companies-can-learn-from-the-reddit-data-breach
