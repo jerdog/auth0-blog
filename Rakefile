@@ -46,7 +46,7 @@ task :new_post, :title do |t, args|
 ---
 layout: post
 title: #{title.gsub(/&/,'&amp;')}
-metatitle: <Title displayed in search engines and social - less than 60 characters>
+metatitle: <Title displayed in search engines - less than 60 characters>
 description: <Shorter shown underneath the title on the post itself and on blog feed - must be less than 110 characters>
 metadescription: <Richer, longer description that shows in search engines - must be less than 160 characters>
 date: #{Time.now.strftime('%Y-%m-%d %H:%M')}
