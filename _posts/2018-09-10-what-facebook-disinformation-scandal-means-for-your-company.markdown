@@ -58,7 +58,7 @@ Although it recently ended this practice, following the [Cambridge Analytica sca
 
 {% include tweet_quote.html quote_text="With so many stakeholders accessing different parts of the Facebook platform at different times, it's clearly too much for Facebook to keep track of Fake news, and accounts are rampant." %}
 
-These providers helped other businesses understand and optimize their marketing campaigns. As an an example, [according to Facebook](https://www.facebook.com/help/494750870625830):
+These providers helped other businesses understand and optimize their marketing campaigns. As an example, [according to Facebook](https://www.facebook.com/help/494750870625830):
 
 “An auto dealer may want to customize an offer to people who are likely to be in the market for a new car. The dealer also might want to send offers, like discounts for service, to customers that have purchased a car from them. To do this, the auto dealer works with a third-party company to identify and reach those customers with the right offer. The third-party partner provides Facebook with information that helps Facebook connect those customers with the offers.” 
 
@@ -120,7 +120,7 @@ Any further support you can get to vet users — even your loyal and trusted cus
 
 ## Use Identity-Management Tools to Stop Bad Behavior at the Source 
 
-As your company grows, it's a blessing to bring on more users — whether new customers, freelancers and consultants, or employees. But it can quickly become a curse if you don't implement strong practices for monitoring them.
+As your company grows, it's a blessing to bring on more users — whether new customers, freelancers, consultants or employees. But it can quickly become a curse if you don't implement strong practices for monitoring them.
 
 As the Facebook disinformation scandal clearly shows, without proper tracking, small issues can balloon out of control. Ideally, you'd stop any fake accounts at the login source so they don't snowball at all.
 
