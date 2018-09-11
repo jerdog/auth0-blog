@@ -476,7 +476,7 @@ npm install casual
 
 **Note:** `casual` is a package that generates random fake data.
 
-Run your server again. From the terminal, you should see data been added to the database. However, you can't view the data in the _sqlite_ file unless you use an SQLite browser.
+Run `nodemon -r esm src/store.js`. From the terminal, you should see data been added to the database. However, you can't view the data in the _sqlite_ file unless you use an SQLite browser.
 
 Go ahead and install the [SQLite browser](https://github.com/sqlitebrowser/sqlitebrowser). It will prove very useful!
 
@@ -529,7 +529,6 @@ Mutation: {
     });
   }
 }
-};
 ```
 
 * `Book.findAll` - Fetches all the books from the `books` table.
