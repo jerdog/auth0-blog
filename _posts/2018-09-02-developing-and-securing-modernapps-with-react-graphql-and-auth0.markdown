@@ -1333,27 +1333,44 @@ silentAuth() {
 
 This method is responsible for performing the Silent Authentication. It makes a request to AuthO's `checkSession` function and sets a new session. To make sure everything works properly, we need to update one more file.
 
-Head over to `src/components/Callback.js` and update it like so:
+Head over to `App.js` and update it like so:
 
 ```js
 import React, { Component } from 'react';
-import {withRouter} from 'react-router-dom';
-import loading from '../loading.svg';
-import auth from '../Auth';
+import {Route, withRouter} from 'react-router-dom';
+import Nav from './components/Nav';
+import Callback from './components/Callback';
+import ListBook from './components/ListBook';
+import CreateBook from './components/CreateBook';
+import './App.css';
+import auth from './Auth';
 
-class Callback extends Component {
+class App extends Component {
 
   async componentDidMount() {
-    await auth.handleAuthentication();
-    this.props.history.replace('/');
+    if (this.props.location.pathname === '/callback') return;
+    try {
+      await auth.silentAuth();
+      this.forceUpdate();
+    } catch (err) {
+      if (err.error === 'login_required') return;
+      console.log(err.error);
+    }
   }
 
   render() {
-    ...
+    return (
+      <div>
+        <Nav />
+        <Route exact path='/' component={ListBook} />
+        <Route exact path='/create' component={CreateBook} />
+        <Route exact path='/callback' component={Callback} />
+      </div>
+    );
   }
 }
 
-export default withRouter(Callback);
+export default withRouter(App);
 ```
 
 If the requested route is `/callback`, the app does nothing. This is the correct behavior because, when users are requesting for the `/callback` route, they do so because they are getting redirected by Auth0 after the authentication process. In this case, you can leave the Callback component handle the process.
@@ -1366,6 +1383,73 @@ If there is an error that is not `login_required`, the error is simply logged to
 
 Try to authenticate your app. Then, refresh your browser and you'll discover that you won't have to loose your session again. Perfect!
 
+
+### Secure the Create Route
+
+You want to make sure users can't access the `/create` route without being authenticated first on the client side. Go ahead and create a `GuardedRoute.js` file in the `src/components` directory. Now add code to the `GuardedRoute.js` file:
+
+```js
+import React from 'react';
+import {Route} from 'react-router-dom';
+import auth from '../Auth';
+
+function GuardedRoute(props) {
+  const { component: Component, path} = props;
+  return (
+    <Route exact path={path} render={(props) => {
+     if (!auth.isAuthenticated()) return auth.login();
+      return <Component {...props} />
+    }} />
+  );
+}
+
+export default GuardedRoute;
+```
+
+In the code above, we created a functional component that checks if a user is authenticated before rendering a component. Let's apply this recently created functionality to the `/create` route.
+
+Open up `App.js`. Make sure the `GuardedRoute` is imported at the top of the file like so:
+
+```js
+...
+import GuardedRoute from './components/GuardedRoute';
+...
+```
+
+Now, pass the `CreateBook` component to the `GuardedRoute` like so:
+
+```js
+...
+import GuardedRoute from './GuardedRoute/GuardedRoute';
+...
+
+class App extends Component {
+
+  ...
+
+  render() {
+    return (
+      <div>
+        <Nav />
+        ...
+        <GuardedRoute exact path='/create' component={CreateBook} />
+      </div>
+    );
+  }
+}
+
+export default withRouter(App);
+```
+
+Once you try to access the `/create` route, you'll be redirected to the login page.
+
+
 ## Conclusion
 
-In this tutorial, we covered how easy it is to build a product with a GraphQL using great tools like Apollo Client, Apollo Server, React and Auth0. What a time to be alive! If you want to learn more about using GraphQL, check out the [excellent Apollo guides](https://www.apollographql.com/docs/guides).
+In this tutorial, we covered how easy it is to build a product with GraphQL using great tools like Apollo Client, Apollo Server, React and Auth0. What a time to be alive!
+
+The next step after this is to learn how to monitor your app's performance with Apollo Engine. Apollo Engine is a cloud service that provides deep insights into your GraphQL layer, so you can run in production with confidence. Check out this excellent guide on [GraphQL performance](https://www.apollographql.com/docs/guides/performance.html) and [monitoring](https://www.apollographql.com/docs/guides/monitoring.html).
+
+If you want to learn more about using GraphQL, check out the [excellent Apollo guides](https://www.apollographql.com/docs/guides).
+
+Let me know if you have any questions about GraphQL in the comments section!
