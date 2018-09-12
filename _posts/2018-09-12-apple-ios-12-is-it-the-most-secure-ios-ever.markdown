@@ -28,6 +28,7 @@ tags:
 - auditing
 - password
 - 2fa
+post_length: 1
 related:
 - 2017-12-29-why-every-business-needs-two-factor-authentication-security
 - 2017-11-22-using-centralized-login-to-add-authentication-to-your-ios-apps
