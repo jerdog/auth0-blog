@@ -97,7 +97,7 @@ We do this with a `TokenData` class located in the [`src/app/auth/tokendata.mode
 
 Authentication logic on the front end is handled with an `AuthService` authentication service: [`src/app/auth/auth.service.ts` file](https://github.com/auth0-blog/angular-auth0-aside/blob/master/src/app/auth/auth.service.ts). We'll step through this code below.
 
-```js
+```typescript
 // src/app/auth/auth.service.ts
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
@@ -110,7 +110,7 @@ import { TokenData } from './tokendata.model';
 export class AuthService {
   // Create Auth0 web auth instance
   // @TODO: Update environment variables and remove .example
-  //  extension in src/environments/environment.ts.example
+  // extension in src/environments/environment.ts.example
   private _Auth0 = new auth0.WebAuth({
     clientID: environment.auth.CLIENT_ID,
     domain: environment.auth.CLIENT_DOMAIN,
@@ -122,8 +122,8 @@ export class AuthService {
   // Track whether or not to renew token
   private _authFlag = 'isLoggedIn';
   // Create streams for authentication data
-  tokenData$ = new BehaviorSubject(new TokenData());
-  userProfile$ = new BehaviorSubject(null);
+  tokenData$ = new BehaviorSubject<TokenData>(new TokenData());
+  userProfile$ = new BehaviorSubject<any>(null);
   // Authentication navigation
   onAuthSuccessUrl = '/';
   onAuthFailureUrl = '/';
@@ -154,6 +154,24 @@ export class AuthService {
     });
   });
 
+  // Create observable of token
+  // This is important for the token interceptor
+  // which should receive a non-null initial value
+  // once the appropriate value is available
+  token$ = Observable.create(observer => {
+    this.tokenData$.subscribe(
+      tokenData => {
+        if (tokenData.accessToken) {
+          observer.next(tokenData.accessToken);
+        }
+      },
+      err => {
+        observer.error(err);
+        observer.complete();
+      }
+    )
+  });
+
   constructor(private router: Router) { }
 
   login() {
@@ -174,11 +192,12 @@ export class AuthService {
   }
 
   private _setAuth(authResult) {
-    // Emit values for auth observables
+    // Emit value for tokenData$ subject
     this.tokenData$.next({
       expiresAt: authResult.expiresIn * 1000 + Date.now(),
       accessToken: authResult.accessToken
     });
+    // Emit value for userProfile$ subject
     this.userProfile$.next(authResult.idTokenPayload);
     // Set flag in local storage stating this app is logged in
     localStorage.setItem(this._authFlag, JSON.stringify(true));
@@ -223,11 +242,15 @@ export class AuthService {
 }
 ```
 
-This service uses the auth config variables from `environment.ts` to instantiate an [`auth0.js` WebAuth](https://auth0.com/docs/libraries/auth0js/v9#initialization) instance. Next an `_authFlag` member is created, which is simply a flag that we can store in local storage. It tells us whether or not to attempt to renew tokens with the Auth0 authorization server (for example, after a full-page refresh or when returning to the app later).
+This service uses the auth config variables from `environment.ts` to instantiate an [`auth0.js` WebAuth](https://auth0.com/docs/libraries/auth0js/v9#initialization) instance. Next an `_authFlag` member is created, which is simply a flag that we can store in local storage. It tells us whether or not to attempt to renew tokens with the Auth0 authorization server (for example, after a full-page refresh or when returning to the app later). All it does is state, "This front-end application _thinks_ this user is authenticated" and then allows us to apply logic based on that estimation and verify whether or not it's accurate.
 
 We will use [RxJS `BehaviorSubject`s](https://github.com/ReactiveX/rxjs/blob/master/doc/subject.md#behaviorsubject) to provide streams of authentication events (token data and user profile data) that you can subscribe to anywhere in the app. We'll also store some paths for navigation so the app can easily determine where to send users when authentication succeeds, fails, or the user has logged out.
 
 The next thing that we'll do is [create _observables_](https://angular.io/guide/observables) of the `auth0.js` methods [`parseHash()` (which allows us to extract authentication data from the hash upon login)](https://auth0.com/docs/libraries/auth0js/v9#extract-the-authresult-and-get-user-info) and [`checkSession()` (which allows us to acquire new tokens when a user has an existing session with the authorization server)](https://auth0.com/docs/libraries/auth0js/v9#using-checksession-to-acquire-new-tokens). Using observables with these methods allows us to easily publish authentication events and subscribe to them within our Angular application.
+
+The last observable we'll create is a stream of our `token$` data. This is for use with the [token interceptor](https://github.com/auth0-blog/angular-auth0-aside/blob/master/src/app/auth/token.interceptor.ts). We don't want our interceptor to utilize a stream that emits a default value without any useable values (which is what our BehaviorSubject does).
+
+> **Note:** Why don't we use an `AsyncSubject` here instead? You can absolutely change these to use async subjects if you prefer. Then you can skip creating the `token$` observable which is used in the [HTTP interceptor service](https://github.com/auth0-blog/angular-auth0-aside/blob/master/src/app/auth/token.interceptor.ts) and can use the `tokenData$` subject in the interceptor instead because async subjects don't need to be initialized with a default value (which is falsey in our case). However, the reason this tutorial doesn't use a subject type that has no default value is that there are potential scenarios where we may need to receive a stream in which we observe the latest value when we subscribe, and then any subsequent values also. Async and replay subjects are not appropriate if we ever need to ensure we're always receiving the _latest_ token value _upon subscription_ and then all subsequent values, such as in the case of [silent authentication renewal](https://auth0.com/docs/api-auth/tutorials/silent-authentication). (Check out [RxJS: Understanding Subjects](https://blog.angularindepth.com/rxjs-understanding-subjects-5c585188c3e1) to learn more.)
 
 The `login()` method authorizes the authentication request with Auth0 using the environment config variables. A [login page](https://auth0.com/docs/hosted-pages/login) will be shown to the user and they can then authenticate.
 
@@ -247,7 +270,7 @@ Once [`AuthService` is provided in `app.module.ts`](https://github.com/auth0-blo
 
 The [callback component](https://github.com/auth0-blog/angular-auth0-aside/tree/master/src/app/pages/callback.component.ts) is where the app is redirected after authentication. This component simply shows a loading message until the login process is completed. It executes the authentication service's `handleLoginCallback()` method to parse the hash and extract authentication information.
 
-```js
+```typescript
 // src/app/callback/callback.component.ts
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
@@ -269,40 +292,89 @@ export class CallbackComponent implements OnInit {
 
 ### Making Authenticated API Requests
 
-In order to make authenticated HTTP requests, it's necessary to add an `Authorization` header with the access token in our [`api.service.ts` file](https://github.com/auth0-blog/angular-auth0-aside/blob/master/src/app/api.service.ts#L20).
+In order to make authenticated HTTP requests, it's necessary to add an `Authorization` header with the access token to our outgoing requests. Note that the [`api.service.ts` file](https://github.com/auth0-blog/angular-auth0-aside/blob/master/src/app/api.service.ts) does not do this.
 
-```js
-// src/app/api.service.ts
-  ...
-  getDragons$(accessToken: string): Observable<any[]> {
-    return this.http
-      .get<any[]>(`${this.baseUrl}dragons`, {
-        headers: new HttpHeaders().set(
-          'Authorization', `Bearer ${accessToken}`
-        )
-      })
+Instead, this functionality is in an [HTTP interceptor service called `token.interceptor.ts`](https://github.com/auth0-blog/angular-auth0-aside/blob/master/src/app/auth/token.interceptor.ts).
+
+```typescript
+// src/app/auth/token.interceptor.ts
+import { Injectable } from '@angular/core';
+import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
+import { AuthService } from './auth.service';
+import { Observable } from 'rxjs';
+import { mergeMap } from 'rxjs/operators';
+
+@Injectable()
+export class InterceptorService implements HttpInterceptor {
+  constructor(private auth: AuthService) { }
+
+  intercept(
+    req: HttpRequest<any>,
+    next: HttpHandler
+  ): Observable<HttpEvent<any>> {
+    // @NOTE: If you have some endpoints that are public
+    // and do not need Authorization header, implement logic
+    // here to accommodate that and conditionally let public
+    // requests pass through based on your requirements
+    return this.auth.token$
       .pipe(
-        catchError(this._handleError)
+        mergeMap(token => {
+          if (token) {
+            const tokenReq = req.clone({
+              setHeaders: { Authorization: `Bearer ${token}` }
+            });
+            return next.handle(tokenReq);
+          }
+        })
       );
   }
-  ...
+}
 ```
 
-Now when we use `getDragons$()`, we can pass the access token to the method.
+As mentioned above, we can return the `token$` observable to acquire a token, then clone the outgoing HTTP request and attach an `Authorization` header before sending the request on its way.
 
-The [Homepage class](https://github.com/auth0-blog/angular-auth0-aside/blob/master/src/app/pages/home/home.component.ts) of our sample app subscribes to the `tokenData$` behavior subject. Once it has an access token, it can pass this to the `getDragons$()` API method to return and subscribe to the HTTP observable and retrieve the dragons data.
+The interceptor should be provided like so in the [`app-routing.module.ts` file](https://github.com/auth0-blog/angular-auth0-aside/blob/master/src/app/app-routing.module.ts):
+
+```typescript
+// src/app/app-routing.module.ts
+...
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { InterceptorService } from './auth/token.interceptor';
+...
+
+@NgModule({
+  imports: [...],
+  providers: [
+    ...,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptorService,
+      multi: true
+    }
+  ],
+  ...
+})
+export class AppRoutingModule {}
+```
+
+> **Note:** We set `multi` to `true` because we could implement multiple interceptors, which would run in the order of declaration.
 
 ### Final Touches: Route Guard and Profile Page
 
 A [profile page component](https://github.com/auth0-blog/angular-auth0-aside/tree/master/src/app/pages/profile) can show an authenticated user's profile information. However, we only want this component to be accessible if the user is logged in.
 
-With an authenticated API request and login/logout [implemented in the Home component](https://github.com/auth0-blog/angular-auth0-aside/blob/master/src/app/pages/home), the final touch is to protect our profile route from unauthorized access. The [`auth.guard.ts` route guard](https://github.com/auth0-blog/angular-auth0-aside/blob/master/src/app/auth/auth.guard.ts) can check authentication and activate routes conditionally. The guard is implemented on specific routes of our choosing in the [`app-routing.module.ts` file](https://github.com/auth0-blog/angular-auth0-aside/blob/master/src/app/app-routing.module.ts#L24) like so:
+With an authenticated API request and login/logout [implemented in the Home component](https://github.com/auth0-blog/angular-auth0-aside/blob/master/src/app/pages/home), the final touch is to protect our profile route from unauthorized access. The [`auth.guard.ts` route guard](https://github.com/auth0-blog/angular-auth0-aside/blob/master/src/app/auth/auth.guard.ts) can check authentication and activate routes conditionally. The guard is implemented on specific routes of our choosing in the [`app-routing.module.ts` file](https://github.com/auth0-blog/angular-auth0-aside/blob/master/src/app/app-routing.module.ts#L22) like so:
 
 ```js
 // src/app/app-routing.module.ts
 ...
 import { AuthGuard } from './auth/auth.guard';
 ...
+
+@NgModule({
+  imports: [
+    RouterModule.forRoot([
+      ...,
       {
         path: 'profile',
         component: ProfileComponent,
@@ -310,7 +382,16 @@ import { AuthGuard } from './auth/auth.guard';
           AuthGuard
         ]
       },
-...
+      ...
+    ])
+  ],
+  providers: [
+    AuthGuard,
+    ...
+  ],
+  ...
+})
+export class AppRoutingModule {}
 ```
 
 ### More Resources
