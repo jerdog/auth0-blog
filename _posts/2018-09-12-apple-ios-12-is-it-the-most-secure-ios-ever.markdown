@@ -62,7 +62,7 @@ To illustrate this further, if an employee at your company has their iPhone stol
 This data privacy feature is automatically turned on in the new OS, but Apple does give you the option of disabling it:
 
 <p style="text-align: center;">
-  <img src="https://cdn.auth0.com/blog/apple-ios-12-is-it-the-most-secure-ios-ever/ios12-usb-restricted-mode-off.png" alt="iOS 12 USB Restricted Mode Off">
+  <img src="https://cdn.auth0.com/blog/apple-ios-12-is-it-the-most-secure-ios-ever/ios12-usb-restricted-mode-off.png" alt="Turn USB Restricted Mode Off in iOS 12">
 </p>
 
 _[Image Source](https://www.macrumors.com/how-to/access-controls-usb-restricted-mode-ios-12/)_
@@ -76,7 +76,7 @@ As is the case with any data security system, humans are the weakest link. If yo
 That’s why Apple is trying to make password management as simple as possible in iOS 12. One of the features that makes this easier is Password Reuse Auditing. This feature monitors the passwords that iPhone owners use for different services. When it catches someone using the same password on different websites, it flags the duplicate, offers a more secure password, and then saves it to the iCloud Keychain.
 
 <p style="text-align: center;">
-  <img src="https://cdn.auth0.com/blog/apple-ios-12-is-it-the-most-secure-ios-ever/ios-12-password-reuse-auditing-flag-present-on-online-service.png" alt="iOS 12 Password Reuse Auditing flag Present on Online Service">
+  <img src="https://cdn.auth0.com/blog/apple-ios-12-is-it-the-most-secure-ios-ever/ios-12-password-reuse-auditing-flag-present-on-online-service.png" alt="iOS 12 Password Autofill - Password Reuse Auditing flag present on online service">
 </p>
 
 _[Image Source](https://www.macrumors.com/how-to/automatic-passwords-and-auditing-in-ios-12/)_
@@ -106,7 +106,7 @@ The problem is, it requires a lot of switching back and forth between apps to ge
 Luckily, Apple is coming to the rescue. With iOS 12, SMS security codes will autofill without the user having to switch from app to app. No memorization, either. It does this by making specific API calls to the messaging app. When iOS 12 recognizes an SMS 2FA security code, it will automatically pull it into autofill for the user. 
 
 <p style="text-align: center;">
-  <img src="https://cdn.auth0.com/blog/apple-ios-12-is-it-the-most-secure-ios-ever/ios-12-recognizes-an-sms-2fa-code-and-autofills-it-for-user.gif" alt="iOS 12 recognizes an SMS 2FA code and autofills it for the user">
+  <img src="https://cdn.auth0.com/blog/apple-ios-12-is-it-the-most-secure-ios-ever/ios-12-recognizes-an-sms-2fa-code-and-autofills-it-for-user.gif" alt="iOS 12 SMS 2FA security code and autofill example">
 </p>
 
 There is one downside here. It has been well established that SMS 2FA can be compromised. We recently mentioned this _[in a post about a Reddit data breach](https://auth0.com/blog/what-companies-can-learn-from-the-reddit-data-breach/)_. Even still, any 2FA is better than no 2FA. With Apple including this feature in iOS 12’s security, they’ve made users significantly less prone to hacking.
