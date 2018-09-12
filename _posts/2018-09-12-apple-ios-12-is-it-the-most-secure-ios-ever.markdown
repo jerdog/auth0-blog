@@ -108,7 +108,7 @@ Luckily, Apple is coming to the rescue. With iOS 12, SMS 2FA codes will autofill
   <img src="https://cdn.auth0.com/blog/apple-ios-12-is-it-the-most-secure-ios-ever/ios-12-recognizes-an-sms-2fa-code-and-autofills-it-for-user.gif" alt="iOS 12 recognizes an SMS 2FA code and autofills it for the user">
 </p>
 
-There is one downside here. It has been well established that SMS 2FA can be compromised. Martin Gontovnikas recently mentioned this _[in a post on the Auth0 blog](https://auth0.com/blog/what-companies-can-learn-from-the-reddit-data-breach/)_. Even still, any 2FA is better than no 2FA. With Apple including this feature in iOS 12’s security, they’ve made users significantly less prone to hacking.
+There is one downside here. It has been well established that SMS 2FA can be compromised. We recently mentioned this _[in a post about a Reddit data breach](https://auth0.com/blog/what-companies-can-learn-from-the-reddit-data-breach/)_. Even still, any 2FA is better than no 2FA. With Apple including this feature in iOS 12’s security, they’ve made users significantly less prone to hacking.
 
 ## What Else is New in Data Security for iOS 12?
 
