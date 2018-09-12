@@ -6,8 +6,8 @@ description: "Android アプリケーションの作成に役立つ素晴らし�
 metadescription: "Android アプリケーションの作成に役立つ素晴らしいライブラリを見てみましょう。"
 date: 2018-09-12 16:30
 category: Technical Guide, Deep Dive, Android
-post_length: 0
-auth0_aside: 
+post_length: 2
+auth0_aside: true
 author:
   name: "Idorenyin Obong"
   url: "https://twitter.com/kingidee/"
