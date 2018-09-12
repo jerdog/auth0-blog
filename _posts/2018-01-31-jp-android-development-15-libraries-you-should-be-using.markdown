@@ -22,8 +22,8 @@ tags:
 - libraries
 - tips
 related:
-- 2017-07-27-authenticating-android-apps-developed-with-kotlin
-- 2017-08-09-integrating-realm-database-in-an-android-application
+- jp-angular-2-authentication
+- jp-reactjs-authentication
 ---
 
 **TL;DR：** 本書では、日々の Android 開発に役立つ 15 のライブラリを簡単に見ていきます。これらを使って、より良いパフォーマンスとより良いユーザー エクスペリエンスを提供するアプリケーションを作成することができます。
