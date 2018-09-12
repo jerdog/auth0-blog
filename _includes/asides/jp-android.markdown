@@ -38,7 +38,7 @@ Auth0 ダッシュボードで、_クライアント_ に移動し、_クライ�
 demo://bkrebs.auth0.com/android/OUR_APP_PACKAGE_NAME/callback
 ```
 
-OUR\_APP\_PACKAGE\_NAME とアプリケーションのパッケージ名を置換することを忘れないようにしましょう。この名前は `app/build.gradle` ファイルの `applicationId` 属性にあります。
+OUR_APP_PACKAGE_NAME とアプリケーションのパッケージ名を置換することを忘れないようにしましょう。この名前は `app/build.gradle` ファイルの `applicationId` 属性にあります。
 
 ### 資格情報を設定する
 
