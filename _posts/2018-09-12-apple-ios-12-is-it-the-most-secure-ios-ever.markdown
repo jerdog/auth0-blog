@@ -83,7 +83,7 @@ _[Image Source](https://www.macrumors.com/how-to/automatic-passwords-and-auditin
 
 The issues with using one password across different websites are well documented. Security experts have been trying to get around these issues for years and Apple is doing their best to help. 
 
-### The Elephant in the Room
+### iCloud: The Elephant in the Room
 
 At first glance, this iOS 12 security feature seems slightly less secure. For this feature to work, Apple has to record your current passwords and be able to crawl them for matches. While at the same time, Apple stores everything in the iCloud. 
 
