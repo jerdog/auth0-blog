@@ -18,6 +18,16 @@ design:
 tags:
 - ios
 - security
+- sms
+- usb
+- data
+- data-security
+- privacy
+- data-privacy
+- security
+- auditing
+- password
+- 2fa
 related:
 - 2017-10-16-is-faceid-really-secure
 - 2017-12-29-why-every-business-needs-two-factor-authentication-security
