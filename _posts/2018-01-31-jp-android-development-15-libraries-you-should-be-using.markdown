@@ -44,7 +44,7 @@ related:
 
 #### GLIDE を使用する
 
-まず、プロジェクト build.gradle ファイルに Maven および Google レポジトリを次のように追加します。
+まず、プロジェクト `build.gradle` ファイルに Maven および Google レポジトリを次のように追加します。
 
 ```groovy
 repositories {
@@ -53,7 +53,7 @@ repositories {
 }
 ```
 
-それから、アプリモジュール build.gradle ファイルにライブラリ依存関係を追加して、それを同期して次のようにライブラリを使用可能にします。
+それから、アプリモジュール `build.gradle` ファイルにライブラリ依存関係を追加して、それを同期して次のようにライブラリを使用可能にします。
 
 ```groovy
 implementation 'com.github.bumptech.glide:glide:4.4.0'
@@ -69,25 +69,25 @@ GlideApp
   .into(imageView);
 ```
 
-With メソッドは Context、 Activity、Fragment または View オブジェクトを取ることができます。 Load メソッドはリモート URL またはドローアブルファイル（例 R.drawable.image）を取ります。引数として into メソッドにパスされた imageView インスタンスはタイプ [ImageView](https://developer.android.com/reference/android/widget/ImageView.html) であるべきです。
+`with` メソッドは `Context`、 `Activity`、`Fragment` または `View` オブジェクトを取ることができます。 `load` メソッドはリモート URL またはドローアブルファイル（例 `R.drawable.image`）を取ります。引数として `into`メソッドにパスされた `imageView` インスタンスはタイプ [ImageView](https://developer.android.com/reference/android/widget/ImageView.html) であるべきです。
 
-gradle バージョンが 3.0 以下の場合は、依存関係を追加するために implementation の代わりに compile キーワードを使用するように **注意してください** 。
+`gradle` バージョンが 3.0 以下の場合は、依存関係を追加するために `implementation` の代わりに `compile` キーワードを使用するように **注意してください** 。
 
 ### Picasso
 
-[Picasso](http://square.github.io/picasso/) はもうひとつの素晴らしい Android 用画像ライブラリです。オープンソースの世界に強く依存し、貢献する会社の [Square](http://square.github.io/) が作成・管理しており、画像読み込み・処理を提供しています。Picasso を使用すると、画像を外部の場所から表示するプロセスが簡素化されます。Picasso は複雑な画像変換、ディスクへの自動キャッシュ、ImageView リサイクル、アダプタのダウンロード取り消しをサポートします。
+[Picasso](http://square.github.io/picasso/) はもうひとつの素晴らしい Android 用画像ライブラリです。オープンソースの世界に強く依存し、貢献する会社の [Square](http://square.github.io/) が作成・管理しており、画像読み込み・処理を提供しています。Picasso を使用すると、画像を外部の場所から表示するプロセスが簡素化されます。Picasso は複雑な画像変換、ディスクへの自動キャッシュ、`ImageView` リサイクル、アダプタのダウンロード取り消しをサポートします。
 
 このライブラリはプロセスの全ステップを処理します。HTTP 要求を処理することから始まり、画像のキャッシュも処理します。丁度 Glide と同様です。
 
 #### PICASSO を使用する
 
-まず、Picasso 依存関係を次のようにアプリモジュール build.gradle ファイルに追加します。
+まず、Picasso 依存関係を次のようにアプリモジュール `build.gradle` ファイルに追加します。
 
 ```groovy
 implementation 'com.squareup.picasso:picasso:2.5.2'
 ```
 
-その後、gradle ファイルを同期し、次のように 1 行のコードで画像リソースをロードします。
+その後、`gradle` ファイルを同期し、次のように 1 行のコードで画像リソースをロードします。
 
 ```java
 Picasso
@@ -106,15 +106,15 @@ Picasso
 
 ## Android ライブラリ — ビデオ
 
-ビデオの表示は開発の間に難しい作業が課せられます。処理するプロセスと詳細があまりにも多すぎるからです。この種では、利用可能なオプションがいくつかあります。しかし、最も普及していて強力なものは ExoPlayer で、この章ではこれについてフォーカスしていきます。
+ビデオの表示は開発の間に難しい作業が課せられます。処理するプロセスと詳細があまりにも多すぎるからです。この種では、利用可能なオプションがいくつかあります。しかし、最も普及していて強力なものは `ExoPlayer` で、この章ではこれについてフォーカスしていきます。
 
 ### ExoPlayer
 
-[ExoPlayer](https://github.com/google/ExoPlayer) は Google が開発した Android Media Player ライブラリです。オーディオとビデオを再生するときに（ローカルとインターネット上の両方で）Android の MediaPlayer API に代替オプションが与えられ、他の利点もあります。ExoPlayer は Android の MediaPlayer API が現在サポートしていない [DASH や SmoothStreaming 適応型再生](https://google.github.io/ExoPlayer/guide.html) のような機能を提供します。ExoPlayer の最大の利点のひとつはカスタマイズが簡単なことです。
+[ExoPlayer](https://github.com/google/ExoPlayer) は Google が開発した Android Media Player ライブラリです。オーディオとビデオを再生するときに（ローカルとインターネット上の両方で）Android の MediaPlayer API に代替オプションが与えられ、他の利点もあります。`ExoPlayer` は Android の MediaPlayer API が現在サポートしていない [DASH や SmoothStreaming 適応型再生](https://google.github.io/ExoPlayer/guide.html) のような機能を提供します。`ExoPlayer` の最大の利点のひとつはカスタマイズが簡単なことです。
 
 #### EXOPLAYER を使用する
 
-まず最初に、JCenter および Google レポジトリを次のようにプロジェクト build.gradle 構成ファイルに追加します。
+まず最初に、JCenter および Google レポジトリを次のようにプロジェクト `build.gradle` 構成ファイルに追加します。
 
 ```groovy
 repositories {
@@ -129,7 +129,7 @@ repositories {
 implementation 'com.google.android.exoplayer:exoplayer:2.6.0'
 ```
 
-それから、レイアウトリソースファイルに SimpleExoPlayerView コンポーネントを次のように追加します。
+それから、レイアウトリソースファイルに `SimpleExoPlayerView` コンポーネントを次のように追加します。
 
 ```xml
 <com.google.android.exoplayer2.ui.SimpleExoPlayerView
@@ -138,20 +138,20 @@ implementation 'com.google.android.exoplayer:exoplayer:2.6.0'
    android:layout_height="wrap_content"/>
 ```
 
-その後、対応するアクティビティ クラスで、次のように ExoPlayer のクラスのインスタンスを作成します。
+その後、対応するアクティビティ クラスで、次のように `ExoPlayer` のクラスのインスタンスを作成します。
 
 ```java
 SimpleExoPlayerView simpleExoPlayerView;
 SimpleExoPlayer player;
 ```
 
-それから、次のようにアクティビティの onCreate メソッドで simpleExoPlayerView を初期化します。
+それから、次のようにアクティビティの onCreate メソッドで `simpleExoPlayerView` を初期化します。
 
 ```java
 simpleExoPlayerView = findViewById(R.id.simple_exoplayer_view);
 ```
 
-そして onStart メソッドで、 次のように setupPlayer メソッドを呼び出します。
+そして `onStart`  メソッドで、 次のように `setupPlayer`  メソッドを呼び出します。
 
 ```java
 @Override
@@ -161,7 +161,7 @@ protected void onStart() {
 }
 ```
 
-次のように setupPlayer メソッドも呼び出します。
+次のように `setupPlayer`  メソッドも呼び出します。
 
 ```java
 void setupPlayer(){
@@ -193,17 +193,17 @@ void setupPlayer(){
 }
 ```
 
-ここで、既定の構成で player を初期化し、それを SimpleExoPlayerView インスタンスに割り当てます。videoUri は Uri のタイプです。格納された全てのファイルには Uri があり、そのファイルを一意のアドレスにします。ビデオをリモート URL から表示するのであれば、次のように解析する必要があります。
+ここで、既定の構成で `player` を初期化し、それを `SimpleExoPlayerView` インスタンスに割り当てます。`videoUri` は `Uri` のタイプです。格納された全てのファイルには `Uri` があり、そのファイルを一意のアドレスにします。ビデオをリモート URL から表示するのであれば、次のように解析する必要があります。
 
 ```java
 Uri videoUri = Uri.parse("any_remote_url");
 ```
 
-これが ExoPlayer の基本的な実装になります。Google では [このライブラリで始める方法についての素晴らしいチュートリアル](https://codelabs.developers.google.com/codelabs/exoplayer-intro) を提供しています。
+これが `ExoPlayer` の基本的な実装になります。Google では [このライブラリで始める方法についての素晴らしいチュートリアル](https://codelabs.developers.google.com/codelabs/exoplayer-intro) を提供しています。
 
 ## Android ライブラリ — ネットワーク
 
-最近のほとんど全てのモバイルアプリは、機能を実行するために何らかのネットワークコミュニケーションを必要とします。これまで、ネットワーク要求をしたければ、Async タスククラスを実行して [HttpsUrlConnection](https://developer.android.com/reference/javax/net/ssl/HttpsURLConnection.html) を使ってデータをフェッチする必要がありました。しかし、これは、特に大量のデータを返す API を使うときは、あまり有効ではありません。
+最近のほとんど全てのモバイルアプリは、機能を実行するために何らかのネットワークコミュニケーションを必要とします。これまで、ネットワーク要求をしたければ、`Async` タスククラスを実行して [`HttpsUrlConnection`](https://developer.android.com/reference/javax/net/ssl/HttpsURLConnection.html) を使ってデータをフェッチする必要がありました。しかし、これは、特に大量のデータを返す API を使うときは、あまり有効ではありません。
 
 幸運なことに、スレッドやデバイスのリソースを適切に管理しながら、このプロセスを最適化する素晴らしいネットワーク ライブラリがあります。代替オプションの中で、Retrofit と Volley が際立ちます。この 2 つでは Retrofit の方が人気が高いので、これを見ていきましょう。
 
@@ -226,7 +226,7 @@ implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
 implementation 'com.squareup.retrofit2:converter-scalars:2.3.0'
 ```
 
-上記の最初のコンバーター(converter-gson)はその名前のとおり、JSON フォーマットから/までマップします。ふたつめは String のようにプリミティブ データ型で処理したいときに使用します。ご希望のコンバーターをインポートした後、次のようにアクセスするエンドポイントを構成するインターフェイスを作成します。
+上記の最初のコンバーター(`converter-gson`)はその名前のとおり、JSON フォーマットから/までマップします。ふたつめは `String` のようにプリミティブ データ型で処理したいときに使用します。ご希望のコンバーターをインポートした後、次のようにアクセスするエンドポイントを構成するインターフェイスを作成します。
 
 ```java
 public interface ApiService {
@@ -235,7 +235,7 @@ public interface ApiService {
 }
 ```
 
-そのスニペットから、要求に対して JsonObject@Bodyを必要とするエンドポイント /data があります。また、要求の予想応答本文にマップされる ResponseClass もあります。ただし、クラスは簡潔にするため、ここでは省略されます。POJO に対して JSON オブジェクトをマップするには、[JsonSchema2Pojo](https://auth0.com/blog/android-development-15-libraries-you-should-be-using/jsonschema2pojo.org) ライブラリを使用します。
+そのスニペットから、要求に対して `JsonObject` `@Body`を必要とするエンドポイント `/data` があります。また、要求の予想応答本文にマップされる `ResponseClass` もあります。ただし、クラスは簡潔にするため、ここでは省略されます。POJO に対して JSON オブジェクトをマップするには、[JsonSchema2Pojo](https://auth0.com/blog/android-development-15-libraries-you-should-be-using/jsonschema2pojo.org) ライブラリを使用します。
 
 利用可能なエンドポイントを定義した後、次のように Retrofit クライアントを作成します。
 
@@ -272,7 +272,7 @@ RetrofitClient.getService().fetchData(jsonObject).enqueue(new Callback<ResponseC
 });
 ```
 
-jsonObject が要求パラメータを含む場合です。この要求は上記のコードスニペットで定義されたように http://127.0.0.1:5000/data エンドポイントに対して行われます。この最後のスニペットでご覧のように、Retrofit もコールバック メソッドを提供して要求の状況を提供します。
+`jsonObject` が要求パラメータを含む場合です。この要求は上記のコードスニペットで定義されたように `http://127.0.0.1:5000/data` エンドポイントに対して行われます。この最後のスニペットでご覧のように、Retrofit もコールバック メソッドを提供して要求の状況を提供します。
 
 ## Android ライブラリ — 依存関係挿入
 
@@ -284,7 +284,7 @@ jsonObject が要求パラメータを含む場合です。この要求は上記
 
 #### DAGGER2 を使用する
 
-いつものように、次のようにアプリモジュール build.gradle ファイルに依存関係を追加します。
+いつものように、次のようにアプリモジュール `build.gradle` ファイルに依存関係を追加します。
 
 ```groovy
 implementation 'com.google.dagger:dagger:2.14.1'
@@ -304,7 +304,7 @@ public abstract class ActivityBindingModule {
 }  
 ```
 
-任意ですが、アクティビティへの特定の依存関係でモジュールクラスを作成できます。それから、例えば次のように、そのモジュールを @ContributesAndroidInjector 注釈のコンストラクターに追加します。
+任意ですが、アクティビティへの特定の依存関係でモジュールクラスを作成できます。それから、例えば次のように、そのモジュールを `@ContributesAndroidInjector` 注釈のコンストラクターに追加します。
 
 ```java
 @ContributesAndroidInjector(modules = {MainActivityModule.class} )
@@ -313,7 +313,7 @@ abstract MainActivity mainActivity();
 
 また、1 つのアクティビティクラス以上に使用する依存関係を提供するためにモジュールクラスをもうひとつ作成できます。
 
-Module クラスを @Module で注釈して、オブジェクトを提供する担当にします。オブジェクトは提供されているものと同じ戻り値の型があるメソッド（通常 @Provides または @Binds の注釈付き）を作成して提供されます。以下のサンプルのモジュールクラスはアプリに String を提供します。
+`Module` クラスを `@Module`  で注釈して、オブジェクトを提供する担当にします。オブジェクトは提供されているものと同じ戻り値の型があるメソッド（通常 `@Provides`  または `@Binds`  の注釈付き）を作成して提供されます。以下のサンプルのモジュールクラスはアプリに `String` を提供します。
 
 ```java
   @Module
@@ -325,7 +325,7 @@ Module クラスを @Module で注釈して、オブジェクトを提供する�
   }
 ```
 
-@Module を配置したら、抽象クラスまたはインターフェイスを作成します。この場合 AppComponent と名付けます。AppComponent には @Component の注釈付けをします。注釈はサポートライブラリからの AndroidSupportInjection クラスを含む、上記で作成したモジュールクラスに入れます。Dagger はクラスを生成してから、このインターフェイスを実装します。このクラスはパスしたモジュールから挿入されたインスタンスを提供します。この Component インターフェイスは次のように表示されます。
+`@Module`  を配置したら、抽象クラスまたはインターフェイスを作成します。この場合 `AppComponent`  と名付けます。`AppComponent`  には `@Component` の注釈付けをします。注釈はサポートライブラリからの `AndroidSupportInjection` クラスを含む、上記で作成したモジュールクラスに入れます。Dagger はクラスを生成してから、このインターフェイスを実装します。このクラスはパスしたモジュールから挿入されたインスタンスを提供します。この `Component` インターフェイスは次のように表示されます。
 
 ```java
 @Singleton
@@ -343,7 +343,7 @@ public interface AppComponent extends AndroidInjector<AppController> {
 }
 ```
 
-AppController はアプリのアプリケーションクラスで、オブジェクトはアプリのライフサイクルで初期化されます。AppController は次のように表示されます。
+`AppController` はアプリのアプリケーションクラスで、オブジェクトはアプリのライフサイクルで初期化されます。`AppController` は次のように表示されます。
 
 ```java
 public class App extends Application implements HasActivityInjector {
@@ -362,9 +362,9 @@ public class App extends Application implements HasActivityInjector {
 }
 ```
 
-DispatchingAndroidInjector\&lt;Activity\&gt; のインスタンスを作成し、実装されたメソッドに返します。これは、アクティビティにメンバー挿入するためです。それから Component を構築し、Application クラスにそれを挿入します。
+`DispatchingAndroidInjector<Activity>` のインスタンスを作成し、実装されたメソッドに返します。これは、アクティビティにメンバー挿入するためです。それから `Component` を構築し、`Application` クラスにそれを挿入します。
 
-最後に、依存関係を使用するつもりのアクティビティで、HasSupportFragmentInjector を実装し、次のように @Inject 注釈を使って依存関係にアクセスします。
+最後に、依存関係を使用するつもりのアクティビティで、`HasSupportFragmentInjector` を実装し、次のように `@Inject` 注釈を使って依存関係にアクセスします。
 
 ```java
 public class MainActivity extends AppCompatActivity implements HasSupportFragmentInjector {
@@ -389,9 +389,9 @@ public class MainActivity extends AppCompatActivity implements HasSupportFragmen
 }
 ```
 
-App クラスで同じようなことをしましたが、唯一の違いはここでは HasSupportFragmentInjector を実装しているので DispatchingAndroidInjector\&lt;T\&gt; には Fragment があります。この論理は、Application には Activities が含まれ、これらは Fragments を囲むということです。この後、AndroidInjection.inject(this) を onCreate メソッドに呼び出します。
+`App` クラスで同じようなことをしましたが、唯一の違いはここでは `HasSupportFragmentInjector` を実装しているので `DispatchingAndroidInjector<T>` には `Fragment` があります。この論理は、`Application` には `Activities` が含まれ、これらは `Fragments` を囲むということです。この後、`AndroidInjection.inject(this)` を `onCreate` メソッドに呼び出します。
 
-この簡単な例を使ってこのアプリを実行している方には、I love Auth0 がログに書き出されます。依存関係をクラスで初期化する代わりに、挿入できました。これが Dagger2 が提供する機能の一部です。詳細については、次の 2 つの記事を参照してください。
+この簡単な例を使ってこのアプリを実行している方には、`I love Auth0` がログに書き出されます。依存関係をクラスで初期化する代わりに、挿入できました。これが Dagger2 が提供する機能の一部です。詳細については、次の 2 つの記事を参照してください。
 
 - [Dagger 2 使用の新 Android インジェクタ  —  パート 1](https://medium.com/@iammert/new-android-injector-with-dagger-2-part-1-8baa60152abe)
 - [Android 用 Dagger 2.11](https://medium.com/@idee4ril/dagger-2-11-with-android-a606c132826c)
@@ -402,18 +402,18 @@ App クラスで同じようなことをしましたが、唯一の違いはこ�
 
 ### Butterknife
 
-[ButterKnife](http://jakewharton.github.io/butterknife/) は [Jake Wharton](https://twitter.com/JakeWharton) が開発したビューバインディング ライブラリです。Butterknife は ids をビューに割り当てるときに役立つライブラリで、過剰 findViewById を避けます。ドキュメントの「シャープさが無限に少ないだけで Butterknife は Dagger のよう」によると、ビューバインディングは依存関係挿入の形態として見ることができる、ということです。ButterKnife では、注釈は代わりに定型句コードを生成するために使用されます。
+[ButterKnife](http://jakewharton.github.io/butterknife/) は [Jake Wharton](https://twitter.com/JakeWharton) が開発したビューバインディング ライブラリです。Butterknife は `ids` をビューに割り当てるときに役立つライブラリで、過剰 `findViewById` を避けます。ドキュメントの「シャープさが無限に少ないだけで Butterknife は Dagger のよう」によると、ビューバインディングは依存関係挿入の形態として見ることができる、ということです。ButterKnife では、注釈は代わりに定型句コードを生成するために使用されます。
 
 ### Butterknife を使用する
 
-Butterknife を使用するには、依存関係をアプリモジュール build.gradle ファイルに次のように追加する必要があります。
+Butterknife を使用するには、依存関係をアプリモジュール `build.gradle` ファイルに次のように追加する必要があります。
 
 ```groovy
 implementation 'com.jakewharton:butterknife:8.8.1'
 annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 ```
 
-それから、アクティビティで、@BindView 注釈を使って次のように id をそのビューに割り当てます。
+それから、アクティビティで、`@BindView` 注釈を使って次のように `id` をそのビューに割り当てます。
 
 ```java
 class MainActivity extends AppCompatActivity {
@@ -428,14 +428,14 @@ class MainActivity extends AppCompatActivity {
 }
 ```
 
-上記のコード スニペットでは、bind メソッドを使って onCreate メソッドの ButterKnife を初期化したことに注意してください。代わりに、ButterKnife を Fragment に使用したければ、次のように onCreateView メソッドでそれを初期化します。
+上記のコード スニペットでは、`bind` メソッドを使って `onCreate` メソッドの ButterKnife を初期化したことに注意してください。代わりに、`ButterKnife` を `Fragment` に使用したければ、次のように onCreateView メソッドでそれを初期化します。
 
 ```java
 View view = inflater.inflate(R.layout.sample_fragment, container, false);
 ButterKnife.bind(this,view);
 ```
 
-ButterKnife を使って OnClickListeners の作成を避けます。例えば、@OnClick 注釈とビューを一緒に使って、次のようにクリックリスナーをビューに追加します。
+ButterKnife を使って `OnClickListeners` の作成を避けます。例えば、`@OnClick` 注釈とビューを一緒に使って、次のようにクリックリスナーをビューに追加します。
 
 ```java
 @OnClick(R.id.button)
@@ -448,11 +448,11 @@ ButterKnife についてのドキュメントは [こちらから](http://jakewh
 
 ### Android データバインディング ライブラリ
 
-[Android データバインディング ライブラリ](https://developer.android.com/topic/libraries/data-binding/index.html) は Android Support Library に内蔵されています。Android Studio のバージョン 1.3 以降が必要です。ButterKnife とは異なりこのライブラリは注釈を使用しません。
+[Android データバインディング ライブラリ](https://developer.android.com/topic/libraries/data-binding/index.html) は Android Support Library に内蔵されています。Android Studio のバージョン `1.3` 以降が必要です。ButterKnife とは異なりこのライブラリは注釈を使用しません。
 
 ### データバインディング ライブラリを使用する
 
-アプリモジュール build.gradle ファイルで次のようにデータバインディングと同期化が可能になります。
+アプリモジュール `build.gradle` ファイルで次のようにデータバインディングと同期化が可能になります。
 
 ```java
 android {
@@ -463,7 +463,7 @@ android {
 }
 ```
 
-その後、レイアウトファイルのルートタグを次のように layout に設定します。
+その後、レイアウトファイルのルートタグを次のように `layout` に設定します。
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -485,7 +485,7 @@ android {
 </layout>
 ```
 
-それから、アクティビティ バインディング クラスがレイアウトの名前activity.main.xml を基に生成されます(ActivityMainBinding)。このクラスのインスタンスを使ってビューにアクセスします。他のユーティリティを処理するために生成された別のクラス DataBindingUtil もあります。
+それから、アクティビティ バインディング クラスがレイアウトの名前`activity.main.xml` を基に生成されます(`ActivityMainBinding`)。このクラスのインスタンスを使ってビューにアクセスします。他のユーティリティを処理するために生成された別のクラス `DataBindingUtil` もあります。
 
 それから、アクティビティクラスでは次のようになります。
 
@@ -503,7 +503,7 @@ public class MainActivity extends AppCompatActivity {
 }
 ```
 
-Android データバインディング ライブラリはその他たくさんの機能と共に、onClick リスナーの置換を提供します。これら機能については公式 [ドキュメント](https://developer.android.com/topic/libraries/data-binding/index.html) をご覧ください。
+Android データバインディング ライブラリはその他たくさんの機能と共に、`onClick` リスナーの置換を提供します。これら機能については公式 [ドキュメント](https://developer.android.com/topic/libraries/data-binding/index.html) をご覧ください。
 
 ButterKnife と Android Databinding Library の 2 つのライブラリはビューにアクセスするために書くコードの量を大きく減らします。しかし、Android DataBinding ライブラリは ButterKnife と比較したとき、より簡単な設定、少ないコードで結果達成、より多くの機能などを提供するため、勝ち目があるようです。
 
@@ -515,15 +515,15 @@ ButterKnife と Android Databinding Library の 2 つのライブラリはビュ
 
 [RxJava](https://github.com/ReactiveX/RxJava) はリアクティブプログラミング を実装させるライブラリですから、リアクティブアプリケーションを作ります。[RxJava2](https://github.com/ReactiveX/RxJava/wiki/What%27s-different-in-2.0) は RxJava の旧バージョンのアップデートです。RxJava2 には Observables、Observers、Schedulers があります。
 
-Observables はデータソースで、Observer、Single、Flowable、Maybe、Completable のさまざまなタイプがあります。これら各タイプには固有の使用ケースがあり、その詳細については [こちら](https://mindorks.com/course/demo/learn-rxjava/chapter/id/2) をご覧ください。
+`Observables` はデータソースで、`Observer`、`Single`、`Flowable`、`Maybe`、`Completable` のさまざまなタイプがあります。これら各タイプには固有の使用ケースがあり、その詳細については [こちら](https://mindorks.com/course/demo/learn-rxjava/chapter/id/2) をご覧ください。
 
-特に Flowable には [バックプレッシャ](https://github.com/ReactiveX/RxJava/wiki/Backpressure) サポートが付いています。バックプレッシャは Observer が Observable にシグナルを送るとき、後者が値を早く発行し過ぎることです。Observers はデータレシーバー（またはコンシューマ）で、Schedulers はスレッドの管理に役立ちます。
+特に `Flowable` には [バックプレッシャ](https://github.com/ReactiveX/RxJava/wiki/Backpressure) サポートが付いています。バックプレッシャは `Observer` が `Observable` にシグナルを送るとき、後者が値を早く発行し過ぎることです。`Observers` はデータレシーバー（またはコンシューマ）で、`Schedulers` はスレッドの管理に役立ちます。
 
-一方、[RxAndroid](https://github.com/ReactiveX/RxAndroid) は RxJava2 の拡張子です。メインスレッドでスケジュールする Scheduler のプロビジョニングまたは指定された Looper のような Android プラットフォームに特有の機能を提供します。
+一方、[RxAndroid](https://github.com/ReactiveX/RxAndroid) は RxJava2 の拡張子です。メインスレッドでスケジュールする `Scheduler` のプロビジョニングまたは指定された `Looper` のような Android プラットフォームに特有の機能を提供します。
 
 #### RXANDROID を使用する
 
-RxAndroid を使用するには、次のようにアプリモジューラ build.gradle ファイルに依存関係を追加する必要があります。
+RxAndroid を使用するには、次のようにアプリモジューラ `build.gradle` ファイルに依存関係を追加する必要があります。
 
 ```groovy
 compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
@@ -532,7 +532,7 @@ compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
 compile 'io.reactivex.rxjava2:rxjava:2.1.7'
 ```
 
-それから、CompositeDisposable のインスタンスをクラスに作成します。CompositeDisposable は次のように複数の破棄可能を保留できるコンテナーです。
+それから、`CompositeDisposable` のインスタンスをクラスに作成します。`CompositeDisposable` は次のように複数の破棄可能を保留できるコンテナーです。
 
 ```java
 disposables.add(
@@ -560,7 +560,7 @@ disposables.add(
 );
 ```
 
-上記のコードスニペットでは、disposables 変数に追加したものは 1 つの文字列を発行するデータソース、プロセスが行われるスレッド、オブザーバーが結果の通知を受けるスレッド、サブスクライバー/オブザーバーで成ります。DisposableObserver\&lt;String\&gt; はオブザーバーで、実装する 3 つのメソッドを提供します。ひとつめはデータが発行されたときに呼び出される onNext、ふたつめはエラーが発生したことを示す onError、みっつめは Observable がデータ発行を終了し、これ以上 onNext を呼び出さないことを示す onCompleted です。
+上記のコードスニペットでは、`disposables` 変数に追加したものは 1 つの文字列を発行するデータソース、プロセスが行われるスレッド、オブザーバーが結果の通知を受けるスレッド、サブスクライバー/オブザーバーで成ります。`DisposableObserver<String>` はオブザーバーで、実装する 3 つのメソッドを提供します。ひとつめはデータが発行されたときに呼び出される `onNext`、ふたつめはエラーが発生したことを示す onError、みっつめは `Observable` がデータ発行を終了し、これ以上 `onNext` を呼び出さないことを示す `onCompleted` です。
 
 それから、アクティビティがバックグラウンドにあるときに、次のようにリソースを消去してメモリリークを避けます。
 
@@ -580,11 +580,11 @@ disposables.add(
 
 ### JUnit
 
-[JUnit](http://junit.org/) は単体テストに使用するフレームワークです。単体テストはテストのタイプで、ソースコードの個々の単体がテストされます。このフレームワークには assert メソッドのセットが含まれ、実際の結果に対して期待される結果をチェックします。JUnit は注釈を多用します。その例を少し挙げると、@Test（テストメソッドを識別する）、 @Before（テストが呼び出される前に呼び出されるべきメソッドを宣言する）、@After（テストの後に呼び出されるべきメソッドを宣言する）があります。
+[JUnit](http://junit.org/) は単体テストに使用するフレームワークです。単体テストはテストのタイプで、ソースコードの個々の単体がテストされます。このフレームワークには `assert` メソッドのセットが含まれ、実際の結果に対して期待される結果をチェックします。JUnit は注釈を多用します。その例を少し挙げると、`@Test`（テストメソッドを識別する）、 `@Before`（テストが呼び出される前に呼び出されるべきメソッドを宣言する）、`@After`（テストの後に呼び出されるべきメソッドを宣言する）があります。
 
 #### JUNIT を使用する
 
-まず、次のようにアプリモジュール build.gradle ファイルに依存関係を追加します。
+まず、次のようにアプリモジュール `build.gradle` ファイルに依存関係を追加します。
 
 ```groovy
 testImplementation 'junit:junit:4.12'
@@ -609,7 +609,7 @@ public class ExampleUnitTest {
 
 ### Mockito を使用する
 
-まず、JCenter レポジトリ、jcenter() がプロジェクト build.gradle ファイルにあるかを確認します。次に、その依存関係をアプリモジュール build.gradle ファイルに追加して次のように同期します。
+まず、JCenter レポジトリ、`jcenter()` がプロジェクト `build.gradle` ファイルにあるかを確認します。次に、その依存関係をアプリモジュール `build.gradle` ファイルに追加して次のように同期します。
 
 ```groovy
 testCompile 'junit:junit:4.12'
@@ -644,7 +644,7 @@ public void mockitoTest throws Exception {
 
 #### ROBOLECTRIC を使用する
 
-Robolectric を使用するには、次のようにアプリ build.gradle ファイルに依存関係を追加します。
+Robolectric を使用するには、次のようにアプリ `build.gradle` ファイルに依存関係を追加します。
 
 ```groovy
 testCompile "org.robolectric:robolectric:3.6.1"
@@ -669,18 +669,18 @@ public class MyActivityTest {
 
 ### Espresso
 
-[Espresso](https://developer.android.com/training/testing/espresso/index.html) はテストフレームワークで、[Android Testing Support Library](https://developer.android.com/tools/testing-support-library/index.html) の一部です。このテストフレームワークで、Android アプリ用のユーザーインターフェイス テストを作成できます。つまり、Espresso で TextView のテキストが別のテキストに一致するかをチェックできるテストを書くことができます。Espresso テストは実際のデバイスとエミュレーターの両方で実行でき、まるで実際のユーザーがアプリを使っているかのように動作します。
+[Espresso](https://developer.android.com/training/testing/espresso/index.html) はテストフレームワークで、[Android Testing Support Library](https://developer.android.com/tools/testing-support-library/index.html) の一部です。このテストフレームワークで、Android アプリ用のユーザーインターフェイス テストを作成できます。つまり、Espresso で `TextView` のテキストが別のテキストに一致するかをチェックできるテストを書くことができます。Espresso テストは実際のデバイスとエミュレーターの両方で実行でき、まるで実際のユーザーがアプリを使っているかのように動作します。
 
 #### ESPRESSO を使用する
 
-まず、次のようにアプリモジュール build.gradle ファイルにこれら依存関係を追加します。
+まず、次のようにアプリモジュール `build.gradle` ファイルにこれら依存関係を追加します。
 
 ```groovy
 androidTestCompile 'com.android.support.test.espresso:espresso-core:3.0.1'
 androidTestCompile 'com.android.support.test:runner:1.0.1'
 ```
 
-それから、同じ gradle ファイルに、インストルメンテーションランナーを設定します。その後に、次のような Gradle ファイルの同期化を忘れないようにしましょう。
+それから、同じ `gradle` ファイルに、インストルメンテーションランナーを設定します。その後に、次のような Gradle ファイルの同期化を忘れないようにしましょう。
 
 ```groovy
 defaultConfig {
@@ -694,7 +694,7 @@ defaultConfig {
 }
 ```
 
-それから、次のようなテストファイルを（例： EspressoSampleTest）を作成できます。
+それから、次のようなテストファイルを（例： `EspressoSampleTest`）を作成できます。
 
 ```java
 @RunWith(AndroidJUnit4.class)
@@ -711,7 +711,7 @@ public class EspressoSampleTest {
 }
 ```
 
-このテストクラスは MainActivity が開いたときに「世界の皆さん、こんにちは」のメッセージが表示されるかを確認します。
+このテストクラスは `MainActivity` が開いたときに「世界の皆さん、こんにちは」のメッセージが表示されるかを確認します。
 
 さまざまなテストライブラリの調査から、JUnit はその他のライブラリと共に作動するので、何とも競合しないと推測されます。Espresso はユーザーインターフェイス テストに良いプラットフォームを提供します。Mockito と Robolectric の両方には同じような機能がありますが、Robolectric は少ないコードでテストを達成します。Robolectric はビューをテストするなど、多くの機能も提供します。Robolectric には Google エンジニアのサポートがあるという有利な点もあります。
 
@@ -723,13 +723,13 @@ public class EspressoSampleTest {
 
 [Room](https://developer.android.com/topic/libraries/architecture/room.html) は永続化ライブラリで、Android [Architecture Components](https://developer.android.com/topic/libraries/architecture/index.html) の一部です。Room は最小の定型句コードに一貫するローカルデータを提供します。SQLite 上に抽象化レイヤーを提供するので、アプリのデータベースと取り組むのが簡単になります。このライブラリにはコンパイル時間で SQL クエリの検証、メインスレッド上のデータベースクエリの拒否（データベースの初期化中に明示しているときは除く）、実装ベストプラクティスの提示などたくさんの長所があります。
 
-Room はデータベース、DAO (Data Access Object)、エンティティの 3 つのメインコンポーネントでできています。それぞれはライブラリを機能させるために相関性があります。Entity クラスはデータベーステーブルを表し、@Entity の注釈が必要です。クラスの変数はテーブルにある列を表します。DAO はデータベースにアクセスするために使用するメソッドを含むインターフェイスです。Room はインターフェイスを使用し、次のようにユーザーのための実装クラスを生成します。
+Room はデータベース、DAO (Data Access Object)、エンティティの 3 つのメインコンポーネントでできています。それぞれはライブラリを機能させるために相関性があります。`Entity` クラスはデータベーステーブルを表し、`@Entity` の注釈が必要です。クラスの変数はテーブルにある列を表します。DAO はデータベースにアクセスするために使用するメソッドを含むインターフェイスです。Room はインターフェイスを使用し、次のようにユーザーのための実装クラスを生成します。
 
-基本的な DAO 操作に固有の注釈には@Insert、@Update、@Delete、@Query の 4 つがあります。それから、データベースクラスがあります。これは @Database の注釈が付いた抽象クラスで、RoomDatabase を拡張します。このクラスは使用するエンティティと DAO のリストを定義します。
+基本的な DAO 操作に固有の注釈には@Insert、`@Update`、`@Delete`、`@Query` の 4 つがあります。それから、データベースクラスがあります。これは `@Database` の注釈が付いた抽象クラスで、`RoomDatabase` を拡張します。このクラスは使用するエンティティと DAO のリストを定義します。
 
 #### ROOM を使用する
 
-Room を使用するには、まず Google Maven レポジトリをプロジェクト build.gradle ファイルに追加します。前回の Android プロジェクトは次で事前に構成されています。
+Room を使用するには、まず Google Maven レポジトリをプロジェクト `build.gradle` ファイルに追加します。前回の Android プロジェクトは次で事前に構成されています。
 
 ```groovy
 allprojects {
@@ -740,14 +740,14 @@ allprojects {
 }
 ```
 
-それから、Room 依存関係を次のようにアプリモジュール build.gradle ファイルに追加します。
+それから、Room 依存関係を次のようにアプリモジュール `build.gradle` ファイルに追加します。
 
 ```groovy
 implementation "android.arch.persistence.room:runtime:1.0.0"
 annotationProcessor "android.arch.persistence.room:compiler:1.0.0"
 ```
 
-次に、Entity クラスを作成します。いつものように、かなりシンプルなものを使います。そして、id と name の 2 つの列があります。Id 列は主キーで、追加した全ての行が固有になるように自動生成されます。
+次に、`Entity` クラスを作成します。いつものように、かなりシンプルなものを使います。そして、`id` と `name` の 2 つの列があります。`id` 列は主キーで、追加した全ての行が固有になるように自動生成されます。
 
 ```java
 @Entity(tableName = Person.TABLE_NAME)
@@ -787,7 +787,7 @@ public abstract class AppDatabase extends RoomDatabase {
 }
 ```
 
-これらクラスを配置したら、データベースのインスタンスを取得し、クエリを作り始めます。アプリのライフサイクルでデータベースのインスタンスを 1 つだけ作ることが推奨されています。これを次のように Application クラスでできます。
+これらクラスを配置したら、データベースのインスタンスを取得し、クエリを作り始めます。アプリのライフサイクルでデータベースのインスタンスを 1 つだけ作ることが推奨されています。これを次のように `Application` クラスでできます。
 
 ```java
 public class App extends Application {
@@ -811,7 +811,7 @@ public class App extends Application {
 }
 ```
 
-それから、データベースインスタンスにアクセスして、データをデータベースに挿入します。これは次のように DAO クラスの insert メソッドを呼び出して実行します。
+それから、データベースインスタンスにアクセスして、データをデータベースに挿入します。これは次のように DAO クラスの `insert` メソッドを呼び出して実行します。
 
 ```java
 Executors.newSingleThreadExecutor().execute(new Runnable() {
@@ -825,7 +825,7 @@ Executors.newSingleThreadExecutor().execute(new Runnable() {
 });
 ```
 
-ここで、Person のインスタンスを作成し、データベースに挿入しました。前述したように、id は自動的に作成されるので、名前だけを割り当てました。バックグラウンドでクエリを実行する新しいスレッドを作成したことにもご注意ください。データベースでその他の演算操作を実施する上記のパターンを同様に採用します。
+ここで、`Person` のインスタンスを作成し、データベースに挿入しました。前述したように、`id` は自動的に作成されるので、名前だけを割り当てました。バックグラウンドでクエリを実行する新しいスレッドを作成したことにもご注意ください。データベースでその他の演算操作を実施する上記のパターンを同様に採用します。
 
 Google は、ユーザーがこのライブラリで始めることができるように [ナイスチュートリアル](https://codelabs.developers.google.com/codelabs/android-persistence/#0) を提供しています。
 
@@ -839,13 +839,13 @@ Google は、ユーザーがこのライブラリで始めることができる�
 
 ### Calligraphy を使用する
 
-いつものように、次のようにアプリモジュール build.gradle ファイルに依存関係を追加し、それを同期化します。
+いつものように、次のようにアプリモジュール `build.gradle` ファイルに依存関係を追加し、それを同期化します。
 
 ```groovy
 implementation 'uk.co.chrisjenx:calligraphy:2.3.0'
 ```
 
-それから、assets フォルダを作成し、そこにカスタムフォントを挿入します。Android Studio のプロジェクトディレクトリにあるアプリケーションのルート フォルダを右クリックし、[New]、[Folder] を選択し、それから [Assets Folder] を選択します。これで、アセットフォルダが生成されます。その後、そのライブラリを初期化し、次のように Application クラスに既定のフォントを設定します。
+それから、`assets` フォルダを作成し、そこにカスタムフォントを挿入します。Android Studio のプロジェクトディレクトリにあるアプリケーションのルート フォルダを右クリックし、[New]、[Folder] を選択し、それから [Assets Folder] を選択します。これで、アセットフォルダが生成されます。その後、そのライブラリを初期化し、次のように `Application` クラスに既定のフォントを設定します。
 
 ```java
 public class App extends Application {
@@ -861,7 +861,7 @@ public class App extends Application {
 }
 ```
 
-最後に、次のように各アクティビティの attachBaseContext メソッドを上書きします。
+最後に、次のように各アクティビティの `attachBaseContext` メソッドを上書きします。
 
 ```java
 @Override
@@ -882,7 +882,7 @@ protected void attachBaseContext(Context newBase) {
 
 ### カスタムフォントとサポートライブラリ
 
-Android Support Library のお陰で、バージョン 26 以上からアプリの依存関係を増やさずにカスタムフォントを使用できます。これはどっちみち build.gradle ファイルで appcompat 依存関係を見つけるのでこのようになります。これは新しい Android プロジェクトを作成するときに自動的に追加されます。
+Android Support Library のお陰で、バージョン `26`以上からアプリの依存関係を増やさずにカスタムフォントを使用できます。これはどっちみち `build.gradle` ファイルで `appcompat` 依存関係を見つけるのでこのようになります。これは新しい Android プロジェクトを作成するときに自動的に追加されます。
 
 ```groovy
 implementation 'com.android.support:appcompat-v7:26.1.0'
@@ -890,7 +890,7 @@ implementation 'com.android.support:appcompat-v7:26.1.0'
 
 #### SUPPORT LIBRARY でカスタムフォントを使用する
 
-まず、fonts リソースフォルダを作成します。これは res フォルダを右クリックしてから、[New → Android リソース] ディレクトリを選択します。その後、リソースタイプとしてのフォントを選択し、[OK] を選択します。それから font リソースディレクトリ（例 redvelvet）に希望するフォントファイルを追加します。
+まず、`fonts` リソースフォルダを作成します。これは `res` フォルダを右クリックしてから、[New → Android リソース] ディレクトリを選択します。その後、リソースタイプとしてのフォントを選択し、[OK] を選択します。それから `font` リソースディレクトリ（例 `redvelvet`）に希望するフォントファイルを追加します。
 
 カスタムフォントを次のように直接 XML レイアウトに適用します。
 
@@ -913,7 +913,7 @@ implementation 'com.android.support:appcompat-v7:26.1.0'
 </font-family>
 ```
 
-フォントを XML レイアウトに適用すると、使用されたテキストスタイルを基にシステムが正しいフォントをピックします。フォントを XML レイアウトに適用することはさておき、それらをプログラムや複数のフォームで適用することも可能ですので、公式 [ドキュメント](https://developer.android.com/guide/topics/ui/look-and-feel/fonts-in-xml.html) でご覧ください。Support Library でカスタムフォントを使用することについての素晴らしいリソースは [こちら](https://segunfamisa.com/posts/custom-fonts-with-android-support-library) をご覧ください。
+フォントを `XML` レイアウトに適用すると、使用されたテキストスタイルを基にシステムが正しいフォントをピックします。フォントを `XML` レイアウトに適用することはさておき、それらをプログラムや複数のフォームで適用することも可能ですので、公式 [ドキュメント](https://developer.android.com/guide/topics/ui/look-and-feel/fonts-in-xml.html) でご覧ください。Support Library でカスタムフォントを使用することについての素晴らしいリソースは [こちら](https://segunfamisa.com/posts/custom-fonts-with-android-support-library) をご覧ください。
 
 ## ジョブのスケジューリング
 
@@ -927,17 +927,17 @@ Firebase Jobdispatcher には Google Play 開発者サービスが必要とい�
 
 ### Android ジョブ
 
-[Android ジョブ](https://github.com/evernote/android-job) はバックグラウンドでジョブを処理するために使用する Android ライブラリです。Android のバージョンによって JobScheduler、GcmNetworkManager、または AlarmManager のどれかが使用されます。これが、このライブラリが人々の心を引き付ける理由です。ひとつのコードベース内で別の API を使って、使用するスケジューリング API を知るために API バージョンを確認する代わりに、Android ジョブはコードサイズの他にストレスも減らして実行してくれます。このライブラリは API 14 (Android 4.0) 以降が必要です。
+[Android ジョブ](https://github.com/evernote/android-job) はバックグラウンドでジョブを処理するために使用する Android ライブラリです。Android のバージョンによって `JobScheduler`、`GcmNetworkManager`、または `larmManager` のどれかが使用されます。これが、このライブラリが人々の心を引き付ける理由です。ひとつのコードベース内で別の API を使って、使用するスケジューリング API を知るために API バージョンを確認する代わりに、Android ジョブはコードサイズの他にストレスも減らして実行してくれます。このライブラリは API 14 (Android 4.0) 以降が必要です。
 
 ### Android ジョブを使用する
 
-Android ジョブを使用するには、次のようにアプリモジュール build.gradle ファイルに依存関係を追加し、それを同期化します。
+Android ジョブを使用するには、次のようにアプリモジュール `build.gradle` ファイルに依存関係を追加し、それを同期化します。
 
 ```groovy
 compile 'com.evernote:android-job:1.2.1'
 ```
 
-それから、次のように Application クラスの JobManager を初期化します。
+それから、次のように `Application` クラスの `JobManager` を初期化します。
 
 ```java
 public class App extends Application {
@@ -949,7 +949,7 @@ public class App extends Application {
 }
 ```
 
-この Application クラスはアプリケーションサイクルでオブジェクトを一度だけ初期化するために使用されます。SampleJobCreator はジョブの一意タグを基にした Job のインスタンスを返すクラスです。SampleJobCreator は次のように表示されます。
+この `Application` クラスはアプリケーションサイクルでオブジェクトを一度だけ初期化するために使用されます。`SampleJobCreator` はジョブの一意タグを基にした `Job` のインスタンスを返すクラスです。`SampleJobCreator` は次のように表示されます。
 
 ```java
 public class SampleJobCreator implements JobCreator {
@@ -966,7 +966,7 @@ public class SampleJobCreator implements JobCreator {
 }
 ```
 
-最後に、FirstJob と名付けられた Job クラスは次のように表示されます。
+最後に、`FirstJob` と名付けられた `Job` クラスは次のように表示されます。
 
 ```java
 public class FirstJob extends Job {
@@ -987,7 +987,7 @@ public class FirstJob extends Job {
 }
 ```
 
-上記のコードスニペットでは、onRunJob メソッドで何をするかを Job に伝えました。それから、FirstJob.scheduleJob(timeinMills)（timeInMillis がデータ型 long の場合）を呼び出してジョブをスケジュールします。[GitHub repo](https://github.com/evernote/android-job) はデバイスが充電しているときにジョブを実行するように伝えるなど、もっと複雑なスケジューリングのオプションを提供します。
+上記のコードスニペットでは、`onRunJob` メソッドで何をするかを `Job` に伝えました。それから、`FirstJob.scheduleJob(timeinMills)`（`timeInMillis` がデータ型 `long` の場合）を呼び出してジョブをスケジュールします。[GitHub repo](https://github.com/evernote/android-job) はデバイスが充電しているときにジョブを実行するように伝えるなど、もっと複雑なスケジューリングのオプションを提供します。
 
 {% include jp-tweet_quote.html quote_text="Android ライブラリに関する素晴らしい記事を読みました。" %}
 
