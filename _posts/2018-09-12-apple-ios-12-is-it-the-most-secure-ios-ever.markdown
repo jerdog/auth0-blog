@@ -117,9 +117,8 @@ There are a few other security features worth mentioning in iOS 12. First up is 
 
 Apple also introduced a new Face ID feature. The tech company is giving iPhone owners the ability to add a “second face.” This allows two different users to unlock an iPhone using Face ID. We’ve covered the _[security of Face ID](https://auth0.com/blog/is-faceid-really-secure/)_ is another blog post. It’s good to see Apple improving upon this feature.
 
-## Final Thoughts
+## Final Thoughts iOS 12 Release
 
-We’re really impressed with Apple’s new iOS 12 security features. Not only are they making the operating system more secure, they’re making security easier to use. That combination is one that security experts are always after. 
-Unfortunately, iOS 12 is still in beta, and while there’s no official release date, _[word on the street](https://www.techradar.com/news/ios-12)_ is that we’ll see it sometime in October. In the meantime, we’ll keep updating you on iOS 12’s security features.
+We’re really impressed with Apple’s new iOS 12 security features. Not only are they making the operating system more secure, they’re making security easier to use. That combination is one that security experts are always after. Be looking for "A new iOS update is now available" as iOS 12 will be released soon. Apple unveiled at it's September 12, 2018 Keynote that the public release of iOS 12 becomes available on Tuesday September 18th.
 
 {% include asides/about-auth0.markdown %}
