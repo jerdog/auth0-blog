@@ -47,7 +47,7 @@ A GraphQL server exposes a schema that describes its API including queries to fe
 
 The type-safe schema unlocks new possibilities for tooling, as demonstrated by GraphQL which is maintained by Facebook. Check out how GitHub employs [GraphQL for its API](https://githubengineering.com/the-github-graphql-api/).
 
-## What we'll build
+## What We'll Build
 
 We'll build an application called **CoolReads**. **CoolReads** is a popular web application where users can actually review the books that they have read over time. These reviews help new users determine whether to embark on reading a book or not.
 
@@ -378,7 +378,7 @@ const books = [
   });
 ```
 
-Run `nodemon -r esm src/server.js"` and check out the URL in your browser, `http://localhost:4000/`. You can run several queries to test your API in the GraphQL Playground, just like you can test your REST API endpoints with Postman.
+Run `nodemon -r esm src/server.js` and check out the URL in your browser, `http://localhost:4000/`. You can run several queries to test your API in the GraphQL Playground, just like you can test your REST API endpoints with Postman.
 
 Back to the resolver functions! We have resolver functions for all the fields in the `Query` and `Mutation` type. If you're following the tutorial step by step, you might have noticed this is a one-to-many relationship. One Author has many books, and many books belong to one author. Resolving the field in `Author`, and `Book` type enables us to get the right data when we have nested queries such as this:
 
@@ -555,6 +555,12 @@ create-react-app coolreads
 **Note:** If you don't have the [CRA tool](https://github.com/facebookincubator/create-react-app), go ahead and install it globally, `npm install -g create-react-app`.
 
 
+After scaffolding, go ahead and run the app like so:
+
+```
+npm start
+```
+
 Then open [`http://localhost:3000`](http://localhost:3000) to see your app.
 
 ![App recently scaffolded and showing at Localhost](https://cdn.auth0.com/blog/react/ready-app.png)
@@ -582,7 +588,7 @@ npm install tachyons react-router react-router-dom --save
 * **tachyons:** is a CSS toolkit for styling applications
 * **react-router-dom:** is a router library for react
 
-## Setup Apollo Client and Routing
+## Set Up Apollo Client and Routing
 
 Open up `index.js` and rewrite the code to be this:
 
@@ -695,7 +701,8 @@ export default withRouter(Nav);
 
 ## Build the ListBook and CreateBook Component
 
-The `ListBook` component will be responsible for displaying the details of each book. Create a `components/CreateBook.js` file and add the following code:
+The `ListBook` component will be responsible for displaying the details of each book. Create a `components/ListBook.js` file and add the following code:
+
 
 ```js
 import React from 'react';
@@ -815,6 +822,7 @@ export default () => (
               }}
             >
 
+            {% raw %}
             <div style={{ maxWidth: 400 }} className=''>
               <label> Book Title: </label>
               <input
@@ -852,6 +860,7 @@ export default () => (
                 <option value="3">Chimamanda Adichie</option>
               </select>
             </div>
+            {% endraw %}
             {loading && <p>Loading...</p> }
             {error && <p>Error :( Please try again</p>}
 
@@ -901,7 +910,7 @@ We need to reference bootstrap for styling. Add the link to bootstrap in `public
 ...
 ```
 
-Modify the `src/App.css` file to contain the code [here](https://github.com/auth0-blog/book-app-client/blob/master/src/App.css).
+Modify the `src/App.css` file to contain the code [here](https://github.com/auth0-blog/book-app/blob/master/client/src/App.css).
 
 Now, run your app. There should be a list of books on the landing page. The existing data from our backend is fetched and rendered on our client app.
 
@@ -940,7 +949,6 @@ Now, let's add the code to verify a token:
 const { ApolloServer, gql, AuthenticationError } = require('apollo-server');
 const jwt = require('jsonwebtoken');
 const jwksClient = require('jwks-rsa');
-const { find, filter } = require('lodash');
 import { Author, Book } from './store';
 
 
@@ -1044,7 +1052,9 @@ const email = await user;
 
 This line of code above waits for the user promise to resolve and stores the email of the user in an `email` variable. If there's an error, the `catch` block gets the error and throws an `AuthenticationError`. Wait a minute? Where's the `AuthenticationError` coming from? We imported it from Apollo Server.
 
-Apollo Server 2.0 provides a couple of predefined errors, including `AuthenticationError`, `ForbiddenError`, `UserInputError` and a generic `ApolloError`. These errors are designed to enhance errors thrown before and during GraphQL execution. The provided errors focus on debugging an _Apollo_ server as well as enabling the client to take specific action based on an error. When an [error occurs in Apollo server both inside and outside of resolvers](https://blog.apollographql.com/full-stack-error-handling-with-graphql-apollo-5c12da407210), each error inside of the errors array will contain an object at extensions that contains the information added by Apollo server.
+Apollo Server 2.0 provides a couple of predefined errors, including `AuthenticationError`, `ForbiddenError`, `UserInputError` and a generic `ApolloError`. These errors are designed to enhance errors thrown before and during GraphQL execution. The provided errors focus on debugging an _Apollo_ server as well as enabling the client to take specific action based on an error.
+
+When an [error occurs in Apollo server both inside and outside of resolvers](https://blog.apollographql.com/full-stack-error-handling-with-graphql-apollo-5c12da407210), each error inside of the errors array will contain an object at extensions that contains the information added by Apollo server.
 
 Now, run your server and try to perform a mutation with a fake token!
 
@@ -1053,7 +1063,7 @@ _GraphQL API Error_
 
 ## Secure your React App
 
-Auth0 allows us to easily add authentication to applications. Login to your Auth0 [management dashboard](https://manage.auth0.com) and create a [new application](https://manage.auth0.com/#/applications). In the dialog shown, enter the name and select **Single Page Application** as its type**
+Auth0 allows us to easily add authentication to applications. Login to your Auth0 [management dashboard](https://manage.auth0.com) and create a [new application](https://manage.auth0.com/#/applications). In the dialog shown, enter the name and select **Single Page Application** as its type:
 
 ![Select Application](https://cdn.auth0.com/blog/coolreads/selectapp.png)
 _Select application_
@@ -1061,7 +1071,7 @@ _Select application_
 ![Check Settings](https://cdn.auth0.com/blog/coolreads/settings.png)
 _Grab client id_
 
-In the Settings tab, add `http://localhost:3000/callback` in the **Allowed Callback URLs** and `http://localhost:3000` to the **Allowed Origins (CORS)**.
+In the Settings tab, add `http://localhost:3000/callback` in the **Allowed Callback URLs** and `http://localhost:3000` to the **Allowed Origins (CORS)**. Also add `http://localhost:3000` into the **Allowed Logout URLs** field.
 
 Ensure you also replace the value of `<AUTH0_DOMAIN>` in `const AUDIENCE = 'https://<AUTH0_DOMAIN>/userinfo';` to your auth0 domain.
 
@@ -1262,6 +1272,12 @@ export default withRouter(Callback);
 
 Once a user is authenticated, Auth0 will redirect back to our application and call the `/callback` route. Auth0 will also append the `id_token` to this request, and our Callback component will make sure to properly process and store the token in the in-app memory. Then, the app will be redirected back to the `/` page and will be in a logged-in state.
 
+Go ahead and invoke the command below to copy the `loading.svg` into the appropriate directory:
+
+```bash
+curl -o src/loading.svg -O https://raw.githubusercontent.com/auth0-blog/book-app/master/client/src/loading.svg
+```
+
 Now, go ahead and add the `/callback` route in `App.js`.
 
 ```js
@@ -1292,6 +1308,7 @@ Open `index.js` and modify it to be this:
 
 ```js
 ...
+import auth from './Auth';
 ...
 const client = new ApolloClient({
   uri: "http://localhost:4000/graphql",
@@ -1317,7 +1334,7 @@ We'll use the [Silent Authentication](https://auth0.com/docs/api-auth/tutorials/
 
 Head over to the [Applications section](https://manage.auth0.com/#/applications) of your Auth0 dashboard and update the following:
 
-* **Allowed Web Origins**: Add `localhost:3000` to the field. Without this value there, Auth0 would deny any AJAX request coming from your app.
+* **Allowed Web Origins**: Add `http://localhost:3000` to the field. Without this value there, Auth0 would deny any AJAX request coming from your app.
 * **Social Connections**: Auth0 auto-configure all new accounts to use development keys registered at Google for the social login. We expect developers to replace these keys with theirs once they start using Auth0 in more capacity. Furthermore, every time an app tries to perform a silent authentication, and that app is still using the development keys, Auth0 returns that there is no session active (even though this is not true). Head over to the [Social connections on your dashboard](https://manage.auth0.com/#/connections/social), and update the _Client ID_ and _Client Secret_ fields with the new keys gotten from [Connect your app to Google documentation provided by Auth0.](https://auth0.com/docs/connections/social/google).
 
 **Note:** If you don't want to use your Google keys, you can deactivate this social connection and rely only on users that sign up to your app through [Auth0's Username and Password Authentication](https://manage.auth0.com/#/connections/database).
@@ -1380,7 +1397,7 @@ class App extends Component {
 export default withRouter(App);
 ```
 
-If the requested route is `/callback`, the app does nothing. This is the correct behavior because, when users are requesting for the `/callback` route, they do so because they are getting redirected by Auth0 after the authentication process. In this case, you can leave the Callback component handle the process.
+If the requested route is `/callback`, the app does nothing. This is the correct behavior because, when users are requesting for the `/callback` route, they do so because they are getting redirected by Auth0 after the authentication process. In this case, you can leave the Callback component to handle the process.
 
 If the requested route is anything else, the app wants to try a `silentAuth`. Then, if no error occurs, the app calls `forceUpdate` so the user can see its name and that they are signed in.
 
