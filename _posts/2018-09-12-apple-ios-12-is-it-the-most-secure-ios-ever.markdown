@@ -35,13 +35,13 @@ related:
 - 2017-10-16-is-faceid-really-secure
 ---
 
-If you happened to catch Apple’s announcement of iOS 12, you might’ve noticed that it was lacking the “big splash” that we’ve seen from other iOS announcements. That’s partially because Apple was so busy focusing on new iOS 12 data security features.
+If you happened to catch Apple’s initial June 4, 2018 announcement of iOS 12, you might have noticed that it was lacking the “big splash” that we’ve seen from other iOS announcements. That’s partially because Apple was so busy focusing on new iOS 12 data security features.
 
-Many of the features of iOS 12 likely won’t catch the average consumer’s attention. That’s intentional. Good data security features are relatively unnoticeable to most users. If anything, those in Apple’s newest OS will make life a little bit easier for the average iPhone user.
+Though more was unveiled at the September 12, 2018 Apple Keynote event, many of the features of iOS 12 likely won’t catch the average consumer’s attention. That’s intentional. Good data security features are relatively unnoticeable to most users. If anything, those features in Apple’s newest mobile OS will make life a little bit easier for the average iPhone user.
 
 But, if you happen to be an IT or security pro, the new iOS 12 probably piqued your interest.
 
-This emphasis on personal data privacy from Apple prompts one question: is iOS 12 the most secure operating system Apple has ever released?
+This emphasis on personal data privacy and security from Apple prompts one question: is iOS 12 the most secure operating system Apple has ever released?
 
 In a word, yes. Let’s dig into what makes it so secure.
 
