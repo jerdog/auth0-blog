@@ -1,0 +1,23 @@
+{% comment %}
+This is the template used for embedding a tweet in a post.
+
+To use it just include it in a post (Don't use the outer quotes):
+
+'{% include tweet.html tweetId="515490786800963584" %}'
+
+Or if you're worried about missing on the SEO opportunity by the
+contents not being statically rendered on deployment you can also
+include the quotable text. Update if you also want to statically
+render anything else.
+
+'{% include tweet.html tweetId="515490786800963584" staticQuote="Some quotable text" %}'
+'{% include tweet.html tweetId="515490786800963584" staticQuote="Some quotable text" staticAuthor="Some author" %}'
+
+{% endcomment %}
+
+<div class="tweet"
+     tweetID="{{ include.tweetId }}">
+  {% if include.staticQuote %}
+    <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">{{ include.staticQuote }}.</p>{% if include.staticAuthor %}&mdash; {{ include.staticAuthor }}{% endif %} <a href="https://twitter.com/statuses/{{ include.tweetId | cgi_escape }}">Click to read more</a></blockquote>
+  {% endif %}
+</div>
