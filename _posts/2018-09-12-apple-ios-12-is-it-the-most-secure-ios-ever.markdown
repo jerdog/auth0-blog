@@ -1,9 +1,9 @@
 ---
 layout: post
 title: "Apple iOS 12: Is it the Most Secure iOS Ever?"
-metatitle: ""
+metatitle: "Apple iOS 12 Security - Most Secure iOS Ever? View New Features"
 description: "The software’s latest features will help users bolster their data security."
-metadescription: ""
+metadescription: "Learn about Apple's latest iPhone iOS 12 release's security features. User's data security and privacy is more important than ever. Check out how Apple is addressing this."
 date: 2018-09-12 11:27
 category: Technical Guide, Whats New, iOS
 auth0_aside: true
