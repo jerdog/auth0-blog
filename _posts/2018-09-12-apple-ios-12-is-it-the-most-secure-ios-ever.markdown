@@ -81,7 +81,7 @@ That’s why Apple is trying to make password management as simple as possible i
 
 _[Image Source](https://www.macrumors.com/how-to/automatic-passwords-and-auditing-in-ios-12/)_
 
-The issues with using one password across different websites are well documented. Security experts have been trying to get around these issues for years and Apple is doing their best to help. Auth0 offers secure authentication using [token-based, passwordless authentication](https://auth0.com/passwordless) that features brute-force protection system.
+The issues with using one password across different websites are well documented. Security experts have been trying to get around these issues for years and Apple is doing their best to help. Auth0 offers secure authentication using [token-based, passwordless authentication](https://auth0.com/passwordless) that features a brute-force protection system.
 
 ### iCloud: The Elephant in the Room
 
