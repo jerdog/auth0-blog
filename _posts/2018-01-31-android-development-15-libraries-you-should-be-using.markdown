@@ -4,7 +4,7 @@ title: "Android Development: 15 Libraries You Should Be Using"
 description: "Let's take a look at some awesome libraries that can help us create better Android apps."
 longdescription: "In this article, we will take a brief look at 15 libraries, divided in 8 categories, that can help us in our day-to-day Android development. With them, we will be able to create apps that perform better and that provide better user experience."
 date: "2018-01-31 08:30"
-category: Technical Guide, Mobile, Android
+category: Technical Guide, Deep Dive, Android
 author:
   name: "Idorenyin Obong"
   url: "https://twitter.com/kingidee/"
@@ -21,6 +21,9 @@ tags:
 related:
 - 2017-07-27-authenticating-android-apps-developed-with-kotlin
 - 2017-08-09-integrating-realm-database-in-an-android-application
+
+
+
 ---
 
 **TL;DR:** In this article, we will take a brief look at 15 libraries that can help us in our day-to-day Android development. With them, we will be able to create apps that perform better and that provide better user experience.
