@@ -73,7 +73,7 @@ We're excited by both the strength and flexibility of this for greater personal 
 
 As is the case with any data security system, humans are the weakest link. If you develop the best tools in the world but the actual human operators aren’t using it, then it’s worthless.
 
-That’s why Apple is trying to make data security as simple as possible in iOS 12. One of the features that makes this easier  is Password Reuse Auditing. This feature monitors the passwords that iPhone owners use for different services. When it catches someone [using the same password on different websites](https://www.godaddy.com/garage/10-best-practices-for-creating-and-securing-stronger-passwords/), it flags the duplicate, offers a more secure password, and then saves it to the iCloud Keychain.
+That’s why Apple is trying to make password management as simple as possible in iOS 12. One of the features that makes this easier is Password Reuse Auditing. This feature monitors the passwords that iPhone owners use for different services. When it catches someone using the same password on different websites, it flags the duplicate, offers a more secure password, and then saves it to the iCloud Keychain.
 
 <p style="text-align: center;">
   <img src="https://cdn.auth0.com/blog/apple-ios-12-is-it-the-most-secure-ios-ever/ios-12-password-reuse-auditing-flag-present-on-online-service.png" alt="iOS 12 Password Reuse Auditing flag Present on Online Service">
@@ -81,7 +81,7 @@ That’s why Apple is trying to make data security as simple as possible in iOS 
 
 _[Image Source](https://www.macrumors.com/how-to/automatic-passwords-and-auditing-in-ios-12/)_
 
-The issues with using one password across different websites are well documented. Security experts have been trying to get around these issues for years and Apple is doing their best to help. 
+The issues with using one password across different websites are well documented. Security experts have been trying to get around these issues for years and Apple is doing their best to help. Auth0 offers secure authentication using [token-based, passwordless authentication](https://auth0.com/passwordless) that features brute-force protection system.
 
 ### iCloud: The Elephant in the Room
 
