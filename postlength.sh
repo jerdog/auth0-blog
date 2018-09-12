@@ -1,7 +1,7 @@
 #!/bin/sh
 # Outputs your post's word count and post length score
 # Run the script and pass in the path to your post:
-# source ./postlength.sh 2018-08-27-my-post.markdown
+# source ./postlength.sh path/to/file.markdown
 # Then add the score to your article front matter as post_length.
 WORDS=$(wc -w < "$1")
 echo "word count:" $WORDS
