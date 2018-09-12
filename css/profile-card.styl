@@ -1,0 +1,71 @@
+.profile_card_tech
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  min-height: 300px;
+  padding: 35px;
+  background: #F5F7F9;
+  margin: 35px 0;
+  font-family: fakt-web,Helvetica Neue,Hevetica,sans-serif;
+
+.profile_card_image
+  background: #222328
+  border-radius: 50%
+  width: 150px
+  height: 150px
+  margin: 0
+
+.profile_card_tech_info
+  flex: 1
+  display: flex
+  flex-direction: column
+  height: 100%
+  margin-left: 30px
+
+.profile_card_tech_name
+  color: #222328
+  font-size: 22px
+
+.profile_card_tech_title
+  color: #EB5325
+  font-size: 16px
+
+.profile_card_tech_team
+  color: #EB5325
+  font-size: 16px
+
+.profile_card_tech_location
+  display: flex
+  align-items: center
+  margin: 10px 0
+
+.profile_card_tech_location_name
+  color: #4A4A4A
+  font-size: 16px
+  margin-left: 8px
+
+.profile_card_description
+  color: #5C666E
+  font-size: 18px
+  line-height: 28px
+  font-family: 'minion-pro', serif
+
+@media (max-width: 576px)
+  .profile_card_tech
+    flex-direction: column
+    justify-content: center !important
+    align-items: center !important
+    padding: 32px !important
+
+  .profile_card_tech_info
+    margin-left: 0px !important
+    margin-top: 20px
+
+  .profile_card_tech_name,
+  .profile_card_tech_title,
+  .profile_card_tech_team
+    text-align: center
+
+  .profile_card_tech_location
+    justify-content: center !important
