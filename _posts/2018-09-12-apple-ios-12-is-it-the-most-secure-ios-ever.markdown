@@ -1,9 +1,9 @@
 ---
 layout: post
 title: "Apple iOS 12: Is it the Most Secure iOS Ever?"
-metatitle: "Apple iOS 12: Is it the Most Secure iOS Ever?"
+metatitle: ""
 description: "The software’s latest features will help users bolster their data security."
-metadescription: "The software’s latest features will help users bolster their data security."
+metadescription: ""
 date: 2018-09-12 11:27
 category: Technical Guide, Whats New, iOS
 auth0_aside: true
@@ -29,9 +29,9 @@ tags:
 - password
 - 2fa
 related:
-- 2017-10-16-is-faceid-really-secure
 - 2017-12-29-why-every-business-needs-two-factor-authentication-security
 - 2017-11-22-using-centralized-login-to-add-authentication-to-your-ios-apps
+- 2017-10-16-is-faceid-really-secure
 ---
 
 If you happened to catch Apple’s announcement of iOS 12, you might’ve noticed that it was lacking the “big splash” that we’ve seen from other iOS announcements. That’s partially because Apple was so busy focusing on new iOS 12 data security features.
