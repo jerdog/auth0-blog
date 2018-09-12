@@ -37,7 +37,7 @@ related:
 
 If you happened to catch Apple’s initial June 4, 2018 announcement of iOS 12, you might have noticed that it was lacking the “big splash” that we’ve seen from other iOS announcements. That’s partially because Apple was so busy focusing on new iOS 12 data security features.
 
-Though more was unveiled at the September 12, 2018 Apple Keynote event, many of the features of iOS 12 likely won’t catch the average consumer’s attention. That’s intentional. Good data security features are relatively unnoticeable to most users. If anything, those features in Apple’s newest mobile OS will make life a little bit easier for the average iPhone user.
+Though more is to be unveiled at the September 12, 2018 Apple Keynote event, many of the features of iOS 12 that have been revealed likely won’t catch the average consumer’s attention. That’s intentional. Good data security features are relatively unnoticeable to most users. If anything, those features in Apple’s newest mobile OS will make life a little bit easier for the average iPhone user.
 
 But, if you happen to be an IT or security pro, the new iOS 12 probably piqued your interest.
 
@@ -119,6 +119,6 @@ Apple also introduced a new Face ID feature. The tech company is giving iPhone o
 
 ## Final Thoughts iOS 12 Release
 
-We’re really impressed with Apple’s new iOS 12 security features. Not only are they making the operating system more secure, they’re making security easier to use. That combination is one that security experts are always after. Be looking for "A new iOS update is now available" as iOS 12 will be released soon. Apple unveiled at it's September 12, 2018 Keynote that the public release of iOS 12 becomes available on Tuesday September 18th.
+We’re really impressed with Apple’s new iOS 12 security features. Not only are they making the operating system more secure, they’re making security easier to use. That combination is one that security experts are always after. Be looking for "A new iOS update is now available" as iOS 12 will be released soon.
 
 {% include asides/about-auth0.markdown %}
