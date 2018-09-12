@@ -100,7 +100,7 @@ Authentication logic on the front end is handled with an `AuthService` authentic
 ```typescript
 // src/app/auth/auth.service.ts
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, bindNodeCallback } from 'rxjs';
 import * as auth0 from 'auth0-js';
 import { environment } from './../../environments/environment';
 import { Router } from '@angular/router';
@@ -130,29 +130,11 @@ export class AuthService {
   logoutUrl = environment.auth.LOGOUT_URL;
 
   // Create observable of Auth0 parseHash method to gather auth results
-  parseHash$ = Observable.create(observer => {
-    this._Auth0.parseHash((err, authResult) => {
-      if (err) {
-        observer.error(err);
-      } else if (authResult && authResult.accessToken) {
-        observer.next(authResult);
-      }
-      observer.complete();
-    });
-  });
+  parseHash$ = bindNodeCallback(this._Auth0.parseHash.bind(this._Auth0));
 
   // Create observable of Auth0 checkSession method to
   // verify authorization server session and renew tokens
-  checkSession$ = Observable.create(observer => {
-    this._Auth0.checkSession({}, (err, authResult) => {
-      if (err) {
-        observer.error(err);
-      } else if (authResult && authResult.accessToken) {
-        observer.next(authResult);
-      }
-      observer.complete();
-    });
-  });
+  checkSession$ = bindNodeCallback(this._Auth0.checkSession.bind(this._Auth0));
 
   // Create observable of token
   // This is important for the token interceptor
@@ -180,7 +162,7 @@ export class AuthService {
 
   handleLoginCallback() {
     if (window.location.hash && !this.authenticated) {
-      this.parseHash$.subscribe(
+      this.parseHash$().subscribe(
         authResult => {
           this._setAuth(authResult);
           window.location.hash = '';
@@ -209,7 +191,7 @@ export class AuthService {
 
   renewAuth() {
     if (this.authenticated) {
-      this.checkSession$.subscribe(
+      this.checkSession$({}).subscribe(
         authResult => this._setAuth(authResult),
         err => {
           localStorage.removeItem(this._authFlag);
@@ -246,7 +228,13 @@ This service uses the auth config variables from `environment.ts` to instantiate
 
 We will use [RxJS `BehaviorSubject`s](https://github.com/ReactiveX/rxjs/blob/master/doc/subject.md#behaviorsubject) to provide streams of authentication events (token data and user profile data) that you can subscribe to anywhere in the app. We'll also store some paths for navigation so the app can easily determine where to send users when authentication succeeds, fails, or the user has logged out.
 
-The next thing that we'll do is [create _observables_](https://angular.io/guide/observables) of the `auth0.js` methods [`parseHash()` (which allows us to extract authentication data from the hash upon login)](https://auth0.com/docs/libraries/auth0js/v9#extract-the-authresult-and-get-user-info) and [`checkSession()` (which allows us to acquire new tokens when a user has an existing session with the authorization server)](https://auth0.com/docs/libraries/auth0js/v9#using-checksession-to-acquire-new-tokens). Using observables with these methods allows us to easily publish authentication events and subscribe to them within our Angular application.
+The next thing that we'll do is create [_observables_](https://angular.io/guide/observables) of the `auth0.js` methods [`parseHash()` (which allows us to extract authentication data from the hash upon login)](https://auth0.com/docs/libraries/auth0js/v9#extract-the-authresult-and-get-user-info) and [`checkSession()` (which allows us to acquire new tokens when a user has an existing session with the authorization server)](https://auth0.com/docs/libraries/auth0js/v9#using-checksession-to-acquire-new-tokens). Using observables with these methods allows us to easily publish authentication events and subscribe to them within our Angular application.
+
+We'll create observables of the callbacks from these two `auth0.js` methods using using [RxJS's `bindNodeCallback`](http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html#static-method-bindNodeCallback). In order to preserve the scope of [`this`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this), we'll [`bind()` it](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind) like so:
+
+```js
+bindNodeCallback(this._Auth0.parseHash.bind(this._Auth0))
+```
 
 The last observable we'll create is a stream of our `token$` data. This is for use with the [token interceptor](https://github.com/auth0-blog/angular-auth0-aside/blob/master/src/app/auth/token.interceptor.ts). We don't want our interceptor to utilize a stream that emits a default value without any useable values (which is what our BehaviorSubject does).
 
@@ -256,11 +244,11 @@ The `login()` method authorizes the authentication request with Auth0 using the 
 
 > **Note:** If it's the user's first visit to our app _and_ our callback is on `localhost`, they'll also be presented with a consent screen where they can grant access to our API. A first party client on a non-localhost domain would be highly trusted, so the consent dialog would not be presented in this case. You can modify this by editing your [Auth0 Dashboard API](https://manage.auth0.com/#/apis) **Settings**. Look for the "Allow Skipping User Consent" toggle.
 
-We'll receive `accessToken`, `expiresIn`, and `idTokenPayload` in the URL hash from Auth0 when returning to our app after authenticating at the [login page](https://auth0.com/docs/hosted-pages/login). The `handleLoginCallback()` method subscribes to the `parseHash$` observable to stream authentication data (`_setAuth()`) by emitting values for the `tokenData$` and `userProfile$` behavior subjects. This way, any subscribed components in the app are informed that the authentication and user data has been updated. The `_authFlag` is also set to `true` and stored in local storage so if the user returns to the app later, we can check whether to ask the authorization server for a fresh token. Essentially, the flag serves to tell the authorization server, "This app _thinks_ this user is authenticated. If they are, give me their data." We check the status of the flag in local storage with the accessor method `authenticated`.
+We'll receive `accessToken`, `expiresIn`, and `idTokenPayload` in the URL hash from Auth0 when returning to our app after authenticating at the [login page](https://auth0.com/docs/hosted-pages/login). The `handleLoginCallback()` method subscribes to the `parseHash$()` observable to stream authentication data (`_setAuth()`) by emitting values for the `tokenData$` and `userProfile$` behavior subjects. This way, any subscribed components in the app are informed that the authentication and user data has been updated. The `_authFlag` is also set to `true` and stored in local storage so if the user returns to the app later, we can check whether to ask the authorization server for a fresh token. Essentially, the flag serves to tell the authorization server, "This app _thinks_ this user is authenticated. If they are, give me their data." We check the status of the flag in local storage with the accessor method `authenticated`.
 
 > **Note:** The user profile data takes the shape defined by [OpenID standard claims](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims).
 
-The `renewAuth()` method, if the `_authFlag` is `true`, subscribes to the `checkSession$` observable to ask the authorization server if the user is indeed authorized. If they are, fresh authentication data is returned and we'll run the `_setAuth()` method to update the necessary behavior subjects in our app. If the user is _not_ authorized with Auth0, the `_authFlag` is removed and the user will be redirected to the URL we set as the authentication failure location.
+The `renewAuth()` method, if the `_authFlag` is `true`, subscribes to the `checkSession$()` observable to ask the authorization server if the user is indeed authorized (we can pass arguments to this observable as we would to the `auth0.js` function). If they are, fresh authentication data is returned and we'll run the `_setAuth()` method to update the necessary behavior subjects in our app. If the user is _not_ authorized with Auth0, the `_authFlag` is removed and the user will be redirected to the URL we set as the authentication failure location.
 
 Next, we have a `logout()` method that sets the `_authFlag` to `false` and logs out of the authentication session on Auth0's server. The [Auth0 `logout()` method](https://auth0.com/docs/libraries/auth0js/v9#logout) then redirects back to the location we set as our `logoutUrl`.
 
