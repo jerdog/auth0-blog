@@ -103,7 +103,7 @@ The most common type of Two-Factor Authentication is SMS text message 2FA. This 
 
 The problem is, it requires a lot of switching back and forth between apps to get the code, memorize the code, and then plug it into the app. And, if the user mistypes or misremembers the code, then it's back to square one.
 
-Luckily, Apple is coming to the rescue. With iOS 12, SMS 2FA codes will autofill without the user having to switch from app to app. No memorization, either. It does this by making specific API calls to the messaging app. When iOS 12 recognizes an SMS 2FA code, it will automatically pull it into autofill for the user. 
+Luckily, Apple is coming to the rescue. With iOS 12, SMS security codes will autofill without the user having to switch from app to app. No memorization, either. It does this by making specific API calls to the messaging app. When iOS 12 recognizes an SMS 2FA security code, it will automatically pull it into autofill for the user. 
 
 <p style="text-align: center;">
   <img src="https://cdn.auth0.com/blog/apple-ios-12-is-it-the-most-secure-ios-ever/ios-12-recognizes-an-sms-2fa-code-and-autofills-it-for-user.gif" alt="iOS 12 recognizes an SMS 2FA code and autofills it for the user">
