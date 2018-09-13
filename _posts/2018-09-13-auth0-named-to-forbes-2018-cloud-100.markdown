@@ -4,7 +4,6 @@ title: "Auth0 Named to Forbes 2018 Cloud 100"
 metatitle: "Auth0 on Forbes 2018 Cloud 100 - List of Top Cloud Computing Tech Co."
 description: "Auth0 is listed alongside top technology companies like Stripe, Zoom, Intercom, Elastic, and others."
 metadescription: "See Auth0 on Forbes alongside top tech companies like Stripe, Zoom, Intercom, and others. Forbes Cloud 100 - list of private companies leading Cloud Computing in 2018."
-metadescription: 
 date: 2018-09-13 10:30
 category: PR, Awards
 press_release: true
