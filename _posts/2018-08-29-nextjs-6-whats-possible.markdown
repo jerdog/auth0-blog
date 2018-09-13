@@ -33,7 +33,7 @@ related:
 
 ## A Refresher: What is a Universal JavaScript Application?
 
-The term *Universal* simply means the ability to run the same code on the server, browsers, mobile devices and any other platform. *Universal Javascript* is a term people are leaning towards these days. A lot of developers also call it **Isomorphic JavaScript**. Check out the excellent blog post on [Universal JavaScript](https://medium.com/@mjackson/universal-javascript-4761051b7ae9#.ij2c0zh8j) written by [Michael Jackson](https://twitter.com/mjackson).
+The term *Universal* simply means the ability to run the same code on the server, browsers, mobile devices, and any other platform. *Universal JavaScript* is a term people are leaning towards these days. A lot of developers also call it **Isomorphic JavaScript**. Check out the excellent blog post on [Universal JavaScript](https://medium.com/@mjackson/universal-javascript-4761051b7ae9#.ij2c0zh8j) written by [Michael Jackson](https://twitter.com/mjackson).
 
 ## Introduction to Next.js 6 Features
 
@@ -63,7 +63,7 @@ With the command in place, you can simply run `npm run export` and it will build
 
 ### 2. Babel 7 Support
 
-Next.js now runs on Babel 7. Babel provides a way for developers to use the latest JavaScript syntax while allowing them to not worry about how to make it backwards compatible for their users by translating it.
+Next.js now runs on Babel 7. Babel provides a way for developers to use the latest JavaScript syntax while allowing them to not worry about how to make it backward compatible for their users by translating it.
 
 Babel 7 is faster and ships with a lot of new features such as:
 
@@ -121,7 +121,7 @@ export default class MyApp extends App {
 
 * **Page Transitions**––Smooth animations are possible on the client side and it's possible via the use of `_app.js`. Check out the [next version of page transitions app](https://github.com/xavczen/nextjs-page-transitions).
 
-* **Better Integrations from third party tools**––With `_app.js`, it's easy to integrate state management frameworks like [Apollo](https://github.com/zeit/next.js/tree/canary/examples/with-apollo) and [Redux](https://github.com/zeit/next.js/tree/canary/examples/with-redux).
+* **Better Integrations from third-party tools**––With `_app.js`, it's easy to integrate state management frameworks like [Apollo](https://github.com/zeit/next.js/tree/canary/examples/with-apollo) and [Redux](https://github.com/zeit/next.js/tree/canary/examples/with-redux).
 
 ### 5. TypeScript Support
 
@@ -129,7 +129,7 @@ Babel 7 now has built-in support for TypeScript. And Next.js now uses Babel 7. T
 
 **Note:** Install the latest version of [https://github.com/zeit/next-plugins/tree/master/packages/next-typescript/#readme](https://github.com/zeit/next-plugins/tree/master/packages/next-typescript/#readme).
 
-### 6. Support for Nested .Babelrc
+### 6. Support for Nested .babelrc
 
 In Next.js 6, you can now include a scoped `.babelrc` file in a nested directory that requires a different Babel configuration.
 
@@ -145,11 +145,11 @@ src/
 
 I'll use the [app](https://github.com/auth0-blog/next3-auth0) from our [previous Next.js article](https://auth0.com/blog/nextjs-3-release-what-is-new/). Obviously, a lot of things have changed since Next.js 3. Therefore, we'll make a lot of changes step-by-step. Check out the [upgraded Next.js 6 app on GitHub](https://github.com/auth0-blog/next6-auth0) if you want to dive straight into the code.
 
-We can secure a Next.js app with Auth0 by using the [auth0.js library](https://github.com/auth0/auth0.js). If you don't already have an Auth0 account, <a href="https://auth0.com/signup" data-amp-replace="CLIENT_ID" data-amp-addparams="anonId=CLIENT_ID(cid-scope-cookie-fallback-name)">sign up</a> for one now. Navigate to the Auth0 [management dashboard](https://manage.auth0.com/), click on `New client` by the right hand side, select Regular Web App from the dialog box and then go ahead to the `Settings` tab where the client ID, client Secret and Domain can be retreived.
+We can secure a Next.js app with Auth0 by using the [auth0.js library](https://github.com/auth0/auth0.js). If you don't already have an Auth0 account, <a href="https://auth0.com/signup" data-amp-replace="CLIENT_ID" data-amp-addparams="anonId=CLIENT_ID(cid-scope-cookie-fallback-name)">sign up</a> for one now. Navigate to the Auth0 [management dashboard](https://manage.auth0.com/), click on `New Application` on the right hand side, select Regular Web App from the dialog box and then go ahead to the `Settings` tab where the client ID, client Secret and Domain can be retreived.
 
 > [Auth0 offers a generous **free tier**](https://auth0.com/pricing) to get started with modern authentication.
 
-**Note:** Make sure you set the  `Allowed Callback URLs` to `http://localhost:3000/auth/signed-in` or whatever url and port you are running on. Furthermore, set the `Allowed Logout URLs` to `http://localhost:3000/`.
+**Note:** Make sure you set the  `Allowed Callback URLs` to `http://localhost:3000/auth/signed-in` or whatever URL and port you are running on. Furthermore, set the `Allowed Logout URLs` to `http://localhost:3000/`.
 
 > Don't forget to rename the `config.sample.json` file to `config.json` and add your credentials.
 
@@ -157,7 +157,7 @@ We have put the necessary things in place to secure our app. Now, let's make the
 
 1. Re-install _next_, _react-dom_, _react_, _babel-plugin-styled-components_, and _styled-components_ to have the latest respective package versions.
 
-2. Update `babel.rc` like so:
+2. Update `.babelrc`, modifying the name of the registered plugin to `babel-plugin-styled-components` like so:
 
     ```js
     {
@@ -176,13 +176,13 @@ We have put the necessary things in place to secure our app. Now, let's make the
     }
     ```
 
-3. `React.Proptypes` has moved into a different package since React v15.5. Go ahead and install the new `prop-types` library.
+3. `React.PropTypes` has moved into a different package since React v15.5. Go ahead and install the new `prop-types` library.
 
     ```bash
       npm install prop-types
     ```
 
-4. Update every file that imports `Proptypes` from React to import `Proptypes` from the new library like this:
+4. Update every file that imports `PropTypes` from React to import `PropTypes` from the new library like this:
 
     ```js
     ...
@@ -225,7 +225,7 @@ export default class MyDocument extends Document {
     return (
       <html>
         <Head>
-          <title>Next.js + auth0</title>
+          <title>Next.js + Auth0</title>
           {this.props.styleTags}
         </Head>
         <body>
@@ -240,11 +240,11 @@ export default class MyDocument extends Document {
 
 The code above enables server side rendering of the styles. It does two things:
 
-1. Hook into the `renderPage` method to parse the child component’s styles server-side
+1. Hook into the `renderPage` method to parse the child component’s styles server-side.
 2. It hooks into the Document on the initial page load so that the app can update the `<head>` with the `<style>` tags that are required by the components.
 
 
-#### Authentication Process
+### Authentication Process
 
 _utils/auth.js_
 
