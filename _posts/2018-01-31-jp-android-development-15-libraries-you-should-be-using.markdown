@@ -24,6 +24,8 @@ tags:
 related:
 - jp-angular-2-authentication
 - jp-reactjs-authentication
+lang: ja
+alternate_locale_en: android-development-15-libraries-you-should-be-using
 ---
 
 **TL;DR：** 本書では、日々の Android 開発に役立つ 15 のライブラリを簡単に見ていきます。これらを使って、より良いパフォーマンスとより良いユーザー エクスペリエンスを提供するアプリケーションを作成することができます。
