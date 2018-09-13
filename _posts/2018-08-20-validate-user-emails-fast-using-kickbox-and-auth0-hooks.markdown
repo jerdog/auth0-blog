@@ -5,7 +5,9 @@ metatitle: "Validate User Emails Fast using Kickbox and Auth0 Hooks"
 description: "Learn how to ensure that only real users are registering to your applications using Kickbox and Auth0 Hooks."
 metadescription: "Learn how to ensure that only real users are registering to your applications using Kickbox and Auth0 Hooks."
 date: 2018-08-30 8:30
-category: Auth0-based Tutorial, Authentication, Cross-Marketing
+category: Technical Guide, Co-marketing, Kickbox
+post_length: 2
+auth0_aside: true
 design: 
   bg_color: "#4A4A4A"
   image: https://cdn.auth0.com/blog/validate-user-emails-fast-using-kickbox-and-auth0-hooks/kickbox.png
