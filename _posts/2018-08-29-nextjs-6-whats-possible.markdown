@@ -1,9 +1,9 @@
 ---
 layout: post
 title: "Next.js 6 Features: A Practical Introduction"
-metatitle: "A practical introduction to the features of Next.js 6"
-description: What's possible in Next.js 6? What improvements were made? Learn how to build highly performant Universal JavaScript apps with the latest Next.js release.
-metadescription: "How to build Universal JavaScript apps with Next.js 6"
+metatitle: ""
+description: "How to build Universal JavaScript apps with Next.js 6"
+metadescription: "What's possible in Next.js 6? What improvements were made? Learn how to build performant Universal JavaScript apps with the latest Next.js release."
 date: 2018-08-29 08:30
 category: Hot Topics, Frameworks, Next.js
 design:
