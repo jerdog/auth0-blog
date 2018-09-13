@@ -628,6 +628,36 @@
       });
     </script>
 
+    <!-- begin for embedded tweets -->
+    <style>
+      div.tweet iframe {
+        border: none !important;
+        box-shadow: none !important;
+      }
+    </style>
+    <script src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <script>
+      twttr.ready(function (twttr) {
+        $("div.tweet").each(function( i ) {
+          var tweetID = $(this).attr("tweetID");
+          $(this).empty();
+          twttr.widgets.createTweet(
+            tweetID, this,
+            {
+              conversation : 'none',    // or all
+              cards        : 'hidden',  // or visible
+              linkColor    : '#cc0000', // default is blue
+              theme        : 'light'    // or dark
+            })
+            .then (function (el) {
+                el.contentDocument.querySelector(".footer").style.display = "none";
+              }
+            );
+        });
+      });
+    </script>
+    <!-- end for embedded tweets -->
+
     <script type="text/javascript">
         /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
         var disqus_shortname = 'auth0blog'; // required: replace example with your forum shortname
