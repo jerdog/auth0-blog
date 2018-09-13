@@ -27,7 +27,7 @@ You'll need an [Auth0](https://auth0.com) account to manage authentication. You 
 4. Add `http://localhost:4200` to the **Allowed Logout URLs**. Click the "Save Changes" button.
 5. If you'd like, you can [set up some social connections](https://manage.auth0.com/#/connections/social). You can then enable them for your app in the **Application** options under the **Connections** tab. The example shown in the screenshot above uses username/password database, Facebook, Google, and Twitter.
 
-> **Note:** Set up your own social keys and do not leave social connections set to use Auth0 dev keys or you may encounter issues on production environments and when renewing tokens.
+> **Note:** Set up your own social keys and _do not_ leave social connections set to use Auth0 dev keys or you will encounter issues with token renewal.
 
 ### Set Up an API
 
@@ -100,7 +100,7 @@ Authentication logic on the front end is handled with an `AuthService` authentic
 ```typescript
 // src/app/auth/auth.service.ts
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, bindNodeCallback } from 'rxjs';
+import { BehaviorSubject, Observable, bindNodeCallback, of } from 'rxjs';
 import * as auth0 from 'auth0-js';
 import { environment } from './../../environments/environment';
 import { Router } from '@angular/router';
@@ -136,23 +136,11 @@ export class AuthService {
   // verify authorization server session and renew tokens
   checkSession$ = bindNodeCallback(this._Auth0.checkSession.bind(this._Auth0));
 
-  // Create observable of token
+  // Observable of token
   // This is important for the token interceptor
-  // which should receive a non-null initial value
-  // once the appropriate value is available
-  token$ = Observable.create(observer => {
-    this.tokenData$.subscribe(
-      tokenData => {
-        if (tokenData.accessToken) {
-          observer.next(tokenData.accessToken);
-        }
-      },
-      err => {
-        observer.error(err);
-        observer.complete();
-      }
-    )
-  });
+  // which should receive a defined initial value;
+  // declared when authResult becomes available
+  token$: Observable<string>;
 
   constructor(private router: Router) { }
 
@@ -174,7 +162,9 @@ export class AuthService {
   }
 
   private _setAuth(authResult) {
-    // Emit value for tokenData$ subject
+    // Declare observable of valid token
+    this.token$ = of(authResult.accessToken);
+    // Emit values for auth data subjects
     this.tokenData$.next({
       expiresAt: authResult.expiresIn * 1000 + Date.now(),
       accessToken: authResult.accessToken
@@ -236,19 +226,19 @@ We'll create observables of the callbacks from these two `auth0.js` methods usin
 bindNodeCallback(this._Auth0.parseHash.bind(this._Auth0))
 ```
 
-The last observable we'll create is a stream of our `token$` data. This is for use with the [token interceptor](https://github.com/auth0-blog/angular-auth0-aside/blob/master/src/app/auth/token.interceptor.ts). We don't want our interceptor to utilize a stream that emits a default value without any useable values (which is what our BehaviorSubject does).
+The last observable we'll create is a `token$` stream of the access token string. This is for use with the [token interceptor](https://github.com/auth0-blog/angular-auth0-aside/blob/master/src/app/auth/token.interceptor.ts). We don't want our interceptor to utilize a stream that emits a default value without any useable values (which is what our `tokenData$` behavior subject does). We'll declare `token$` in our `_setAuth()` method below, when the access token actually becomes available.
 
-> **Note:** Why don't we use an `AsyncSubject` here instead? You can absolutely change these to use async subjects if you prefer. Then you can skip creating the `token$` observable which is used in the [HTTP interceptor service](https://github.com/auth0-blog/angular-auth0-aside/blob/master/src/app/auth/token.interceptor.ts) and can use the `tokenData$` subject in the interceptor instead because async subjects don't need to be initialized with a default value (which is falsey in our case). However, the reason this tutorial doesn't use a subject type that has no default value is that there are potential scenarios where we may need to receive a stream in which we observe the latest value when we subscribe, and then any subsequent values also. Async and replay subjects are not appropriate if we ever need to ensure we're always receiving the _latest_ token value _upon subscription_ and then all subsequent values, such as in the case of [silent authentication renewal](https://auth0.com/docs/api-auth/tutorials/silent-authentication). (Check out [RxJS: Understanding Subjects](https://blog.angularindepth.com/rxjs-understanding-subjects-5c585188c3e1) to learn more.)
+> **Note:** Why didn't we use an `AsyncSubject` for the token data instead? You _could_ change `tokenData$` (and `userProfile$`) to use async subjects if you prefer. Then you can skip creating the `token$` observable which is used in the [HTTP interceptor service](https://github.com/auth0-blog/angular-auth0-aside/blob/master/src/app/auth/token.interceptor.ts) and can use the `tokenData$` subject in the interceptor instead because async subjects don't need to be initialized with a default value (which is falsey in our case). _However_, the reason this tutorial doesn't use a subject type that has no default value is that there are potential scenarios where we may need to receive a stream in which we observe the latest value when we subscribe, and then any subsequent values also. Async and replay subjects are not appropriate if we ever need to ensure we're always receiving the _latest_ token value _upon subscription_ and then all subsequent values, such as in the case of [silent authentication renewal](https://auth0.com/docs/api-auth/tutorials/silent-authentication). (Check out [RxJS: Understanding Subjects](https://blog.angularindepth.com/rxjs-understanding-subjects-5c585188c3e1) to learn more.)
 
 The `login()` method authorizes the authentication request with Auth0 using the environment config variables. A [login page](https://auth0.com/docs/hosted-pages/login) will be shown to the user and they can then authenticate.
 
 > **Note:** If it's the user's first visit to our app _and_ our callback is on `localhost`, they'll also be presented with a consent screen where they can grant access to our API. A first party client on a non-localhost domain would be highly trusted, so the consent dialog would not be presented in this case. You can modify this by editing your [Auth0 Dashboard API](https://manage.auth0.com/#/apis) **Settings**. Look for the "Allow Skipping User Consent" toggle.
 
-We'll receive `accessToken`, `expiresIn`, and `idTokenPayload` in the URL hash from Auth0 when returning to our app after authenticating at the [login page](https://auth0.com/docs/hosted-pages/login). The `handleLoginCallback()` method subscribes to the `parseHash$()` observable to stream authentication data (`_setAuth()`) by emitting values for the `tokenData$` and `userProfile$` behavior subjects. This way, any subscribed components in the app are informed that the authentication and user data has been updated. The `_authFlag` is also set to `true` and stored in local storage so if the user returns to the app later, we can check whether to ask the authorization server for a fresh token. Essentially, the flag serves to tell the authorization server, "This app _thinks_ this user is authenticated. If they are, give me their data." We check the status of the flag in local storage with the accessor method `authenticated`.
+We'll receive `accessToken`, `expiresIn`, and `idTokenPayload` in the URL hash from Auth0 when returning to our app after authenticating at the [login page](https://auth0.com/docs/hosted-pages/login). The `handleLoginCallback()` method subscribes to the `parseHash$()` observable to stream authentication data (`_setAuth()`) by emitting values for the `token$` observable and `tokenData$` and `userProfile$` behavior subjects. This way, any subscribed components in the app are informed that the authentication and user data has been updated. The `_authFlag` is also set to `true` and stored in local storage so if the user returns to the app later, we can check whether to ask the authorization server for a fresh token. Essentially, the flag serves to tell the authorization server, "This app _thinks_ this user is authenticated. If they are, give me their data." We check the status of the flag in local storage with the accessor method `authenticated`.
 
 > **Note:** The user profile data takes the shape defined by [OpenID standard claims](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims).
 
-The `renewAuth()` method, if the `_authFlag` is `true`, subscribes to the `checkSession$()` observable to ask the authorization server if the user is indeed authorized (we can pass arguments to this observable as we would to the `auth0.js` function). If they are, fresh authentication data is returned and we'll run the `_setAuth()` method to update the necessary behavior subjects in our app. If the user is _not_ authorized with Auth0, the `_authFlag` is removed and the user will be redirected to the URL we set as the authentication failure location.
+The `renewAuth()` method, if the `_authFlag` is `true`, subscribes to the `checkSession$()` observable to ask the authorization server if the user is indeed authorized (we can pass arguments to this observable as we would to the `auth0.js` function). If they are, fresh authentication data is returned and we'll run the `_setAuth()` method to update the necessary authentication streams in our app. If the user is _not_ authorized with Auth0, the `_authFlag` is removed and the user will be redirected to the URL we set as the authentication failure location.
 
 Next, we have a `logout()` method that sets the `_authFlag` to `false` and logs out of the authentication session on Auth0's server. The [Auth0 `logout()` method](https://auth0.com/docs/libraries/auth0js/v9#logout) then redirects back to the location we set as our `logoutUrl`.
 
