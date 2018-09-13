@@ -18,6 +18,9 @@ render anything else.
 <div class="tweet"
      tweetID="{{ include.tweetId }}">
   {% if include.staticQuote %}
-    <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">{{ include.staticQuote }}.</p>{% if include.staticAuthor %}&mdash; {{ include.staticAuthor }}{% endif %} <a href="https://twitter.com/statuses/{{ include.tweetId | cgi_escape }}">Click to read more</a></blockquote>
+    <blockquote class="twitter-tweet" data-lang="en">
+      <p lang="en" dir="ltr">{{ include.staticQuote }}.</p>{% if include.staticAuthor %}&mdash; {{ include.staticAuthor }}{% endif %}
+      <p><a href="https://twitter.com/statuses/{{ include.tweetId | cgi_escape }}">Click to read more</a></p>
+    </blockquote>
   {% endif %}
 </div>
