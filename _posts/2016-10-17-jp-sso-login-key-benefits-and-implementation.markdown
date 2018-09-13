@@ -25,7 +25,7 @@ related:
 - jp-reactjs-authentication
 - jp-vuejs2-authentication
 - jp-securing-asp-dot-net-core-2-applications-with-jwts
-lang: jp
+lang: ja
 alternate_locale_en: sso-login-key-benefits-and-implementation
 ---
 
@@ -98,7 +98,7 @@ Auth0 アカウントをお持ちでない方は、 [こちらからサインイ
 
 アプリケーションやサービスの大規模なエコシステムを管理するためにSSOログインを使う利点は数え切れないほどあります。モダンなアプリケーション開発は分散システムをサポートしています。効率的な SSO ログインを導入することで、毎回認証を心配することなく、既存のサービススイートにアプリケーションを追加することが簡単になります。Google が SSO ログインを実装して成功しているのであれば、お客様も Auth0 でも同じようにできます！
 
-{% include tweet_quote.html quote_text="Google が SSO ログインを実装して成功しているのであれば、お客様も Auth0 で同じようにできます！" %}
+{% include jp-tweet_quote.html quote_text="Google が SSO ログインを実装して成功しているのであれば、お客様も Auth0 で同じようにできます！" %}
 
 
 [シングル サインオンの詳細をご存知ですか？](https://resources.auth0.com/definitive-guide-to-single-sign-on/?utm_source=blog) [より詳細な](https://resources.auth0.com/definitive-guide-to-single-sign-on/?utm_source=blog) [SSO ガイドブック（74ページ 無料電子ブック）はこちらから](https://resources.auth0.com/definitive-guide-to-single-sign-on/?utm_source=blog) [入手できます](https://resources.auth0.com/definitive-guide-to-single-sign-on/?utm_source=blog) [。](https://resources.auth0.com/definitive-guide-to-single-sign-on/?utm_source=blog)
