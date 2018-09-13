@@ -173,24 +173,24 @@ void setupPlayer(){
     TrackSelector trackSelector =
             new DefaultTrackSelector(videoTrackSelectionFactory);
 
-    //initialize the player with default configurations
+    //既定の構成でプレーヤーを初期化します
     player = ExoPlayerFactory.newSimpleInstance(this, trackSelector);
 
-    //Assign simpleExoPlayerView
+    // simpleExoPlayerView を割り当てます
     simpleExoPlayerView.setPlayer(player);
 
-    // Produces DataSource instances through which media data is loaded.
+    // メディアデータが読み込む DataSource インスタンスを作ります。
     DataSource.Factory dataSourceFactory =
             new DefaultDataSourceFactory(this, Util.getUserAgent(this, "CloudinaryExoplayer"));
 
-    // Produces Extractor instances for parsing the media data.
+    // メディアデータを解析する抽出インスタンスを作ります。
     ExtractorsFactory extractorsFactory = new DefaultExtractorsFactory();
 
-    // This is the MediaSource representing the media to be played.
+    // これはメディアが再生される MediaSource を表します
     MediaSource videoSource = new ExtractorMediaSource(videoUri,
             dataSourceFactory, extractorsFactory, null, null);
 
-    // Prepare the player with the source.
+    // ソースでプレーヤーを用意します。
     player.prepare(videoSource);
 }
 ```
@@ -628,11 +628,11 @@ androidTestCompile 'org.mockito:mockito-android:2.13.0'
 public void mockitoTest throws Exception {
     List mockedList = mock(List.class);
 
-    //using mock object
+    // モックオブジェクトを使用すること
     mockedList.add("one");
     mockedList.clear();
 
-    //verification
+    // 検証
     verify(mockedList).add("one");
     verify(mockedList).clear();
 }
@@ -736,7 +736,7 @@ Room を使用するには、まず Google Maven レポジトリをプロジェ�
 ```groovy
 allprojects {
     repositories {
-        // ... other repositories
+        // ... その他リポジトリ
         google()
     }
 }
@@ -766,15 +766,15 @@ public class Person {
 ```java
 @Dao
 public interface PersonDao {
-    // Adds a person to the database
+    // データベースに個人を追加します
     @Insert
     void insert(Person person);
 
-    // Removes a person from the database
+    // データベースから個人を削除します
     @Delete
     void delete(Person person);
 
-    // Gets all people in the database
+    // データベースの個人全てを取得します
     @Query("SELECT * FROM "+Person.TABLE_NAME)
     List<Person> getAllPeople();
 }
@@ -799,7 +799,7 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
 
-        // initialize the db once during the app lifecycle
+        // アプリのライフサイクルで db を一度初期化します
         appDatabase =  Room.databaseBuilder(
             getApplicationContext(),
             AppDatabase.class,
@@ -819,7 +819,7 @@ public class App extends Application {
 Executors.newSingleThreadExecutor().execute(new Runnable() {
     @Override
     public void run() {
-        // insert into the database
+        // データベースに挿入します
         Person person = new Person();
         person.name= "Idorenyin Obong"
         App.provideDb().getPersonDao().insert(person);
@@ -976,7 +976,7 @@ public class FirstJob extends Job {
     @Override
     @NonNull
     protected Result onRunJob(@NonNull Params params) {
-        // run your job here
+        // ここでジョブを実行します
         return Result.SUCCESS;
     }
 
