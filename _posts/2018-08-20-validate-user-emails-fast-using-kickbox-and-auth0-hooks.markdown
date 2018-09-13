@@ -80,7 +80,7 @@ The Sendex value ranges from a `0` (no quality) to `1` (excellent quality). The 
 
 While the Sendex code is useful to verify the quality of an email address, using it in a pre-registration hook could be problematic.  In our case, we will want to validate the authenticity of the email, not the quality.  To achieve this, Kickbox provides us with other useful information.  We will use two of the properties that are provided by Kickbox to validate the email: 
 
-* The `undeliverable` property will tell us if this email will actually be delivered. 
+* The `result` property will tell us if this email will actually be delivered or if it's from a risky source.  In our case, we will validate that this email is not `undeliverable`. 
 
 * The `disposable` property will tell us if this email comes from a service that offers disposable email addresses.
 
