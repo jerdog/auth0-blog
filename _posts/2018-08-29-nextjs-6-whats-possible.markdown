@@ -353,7 +353,7 @@ export default defaultPage(SignIn)
 
 Display the login page once the sign-in component gets mounted.
 
-![Sign in](https://cdn.auth0.com/blog/nextjs3/login.png)
+![Auth0 Sign in page example](https://cdn.auth0.com/blog/nextjs3/login.png)
 _Sign-in page_
 
 _pages/auth/signed-in.js_
@@ -389,7 +389,7 @@ export default class SignedIn extends React.Component {
 
 Grab the token and ID token from Auth0 as it returns to the callback which is the `signed-in` page, save it and redirect to the index page.
 
-![Signed in](https://cdn.auth0.com/blog/signedin/authenticated.png)
+![Auth0 authenticated - signed in example](https://cdn.auth0.com/blog/signedin/authenticated.png)
 _Secret page shows that the user is signed in and can access it_
 
 _pages/index.js_
@@ -498,7 +498,7 @@ The index page is server-rendered. It checks whether the user is authenticated o
 
 The [secret page](https://github.com/auth0-blog/next6-auth0/blob/master/pages/secret.js) too checks if the user is logged in and determines content based on the user's status.
 
-![Secret page unauthorized](https://cdn.auth0.com/blog/secret/notloggedin.png)
+![Auth0 secret page - gated content - unauthorized view](https://cdn.auth0.com/blog/secret/notloggedin.png)
 _Not displaying valid content because the user cant access the secret page without signing in_
 
 **Note:** This example performs no server side validation of the token sent by the user in its cookies. For production-ready secure pages this is necessary.
