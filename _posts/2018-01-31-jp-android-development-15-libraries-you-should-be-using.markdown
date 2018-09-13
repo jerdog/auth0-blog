@@ -4,7 +4,7 @@ title: "Android 開発：使用すべき 15 のライブラリ"
 metatitle: "Android 開発：使用すべき 15 のライブラリ"
 description: "Android アプリケーションの作成に役立つ素晴らしいライブラリを見てみましょう。"
 metadescription: "Android アプリケーションの作成に役立つ素晴らしいライブラリを見てみましょう。"
-date: 2018-09-12 16:30
+date: "2018-01-31 08:30"
 category: Technical Guide, Deep Dive, Android
 post_length: 2
 auth0_aside: true
