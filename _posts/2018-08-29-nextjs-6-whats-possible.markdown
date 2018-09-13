@@ -246,6 +246,8 @@ The code above enables server side rendering of the styles. It does two things:
 
 ### Authentication Process
 
+The code shown in this section already exists in the repo. It's presented here again purely for explanation.
+
 _utils/auth.js_
 
 ```js
@@ -385,7 +387,7 @@ export default class SignedIn extends React.Component {
 }
 ```
 
-Grab the token and ID token from Auth0 as it returns to the callback which is the signed-in page, save it and redirect to the index page.
+Grab the token and ID token from Auth0 as it returns to the callback which is the `signed-in` page, save it and redirect to the index page.
 
 ![Signed in](https://cdn.auth0.com/blog/signedin/authenticated.png)
 _Secret page shows that the user is signed in and can access it_
