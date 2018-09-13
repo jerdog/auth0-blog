@@ -4,11 +4,11 @@ title: "Next.js 6 Features: A Practical Introduction"
 metatitle: "Learn About 6 Next.js 6 Features and Authenticate with Auth0"
 description: "Explore Next.js features and learn how to build Universal JavaScript apps with Next.js 6"
 metadescription: "What's new in Next.js 6? What features were added? View a list of new features and build performant Universal JavaScript apps with the latest Next.js release."
-date: 2018-08-29 08:30
-category: Hot Topics, Frameworks, Next.js
+date: 2018-09-13 11:30
+category: Technical Guide, Whats New, Nextjs
 design:
-  bg_color: "#222228"
-  image: https://cdn.auth0.com/blog/next3/logo.png
+  bg_color: "#2f333b"
+  image: https://cdn.auth0.com/blog/logos/nextjs-logo.png
 author:
   name: Prosper Otemuyiwa
   url: http://twitter.com/unicodeveloper
@@ -21,13 +21,16 @@ tags:
 - auth
 related:
 - 2016-11-01-building-universal-apps-with-nextjs
-- 2017-04-24-build-better-universal-apps-with-nextjs2
-- 2017-09-27-nextjs-3-release-what-is-new
+- 2018-08-28-react-tutorial-building-and-securing-your-first-app
+- 2018-08-07-how-to-create-angular-apps-with-auth0-and-stackblitz
 ---
 
----
 
 **TL;DR:** Next.js, a lightweight framework for static and server-rendered applications is popular for building Universal JavaScript applications. In this article, I'll cover the features of **Next.js 6**.
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Next.js 6 is here:<br><br>◆ Zero-configuration static exports<br>◆ `_app.js`, an extension point that enables page transitions, Apollo or Redux integration and more<br>◆ Babel 7 and Fragment syntax `&lt;&gt;` support<a href="https://t.co/hAvBiMou1Z">https://t.co/hAvBiMou1Z</a> <a href="https://t.co/BHXMSyHmyD">pic.twitter.com/BHXMSyHmyD</a></p>&mdash; ZEIT (@zeithq) <a href="https://twitter.com/zeithq/status/996866206475923460?ref_src=twsrc%5Etfw">May 16, 2018</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
 
 ---
 
