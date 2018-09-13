@@ -35,9 +35,9 @@ Substantial changes have been introduced since the NIST's last publication in Au
 
 You can use the NIST guidelines to build your security policies from the ground up. The NIST publication offers comprehensive, actionable practices for all aspects of digital identity security including detailed threat-mitigation strategies. If you don't yet have a security policy at your company, or if you're looking to give it an update, then the NIST may have the answers you need for free.
 
-So don't ignore the NIST guidelines just because you're a private company, **the NIST guidelines can provide you with something even more powerful than policies, [credibility](http://www.networkcomputing.com/careers/do-nist-information-security-standards-matter/2143614969).**
+So don't ignore the NIST guidelines just because you're a private company, **the NIST guidelines can provide you with something even more powerful than policies: [credibility](http://www.networkcomputing.com/careers/do-nist-information-security-standards-matter/2143614969).**
 
-Even though the NIST only regulates federal agencies, [corporate security teams are taking advantage of their guidelines.](https://venturebeat.com/2017/04/18/new-password-guidelines-say-everything-we-thought-about-passwords-is-wrong/) Companies use the NIST standards as a baseline and work toward their suggestions. The NIST, in turn, recognizes the importance of private-sector security by making their guidelines widely applicable.
+Even though the NIST only regulates federal agencies, [corporate security teams are taking advantage of their guidelines](https://venturebeat.com/2017/04/18/new-password-guidelines-say-everything-we-thought-about-passwords-is-wrong/). Companies use the NIST standards as a baseline and work toward their suggestions. The NIST, in turn, recognizes the importance of private-sector security by making their guidelines widely applicable.
 
 NIST password regulations and suggestions are well-researched and well-trusted. Even if you are confident in your security, nothing can beat following standards that have been independently and painstakingly vetted.
 
@@ -64,7 +64,6 @@ Clearly, your users aren't going to take the extra step to protect their digital
 Length matters a lot more, which is why the new guidelines call for a strict 8-character minimum and even suggested moving character maximums to at least 64.
 
 Besides length minimums, what you can actually do to improve password security is to make it easier for users to have *better* passwords. Let's look at what the NIST recommends.
-
 
 ### NO PERIODIC PASSWORD RESETS
 
@@ -151,7 +150,7 @@ However, the removal of recommendations against SMS indicates that this [widely 
 
 ## Your new guide
 
-Don't ignore the NIST, use it to your advantage.
+Don't ignore the NIST, use it to your advantage. **The Auth0 platform's configurable password policies support the NIST guidelines**.
 
 Recent studies have shown that the conventional wisdom on passwords is wrong, so you need to rethink your password strategies. Stop wasting your time on password complexity and focus your security on effective preventative measures like extra salting and 2FA.
 
