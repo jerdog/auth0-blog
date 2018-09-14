@@ -122,4 +122,4 @@ As your company grows, it's a blessing to bring on more users — whether new cu
 
 As the Facebook disinformation scandal clearly shows, without proper tracking, small issues can balloon out of control. Ideally, you'd stop any fake accounts at the login source so they don't snowball at all.
 
-Creating or outsourcing tools like Auth0 Lock, Rules for rapidly pulling and storing current user data, and features like social login will help secure your company at its foundation so that you can grow.
+Creating or outsourcing tools like Auth0 Lock](https://auth0.com/lock), [Rules for rapidly pulling and storing current user data](https://auth0.com/docs/rules/current), and features like [social login](https://auth0.com/learn/social-login/) will help secure your company at its foundation so that you can grow.
