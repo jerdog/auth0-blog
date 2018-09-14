@@ -1,9 +1,9 @@
 ---
 layout: post
 title: "What the Facebook Disinformation Scandal Means for Your Company"
-metatitle: "How the Facebook Disinformation Scandal Affects Your Company"
+metatitle: "Facebook Disinformation Scandal - Apply Identity Management Tools"
 description: "Implement identity management tools for all of your users as you scale."
-metadescription: "Learn how implementing strong identity management tools from Auth0 could help to avoid company data breach incidents as you scale"
+metadescription: "Learn how implementing identity management tools from Auth0 can help your company avoid data breach incidents and disinformation scandals like Facebook."
 date: 2018-09-14 14:38
 category: Hot Topics, Security, Breaches
 post_length: 1
