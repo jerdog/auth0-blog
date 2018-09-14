@@ -64,7 +64,7 @@ With so many stakeholders accessing different parts of the Facebook platform at 
 
 How can your team do better?
 
-## Avoid Your Own Disinformation Scandal with Strong Identity-Management Tools
+## Avoid Your Own Disinformation Scandal with Strong Identity Management Tools
 
 Even if you’re not as large as Facebook, there are key steps you can take as your company scales to be sure you are keeping track of who your users are (customers, employees, and third parties) and what behaviors they display in order to root out fake accounts and nefarious activities.
 
@@ -84,7 +84,7 @@ Given the range of data sources that this information could come from, including
 
 Giving admins the control to rapidly parse an employee user base will help them notice any suspicious behaviors — like repeated failed login attempts in real-time — mitigating the risk of false accounts or system breaches.
 
-### Identity-management tools for third parties
+### Identity management tools for third parties
 
 For third parties such as consultants or auditors (or, in Facebook's case, purchase-data providers like Datalogix, Epsilon, Acxiom, and BlueKai) that you allow into your system but that are not regular employees, providing them with a single sign-on (SSO) feature like [Auth0 Lock](https://auth0.com/lock) will not only make things cleaner and more efficient on their end but also help consolidate all of their credentials into a single location for vetting purposes.
 
@@ -96,7 +96,7 @@ On the back end, after the lock is initialized and the authentication event occu
 
 Keeping track of external users is critical in maintaining order and privacy within your system as needed (as Facebook's canceled Partner Categories program highlighted). Because these users aren't formal employees, you want to be sure that they still adhere to your company's standards and practices and aren't straying or creating unwanted programs.
 
-### Customer identity-management tools
+### Customer identity management tools
 
 Knowing your customers is key to growing your company. Strong customer-identity and customer-access tools can make onboarding quick and fun, up your daily active-user base, reduce churn, and [drive conversions](https://blog.nomnominsights.com/turning-customer-feedback-into-research-hypotheses/).
 
@@ -116,7 +116,7 @@ Any further support you can get to vet users — even your loyal and trusted cus
 
 {% include tweet_quote.html quote_text="Creating or outsourcing tools like Auth0 Lock for rapidly pulling and storing current user data, and features like social login will help secure your company at its foundation so that you can grow." %}
 
-## Use Identity-Management Tools to Stop Bad Behavior at the Source 
+## Use Identity Management Tools to Stop Bad Behavior at the Source 
 
 As your company grows, it's a blessing to bring on more users — whether new customers, freelancers, consultants or employees. But it can quickly become a curse if you don't implement strong practices for monitoring them.
 
