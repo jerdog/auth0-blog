@@ -86,13 +86,13 @@ Giving admins the control to rapidly parse an employee user base will help them 
 
 ### Identity management tools for third parties
 
-For third parties such as consultants or auditors (or, in Facebook's case, purchase-data providers like Datalogix, Epsilon, Acxiom, and BlueKai) that you allow into your system but that are not regular employees, providing them with a single sign-on (SSO) feature like [Auth0 Lock](https://auth0.com/lock) will not only make things cleaner and more efficient on their end but also help consolidate all of their credentials into a single location for vetting purposes.
+For third parties such as consultants or auditors (or, in Facebook's case, purchase-data providers like Datalogix, Epsilon, Acxiom, and BlueKai) that you allow into your system but that are not regular employees, providing them with a single sign-on (SSO) feature through [Auth0 Universal Login](https://auth0.com/universal-login) will not only make things cleaner and more efficient on their end but also help consolidate all of their credentials into a single location for vetting purposes.
 
-Auth0 Lock is a single embeddable login form for desktop, tablet, and mobile:
+Auth0 Universal Login provides a secure login infrastructure to authenticate users to your apps.
 
-![Embedding Auth0 Lock into different environments](https://cdn.auth0.com/blog/facebook-scandal:auth0-embed.png)
+![Auth0 Universal login page](https://cdn.auth0.com/blog/resources/auth0-centralized-login.jpg)
 
-On the back end, after the lock is initialized and the authentication event occurs, admins can call the `getUserInfo` method to acquire all of the user's profile information (as needed).
+On the back end, after the authentication event occurs, admins can call the `getUserInfo` method to acquire all of the user's profile information (as needed).
 
 Keeping track of external users is critical in maintaining order and privacy within your system as needed (as Facebook's canceled Partner Categories program highlighted). Because these users aren't formal employees, you want to be sure that they still adhere to your company's standards and practices and aren't straying or creating unwanted programs.
 
@@ -106,15 +106,15 @@ This year, British shipping company Clarksons revealed that a single fake accoun
 
 To get out of the mess, Clarksons had to hire outside forensic help to find and disable the problematic account.
 
-Implementing social integrations can help you avoid this by immediately double-checking that all users are who they say they are. A social login feature is a single sign-on option for end users that relies on existing login information from a social network provider like Google.
+Implementing social integrations can help you avoid this by immediately double-checking that all users are who they say they are. A social login feature relies on existing login information from a social network provider like Google to verify a users identity.
 
 ![Log into a Wordpress site using social login provider](https://cdn.auth0.com/blog/facebook-scandal:auth0-wordpress.png)
 
-A customer can sign into a third-party website like WordPress instead of creating an entirely new account. Since the provider (Google) has already authenticated the user, it provides an extra layer of security.
+A customer can sign into a third-party website like WordPress through Google instead of creating an entirely new account. Since the provider (Google) has already authenticated the user, it provides an extra layer of security.
 
 Any further support you can get to vet users — even your loyal and trusted customers — can go a long way toward avoiding a costly data breach.
 
-{% include tweet_quote.html quote_text="Creating or outsourcing tools like Auth0 Lock for rapidly pulling and storing current user data, and features like social login will help secure your company at its foundation so that you can grow." %}
+{% include tweet_quote.html quote_text="Creating or outsourcing tools like Auth0 Universal Login for rapidly pulling and storing current user data, and features like social login will help secure your company at its foundation so that you can grow." %}
 
 ## Use Identity Management Tools to Stop Bad Behavior at the Source 
 
@@ -122,4 +122,4 @@ As your company grows, it's a blessing to bring on more users — whether new cu
 
 As the Facebook disinformation scandal clearly shows, without proper tracking, small issues can balloon out of control. Ideally, you'd stop any fake accounts at the login source so they don't snowball at all.
 
-Creating or outsourcing tools like [Auth0 Lock](https://auth0.com/lock), [Rules for rapidly pulling and storing current user data](https://auth0.com/docs/rules/current), and features like [social login](https://auth0.com/learn/social-login/) will help secure your company at its foundation so that you can grow.
+Creating or outsourcing tools like [Auth0 Universal Login](https://auth0.com/universal-login), [Rules for rapidly pulling and storing current user data](https://auth0.com/docs/rules/current), and features like [social login](https://auth0.com/learn/social-login/) will help secure your company at its foundation so that you can grow.
