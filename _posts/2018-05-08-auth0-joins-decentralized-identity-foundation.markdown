@@ -4,7 +4,7 @@ title: "Auth0 Joins Decentralized Identity Foundation"
 description: "Leading tech companies join forces to create protocols around identity data"
 longdescription: "Auth0 announced that it has joined the Decentralized Identity Foundation, joining companies such as IBM, Accenture, RSA, IDEO, and others, to collaborate and provide insight on creating a standards-based ecosystem for managing digital identities."
 date: 2018-05-08 10:30
-category: Announcements, Press
+category: PR, Partners, Decentralized Identity Foundation
 press_release: true
 is_non-tech: true
 author:

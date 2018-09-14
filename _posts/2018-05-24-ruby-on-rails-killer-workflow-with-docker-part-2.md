@@ -4,7 +4,7 @@ title: "Ruby on Rails—Killer Workflow with Docker (Part 2)"
 description: "Learn how to set up a killer dockerized workflow that will raise your productivity while developing Ruby on Rails applications."
 longdescription: "In this series, you will learn how to set up a killer dockerized workflow that will raise your productivity while developing Ruby on Rails application. You will use tools like Docker, Docker Compose, Travis, and Heroku to set up a state-of-the-art workflow."
 date: 2018-05-24 08:30
-category: Technical Guide, Backend, Ruby On Rails
+category: Technical Guide, Deep Dive, Ruby On Rails
 design:
   bg_color: "#4A4A4A"
   image: https://cdn.auth0.com/blog/ruby-workflow-docker/logo.png

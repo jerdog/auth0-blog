@@ -3,7 +3,7 @@ layout: post
 title: "Auth0 Announces $55M in Series D Funding"
 description: "Momentum signifies global demand for extensible identity management"
 date: 2018-05-15 10:30
-category: Announcements, Press
+category: PR, Investors, Funding
 press_release: true
 is_non-tech: true
 author:

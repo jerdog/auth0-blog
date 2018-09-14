@@ -4,7 +4,7 @@ title: "Auth0 Welcomes Vittorio Bertocci to the Team"
 description: Identity expert Vittorio Bertocci joined Auth0 as Principal Architect. Find out what he thinks companies miss when they think ‘identity.’
 longdescription: Find out what Identity Expert Vittorio Bertocci thinks companies miss when they think ‘identity,’ his picks for the 3 most intriguing trends in identity today, and his initial plans for his new role as Auth0 Principal Architect.
 date: 2018-05-01 08:30
-category: Announcements, Press, Growth
+category: PR, Hires, Architecture
 is_non-tech: true
 author:
   name: "Jenny O'Brien"

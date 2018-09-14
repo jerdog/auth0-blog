@@ -4,7 +4,7 @@ title: "Information Warfare Offensive"
 description: "Access to information is valuable but it is also dangerous. Auth0 CISO Joan Pepin explains why information warfare is a big deal"
 longdescription: "Access to information is valuable but it is also dangerous. Auth0 CISO Joan Pepin explains why her job really is about balancing the opportunities and risks that information presents and why information warfare is a big deal"
 date: 2018-05-14 8:30
-category: Growth, Security
+category: Hot Topics, Security, Mitigations
 is_non-tech: true
 banner:
   text: "Auth0 makes it easy to add authentication to your application."
