@@ -4,7 +4,7 @@ title: "What the Facebook Disinformation Scandal Means for Your Company"
 metatitle: "How the Facebook Disinformation Scandal Affects Your Company"
 description: "Learn how company data breach incidents could be avoided using strong identity management tools"
 metadescription: "Learn how implementing strong identity management tools from Auth0 could help to avoid company data breach incidents as you scale"
-date: 2018-09-10 14:38
+date: 2018-09-14 14:38
 category: Hot Topics, Security, Breaches
 post_length: 1
 is_non-tech: true
