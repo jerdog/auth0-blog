@@ -29,8 +29,8 @@ tags:
   - identity
   - 2fa
 related:
+- 2018-08-03-what-data-did-facebook-really-give-cambridge-analytica
 - 2018-09-07-3-critical-lessons-from-the-t-mobile-data-breach
-- 2018-08-24-what-companies-can-learn-from-the-reddit-data-breach
 - 2018-06-18-how-two-factor-authentication-can-help-financial-institutions-reduce-data-breaches
 ---
 
