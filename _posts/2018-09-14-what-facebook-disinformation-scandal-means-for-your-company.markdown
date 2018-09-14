@@ -9,13 +9,13 @@ category: Hot Topics, Security, Breaches
 post_length: 1
 is_non-tech: true
 author:
-  name: Martin Gontovnikas
-  url: http://twitter.com/mgonto
-  mail: gonto@auth0.com
-  avatar: https://www.gravatar.com/avatar/df6c864847fba9687d962cb80b482764??s=60
+  name: Diego Poza
+  url: https://twitter.com/diegopoza
+  avatar: https://avatars3.githubusercontent.com/u/604869?v=3&s=200
+  mail: diego.poza@auth0.com
 design:
-  bg_color: "#6B5282"
-  image: https://cdn.auth0.com/blog/mitigate/security-measures-main.png
+  bg_color: "#29335c"
+  image: https://cdn.auth0.com/blog/data-security/logo.png
 tags:
   - security
   - data
