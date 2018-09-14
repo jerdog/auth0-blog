@@ -2,7 +2,7 @@
 layout: post
 title: "What the Facebook Disinformation Scandal Means for Your Company"
 metatitle: "How the Facebook Disinformation Scandal Affects Your Company"
-description: "Learn how company data breach incidents could be avoided using strong identity management tools"
+description: "Implement identity management tools for all of your users as you scale."
 metadescription: "Learn how implementing strong identity management tools from Auth0 could help to avoid company data breach incidents as you scale"
 date: 2018-09-14 14:38
 category: Hot Topics, Security, Breaches
@@ -33,8 +33,6 @@ related:
 - 2018-09-07-3-critical-lessons-from-the-t-mobile-data-breach
 - 2018-06-18-how-two-factor-authentication-can-help-financial-institutions-reduce-data-breaches
 ---
-
-## Implement identity-management tools for all of your users as you scale.
 
 On August 21, Facebook took down over 600 accounts, pages, and groups that originated in Iran. These accounts were disseminating political disinformation, largely targeted at users in Latin America and the Middle East.
 
