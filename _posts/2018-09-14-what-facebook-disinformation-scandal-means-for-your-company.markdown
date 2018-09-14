@@ -58,7 +58,7 @@ Although it recently ended this practice, following the [Cambridge Analytica sca
 
 These providers helped other businesses understand and optimize their marketing campaigns. As an example, [according to Facebook](https://www.facebook.com/help/494750870625830):
 
-“An auto dealer may want to customize an offer to people who are likely to be in the market for a new car. The dealer also might want to send offers, like discounts for service, to customers that have purchased a car from them. To do this, the auto dealer works with a third-party company to identify and reach those customers with the right offer. The third-party partner provides Facebook with information that helps Facebook connect those customers with the offers.” 
+"An auto dealer may want to customize an offer to people who are likely to be in the market for a new car. The dealer also might want to send offers, like discounts for service, to customers that have purchased a car from them. To do this, the auto dealer works with a third-party company to identify and reach those customers with the right offer. The third-party partner provides Facebook with information that helps Facebook connect those customers with the offers." 
 
 With so many stakeholders accessing different parts of the Facebook platform at different times, it's clearly too much for Facebook to keep track of [Fake news](https://www.zuora.com/2017/05/26/social-platforms-channel-fake-news-next-revolution-journalism-2/) and accounts are rampant.
 
