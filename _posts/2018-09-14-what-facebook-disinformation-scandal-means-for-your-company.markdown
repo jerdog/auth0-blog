@@ -52,7 +52,7 @@ The number of daily active users on Facebook has nearly tripled since 2011. Toda
  
 In addition, as of Q2 2018, the company had over 25,000 employees, and it shares its data with numerous third parties. 
 
-Although it recently ended this practice, following the [Cambridge Analytica scandal](https://www.godaddy.com/garage/facebook-privacy-and-your-brand-considerations/), Facebook historically shared user information with major online and offline data brokers through its Partner Categories program. This included what the company had collected itself (e.g., page likes) and information from its advertisers.
+Although it recently ended this practice, following the [Cambridge Analytica scandal](https://auth0.com/blog/what-data-did-facebook-really-give-cambridge-analytica/), Facebook historically shared user information with major online and offline data brokers through its Partner Categories program. This included what the company had collected itself (e.g., page likes) and information from its advertisers.
 
 {% include tweet_quote.html quote_text="With so many stakeholders accessing different parts of the Facebook platform at different times, it's clearly too much for Facebook to keep track of Fake news, and accounts are rampant." %}
 
