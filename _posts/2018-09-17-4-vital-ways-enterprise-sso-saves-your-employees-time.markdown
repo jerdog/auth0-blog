@@ -75,7 +75,7 @@ Note: During this process, users don’t see a login screen and are seamlessly d
 
 ## 1. Enterprise SSO Improves Employees' User Experience
 
-By using enterprise SSO, companies save employees time and effort by asking them for only one login and one set of credentials. 
+By using [enterprise SSO](https://auth0.com/single-sign-on), companies save employees time and effort by asking them for only one login and one set of credentials. 
 
 These credentials work for all cloud, on-premises, and mobile applications and provide a hub for all company applications, rather than requiring employees to remember usernames and passwords for each tool.
 
