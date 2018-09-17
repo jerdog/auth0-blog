@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "React and Storybook: A Tale of Reusability (Part 2)"
+title: "Building a Component Library with React and Storybook"
 description: "Create modular and reusable components that can be shared across projects by building a component library with React and Storybook."
-date: 2018-08-15 8:30
-category: Technical Guide, Frontend, Engineering
+date: 2018-09-18 8:30
+category: Technical Guide, Deep Dive, React
 design:
   bg_color: "#222228"
   image: https://cdn.auth0.com/blog/logos/storybook-react.png
