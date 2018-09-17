@@ -2,7 +2,7 @@
 layout: post
 title: 4 Vital Ways Enterprise SSO Saves Your Employees Time and Provides Peace of Mind
 metatitle:
-description:
+description: Enterprise SSO ensures better productivity, user experience, and security for employees through single-click access.
 metadescription:
 date: 2018-09-17 14:58
 category: Business, Identity, SSO
@@ -28,8 +28,6 @@ related:
 - 2017-07-31-2016-social-passwordless-and-sso-data-what-can-we-learn
 - 2018-01-10-implementing-single-sign-on-in-b2c-applications
 ---
-
-## Enterprise SSO ensures better productivity, user experience, and security for employees through single-click access.
 
 Leading up to the 2016 U.S. presidential election, Russian hackers allegedly attacked the Hillary Clinton campaign and the Democratic National Committee with [spear-phishing](https://www.pcmag.com/article/354240/spear-phishing-attacks-what-you-need-to-know) efforts to trick users into providing their usernames and passwords to fraudulent websites.
 
