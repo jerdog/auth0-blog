@@ -4,7 +4,7 @@ title: 3 Reasons Your Data Integration Plan is Important
 description: "When your data isn't organized, you lose your competitive advantage as an organization"
 longdescription: "When your data isn't organized, you lose your competitive advantage as an organization. We show you three reasons your data integration plan is important"
 date: 2018-03-09 08:33
-category: Growth, Data
+category: Business, Identity, Data
 is_non-tech: true
 author:
   name: "Diego Poza"
