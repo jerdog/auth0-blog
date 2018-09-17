@@ -5,7 +5,7 @@ metatitle: 機器間（M2M）認証を使用する
 description: クライアント資格情報の付与と Auth0 を使って非対話型アプリを設定して IoT デバイス、CLI tool ツール、機関間 API 認証を実装する方法。
 metadescription: クライアント資格情報の付与と Auth0 を使って非対話型アプリを設定して IoT デバイス、CLI tool ツール、機関間 API 認証を実装する方法。
 date: 2018-07-11 08:30
-category: Technical Guide, Identity
+category: Technical Guide, Authentication, M2M
 post_length: 2
 author:
   name: Sebastián Peyrott

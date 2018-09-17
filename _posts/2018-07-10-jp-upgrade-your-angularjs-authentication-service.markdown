@@ -5,7 +5,7 @@ metatitle: AngularJS 認証サービスをアップグレードする
 description: AngularJS から新しい Angular にアプリケーションをアップグレードすることについて学びましょう。そのほかに AngularJS 認証戦略を Angular にするアップグレードについても学びます。
 metadescription: AngularJS から新しい Angular にアプリケーションをアップグレードすることについて学びましょう。そのほかに AngularJS 認証戦略を Angular にするアップグレードについても学びます。
 date: 2018-07-10 08:30
-category: Technical Guide, Angular
+category: Technical Guide, Upgrades, Angular
 post_length: 4
 author:
   name: "Sam Julien"

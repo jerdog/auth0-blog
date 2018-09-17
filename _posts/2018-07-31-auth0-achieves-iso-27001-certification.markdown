@@ -3,7 +3,7 @@ layout: post
 title: Auth0 Achieves ISO 27001:2013 Certification
 description: "Data security is top priority for Auth0. Introducing our latest information security certification: ISO 27001."
 date: 2018-07-31 09:00
-category: Announcements, Press
+category: PR, Features, Certification
 press_release: true
 is_non-tech: true
 author:

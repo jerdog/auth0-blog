@@ -3,7 +3,7 @@ layout: post
 title: "3 Tools For Digital Transformation in the Airline Industry"
 description: "Airline industry cybersecurity - map your customer journey, incorporate passwordless registration, and profile enrichment to create a more enjoyable and secure UX."
 date: 2018-07-23 8:30
-category: Growth, Industries, Travel
+category: Business, Travel, Digital Transformation
 design: 
   bg_color: "#00604A"
   image: https://cdn.auth0.com/blog/3-tools-for-digital-transformation-in-air-travel/digital-transformation-air-travel.png
