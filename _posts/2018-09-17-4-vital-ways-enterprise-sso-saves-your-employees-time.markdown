@@ -25,6 +25,7 @@ tags:
 - time-saving
 - sso
 related:
+- 2015-09-23-what-is-and-how-does-single-sign-on-work
 - 2017-07-31-2016-social-passwordless-and-sso-data-what-can-we-learn
 - 2018-01-10-implementing-single-sign-on-in-b2c-applications
 ---
