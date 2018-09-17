@@ -3,7 +3,7 @@ layout: post
 title: "Cloud-Scale Thinking from Day One for Your SaaS Products"
 description: "Learn how utilizing identity solutions like Auth0 allows your engineers to focus on what matters most to your company - developing your SaaS product's unique features."
 date: 2018-07-26 12:30
-category: Growth, Identity
+category: Business, Enterprise, SaaS
 is_non-tech: true
 author:
   name: Saravana Kumar

@@ -3,7 +3,7 @@ layout: post
 title: Auth0 Expands Reach of Global Partner Program
 description: Newest partners in the U.S. and EMEA extend its Universal Identity Platform to more customers.
 date: 2018-07-16 07:00
-category: Announcements, Press
+category: PR, Customers, Partnership
 press_release: true
 is_non-tech: true
 author:

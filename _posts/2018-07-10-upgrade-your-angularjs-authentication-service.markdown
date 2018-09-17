@@ -3,7 +3,7 @@ layout: post
 title: "Upgrade Your AngularJS Authentication Service"
 description: "Learn about upgrading an application from AngularJS to the new Angular. As well as how to upgrade AngularJS authentication strategies to Angular."
 date: 2018-07-10 08:30
-category: Technical Guide, Angular
+category: Technical Guide, Upgrades, Angular
 author:
   name: "Sam Julien"
   url: "https://www.upgradingangularjs.com/?ref=auth0"

@@ -3,7 +3,7 @@ layout: post
 title: "Building a Movie Listing Application with Aurelia and TypeScript"
 description: "Learn how to build a movie watch list demo application using TypeScript, the Aurelia framework, and user authentication with Auth0."
 date: 2018-07-17 08:30
-category: Technical Guide, Frontend, Aurelia
+category: Technical Guide, Deep Dive, Aurelia
 author:
   name: Steve Hobbs
   url: https://stevescodingblog.co.uk
