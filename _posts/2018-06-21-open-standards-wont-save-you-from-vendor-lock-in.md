@@ -4,7 +4,7 @@ title: "Open standards won’t save you from vendor lock-in"
 description: "...or at least, they won’t as often or as thoroughly as advertised."
 longdescription: "In the general case open standards in identity won’t prevent vendor lock-in and they ought to be table stakes says Auth0’s Vittorio Bertocci."
 date: 2018-06-21 10:30
-category: Hot Topics, Authentication
+category: Hot Topics, Security, Authentication
 author:
   name: Vittorio Bertocci
   url: https://twitter.com/vibronet

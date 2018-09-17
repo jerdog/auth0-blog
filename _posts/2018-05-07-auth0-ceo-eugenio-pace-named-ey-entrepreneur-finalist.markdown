@@ -4,7 +4,7 @@ title: "Auth0 CEO Eugenio Pace Named EY Entrepreneur Of The Year® 2018 Award Fi
 description: "The awards program recognizes entrepreneurs who are excelling in areas such as innovation, financial performance, and personal commitment to their businesses and communities."
 longdescription: "CEO and Co-founder Eugenio Pace has been named a finalist by EY for its Entrepreneur Of The Year® 2018 Award in the Pacific Northwest. The awards program recognizes entrepreneurs who are excelling in areas such as innovation, financial performance, and personal commitment to their businesses and communities."
 date: 2018-05-07 08:30
-category: Announcements, Press
+category: PR, Awards, EY Entrepreneur Of The Year
 press_release: true
 is_non-tech: true
 alias: auth0-ceo-eugenio-pace-named-ey-entrepeneur-finalist

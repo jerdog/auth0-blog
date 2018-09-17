@@ -4,7 +4,7 @@ title: 3 Ways to Get an IAM Budget in 2018
 description: "While it's hard to show direct returns on investment from an IAM solution, companies can't risk 2018 without one. Here are the most salient benefits to help you make a business case for an IAM budget."
 longdescription: "While it's hard to show direct returns on investment from an IAM solution, companies can't risk 2018 without one. Here are the most salient benefits to help you make a business case for an IAM budget."
 date: 2018-02-02 14:56
-category: Growth
+category: Business, SEO, Identity 
 is_non-tech: true
 author:
   name: "Diego Poza"

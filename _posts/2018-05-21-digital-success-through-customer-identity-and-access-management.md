@@ -4,7 +4,7 @@ title: "How a Strong Customer Identity and Access Management Strategy Can Drive 
 description: "Upgrading CIAM prior to other digital transformations can help maintain a positive user experience and high level of engagement with your platform."
 longdescription: "Upgrading CIAM prior to other digital transformations can help maintain a positive user experience and high level of engagement with your platform. Read about three specific benefits CIAM can provide to help you achieve and maintain an industry-leading position."
 date: 2018-05-21 8:30
-category: Growth, Identity, CIAM
+category: Identity, Identity, CIAM
 is_non-tech: true
 design: 
   bg_color: "#297373"

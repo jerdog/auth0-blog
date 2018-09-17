@@ -4,7 +4,7 @@ title: GDPR Effect?
 description: "The growing list of new privacy laws outside the EU can be challenging. Auth0 provides a list of recently enacted laws or those under consideration."
 longdescription: "The EU’s deliberations on personal data protection and data breach notification have changed the way governments around the world view privacy. The growing list of new privacy laws outside the EU can be challenging. Auth0 provides a list of recently enacted laws or those under consideration."
 date: 2018-03-12 08:30
-category: Hot Topics, GDPR
+category: Business, Compliance, GDPR
 press_release: false
 is_non-tech: true
 author:

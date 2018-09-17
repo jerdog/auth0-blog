@@ -3,7 +3,7 @@ layout: post
 title: "Build and Authenticate an EmberJS 3 Application"
 description: "Learn how to build and authenticate an EmberJS 3 Single Page Application"
 date: 2018-06-26 8:30
-category: Technical Guide, Frontend, Ember
+category: Technical Guide, First Application, Ember
 banner:
   text: "Auth0 makes it easy to add authentication to your EmberJS application."
 author:

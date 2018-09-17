@@ -4,7 +4,7 @@ title: "Auth0 Announces New VP of Sales, Americas"
 description: "Ghazi Masood brings 20+ years of sales experience and success"
 metadescription: From K2, Oracle, and Avaya on through to becoming Vice President of Sales at Auth0. Ghazi Masood joins Auth0 focusing on growth within the U.S., Canada, and South America.
 date: 2018-09-10 10:30
-category: PR, Hires
+category: PR, Hires, Sales
 press_release: true
 is_non-tech: true
 author:

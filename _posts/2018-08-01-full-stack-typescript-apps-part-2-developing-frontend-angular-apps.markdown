@@ -3,7 +3,7 @@ layout: post
 title: "Full-Stack TypeScript Apps - Part 2: Developing Frontend Angular Apps"
 description: "This series shows how to create a simple, full-stack web application with Angular, TypeScript, and Nest.js. Part 2: Developing frontend Angular apps."
 date: "2018-08-01 08:30"
-category: Technical Guide, Node.js, Nest.js
+category: Technical Guide, Stack, Fullstack
 author:
   name: "Ana Ribeiro"
   url: "https://twitter.com/anacosri"

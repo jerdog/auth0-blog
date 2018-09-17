@@ -4,7 +4,7 @@ title: "Troubleshooting Webtasks: Using Debuggers"
 description: "Learn how to troubleshoot webtasks from monitoring logs in the editor all the way to debugging locally using devtool and visual studio code."
 longdescription: "The Webtasks technology that powers Auth0 Extend, Webtask.io and Auth0 Hooks is a very powerful system. Learn how to troubleshoot webtasks from monitoring logs in the editor all the way to debugging locally using devtool and visual studio code."
 date: 2018-03-28 08:00
-category: Extend, Techincal, Webtasks
+category: Technical Guide, Auth0 Product, Webtasks
 press_release: false
 is_non-tech: false
 canonical_url: true

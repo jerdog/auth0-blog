@@ -3,7 +3,7 @@ layout: post
 title: Auth0 Named as a Visionary in the 2018 Gartner Magic Quadrant 
 description: Positioning based on completeness of vision and ability to execute
 date: 2018-06-25 08:30
-category: Announcements, Press
+category: PR, Awards, Gartner Magic Quadrant
 press_release: false
 is_non-tech: true
 author:

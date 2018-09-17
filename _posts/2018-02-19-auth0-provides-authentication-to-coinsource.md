@@ -3,7 +3,7 @@ layout: post
 title: "Auth0 Provides Authentication to Coinsource’s Nationwide Network of Bitcoin ATMs"
 description: "Users can log-in easily and securely at any ATM with Auth0."
 date: 2018-02-19 8:30
-category: Announcements, Press
+category: PR, Customers, Financial
 press_release: true
 is_non-tech: true
 author:

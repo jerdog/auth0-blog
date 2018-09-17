@@ -4,7 +4,7 @@ title: "Another Round of JWT.io and JWT Debugger Extension Updates"
 description: "We have released new versions of JWT.io and the JWT Debugger extension, learn what's new."
 longdescription: "We have been working on new features for JWT.io and the JWT Debugger extension. HMAC secret length hints, claim description tooltips, simplified library updates, share button, plain RSA public keys, and more. Take a look at the new features!"
 date: 2018-05-08 12:30
-category: Announcements, Content
+category: PR, Features, JWT.io
 author:
   name: Sebastián Peyrott
   url: https://twitter.com/speyrott?lang=en

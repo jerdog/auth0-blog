@@ -4,7 +4,7 @@ title: "Symfony Tutorial: Building a Blog (Part 3)"
 description: "Learn how to create and deploy a secure blog engine with Symfony."
 longdescription: "Creating applications with Symfony is easy and can be scaled to be used in any requirement. The tools that it provides to create and maintain web applications is amazing and replaces repetitive tasks. In this series, you will use Symfony to create a production-ready blog engine and then you will deploy it to Heroku."
 date: 2018-03-23 08:30
-category: Technical Guide, PHP, Symfony
+category: Technical Guide, Real World, Symfony
 author:
   name: Greg Holmes
   url: https://github.com/GregHolmes

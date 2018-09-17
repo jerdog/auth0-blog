@@ -4,7 +4,7 @@ title: "Developing Web Apps with ASP.NET Core 2.0 and React - Part 2"
 description: "A practical tutorial showing how to setup and develop a modern Web application based on ASP.NET Core 2.0 and React."
 longdescription: "In this series of posts, you will build a Web application based on ASP.NET Core 2.0 and React. To solve the identity management feature, you will integrate this stack with Auth0. In this second part of the series, you are going to create a Single Page Application (SPA) client based on React and integrate it with the ASP.NET Core API created in the previous part."
 date: 2018-02-20 08:30
-category: Technical Guide, Frontend, React
+category: Technical Guide, Stack, Fullstack
 author:
   name: "Andrea Chiarelli"
   url: "https://twitter.com/andychiare"

@@ -4,7 +4,7 @@ title: "Identity Expert Vittorio Bertocci Joins Auth0"
 description: "Industry thought leader joins company to fuel continued growth"
 longdescription: "Bertocci will apply his vast knowledge of the identity industry to Auth0 in all aspects of the company, including internal and external education, product innovation, and customer integration. "
 date: 2018-05-04 15:20
-category: Announcements, Press
+category: PR, Hires, Architecture
 press_release: true
 is_non-tech: true
 design: 

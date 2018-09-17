@@ -3,7 +3,7 @@ layout: post
 title: "Secure Your Gaming Company With Auth0's Fraud Protection"
 description: "Rapid gaming industry growth across mobile, console, and PC platforms can lead to disaster without proper security and anti-fraud protections."
 date: 2018-08-10 8:30
-category: Security, Identity
+category: Business, Identity, Fraud Protection
 design: 
   bg_color: "#4A4A4A"
   image: https://cdn.auth0.com/blog/secure-games/logo.png

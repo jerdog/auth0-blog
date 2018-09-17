@@ -3,7 +3,7 @@ layout: post
 title: "Introduction to Redis: Installation, CLI Commands, and Data Types"
 description: "In this Redis tutorial, learn how to install and setup Redis as well as commands to write, read, update, and delete data from the store using its core data structures."
 date: 2018-08-08 8:30
-category: Technical Guide, Architecture, Backend, Data
+category: Technical Guide, Deep Dive, Redis
 design: 
   bg_color: "#4E0F08"
   image: https://cdn.auth0.com/blog/logos/redis-icon-logo.png

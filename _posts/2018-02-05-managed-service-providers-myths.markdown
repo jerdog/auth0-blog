@@ -4,7 +4,7 @@ title: "Busted! Seven Myths About Managed Service Providers (MSPs)"
 description: "Seven myths about managed service providers. Separating facts from fiction to explain the real value of MSPs."
 longdescription: "Managed services are an integral component of your company's technology strategy, yet some people continue to have misconceptions that prevent them from taking full advantage. We'll separate fact from fiction to explain the real value of MSPs."
 date: 2018-02-05 14:11
-category: Growth, Industries
+category: Business, Industry, SaaS
 is_non-tech: true
 author:
   name: Martin Gontovnikas

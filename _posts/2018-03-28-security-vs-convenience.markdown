@@ -4,7 +4,7 @@ title: "Security vs. Convenience"
 description: "Auth0 CISO Joan Pepin explains how making security easier makes things safer for users, but requires more planning from engineers to render security seamless."
 longdescription: "Everybody used to believe that to be secure, something couldn’t be convenient. Making access hard kept info safe. Auth0 Ciso Joan Pepin explains how security experts have failed users by making passwords too complex. Turns out convenience can make things much safer, but it requires more planning from engineers."
 date: 2018-03-28 8:30
-category: Growth, Security
+category: Hot Topics, Security, Mitigations
 is_non-tech: true
 banner:
   text: "Auth0 makes it easy to add authentication to your application."

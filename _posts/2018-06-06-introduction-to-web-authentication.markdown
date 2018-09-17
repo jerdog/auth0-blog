@@ -4,7 +4,7 @@ title: "Introduction to Web Authentication: The New W3C Spec"
 description: "Learn about WebAuthn, a new standard for secure authentication on the web."
 longdescription: "A new authentication standard aimed at the web is gaining traction. WebAuthn aims to provide a secure, passwordless authentication flow that can be used with hardware tokens, smartphones, and web browsers. Learn more about it in this article."
 date: 2018-06-06 12:30
-category: Technical Guide, Identity
+category: Technical Guide, Identity, WebAuthN
 author:
   name: Sebastián Peyrott
   url: https://twitter.com/speyrott?lang=en

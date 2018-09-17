@@ -4,7 +4,7 @@ title: "3 IAM Examples to Support Digital Transformation"
 description: "From basic website authentication to implementing an OpenID Connect server and API authentication: This article covers 3 IAM examples to support your Digital Transformation."
 longdescription: We recently hosted a webinar that covered modern identity management and what it takes to implement both Authentication and Authorization to support your Digital Transformation. In this article, we'll cover these implementations ranging from basic authentication to an OpenID Connect server, and API authentication.
 date: 2018-03-07 08:30
-category: Technical Guide, Identity
+category: Technical Guide, Identity, Digital Transformation
 author:
   name: "Jared Hanson"
   url: "https://twitter.com/jaredhanson"
