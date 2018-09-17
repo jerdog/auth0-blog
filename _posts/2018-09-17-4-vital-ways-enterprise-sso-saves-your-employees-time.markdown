@@ -1,9 +1,9 @@
 ---
 layout: post
 title: 4 Vital Ways Enterprise SSO Saves Your Employees Time and Provides Peace of Mind
-metatitle:
+metatitle: 4 Reasons To Add Enterprise SSO - Productivity, Security, and More
 description: Enterprise SSO ensures better productivity, user experience, and security for employees through single-click access.
-metadescription:
+metadescription: Adding enterprise SSO to your organization is simple with Auth0. Learn how to increase employee productivity and enterprise security in adding SSO single-click access.
 date: 2018-09-17 14:58
 category: Business, Identity, SSO
 post_length: 1
