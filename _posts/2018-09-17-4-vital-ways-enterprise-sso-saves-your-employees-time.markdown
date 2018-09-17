@@ -54,7 +54,7 @@ Users begin their SSO experience by logging into a gateway, which can be display
 
 With Auth0, users are redirected to a login page with username and password fields, and may include Social Identity Providers such as LinkedIn, GitHub, Google, etc.
 
-![Example Auth0 login screen](https://cdn.auth0.com/blog/enterprise_sso:auth0_example.png)
+![Example Auth0 login screen - SSO in background](https://cdn.auth0.com/blog/enterprise_sso:auth0_example.png)
 
 From there, the users go through the following steps: 
 
@@ -91,7 +91,7 @@ With recent studies showing that small companies use a mean of [13.4 different a
 
 That means employees aren’t limited to accessing key tools and resources only at work: They can also securely log into these applications from their homes and mobile phones or access them while traveling.
 
-![Google apps panel](https://cdn.auth0.com/blog/enterprise_sso:google_apps.png)
+![Google G Suite apps panel](https://cdn.auth0.com/blog/enterprise_sso:google_apps.png)
 
 [Source: [Google](https://gsuite.google.com/)]
 
