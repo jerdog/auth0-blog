@@ -3,7 +3,7 @@ layout: post
 title: "Vue.js and AWS Lambda: Developing Production-Ready Apps (Part 2)"
 description: "In this series, you will learn how to develop production-ready applications with Vue.js and AWS Lambda."
 date: 2018-07-03 08:30
-category: Technical Guide, Frontend, VueJS
+category: Technical Guide, Real World, VueJS
 author:
   name: "Bruno Krebs"
   url: "https://twitter.com/brunoskrebs"
