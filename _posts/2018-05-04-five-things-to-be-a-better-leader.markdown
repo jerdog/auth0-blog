@@ -4,7 +4,7 @@ title: "Five Things That Every Leader Could Use to be a Better Leader"
 description: Leadership is a skill that can be learned. My talk, given at Women Who Code Connect 2018, gives tips on growing your knowledge.
 longdescription: Auth0 CISO Joan Pepin shows that leadership is a skill that can be learned and shared tips on how to be a stronger leader at Women Who Code Connect 2018 in San Francisco, Calif. Here’s the full transcript, plus video outtakes from the QA.
 date: 2018-05-04 08:30
-category: Announcements, Press
+category: Business, SEO, Leadership
 is_non-tech: true
 author:
   name: "Joan Pepin"

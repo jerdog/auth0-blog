@@ -4,7 +4,7 @@ title: "Google I/O 2018 Summary - Day 3"
 description: "Check out our summary of the Google I/O Conference 2018, Day 3."
 longdescription: "The third and final day of the Google I/O 18 consisted of several talks including Node.js, Serverless deployment, Polymer, Chrome Dev Tools, Flutter and Artificial Intelligence."
 date: 2018-05-11 08:30
-category: Technical Guide, Conferences, Google I/O
+category: Business, Events, Google I/O
 author:
   name: "Prosper Otemuyiwa"
   url: "https://twitter.com/unicodeveloper"
