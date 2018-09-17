@@ -24,7 +24,9 @@ tags:
   - reusability
   - banking
 related: 
-  -
+  - 2018-09-11-setting-up-a-component-library-with-react-and-storybook
+  - 2018-09-04-our-engineering-experience-with-react-and-storybook
+  - 2018-08-28-react-tutorial-building-and-securing-your-first-app
 ---
 
 [Storybook](https://storybook.js.org/) is a development environment for UI components. It let us browse a component library, view the different states of its components, and interactively develop and test them. Storybook runs outside of our application; therefore, we can develop UI components in isolation without worrying about any project dependencies and requirements. Throughout these series, we are going to create the components of an online banking app called Marvel Bank.
