@@ -1,7 +1,9 @@
 ---
 layout: post
 title: "Building a Component Library with React and Storybook"
-description: "Create modular and reusable components that can be shared across projects by building a component library with React and Storybook."
+metatitle: "Building a Component Library with React and Storybook"
+description: "Learn how to build a component library with React and Storybook to create modular and reusable components that can be shared across projects."
+metadescription: "Creating a modular and reusable component library with React and Storybook. How to create reusable design components that can be shared across projects."
 date: 2018-09-18 8:30
 category: Technical Guide, Deep Dive, React
 design:
@@ -526,7 +528,7 @@ We have just barely scratched the surface of what can be done with Storybook! Th
 
 In the next posts of these series, we are going to create more components for the Marvel Bank app as we explore how to integrate Storybook into our development workflow and team culture. Afterward, we are going to be learning how we can use a cool add-on called **Storyshots** to make the testing of React components easier.
 
-At Auth0, different teams are making extensive use of Storybook as a development and design tool. In the final chapter of this series, we are going to explore how we are converging designers and developers into a Design Systems team that is letting us iterate faster and develop better products for our cherished customers.
+At Auth0, different teams are making extensive use of Storybook in their React development and design processes. In the final chapter of this series, we are going to explore how we are converging designers and developers into a Design Systems team that is letting us iterate faster and develop better products for our cherished customers.
 
 Feel free to grab the source code of the project we have created so far from the [Marvel Bank App GitHub repo](https://github.com/auth0-blog/marvel-bank-app).
 
