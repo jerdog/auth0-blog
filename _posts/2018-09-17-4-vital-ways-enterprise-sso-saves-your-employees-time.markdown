@@ -117,7 +117,7 @@ Employees are also much more likely to know about and take advantage of resource
 
 ## How Does a Company Set Up Enterprise SSO?
 
-Companies looking to save their employees time and provide peace of mind while improving individual and network-wide security can set up SSO with the help of Auth0.
+Companies looking to save their employees time and provide peace of mind while improving individual and network-wide security can [set up SSO with the help of Auth0](https://auth0.com/learn/how-to-implement-single-sign-on/).
 
 Beyond the technical aspects of the switch, companies should keep in mind the following rollout tips to help their teams adjust to an SSO setup:
 
