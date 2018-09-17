@@ -9,13 +9,13 @@ category: Business, Identity, SSO
 post_length: 1
 is_non-tech: true
 author:
-  name: "Diego Poza"
-  url: "https://twitter.com/diegopoza"
-  mail: "diego.poza@auth0.com"
-  avatar: "https://avatars3.githubusercontent.com/u/604869?v=3&s=200"
+  name: "Martin Gontovnikas"
+  url: http://twitter.com/mgonto
+  mail: gonto@auth0.com
+  avatar: https://www.gravatar.com/avatar/df6c864847fba9687d962cb80b482764??s=60
 design:
-  bg_color: "#297373"
-  image:
+  bg_color: "#29335c"
+  image: https://cdn.auth0.com/blog/enterprise-sso/enterprise-sso-logo.png
 tags:
 - sso-login
 - single-sign-on
