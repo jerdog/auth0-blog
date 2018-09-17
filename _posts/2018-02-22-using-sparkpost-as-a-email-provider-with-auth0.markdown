@@ -4,7 +4,7 @@ title: "Using SparkPost as a Custom E-mail Provider with Auth0"
 description: "Learn how to use the new SparkPost integration with Auth0."
 longdescription: "We have recently added support for more e-mail providers to the Auth0 platform. In this short tutorial, we will learn how to enable custom e-mail providers in Auth0, and how to setup SparkPost for all Auth0 related notifications."
 date: 2018-02-22 12:30
-category: Auth0-based Tutorial, Integration, SparkPost
+category: Technical Guide, Auth0 Product, SparkPost
 author:
   name: Sebastián Peyrott
   url: https://twitter.com/speyrott?lang=en

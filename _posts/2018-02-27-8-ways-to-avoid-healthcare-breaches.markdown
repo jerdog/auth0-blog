@@ -4,7 +4,7 @@ title: "8 Ways to Avoid Healthcare Breaches"
 description: "With 93% of breaches found to be preventable in Q3 of 2017, Auth0 offers concrete ways to protect patients against rising cyberattacks."
 longdescription: "Hacks can send your patients doctor shopping — 26% of consumers said they would change, providers after hack. Cybersecurity adds value to healthcare organizations placing the focus on the well-being of their end customers. Auth0 offers concrete ways to protect patients from rising cyberattacks."
 date: 2018-02-27 8:30
-category: Growth, Industries, Healthcare
+category: Growth, Healthcare, Vulnerabilities
 is_non-tech: true
 banner:
   text: "Auth0 makes it easy to add authentication to your application."

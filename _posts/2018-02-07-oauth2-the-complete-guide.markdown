@@ -4,7 +4,7 @@ title: "OAuth 2.0: The Complete Guide"
 description: "Describing OAuth 2.0 for the masses, demystifying the technology behind this common authorization technique"
 longdescription: "Describing OAuth 2.0 for the masses, demystifying the technology behind this common authorization technique. Includes how OAuth enables us to enhance our online experience while limiting exposure of sensitive information and how roles help us separate the responsibilities of OAuth requests"
 date: 2018-02-07 11:44
-category: Growth, Identity, Authentication
+category: Business, Identity, OAuth
 is_non-tech: true
 author:
   name: Luke Oliff

@@ -3,7 +3,7 @@ layout: post
 title: "What is Data Security?"
 description: "Data security is a complex issue — here's how to tackle it."
 date: 2018-02-14 08:30
-category: Growth, Security
+category: Hot Topics, Security, Mitigations
 author:
   name: "Diego Poza"
   url: "https://twitter.com/diegopoza"

@@ -4,7 +4,7 @@ title: "Laravel 5.6 Release: What's New?"
 description: "Laravel 5.6 has officially been released. What's new? What improvements were made? Learn how to build better PHP applications with this new release."
 longdescription: "Laravel 5.6 is a major release to the framework. There are breaking changes and numerous bug fixes to Laravel. Learn notable additions to Laravel and how you can leverage them in your next project."
 date: 2018-02-21 08:30
-category: Hot Topics, Frameworks, Laravel
+category: Technical Guide, Whats New, Laravel
 design:
   bg_color: "#4A4A4A"
   image: https://cdn.auth0.com/blog/logos/laravel.png

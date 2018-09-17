@@ -3,7 +3,7 @@ layout: post
 title: "Philz Coffee Authenticates Mobile App Users with Auth0"
 description: "Popular third-wave coffee brand makes app experience seamless for devotees"
 date: 2018-08-07 10:30
-category: Announcements, Press
+category: PR, Customers, Retail
 press_release: true
 is_non-tech: true
 author:
