@@ -3,7 +3,7 @@ layout: post
 title: "Webinar: The Need for Universal Identity Management with 451 Research"
 description: "Watch this recorded webinar with Garrett Bekker, principal analyst at 451 Research, where he discusses the current state of the IAM industry and the benefits of Universal Identity Management"
 date: 2018-06-11 10:30
-category: Growth, Webinar
+category: Business, Webinars, Identity
 is_non-tech: true
 banner:
   text: "Auth0 makes it easy to add authentication to your application."

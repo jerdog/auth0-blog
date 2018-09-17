@@ -4,7 +4,7 @@ title: "Brace Yourself: The GDPR Ripple Effect in California"
 description: "Use public support for the initiative to your advantage. Roll out new privacy features that build your brand's integrity."
 longdescription: "While the GDPR is EU-centric, several countries and states in the U.S. have followed suit with similar privacy initiatives. Use public support for the initiative to your advantage. Roll out new privacy features that build your brand's integrity."
 date: 2018-06-04 19:30
-category: Growth, Security
+category: Business, Compliance, GDPR
 is_non-tech: true
 author:
   name: Martin Gontovnikas

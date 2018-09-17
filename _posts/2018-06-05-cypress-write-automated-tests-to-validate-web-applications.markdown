@@ -4,7 +4,7 @@ title: "Cypress: Write Automated Tests to Validate Web Applications"
 description: "Learn how to use Cypress to write automated tests that run on browsers to validate web applications."
 longdescription: "In this tutorial, you will learn how to use Cypress to write automated tests that run on browsers to validate web applications. Although the article uses a React application to illustrate the topic, Cypress is agnostic when it comes to what technologies you are using in your web applications."
 date: 2018-06-05 08:30
-category: Technical Guide, Frontend, React
+category: Technical Guide, Testing, React
 author:
   name: "RC"
   url: "https://twitter.com/rcdexta"

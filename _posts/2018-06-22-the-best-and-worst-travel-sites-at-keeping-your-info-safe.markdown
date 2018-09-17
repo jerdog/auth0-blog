@@ -3,7 +3,7 @@ layout: post
 title: The Best and Worst Travel Sites At Keeping Your Info Safe
 description: "Guidelines for customers, along with strategies for managers at travel companies to increase their security measures."
 date: 2018-06-22 08:30
-category: Growth, Security
+category: Business, Travel, Security
 is_non-tech: true
 author:
   name: Diego Poza

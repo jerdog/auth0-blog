@@ -4,7 +4,7 @@ title: "Your Quick GDPR Compliance Checklist"
 description: "Learn about 3 tools to make the GDPR compliance process as efficient as possible."
 longdescription: "The deadline for GDPR has passed. If your business is audited and found to be out of compliance, fines can be up to €20M. Learn about 3 tools to make the GDPR compliance process as efficient as possible."
 date: 2018-06-29 08:30
-category: GDPR, Compliance
+category: Business, Compliance, GDPR
 is_non-tech: true
 author:
   name: Diego Poza
