@@ -29,11 +29,17 @@ related:
   - 2018-08-28-react-tutorial-building-and-securing-your-first-app
 ---
 
-[Storybook](https://storybook.js.org/) is a development environment for UI components. It let us browse a component library, view the different states of its components, and interactively develop and test them. Storybook runs outside of our application; therefore, we can develop UI components in isolation without worrying about any project dependencies and requirements. Throughout these series, we are going to create the components of an online banking app called Marvel Bank.
+Storybook is a development environment for UI components. It let us browse a component library, view the different states of its components, and interactively develop and test them. Storybook runs outside of our application; therefore, we can develop UI components in isolation without worrying about any project dependencies and requirements. Throughout these series, we are going to create the components of an online banking app called Marvel Bank.
 
-For the scope of this introductory blog post, we are going to demonstrate how to start a new project using Storybook to get familiar with its platform and mechanics. In a follow-up post, we are going to explore deeper into the "Storybook-Driven Development" practices that we have developed at Auth0 within the Customer Success Infrastructure team.
+For the scope of this introductory blog post, we are going to demonstrate how to start a new project using Storybook to get familiar with its platform and mechanics. In a follow-up post, we are going to explore deeper into the "Storybook-Driven Development" practices that we have [developed at Auth0 within the Customer Success Infrastructure team](https://auth0.com/blog/our-engineering-experience-with-react-and-storybook/).
 
-In _Part 1_ of this blog post, we created the foundation of our project. If you have been following along you may continue to build upon where we left. Otherwise, feel free to clone the [Marvel Bank app repo](https://github.com/auth0-blog/marvel-bank-app) and checkout the _A-Tale-of-Reusability-Part-1_ branch which includes all the work that we've done in _Part 1_.
+In the [first part of this blog post series](https://auth0.com/blog/setting-up-a-component-library-with-react-and-storybook/), we created the foundation of our project by setting up a component library. If you have been following along you may continue to build upon where we left. Otherwise, feel free to clone the [Marvel Bank app repo](https://github.com/auth0-blog/marvel-bank-app) and checkout the `A-Tale-of-Reusability-Part-1` branch which includes all the work that we've done in the first part.
+
+```shell
+git clone https://github.com/auth0-blog/marvel-bank-app.git
+cd marvel-bank-app/
+git checkout A-Tale-of-Reusability-Part-1
+```
 
 Let's start by learning how we can setup Storybook in a brand-new `create-react-app` project.
 
