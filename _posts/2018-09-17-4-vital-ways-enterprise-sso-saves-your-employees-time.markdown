@@ -101,7 +101,7 @@ This universal access provides employees with the flexibility they expect in the
 
 While employees objectively know they should create hard-to-guess passwords, the impracticality of remembering complex credentials often results in the reuse of weak passwords over and over again. 
 
-In fact, [nearly 9_0% of people ages 18–30 use the same password_](https://keepersecurity.com/assets/pdf/Keeper-Mobile-Survey-Infographic.pdf) across multiple accounts. 
+In fact, [nearly 90% of people ages 18–30 use the same password_](https://keepersecurity.com/assets/pdf/Keeper-Mobile-Survey-Infographic.pdf) across multiple accounts. 
 
 When employees give in to the demand for increasingly complex passwords in order to thwart hackers, the frequency of password recoveries skyrockets. Because of these complex password requirements, [_60% of people need to reset their passwords every 60 days_](https://keepersecurity.com/assets/pdf/Keeper-Mobile-Survey-Infographic.pdf) — a practice that also [_costs companies an average $179 per employee_](https://www.pingidentity.com/en/company/blog/2015/11/13/passwords_will_die_a_slow_death.html) [_per employee_](https://www.pingidentity.com/en/company/blog/2015/11/13/passwords_will_die_a_slow_death.html) and is largely avoidable with SSO.
 
