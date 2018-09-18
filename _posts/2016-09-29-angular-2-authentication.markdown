@@ -30,7 +30,7 @@ alternate_locale_ja: jp-angular-2-authentication
 
 <div class="alert alert-info alert-icon">
   <i class="icon-budicon-487"></i>
-  <strong>This post has been updated to the latest versions of Angular and the Angular CLI.</strong>
+  <strong>This post was updated to Angular v6 and Angular CLI 6 in June 2018. We are currently working on a new, updated Angular tutorial to bring the content up to date again. Thank you for your patience!</strong>
 </div>
 
 ---
