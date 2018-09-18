@@ -5,7 +5,7 @@ metatitle:
 description: "What do apple picking, beer festivals, ghosts and goblins, and open-source all have in common?" 
 metadescription:
 date: 2018-09-18 12:07
-category: Technical Guide, Events, Open-source
+category: Technical Guide, Events, Hacktoberfest
 post_length: 1
 auth0_aside: true
 is_non-tech: true
