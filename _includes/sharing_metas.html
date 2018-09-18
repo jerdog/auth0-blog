@@ -2,10 +2,10 @@
 <meta property="fb:app_id" content="534074790006350"/>
 {% if page.is_tag_index or page.switch_index %}
   <meta property="og:title" content="{{ page.tag | capitalize }} - Auth0 Blog" />
-{% elsif page.metatitle %}
-  <meta property="og:title" content="{{ page.metatitle }}">
+{% elsif page.title %}
+  <meta property="og:title" content="{{ page.title }}">
 {% else %}
-  <meta property="og:title" content="{{ page.title }}" />
+  <meta property="og:title" content="{{ page.metatitle }}" />
 {% endif %}
 <meta property="og:site_name" content="Auth0 - Blog" />
 <meta property="og:url" content="https://auth0.com{{ site.baseurl }}{{ page.url | replace:'index.html'}}" />
@@ -36,10 +36,10 @@
 <!-- Twitter Cards -->
 <meta name="twitter:site" content="@auth0">
 <meta name="twitter:creator" content="@auth0">
-{% if page.metatitle %}
-  <meta name="twitter:title" content="{{ page.metatitle }}">
-{% elsif page.title %}
+{% if page.title %}
   <meta name="twitter:title" content="{{ page.title }}">
+{% elsif page.metatitle %}
+  <meta name="twitter:title" content="{{ page.metatitle }}">
 {% else %}
   {% if page.is_tag_index or page.switch_index %}
     <meta name="twitter:title" content="{{ page.tag | capitalize }} - Auth0 Blog">
@@ -62,7 +62,7 @@
 
 {% if page.is_post_index %}
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image:src" content="https://cdn.auth0.com/blog/blog/home-twitter-card.png">
+<meta name="twitter:image" content="https://cdn.auth0.com/blog/blog/home-twitter-card.png">
 {% else %}
 {% if page.design.image_tw %}
 <meta name="twitter:card" content="summary_large_image">

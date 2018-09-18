@@ -3,7 +3,7 @@ layout: post
 title: "Nonprofit MiVoz Hopes to Upgrade Democracy with Auth0"
 description: "Auth0's Universal Identity Management platform will securely authenticate voters as they log in MiVoz’s decentralized platform"
 date: 2018-06-08 8:30
-category: Announcements, Press
+category: PR, Customers, Nonprofit
 is_non-tech: true
 banner:
   text: "Auth0 makes it easy to add authentication to your application."

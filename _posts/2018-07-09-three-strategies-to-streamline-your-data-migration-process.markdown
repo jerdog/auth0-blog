@@ -3,7 +3,7 @@ layout: post
 title: "Three Strategies to Streamline Your Data Migration Process"
 description: "Tips for a secure and organized data migration process. 1. Workflow and project management tools 2. User identity and access management 3. Clear customer communication"
 date: 2018-07-09 12:30
-category: Growth, Data
+category: Business, Enterprise, Data
 author:
   name: Martin Gontovnikas
   url: http://twitter.com/mgonto

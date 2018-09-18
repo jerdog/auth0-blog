@@ -4,7 +4,7 @@ title: "Breaking Down Master Data Management"
 description: "Consolidate and categorize your critical consumer data for better insights and enhanced security."
 longdescription: "Master data management is a set of tailored processes and techniques that allow teams to consolidate their critical streams of information into a single file. Consolidate and categorize your critical consumer data for better insights and enhanced security. "
 date: 2018-07-02 8:30
-category: Growth
+category: Business, Identity, Data Management
 is_non-tech: true
 banner:
   text: "Auth0 makes it easy to add authentication to your application."

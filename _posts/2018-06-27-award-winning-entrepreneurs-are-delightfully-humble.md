@@ -3,7 +3,7 @@ layout: post
 title: "Award-Winning Entrepreneurs are Delightfully Humble"
 description: "…and other black tie insights from EY’s Entrepreneur of the Year® awards."
 date: 2018-06-27 10:30
-category: Announcements, Press, Entrepreneurship
+category: PR, Awards, Entrepreneurship
 author:
   name: Clayton Moulynox
   url: https://twitter.com/claytonhm

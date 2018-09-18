@@ -3,7 +3,7 @@ layout: post
 title: How the Right IAM Tools Will Help Insurance Teams Make the Shift to Digital
 description: "Insurers know that digital transformation is coming. To stand out from your peers, adopt identity and access management for a secure experience that customers can trust."
 date: 2018-07-16 12:30
-category: Growth, Security
+category: Business, Customers, Insurance
 is_non-tech: true
 author:
   name: Martin Gontovnikas

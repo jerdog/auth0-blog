@@ -5,7 +5,7 @@ description: "Let's create a secure blog engine with Symfony."
 longdescription: "Creating applications with Symfony is easy and can be scaled to be used in any requirement. The tools that it provides to create and maintain web applications is amazing and replaces repetitive tasks. Let's use Symfony to create a blog engine."
 date: 2018-01-04 08:30
 updated: 2018-02-27 13:15
-category: Technical Guide, PHP, Symfony
+category: Technical Guide, Real World, Symfony
 author:
   name: Greg Holmes
   url: https://github.com/GregHolmes

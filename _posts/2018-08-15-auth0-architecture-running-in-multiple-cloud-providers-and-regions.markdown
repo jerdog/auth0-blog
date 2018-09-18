@@ -72,7 +72,7 @@ In 2014 we used a multi-cloud architecture (using Azure and AWS, with some extra
 
 At first, we switched our primary region in our environment to be in AWS, keeping Azure as failover. As we began using more AWS resources like Kinesis and SQS, we started having trouble keeping the same feature set in both providers. As our need to move (and scale) faster grew, we opted to keep supporting Azure with a limited feature parity: if everything went down on AWS, we could still support core authentication features using the Azure clusters, but not much of the new stuff we had been developing.
 
-After some [bad outages in 2016](https://auth0.statuspage.io/incidents/vbfz8x03tf04), we decided to finally converge on AWS. We stopped all efforts related to keeping the services and automation platform-independent and instead focused on:
+After some bad outages in 2016, we decided to finally converge on AWS. We stopped all efforts related to keeping the services and automation platform-independent and instead focused on:
 
 - Providing a better failover story inside AWS, using multiple regions and at least 3 Availability Zones per region.
 
@@ -212,5 +212,7 @@ With that in mind, these are the initiatives in place for us to scale not only o
 - Automate metrics: Too much of our metric story is manual now: adding metrics-related calls to the code while deploying, and building dashboards and monitors using the DataDog interface. If we use a standard format and naming, we could do things like building dashboards/monitors automatically, extracting metrics from logs instead of explicitly adding calls to the code, and more.
 
 - Ensure we have auto-scaling and blue/green deployments on every core service. This should come out-of-the-box from our new Platform, but while that is being built and tested we need to improve the scaling/deployment/rollback story for the core services that are still lacking in that regard.
+
+{% include profile_card.html picture="https://cdn.auth0.com/blog/auziro/Dirceu-Tiegs.jpg" name="Dirceu Tiegs" title="Engineer" team="Site Reliability Engineering Team" location="Florianópolis, Brazil" body="What I enjoy the most about being an SRE at Auth0 is that it allows me to exercise different areas such as coding, architecture, writing, training, investigations, debugging, and incident response. It's great to be able to think deeply about all aspects related to reliability and then apply it to large-scale, real-world projects." %}
 
 {% include asides/about-auth0.markdown %}

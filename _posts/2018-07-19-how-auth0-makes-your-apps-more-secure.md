@@ -3,7 +3,7 @@ layout: post
 title: "How Auth0 Makes Your Apps More Secure"
 description: "Key solutions like anomaly detection, universal login, and custom security rules delivered by Auth0 helps its customers protect sensitive user data."
 date: 2018-07-19 8:30
-category: Auth0-based Tutorial, Tools
+category: Technical Guide, Authentication, Auth0
 design: 
   bg_color: "#666363"
   image: https://cdn.auth0.com/blog/web-app-security/logo.png

@@ -4,7 +4,7 @@ title: "Real-Time Charts using Angular, D3, and Socket.IO"
 description: "Learn how to use Angular, D3, and Socket.IO to build an application that provides real-time charts to its users."
 longdescription: "In this article, you will learn how to use Angular, D3, and Socket.IO to build an application that provides real-time charts to its users. You will start from scratch so you get the opportunity to grasp the whole process."
 date: "2018-06-12 08:30"
-category: Technical Guide, Angular
+category: Technical Guide, Stack, D3
 author:
   name: "Ravi Kiran"
   url: "#"

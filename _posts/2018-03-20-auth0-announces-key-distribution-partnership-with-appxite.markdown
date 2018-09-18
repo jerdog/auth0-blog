@@ -3,7 +3,7 @@ layout: post
 title: Auth0 Announces Key Distribution Partnership with AppXite
 description: End-to-end identity management now available to all AppXite resellers.
 date: 2018-03-20 8:30
-category: Announcements, Press
+category: Business, Partners, Distribution
 press_release: true
 is_non-tech: true
 author:

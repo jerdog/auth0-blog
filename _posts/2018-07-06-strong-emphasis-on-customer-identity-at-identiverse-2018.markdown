@@ -3,7 +3,7 @@ layout: post
 title: "Strong Emphasis on ‘Customer Identity’ at Identiverse 2018"
 description: "Identiverse 2018 recap: Focus on Customer Identity and Access Management (CIAM) for developers + Solutions Review interview with Vittorio Bertocci (video)."
 date: 2018-07-06 10:30
-category: Announcements, Press
+category: Technical Guide, Events, Identiverse
 is_non-tech: true
 author:
   name: "Jenny O'Brien"

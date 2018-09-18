@@ -4,7 +4,7 @@ title: "How Social Login Can Pave the Way for a Digital Shift in Grocery"
 description: "A comprehensive view of your shoppers will create a secure and practical foundation for change."
 longdescription: "A comprehensive view of your shoppers will create a secure and practical foundation for change."
 date: 2018-06-11 08:30
-category: Hot Topics, Trends
+category: Business, Industry, Grocery
 author:
   name: Martin Gontovnikas
   url: http://twitter.com/mgonto

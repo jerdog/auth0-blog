@@ -3,7 +3,7 @@ layout: post
 title: "Developing Mobile Apps with Xamarin Forms and Azure Functions"
 description: "In this tutorial, learn how to use Xamarin Forms and Microsoft Azure Functions to develop mobile apps that are supported by serverless functions."
 date: 2018-07-18 08:30
-category: Technical Guide, Mobile, Xamarin Forms
+category: Technical Guide, Deep Dive, Xamarin Forms
 author:
   name: "Daniel Krzyczkowski"
   url: "https://twitter.com/dkrzyczkowski"

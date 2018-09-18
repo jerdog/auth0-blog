@@ -4,7 +4,7 @@ title: "GoodLife Fitness Uses Auth0 for Seamless and Secure Log-In"
 description: "Canada’s leading fitness chain creates better user experience for members and employees."
 longdescription: "GoodLife Fitness, the fourth largest fitness chain in the world, will use Auth0 for identity management and authentication across its consumer-facing mobile app, as well as internally for its GoodLife associates."
 date: 2018-06-04 12:30
-category: Announcements, Press
+category: PR, Customers, B2C
 press_release: true
 is_non-tech: true
 author:

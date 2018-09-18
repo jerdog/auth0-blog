@@ -4,7 +4,7 @@ title: "Data privacy doesn’t stop at the EU border"
 description: "Global companies need to ready GDPR-like compliance for a growing list of markets"
 longdescription: "The EU isn’t the only place updating data privacy regulations. Due to increasing cybersecurity threats data privacy is becoming more regulated —  global companies need to ready compliance in a growing range of markets. Learn how Auth0 can help you protect your customer’s trust."
 date: 2018-05-25 12:28
-category: Hot Topics, GDPR
+category: Business, Compliance, GDPR
 press_release: false
 is_non-tech: true
 author:

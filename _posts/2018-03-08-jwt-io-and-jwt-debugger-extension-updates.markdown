@@ -4,7 +4,7 @@ title: "JWT.io and JWT Debugger Extension Updates"
 description: "We have released new versions of JWT.io and the JWT Debugger extension, learn what's new."
 longdescription: "We have been working on new features for JWT.io and the JWT Debugger extension. New algorithms, improved public-key handling, human readable timestamps and more. Take a look at the new features!"
 date: 2018-03-08 12:30
-category: Announcements, Content
+category: Technical Guide, Auth0 Product, JWT.io
 author:
   name: Sebastián Peyrott
   url: https://twitter.com/speyrott?lang=en

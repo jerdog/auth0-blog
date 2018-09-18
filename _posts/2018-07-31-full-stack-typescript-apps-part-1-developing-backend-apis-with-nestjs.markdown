@@ -3,7 +3,7 @@ layout: post
 title: "Full-Stack TypeScript Apps - Part 1: Developing Backend APIs with Nest.js"
 description: "This series shows how to create a simple, full-stack web application with Angular, TypeScript, and Nest.js. Part 1: Developing the backend API with Nest.js."
 date: "2018-07-31 08:30"
-category: Technical Guide, Node.js, Nest.js
+category: Technical Guide, Deep Dive, Nest.js
 author:
   name: "Ana Ribeiro"
   url: "https://twitter.com/anacosri"
@@ -68,10 +68,10 @@ Then, you can create a new project by running a single command. This command wil
 nest new nest-restaurant-api # nest-restaurant-api
 ```
 
-If everything went well, you will get by the end of this process a directory called `nest-api` with the following structure:
+If everything went well, you will get by the end of this process a directory called `nest-restaurant-api` with the following structure:
 
 ```bash
-nest-api
+nest-restaurant-api
 ├── README.md
 ├── nodemon.json
 ├── package-lock.json

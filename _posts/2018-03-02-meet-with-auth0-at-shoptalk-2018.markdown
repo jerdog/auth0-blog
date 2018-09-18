@@ -4,7 +4,7 @@ title: Meet with Auth0 at Shoptalk 2018
 description: We’re sending an expert team to Shoptalk this year. Schedule a meeting to learn how Auth0 can help you increase conversions.
 longdescription: Auth0’s social login gives retailers opportunities for personalization while enabling them to deliver a consistent brand experience at each touchpoint. We’re sending an expert team to Shoptalk this year. Schedule a meeting to learn how Auth0 can help you increase conversions.
 date: 2018-03-02 12:54
-category: Announcements, Program
+category: PR, Program, Ambassadors
 is_non-tech: true
 author:
   name: "Jenny O'Brien"

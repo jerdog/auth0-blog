@@ -4,7 +4,7 @@ title: "Why Laravel is the Recommended Framework for Secure, Mission-Critical Ap
 description: "Out of the box, Laravel ships with many features that make your applications ready for prime time. In this article, you will learn about these features."
 longdescription: "Out of the box, Laravel ships with many features that make your applications ready for prime time. In this article, you will learn about what these features are and how they can help you produce high-quality, production-ready applications."
 date: 2018-06-28 08:30
-category: Technical Guide, PHP, Laravel
+category: Technical Guide, Security, Laravel
 author:
   name: "Shahid Mansuri"
   url: "https://twitter.com/shahidmansuri"

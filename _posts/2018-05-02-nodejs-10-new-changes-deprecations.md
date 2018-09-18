@@ -4,7 +4,7 @@ title: "NodeJS 10: The New, The Changed, and the Deprecated"
 description: "Node.js 10 comes packed with significant performance improvements through V8 v6.6 and new experimental features such the fs promise API and time traveling."
 longdescription: "Node.js 10 comes packed with significant performance improvements through V8 v6.6, new experimental features such the fs promise API and time traveling. Modern cryptography to create a migration path to TLS 1.3 is also included. The new N-API allows developers to create and maintain Addons much easier."
 date: 2018-05-02 8:30
-category: Technical Guide, Backend, NodeJS
+category: Technical Guide, Whats New, NodeJS
 design:
   bg_color: "#333333"
   image: https://cdn.auth0.com/blog/logos/node.png

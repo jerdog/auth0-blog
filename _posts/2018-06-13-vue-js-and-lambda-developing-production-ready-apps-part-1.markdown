@@ -4,7 +4,7 @@ title: "Vue.js and AWS Lambda: Developing Production-Ready Apps (Part 1)"
 description: "In this series, you will learn how to develop production-ready applications with Vue.js and AWS Lambda."
 longdescription: "In this series, you will learn how to develop production-ready applications with Vue.js and AWS Lambda. Alongside with these technologies, you will use Express to define the endpoints that you will deploy on AWS Lambda and you will use MongoDB to persist data."
 date: 2018-06-13 08:30
-category: Technical Guide, Frontend, VueJS
+category: Technical Guide, Stack, VueJS
 author:
   name: "Bruno Krebs"
   url: "https://twitter.com/brunoskrebs"

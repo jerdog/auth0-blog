@@ -4,7 +4,7 @@ title: "Creating Web Components with Stencil"
 description: "A practical tutorial showing how to create Web Components using Stencil."
 longdescription: "In this article, you will learn how to use Stencil to create Web Components that can be used in any modern web application. You will start by creating a simple rating component that allows users to choose a number of stars and then you will see how to integrate it with React and Angular."
 date: 2018-06-19 08:30
-category: Technical Guide, Frontend, JavaScript
+category: Technical Guide, Stack, JavaScript
 author:
   name: "Andrea Chiarelli"
   url: "https://twitter.com/andychiare"
