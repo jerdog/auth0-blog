@@ -4,7 +4,7 @@ title: A Scout Approach to Software Development
 metatitle: A Scout Approach to Software Development
 description: Learn how to apply the Scout code to software development to get code to a better state continuously.
 metadescription: Learn how to apply the Scout code to software development to get code to a better state continuously.
-date: 2018-09-05 10:30
+date: 2018-09-20 10:30
 category: Auth0 Engineering, Software Development
 auth0_aside: true
 author:
