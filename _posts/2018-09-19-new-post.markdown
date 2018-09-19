@@ -32,3 +32,19 @@ related:
 
 **TL;DR:** In this article ,you will learn how to use [Retrofit, an HTTP client library](https://square.github.io/retrofit/), and [Spring Boot](https://spring.io/projects/spring-boot) to create a client for a RESTful API. You will use Spring Boot and its `RestController` functionality alongside Retrofit to develop a facade over GitHub's API. You will also learn how to convert JSON to POJOs (Plain Old Java Objects) using [Google's Gson](https://github.com/google/gson) library and, last but not least, you will learn how to use the documentation of a RESTful API to your advantage. If you need, you can find the reference code developed throughout this article in this GitHub repository.
 
+## Prerequisites
+
+To follow this article along, you will need to have the following:
+
+* JDK 8 or greater (JDK 10 was used in this article).
+* A mature IDE (Integrated Development Environment) of your choice (i.e., [IntelliJ](https://www.jetbrains.com/idea/), [Netbeans](https://netbeans.org/), or [Eclipse](https://www.eclipse.org/)).
+* An external HTTP client like [`curl`](https://curl.haxx.se/), [Postman](getpostman.com), or whatever.
+* [A GitHub account](https://github.com/).
+
+Once you have all of these, all you need is:
+
+- A basic understanding of [the client-server architecture](https://www.webopedia.com/TERM/C/client_server_architecture.html).
+- Some knowledge around [the HTTP protocol](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol).
+- Some basic to intermediate knowledge of [the Java programming language](https://en.wikipedia.org/wiki/Java_(programming_language)).
+- Basic knowledge around [Spring Boot](https://spring.io/projects/spring-boot).
+
