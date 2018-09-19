@@ -288,7 +288,7 @@ You can make the next engineer’s life easier, by helping to improve code stand
 
 One day, you’ll hear someone refer to another business as “the stripe of <industry>”. I’ve even heard Auth0 described as “the stripe of identity”. This refers to the developer-friendly-ness of the company. That developer-first attitude usually starts with documentation. The difference between a good bit of software and bad isn’t just it’s operation or stability, it’s the barrier to entry. If you need to read source code to understand how something works, it’s not documented very well. But, if you read source code to understand how something works and then document it, you’re contributing in ways that the project owner is going to love you for.
 
-The same goes for translations! The [First Contributions](https://github.com/Roshanjossey/first-contributions) project is a great example of an open source coming together for the benefit of the wider community and to make guidance [in all languages](https://github.com/Roshanjossey/first-contributions/pull/6586). It helps those new to git and open source to make their first contribution, but [in tons of languages](https://github.com/Roshanjossey/first-contributions/tree/master/translations)!
+The same goes for translations! The [First Contributions](https://github.com/Roshanjossey/first-contributions) project is a great example of an open source coming together for the benefit of the wider community, making guidance [in all languages](https://github.com/Roshanjossey/first-contributions/pull/6586). It helps those new to git and open source to make their first contribution, but [in tons of languages](https://github.com/Roshanjossey/first-contributions/tree/master/translations)!
 
 ### Open Source Is All Around Us
 
