@@ -1,9 +1,9 @@
 ---
 layout: post
 title: A Scout Approach to Software Development
-metatitle: A Scout Approach to Software Development
+metatitle: "Apply Scouting Rules to Code - Scout Development Approach"
 description: Learn how to apply the Scout code to software development to get code to a better state continuously.
-metadescription: Learn how to apply the Scout code to software development to get code to a better state continuously.
+metadescription: "How to apply the Scout Rule to your software development and coding approach to scale, maintain, and collaborate on codebases in a cleaner, more effective manner."
 date: 2018-09-20 10:30
 category: Auth0 Engineering, Software Development
 auth0_aside: true
@@ -39,7 +39,7 @@ As a Scout, you get to experience nature by camping outdoors which teaches you o
 
 > Always leave the campground cleaner than you found it.
 
-This rule comes from a quote by [_Robert Baden-Powell_](https://en.wikipedia.org/wiki/Robert_Baden-Powell,_1st_Baron_Baden-Powell), founder and first [_Chief Scout_](<https://en.wikipedia.org/wiki/Chief_Scout_(The_Scout_Association)>) of [_The Boy Scouts Association_](https://en.wikipedia.org/wiki/The_Scout_Association), and founder of the [_Girl Guides_](https://en.wikipedia.org/wiki/Girlguiding):
+This rule comes from a quote by [_Robert Baden-Powell_](https://en.wikipedia.org/wiki/Robert_Baden-Powell,_1st_Baron_Baden-Powell), founder and first [_Chief Scout_](<https://en.wikipedia.org/wiki/Chief_Scout_(The_Scout_Association)>) of [_The Scouts Association_](https://en.wikipedia.org/wiki/The_Scout_Association), and founder of the [_Girl Guides_](https://en.wikipedia.org/wiki/Girlguiding):
 
 > Leave this world a little better than you found it.
 
@@ -84,7 +84,7 @@ These small improvements will help my teammates and myself later. The code is no
 I have been doing software development for years and being a Scout had already prepared me to transfer the mindset and values exposed by Uncle Bob from the campsite to the codebase. But this approach is not an excuse for not allocating exclusive time and developers to fix issues in a codebase; it is just one way to continuously get things to a better state.
 
 <p style="text-align: center;">
-  <img src="https://cdn.auth0.com/blog/scout-approach-to-software-development/Binary-Tree.png" alt="Code grows organically and gradually like a tree.">
+  <img src="https://cdn.auth0.com/blog/scout-approach-to-software-development/Binary-Tree.png" alt="Binary tree - example of clean code growing organically and gradually following the Scout development approach.">
 </p>
 
 {% include profile_card.html picture="https://cdn.auth0.com/blog/auziros/Jose-Romaniello.png" name="José F. Romaniello" title="Head of Engineering" team="Office of the CTO" location="Córdoba, Argentina" body="I started working at Auth0 before the first line of code for our authentication platform existed. I’ve been able to go through the journey of seeing our ideas go from prototype to living production code that impacts millions of people. It’s satisfying to know that my actions here are having a positive impact in solving problems for developers like me." %}
