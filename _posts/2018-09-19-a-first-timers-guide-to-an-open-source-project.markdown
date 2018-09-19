@@ -45,6 +45,8 @@ Open source is a [movement](https://opensource.org/) that supports collaboration
 
 These days, it’s hard to make software without an open source library. When the [left-pad event (I don't like calling it a fiasco) occurred](https://www.theregister.co.uk/2016/03/23/npm_left_pad_chaos/), it highlighted the importance of an open and permissive community and it only works while we’re in it together. It may seem to some “closed-source” type developers that it’s a weakness of open source, but they’re the same developers who’ll use an open source library to build their software.
 
+{% include tweet.html tweetId="907274986892791808" %}
+
 There are around 1,100 new open source projects and 10,000 new versions of open source projects every day. The rate of growth in open source is phenomenal, with over 22 million developers involved on GitHub alone. It’s a movement that is fast growing because it’s so supportive of people who want to get involved.
 
 ## Projects to Help You Get Involved
@@ -79,6 +81,8 @@ You can take part at home, at work (work permitting) or by attending an event. E
 
 You can [register now for alerts to when Hacktoberfest starts](https://hacktoberfest.digitalocean.com/) when you’ll need to sign up. Once signed up you’ll see examples of projects you could start with. Some of these projects may even be in combination with First Timers Only or up-for-grabs, so if you’re new to making contributions you may find a project that is happy to help you get involved while working towards your Hacktoberfest goal.
 
+{% include tweet_quote.html quote_text="Open source is the past, present, and future. Pay it forward, and let future generations benefit the generosity of you and those before you." %}
+
 ## Dive Right in and Make That Contribution
 
 ### Forking
@@ -86,6 +90,8 @@ You can [register now for alerts to when Hacktoberfest starts](https://hacktober
 A fork is a copy of someone else’s repository. Forking allows you to freely change the code without affecting the original project. Once you’ve changed the code, you can request the original project’s owner pull in your changes (a pull request), but we’ll get onto those later.
 
 Head to the project I’ve thrown together for this very purpose, [my-first-pull-request/first-timers](https://github.com/my-first-pr/first-timers).
+
+{% include tweet_quote.html quote_text="Get involved with Open Source today and make your first contibutions with My First PR @ https://my-first-pr.github.io" %}
 
 The intention of this project is provide a [“safe place” for first timers](https://my-first-pr.github.io/) or new contributors to make their mark on the open source world and to learn how to contribute. On this project, all pull requests will be considered. Whether you’re contributing to the master repository, the event/project repositories, or you’re adding your name to the contributors list. The [My First PR](https://my-first-pr.github.io/) project will guide you through the process of becoming an open source contributor.
 
@@ -287,5 +293,7 @@ The same goes for translations! The [First Contributions](https://github.com/Ros
 ### Open Source Is All Around Us
 
 Open source is all around us. With traditionally closed source companies like Microsoft and Apple doing more in open source than ever, it isn’t hard to understand why the community continues to grow so quickly. Even Google’s success with Android is in large part due to its open source roots, and Ubuntu in the desktop world is becoming a household operating system, ready to challenge Windows and macOS.
+
+{% include tweet_quote.html quote_text="Hacktoberfest isn’t just about free swag. But, there is free swag." %}
 
 Open source is the past, present, and future. Pay it forward, and let future generations benefit from the community, and of the generosity of you and those before you.
