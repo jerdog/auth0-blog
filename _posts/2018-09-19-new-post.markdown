@@ -77,3 +77,15 @@ To learn about Retrofit's capabilities, you could use many REST APIs out there. 
 - Nearly all developers have GitHub accounts and, if you do not have one, [creating one](https://github.com/join?source=header-home)  will only take a couple of seconds.
 - GitHub API version 3 follows the REST architectural design and has a very good documentation.
 - Last, but not least, GitHub allows you to query their API once you have an _access token_, _username and password_, or a _secret key_ without requesting that you submit an application to use their API.
+
+## How to use GitHub API
+
+First, as already mentioned, you will need a [GitHub account](https://github.com/join?source=header-home). After creating (or signing into) your own account, click on your GitHub's profile photo (on the top right corner of the page) and choose [the _Settings_ option](https://github.com/settings/profile).
+
+On that page, click on _Developer settings_ on the left pane of the page, then click on _Personal access tokens_ (again on the left pane) to arrive at the page where you manage access tokens. On this page, click on [_Generate new token_](https://github.com/settings/tokens/new). Now, GitHub will show you a form where it will ask you to enter a description for your token (you can insert something like "Retrofit Client") and will ask you to choose what _Scopes_ you want to give to this token.
+
+For that, you can select `repo` and `delete_repo` scopes. Scopes determine the type of queries you will be able to do on GitHub's API with the token you will get.
+
+To finalize, click on _Generate token_ to create the token. Store this new token somewhere safe on your laptop.
+
+![Generating a new personal access token on GitHub](https://cdn.auth0.com/blog/retrofit-spring-boot/generating-a-personal-access-token-on-github.png)
