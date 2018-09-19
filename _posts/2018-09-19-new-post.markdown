@@ -89,3 +89,28 @@ For that, you can select `repo` and `delete_repo` scopes. Scopes determine the t
 To finalize, click on _Generate token_ to create the token. Store this new token somewhere safe on your laptop.
 
 ![Generating a new personal access token on GitHub](https://cdn.auth0.com/blog/retrofit-spring-boot/generating-a-personal-access-token-on-github.png)
+
+## Creating a RESTful Client with Retrofit and Spring Boot
+
+In this section, you will create a Spring Boot application that can `GET`, `POST`, and `DELETE` GitHub repositories via the GitHub API. For starters, go to [the Spring Initializr page](https://start.spring.io/) and fill out the form like this:
+
+- _Generate a_: At the top of the page, choose "Gradle Project".
+- _Group_: You can leave this field as `com.example`.
+- _Artifact_: You can type `github-client` in this one.
+
+![Generating a new Spring Boot project.](https://cdn.auth0.com/blog/retrofit-spring-boot/generating-a-spring-boot-project.png)
+
+You can leave untouched the other options. After that, click on _Generate Project_. Clicking on this button will make this page send you the `github-client.zip` file with your project. Unzip this file in your preferred location (e.g., `~/Projects/`) and import it in your IDE.
+
+For the moment, your project contains only a single class called `GithubClientApplication`. Also, it contains two dependencies in the `build.gradle` file: `spring-boot-starter-web` and `spring-boot-starter-test`. If you are using Java 10, you will have to update the `build.gradle` file as follows
+
+```gradle
+// ... leave every thing else untouched ...
+
+dependencies {
+  // ... don't remove the other two dependencies ...
+  compile('javax.xml.bind:jaxb-api:2.3.0')
+}
+```
+
+Make sure you allow your IDE to import the changes after updating this file.
