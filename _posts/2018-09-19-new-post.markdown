@@ -61,3 +61,12 @@ The explanation above is just a quick introduction so you know what this is all 
 
 - [REST Architectural Constraints](https://restfulapi.net/rest-architectural-constraints/)
 - [Richardson Maturity Model](https://martinfowler.com/articles/richardsonMaturityModel.html)
+
+## What Is Retrofit?
+
+According to the official [website](https://square.github.io/retrofit/), Retrofit is a type-safe HTTP client for Java and Android which was developed by [Square](https://squareup.com/). With Retrofit, all you need to do is declare a Java interface to represent your API. Then, you can pass the API configuration to Retrofit and you will get back a Java class implementation of your interface.
+
+Retrofit allows you to make both synchronous and asynchronous request to APIs. For the purpose of simplicity, this article will focus on synchronous requests only. But you can check the other one right after reading the article.
+
+One cool feature introduced by Retrofit is that it allows you to modify your API request through annotation on methods in your interface.
+
