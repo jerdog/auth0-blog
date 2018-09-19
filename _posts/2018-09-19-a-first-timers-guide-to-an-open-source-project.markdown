@@ -91,9 +91,9 @@ A fork is a copy of someone else’s repository. Forking allows you to freely ch
 
 Head to the project I’ve thrown together for this very purpose, [my-first-pull-request/first-timers](https://github.com/my-first-pr/first-timers).
 
-{% include tweet_quote.html quote_text="Get involved with Open Source today and make your first contibutions with My First PR @ https://my-first-pr.github.io" %}
+{% include tweet_quote.html quote_text="Get involved with Open Source today and make your first contributions with My First PR @ https://my-first-pr.github.io" %}
 
-The intention of this project is provide a [“safe place” for first timers](https://my-first-pr.github.io/) or new contributors to make their mark on the open source world and to learn how to contribute. On this project, all pull requests will be considered. Whether you’re contributing to the master repository, the event/project repositories, or you’re adding your name to the contributors list. The [My First PR](https://my-first-pr.github.io/) project will guide you through the process of becoming an open source contributor.
+The intention of this project is to provide a [“safe place” for first timers](https://my-first-pr.github.io/) or new contributors to make their mark on the open source world and to learn how to contribute. On this project, all pull requests will be considered. Whether you’re contributing to the master repository, the event/project repositories, or you’re adding your name to the contributors list. The [My First PR](https://my-first-pr.github.io/) project will guide you through the process of becoming an open source contributor.
 
 Click on **Fork** to start the process.
 
