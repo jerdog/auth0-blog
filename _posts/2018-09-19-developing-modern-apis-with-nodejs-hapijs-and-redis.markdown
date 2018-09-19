@@ -4,7 +4,7 @@ title: "Developing Modern APIs with Hapi.js, Node.js, and Redis"
 metatitle: "Developing Modern APIs with Hapi.js, Node.js, and Redis"
 description: "Learn how to develop modern backend APIs with Hapi.js, Node.js, and Redis."
 metadescription: "Learn how to develop modern backend APIs with Hapi.js, Node.js, and Redis."
-date: 2018-08-30 10:31
+date: 2018-09-19 10:31
 category: Technical Guide, First Application, Hapi.js
 post_length: 3
 author:
@@ -26,7 +26,8 @@ tags:
 - auth0
 related:
 - 2018-06-07-developing-well-organized-apis-with-nodejs-joi-and-mongo
-- 2018-05-02-nodejs-10-new-changes-deprecations
+- 2018-08-08-introduction-to-redis-install-cli-commands-and-data-types
+- 2017-12-19-developing-restful-apis-with-hapijs
 ---
 
 **TL;DR:** In this article, you are going to learn how to develop modern APIs with [Hapi.js](https://hapijs.com) and [Node.js](https://nodejs.org/), while using [Redis](https://redis.io) as the persistence layer. As it is not possible to release an API without a security layer, you will also learn how to secure your application with [Auth0](https://auth0.com). If needed, you can [find the final code developed throughout this article in this GitHub repository](https://github.com/auth0-blog/nodejs-hapijs-redis).
