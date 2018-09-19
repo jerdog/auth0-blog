@@ -1,0 +1,31 @@
+---
+layout: post
+title: "Developing a RESTful Client with Retrofit and Spring Boot"
+metatitle: "Developing a RESTful Client with Retrofit and Spring Boot"
+description: "Learn how to use Retrofit and Spring Boot to develop a RESTful HTTP client to GitHub's API."
+metadescription: "Learn how to use Retrofit and Spring Boot to develop a RESTful HTTP client to GitHub's API."
+date: 2018-09-19 07:56
+category: Technical Guide, First Application, Retrofit
+post_length: <1-5 (Run postlength.sh to generate score when article is ready)>
+author:
+  name: "Vladimir Fomene"
+  url: "https://twitter.com/VladimirFomene"
+  mail: "vladimirfomene@gmail.com"
+  avatar: "https://s.gravatar.com/avatar/30b8d1b7c0dab4bb311c121a47a6aae9?s=80"
+design:
+  bg_color: "#3471C0"
+  image: "https://cdn.auth0.com/blog/java-jcp/logo.png"
+tags:
+- retrofit
+- spring-boot
+- java
+- http-client
+- http
+- restful
+- rest
+- restful-api
+related:
+- 2017-09-05-automatically-mapping-dto-to-entity-on-spring-boot-apis
+- 2017-03-30-java-platform-and-java-community-process-overview
+- 2017-08-10-implementing-jwt-authentication-on-spring-boot
+---
