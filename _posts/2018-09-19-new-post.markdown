@@ -70,3 +70,10 @@ Retrofit allows you to make both synchronous and asynchronous request to APIs. F
 
 One cool feature introduced by Retrofit is that it allows you to modify your API request through annotation on methods in your interface.
 
+## Why use the GitHub API?
+
+To learn about Retrofit's capabilities, you could use many REST APIs out there. However, for a few reasons described below, you will use [GitHub's REST API](https://developer.github.com/v3/):
+
+- Nearly all developers have GitHub accounts and, if you do not have one, [creating one](https://github.com/join?source=header-home)  will only take a couple of seconds.
+- GitHub API version 3 follows the REST architectural design and has a very good documentation.
+- Last, but not least, GitHub allows you to query their API once you have an _access token_, _username and password_, or a _secret key_ without requesting that you submit an application to use their API.
