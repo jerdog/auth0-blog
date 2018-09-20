@@ -6,7 +6,7 @@ description: "Learn how to use Retrofit and Spring Boot to develop a RESTful HTT
 metadescription: "Learn how to use Retrofit and Spring Boot to develop a RESTful HTTP client to GitHub's API."
 date: 2018-09-19 07:56
 category: Technical Guide, First Application, Retrofit
-post_length: <1-5 (Run postlength.sh to generate score when article is ready)>
+post_length: 3
 author:
   name: "Vladimir Fomene"
   url: "https://twitter.com/VladimirFomene"
@@ -52,23 +52,23 @@ Once you have these, all you need is:
 
 ## What is a RESTful Client?
 
-REST, which stands for _Representational State Transfer_, is an architecture style used to design web APIs
+REST, which stands for _Representational State Transfer_, is an architectural style used to design web APIs
 (Application Programming Interfaces). REST is not a standard but rather a set of constraints used to design web APIs in
-well designed format. In REST, `GET` requests should be used for resource lookup and `PUT`, `POST`, `DELETE` for updating,
+well-designed format. In REST, `GET` requests should be used for resource lookup and `PUT`, `POST`, `DELETE` for updating,
 creating, and deleting a resource respectively.
 
 In this article, you will develop a Spring Boot app that is a RESTful client because it follows this constraints to communicate with a RESTful API ([GitHub's API](https://api.github.com)).
 
-The explanation above is just a quick introduction so you know what this is all about. As you can imagine, there is much more when it comes to the RESTful architecture. If you are curious, you can check the following resources after reading this article:
+The explanation above is just a quick introduction, so you know what this is all about. As you can imagine, there is much more when it comes to the RESTful architecture. If you are curious, you can check the following resources after reading this article:
 
 - [REST Architectural Constraints](https://restfulapi.net/rest-architectural-constraints/)
 - [Richardson Maturity Model](https://martinfowler.com/articles/richardsonMaturityModel.html)
 
 ## What Is Retrofit?
 
-According to the official [website](https://square.github.io/retrofit/), Retrofit is a type-safe HTTP client for Java and Android which was developed by [Square](https://squareup.com/). With Retrofit, all you need to do is declare a Java interface to represent your API. Then, you can pass the API configuration to Retrofit and you will get back a Java class implementation of your interface.
+According to the official [website](https://square.github.io/retrofit/), Retrofit is a type-safe HTTP client for Java and Android which was developed by [Square](https://squareup.com/). With Retrofit, all you need to do is declare a Java interface to represent your API. Then, you can pass the API configuration to Retrofit, and you will get back a Java class implementation of your interface.
 
-Retrofit allows you to make both synchronous and asynchronous request to APIs. For the purpose of simplicity, this article will focus on synchronous requests only. But you can check the other one right after reading the article.
+Retrofit allows you to make both synchronous and asynchronous request to APIs. For simplicity, this article will focus on synchronous requests only. But you can check the other one right after reading the article.
 
 One cool feature introduced by Retrofit is that it allows you to modify your API request through annotation on methods in your interface.
 
@@ -110,7 +110,7 @@ You can leave untouched the other options. After that, click on _Generate Projec
 For the moment, your project contains only a single class called `GithubClientApplication`. Also, it contains two dependencies in the `build.gradle` file: `spring-boot-starter-web` and `spring-boot-starter-test`. If you are using Java 10, you will have to update the `build.gradle` file as follows
 
 ```gradle
-// ... leave every thing else untouched ...
+// ... leave everything else untouched ...
 
 dependencies {
   // ... don't remove the other two dependencies ...
@@ -137,11 +137,11 @@ dependencies {
 }
 ```
 
-To know more about this library, checkout [its page on GitHub](https://github.com/eclipse/egit-github).
+To know more about this library, check out [its page on GitHub](https://github.com/eclipse/egit-github).
 
 ### Using Retrofit to Consume RESTful APIs
 
-After installing the library that provides Java classes to represent responses from GitHub, you will create a service that communicates with GitHub's API. To do so, start by creating a class called `APIConfiguration` in your main package (e.g., `com.example.githubclient`). This class will contain some references that you will need to make API requests to GitHub. Here is the contents of this file:
+After installing the library that provides Java classes to represent responses from GitHub, you will create a service that communicates with GitHub's API. To do so, start by creating a class called `APIConfiguration` in your main package (e.g., `com.example.githubclient`). This class will contain some references that you will need to make API requests to GitHub. Here it goes the contents of this file:
 
 ```java
 package com.example.githubclient;
@@ -200,7 +200,7 @@ public interface RepositoryInterface {
 }
 ```
 
-As you will see, you don't need to provide any implementation for these methods. Retrofit will handle the methods in this interface for you.
+As you will see, you don't need to provide an implementation for these methods. Retrofit will handle the methods in this interface for you.
 
 The annotation at the top of every method (e.g., `@POST`) defines the HTTP method that Retrofit will use when that method is called. The argument of the annotation (e.g., `"user/repos"`) defines the path which will be added to the API endpoint when performing that particular request. The `@Header` annotation is used to specify HTTP request headers that Retrofit will need while talking to GitHub, and `@Body` is used to specify the HTTP request body that Retrofit will send to GitHub.
 
@@ -333,7 +333,7 @@ public class GitHubClientController {
 }
 ```
 
-Because of the `@Autowired` annotation on this class, Spring Boot will inject an instance of the `GitHubService` class once you start your Spring Boot application. The `getRepos` method that you new class exposes uses `GitHubService::getRepositories` method to retrieve your GitHub repositories. The `createRepo` method uses `GitHubService::createRepository` to create a new GitHub repository. And, last but not least, `deleteRepo` uses `GitHubService::deleteRepository` method to delete a particular repository in your account.
+Because of the `@Autowired` annotation on this class, Spring Boot will inject an instance of the `GitHubService` class once you start your Spring Boot application. The `getRepos` method that your new class exposes uses `GitHubService::getRepositories` method to retrieve your GitHub repositories. The `createRepo` method uses `GitHubService::createRepository` to create a new GitHub repository. And, last but not least, `deleteRepo` uses `GitHubService::deleteRepository` method to delete a particular repository in your account.
 
 ## Using Your Retrofit Application
 
@@ -385,7 +385,7 @@ Now, if you reload the page on GitHub, you will get an HTTP `404 Not Found` resp
 
 ![GitHub repo deleted through a Retrofit client.](https://cdn.auth0.com/blog/retrofit/github-repo-deleted.png)
 
-That's it! You just used Retrofit and Spring Boot to easily create a RESTful client. Cool, right?
+That's it! You just used Retrofit and Spring Boot to create a RESTful client easily. Cool, right?
 
 {% include tweet_quote.html quote_text="Using Retrofit to create API clients in Java is super easy." %}
 
@@ -395,4 +395,4 @@ That's it! You just used Retrofit and Spring Boot to easily create a RESTful cli
 
 In this article, you saw how Square's Retrofit library makes it easy for you to communicate with an API by creating a Java interface. However, what you have to keep in mind is that Retrofit can do much more than demonstrated here. For example, you can use Retrofit to build an Android client application for a backend API. Also, instead of performing synchronous requests, you can use Retrofit to perform asynchronous (non-blocking) request.
 
-Retrofit is so cool and there are so many other features in it. To learn about them, you can visit the [documentation here](https://square.github.io/retrofit/).
+Retrofit is so cool, and there are so many other features in it. To learn about them, you can visit the [documentation here](https://square.github.io/retrofit/).
