@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Hacktoberfest 2018"
+title: "Hacktoberfest 2018 here we come!"
 metatitle: 
 description: "What do apple picking, beer festivals, ghosts and goblins, and open-source all have in common?" 
 metadescription:
@@ -24,12 +24,15 @@ tags:
 - digitalocean
 - twilio
 - events
+- community
 related:
 - 2018-08-28-react-tutorial-building-and-securing-your-first-app
 - 2018-08-09-continuous-deployment-pipelines-and-open-source-node-js-web-apps
 ---
 
 We at Auth0 are excited to announce our participation in this years Hacktoberfest!
+
+![Hacktoberfest 2018 logo](https://cdn.auth0.com/blog/hacktoberfest:logo.png)
 
 ## Hold up — What's Hacktoberfest?
 
