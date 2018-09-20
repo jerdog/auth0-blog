@@ -40,7 +40,7 @@ We at Auth0 are excited to announce our participation in this years Hacktoberfes
 
 {% include tweet_quote.html quote_text="If you have never contributed to an open-source project before, there is a #hacktoberfest My-First-PR Starter Project at https://my-first-pr.github.io/hacktoberfest-2018/ available that you can use to practice making changes and creating pull requests" %}
 
-Have you been looking for an opportunity to contribute to open-source? Had a hard time getting started? Been searching for a sign? _This is your sign!_ This is your chance to give back to the amazing projects that you and others alike use on a daily basis. Take advantage of this opportunity to help build a stronger product and have your voice heard! No contribution is too small: bug fixes to documentation, updates to translations, and much more are valid ways of participating.  
+Have you been looking for an opportunity to contribute to an open-source project? Had a hard time getting started? Been searching for a sign? _This is your sign!_ This is your chance to give back to the amazing projects that you and others alike use on a daily basis. Take advantage of this opportunity to help build a stronger product and have your voice heard! No contribution is too small: bug fixes to documentation, updates to translations, and much more are valid ways of participating.  
 
 This month we get to see a lot of extra support to help folks get involved in open-source software and it’s with great enthusiasm we want people to take advantage of this! There are a large number of resources available to help you find a project and make your first contribution. Or, if it’s not your first, your next contribution. There are [many stories to read](https://medium.com/@thepriefy/my-first-github-pull-request-and-hacktoberfest-2017-a83622020390), and articles outlining [ways to get involved](https://medium.freecodecamp.org/i-just-got-my-free-hacktoberfest-shirt-heres-a-quick-way-you-can-get-yours-fa78d6e24307).
 
@@ -52,9 +52,9 @@ A huge shoutout to DigitalOcean on a happy 5 years of Hacktoberfest.
 
 ## How Do I Get Involved? 
 
-Head over to GitHub and take a [look through the projects](https://github.com/topics/hacktoberfest). These are all the open-source projects on GitHub that have the designated ‘hacktoberfest’ label. Another way to get started might be to look at the projects you use every day - they may just be open-source!
+First of all, sign up to the event on the [DigitalOcean Hacktoberfest site](https://hacktoberfest.digitalocean.com/), then head over to GitHub and take a [look through the projects](https://github.com/topics/hacktoberfest). These are all the open-source projects on GitHub that have the designated ‘hacktoberfest’ label. Another way to get started might be to look at the projects you use every day - they may just be open source!
 
-If you have never contributed to an open-source project before, there is a [Hacktoberfest My-First-PR Starter Project](https://my-first-pr.github.io/hacktoberfest-2018/) available that you can use to practice making changes and creating pull requests, before progressing to adding valuable contributions to real open-source projects.
+If you have never contributed to an open-source project before, there is a [Hacktoberfest My-First-PR Starter Project](https://my-first-pr.github.io/hacktoberfest-2018/) available that you can use to practice making changes and creating pull requests, before progressing to adding real value to other repositories that people depend on every day.
 
 Furthermore, if you’re interested in [hosting your own Hacktoberfest event](https://hacktoberfest.digitalocean.com/eventkit), there is an event kit containing a guide on how to get started and run your event in the best possible way. You don’t have to be an expert or professional to host an event, just the passion and the time to get organized!
 
@@ -62,9 +62,9 @@ Furthermore, if you’re interested in [hosting your own Hacktoberfest event](ht
 
 Did someone say swag? Yes, there is swag! Swag is great and if you are fortunate enough to be a recipient of one of the exclusive Hacktoberfest t-shirts, we encourage you to wear it with pride knowing you were a part of a great movement for OSS. _That_ is why we encourage you to participate and earn the exclusive 2018 Hacktoberfest t-shirt! 
 
-To qualify for your t-shirt, you just have to **make 5 valid contributions** as pull requests (PRs) into any public GitHub repository (your pull requests don’t have to be merged in that time). T-shirts get sent out after October and can take a few weeks to a few months to arrive. Not able to make 5 PRs? That’s okay! You can still get some awesome stickers for your efforts. 
+To qualify for your t-shirt, you just have to make 5 valid contributions as pull requests (PRs) into any public GitHub repository (your pull requests don’t have to be merged in that time). T-shirts get sent out after October and can take a few weeks to a few months to arrive. Not able to make 5 PRs? That’s okay! You can still get some awesome stickers for your efforts. 
 
-Therefore, let’s take a quick look: submit up to **4 pull requests** and get a sweet sticker pack courtesy of DigitalOcean, GitHub and Twilio. Submit 5 or more pull requests and get an exclusive Hacktoberfest t-shirt (again courtesy DigitalOcean, GitHub & Twilio), as well as that sweet sticker pack.
+Therefore, let’s take a quick look: submit up to **4 pull requests** and get a sweet sticker pack courtesy of DigitalOcean, GitHub and Twilio. Submit **5 or more pull requests** and get an exclusive Hacktoberfest t-shirt (again courtesy DigitalOcean, GitHub & Twilio), as well as that sweet sticker pack.
 
 {% include tweet_quote.html quote_text="All of our #hacktoberfest projects can be found on our GitHub organization. Join us over in https://community.auth0.com if you have any questions or feedback." %}
 
