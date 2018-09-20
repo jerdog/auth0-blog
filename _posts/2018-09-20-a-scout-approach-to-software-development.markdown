@@ -5,7 +5,7 @@ metatitle: "Apply Scouting Rules to Code - Scout Development Approach"
 description: Learn how to apply the Scout code to software development to get code to a better state continuously.
 metadescription: "How to apply the Scout Rule to your software development and coding approach to scale, maintain, and collaborate on codebases in a cleaner, more effective manner."
 date: 2018-09-20 10:30
-category: Auth0 Engineering, Software Development
+category: Technical Guide, Auth0 Engineering, Software Development
 auth0_aside: true
 author:
   name: José F. Romaniello
@@ -29,8 +29,8 @@ tags:
   - advice
 related:
   - 2018-08-15-auth0-architecture-running-in-multiple-cloud-providers-and-regions
-   - 2016-03-22-how-we-hire-engineers.markdown
-   - 2018-07-26-cloud-scale-thinking-from-day-one-for-your-saas-products
+  - 2016-03-22-how-we-hire-engineers.markdown
+  - 2018-07-26-cloud-scale-thinking-from-day-one-for-your-saas-products
 ---
 
 When I was a kid, I practiced [_Scouting_](https://en.wikipedia.org/wiki/Scouting) for eight years I picked up a lot of excellent values and my scouting experiences helped to shape my character and make me a better programmer. Let me show you why.
