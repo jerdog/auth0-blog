@@ -72,7 +72,7 @@ Therefore, let’s take a quick look: submit up to **4 pull requests** and get a
 
 At Auth0, [we’re heavily invested in the open-source software movement](https://auth0.com/opensource). Look out for a kickass 2018 Hacktoberfest t-shirt courtesy of the awesome Auth0 team, along with a psychedelic Auth0 sticker pack!
 
-[All of our qualifying projects](https://github.com/auth0/) can be found on our GitHub organization. Join us over in [community.auth0.com](https://community.auth0.com/) if you have any questions or feedback.
+All of our qualifying projects can be found on [our primary GitHub organization](https://github.com/auth0), as well as [our community organization](https://github.com/auth0-community). Join us over in [community.auth0.com](https://community.auth0.com/) if you have any questions or feedback.
 
 ## Share Your Journey!
 We want to hear how your Hacktoberfest journey is going, so make sure to use the #Hacktoberfest hashtag and, if you’re working with Auth0 this month, use #Auth0OSS. We will be re-sharing our favorites! 
