@@ -30,7 +30,9 @@ related:
 - 2017-08-10-implementing-jwt-authentication-on-spring-boot
 ---
 
-**TL;DR:** In this article ,you will learn how to use [Retrofit, an HTTP client library](https://square.github.io/retrofit/), and [Spring Boot](https://spring.io/projects/spring-boot) to create a client for a RESTful API. You will use Spring Boot and its `RestController` functionality alongside Retrofit to develop a facade over GitHub's API. You will also learn how to convert JSON to POJOs (Plain Old Java Objects) using [Google's Gson](https://github.com/google/gson) library and, last but not least, you will learn how to use the documentation of a RESTful API to your advantage. If you need, you can find the reference code developed throughout this article in this GitHub repository.
+**TL;DR:** In this article, you will learn how to use [Retrofit, an HTTP client library](https://square.github.io/retrofit/), and [Spring Boot](https://spring.io/projects/spring-boot) to create a client for a RESTful API. You will use Spring Boot and its `RestController` functionality alongside Retrofit to develop a facade over GitHub's API. You will also learn how to convert JSON to POJOs (Plain Old Java Objects) using [Google's Gson](https://github.com/google/gson) library and, last but not least, you will learn how to use the documentation of a RESTful API to your advantage. If you need, you can find the reference code developed throughout this article in this GitHub repository.
+
+{% include tweet_quote.html quote_text="Learn how to use Retrofit, an HTTP client library, and Spring Boot to create a client for a RESTful API." %}
 
 ## Prerequisites
 
@@ -69,6 +71,8 @@ According to the official [website](https://square.github.io/retrofit/), Retrofi
 Retrofit allows you to make both synchronous and asynchronous request to APIs. For the purpose of simplicity, this article will focus on synchronous requests only. But you can check the other one right after reading the article.
 
 One cool feature introduced by Retrofit is that it allows you to modify your API request through annotation on methods in your interface.
+
+{% include tweet_quote.html quote_text="What is cool about Retrofit is that it allows you to modify your API request through annotation on methods in your interface" %}
 
 ## Why use the GitHub API?
 
@@ -382,6 +386,8 @@ Now, if you reload the page on GitHub, you will get an HTTP `404 Not Found` resp
 ![GitHub repo deleted through a Retrofit client.](https://cdn.auth0.com/blog/retrofit/github-repo-deleted.png)
 
 That's it! You just used Retrofit and Spring Boot to easily create a RESTful client. Cool, right?
+
+{% include tweet_quote.html quote_text="Using Retrofit to create API clients in Java is super easy." %}
 
 {% include asides/spring-boot.markdown %}
 
