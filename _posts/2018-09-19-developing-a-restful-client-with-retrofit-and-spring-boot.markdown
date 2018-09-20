@@ -30,7 +30,7 @@ related:
 - 2017-08-10-implementing-jwt-authentication-on-spring-boot
 ---
 
-**TL;DR:** In this article, you will learn how to use [Retrofit, an HTTP client library](https://square.github.io/retrofit/), and [Spring Boot](https://spring.io/projects/spring-boot) to create a client for a RESTful API. You will use Spring Boot and its `RestController` functionality alongside Retrofit to develop a facade over GitHub's API. You will also learn how to convert JSON to POJOs (Plain Old Java Objects) using [Google's Gson](https://github.com/google/gson) library and, last but not least, you will learn how to use the documentation of a RESTful API to your advantage. If you need, you can find the reference code developed throughout this article in this GitHub repository.
+**TL;DR:** In this article, you will learn how to use [Retrofit, an HTTP client library](https://square.github.io/retrofit/), and [Spring Boot](https://spring.io/projects/spring-boot) to create a client for a RESTful API. You will use Spring Boot and its `RestController` functionality alongside Retrofit to develop a facade over GitHub's API. You will also learn how to convert JSON to POJOs (Plain Old Java Objects) using [Google's Gson](https://github.com/google/gson) library and, last but not least, you will learn how to use the documentation of a RESTful API to your advantage. If you need, you can find the reference code developed throughout [this article in this GitHub repository](https://github.com/auth0-blog/retrofit-spring-boot).
 
 {% include tweet_quote.html quote_text="Learn how to use Retrofit, an HTTP client library, and Spring Boot to create a client for a RESTful API." %}
 
