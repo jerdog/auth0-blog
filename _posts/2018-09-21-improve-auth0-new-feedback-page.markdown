@@ -16,11 +16,11 @@ design:
   bg_color: "#006752"
   image: "https://cdn.auth0.com/blog/feedback-welcomed/auth0-new-feedback-page-logo.png"
 tags:
-- conference
-- identiverse
-- identity
+- feedback
+- customer-focus
+- customer
+- product
 - identity-management
-- ciam
 related:
 - 2018-09-13-auth0-named-to-forbes-2018-cloud-100
 - 2018-04-16-auth0-wins-infosec-2018-editors-choice-award
