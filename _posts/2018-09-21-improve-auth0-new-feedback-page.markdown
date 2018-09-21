@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Improve Auth0 with our new Feedback Page"
+title: "Improve Auth0 with the new Feedback Page"
 metatitle: Auth0 is Applying Your Feedback — All Feedback Welcomed
 metadescription: Give product feedback — let Auth0 know what we’re doing well or what we could be doing better through our feedback page.
 description: "Please help us improve Auth0 via our new Feedback Page"
