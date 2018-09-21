@@ -5,7 +5,7 @@ metatitle: Auth0 is Applying Your Feedback — All Feedback Welcomed
 metadescription: Give product feedback — let Auth0 know what we’re doing well or what we could be doing better through our feedback page.
 description: "Please help us improve Auth0 via our new Feedback Page"
 date: 2018-09-21 08:30
-category: PR, Features
+category: PR, Features, Initiative
 is_non-tech: true
 author:
   name: "Jenny O'Brien"
