@@ -16,7 +16,7 @@ author:
   avatar: https://pbs.twimg.com/profile_images/988599843990974465/juGjdna1_400x400.jpg
 design:
   bg_color: "#582D41"
-  image: https://cdn.auth0.com/blog/hacktoberfest/auth0-hacktoberfest-2018-logo.png
+  image: https://cdn.auth0.com/blog/hacktoberfest/auth0-hacktoberfest-2018-logo-v2.png
 tags:
 - hacktoberfest
 - open-source
