@@ -1,22 +1,22 @@
 ---
 layout: post
-title: "Hacktoberfest 2018 here we come!"
-metatitle: 
+title: "Celebrate Hacktoberfest 2018 with Auth0!"
+metatitle: Celebrate Hacktoberfest 2018 with Auth0!
 description: "What do apple picking, beer festivals, ghosts and goblins, and open-source all have in common?" 
-metadescription:
-date: 2018-09-18 12:07
+metadescription: Auth0 is excited join Hacktoberfest 2018, a month-long celebration of open-source software by Digital Ocean, Github, and Twilio. 
+date: 2018-09-24 12:07
 category: Technical Guide, Events, Hacktoberfest
 post_length: 1
 auth0_aside: true
 is_non-tech: true
 author:
   name: Kim Noel
-  url:
+  url: https://twitter.com/NoelKM
   mail: kim.noel@auth0.com
-  avatar:
+  avatar: 
 design:
-  bg_color:
-  image:
+  bg_color: "#582D41"
+  image: https://cdn.auth0.com/blog/hacktoberfest/auth0-hacktoberfest-2018-logo.png
 tags:
 - hacktoberfest
 - open-source
@@ -26,8 +26,9 @@ tags:
 - events
 - community
 related:
-- 2018-08-28-react-tutorial-building-and-securing-your-first-app
-- 2018-08-09-continuous-deployment-pipelines-and-open-source-node-js-web-apps
+- 2018-09-20-a-scout-approach-to-software-development
+- 2018-09-21-improve-auth0-new-feedback-page
+- 2018-03-01-community-auth0-new-chapter
 ---
 
 We at Auth0 are excited to announce our participation in this years Hacktoberfest!
