@@ -13,7 +13,7 @@ author:
   name: Kim Noel
   url: https://twitter.com/NoelKM
   mail: kim.noel@auth0.com
-  avatar: 
+  avatar: https://pbs.twimg.com/profile_images/988599843990974465/juGjdna1_400x400.jpg
 design:
   bg_color: "#582D41"
   image: https://cdn.auth0.com/blog/hacktoberfest/auth0-hacktoberfest-2018-logo.png
@@ -28,7 +28,7 @@ tags:
 related:
 - 2018-09-20-a-scout-approach-to-software-development
 - 2018-09-21-improve-auth0-new-feedback-page
-- 2018-03-01-community-auth0-new-chapter
+- 2018-09-24-a-first-timers-guide-to-an-open-source-project
 ---
 
 We at Auth0 are excited to announce our participation in this years Hacktoberfest!
