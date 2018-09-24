@@ -4,7 +4,7 @@ title: A First Timers Guide to an Open Source Project
 metatitle: A First Timers Guide to an Open Source Project
 description: "Open source is the past, present, and future. Pay it forward by learning how to make your first contribution with Auth0"
 metadescription: "Open source is the past, present, and future. Pay it forward by learning how to make your first contribution with Auth0"
-date: 2018-09-19 08:39
+date: 2018-09-24 08:39
 category: Technical Guide, Tips, Open Source
 post_length: 3
 author:
@@ -13,8 +13,8 @@ author:
   avatar: https://avatars1.githubusercontent.com/u/956290?s=200
   mail: luke.oliff@auth0.com
 design:
-  bg_color: <A HEX BACKGROUND COLOR>
-  image: <A PATH TO A 200x200 IMAGE>
+  bg_color: "164e36"
+  image: https://cdn.auth0.com/blog/a-first-timers-guide-to-an-open-source-project/guide-to-open-source.png
 tags:
 - hacktoberfest
 - open-source
@@ -27,8 +27,9 @@ tags:
 - first-contributions
 - my-first-pr
 related:
-- 2018-08-28-react-tutorial-building-and-securing-your-first-app
-- 2018-08-09-continuous-deployment-pipelines-and-open-source-node-js-web-apps
+- 2018-09-20-a-scout-approach-to-software-development
+- 2018-09-21-improve-auth0-new-feedback-page
+
 ---
 
 Here at [Auth0, we’re all about open source](https://auth0.com/opensource). As a business, we actively contribute to, and benefit from, open source and have over 25,000 stars across multiple projects. [Our community](https://community.auth0.com/) underpins that initiative with direct access to advice and support for developers who might be working on projects, open source or not.
