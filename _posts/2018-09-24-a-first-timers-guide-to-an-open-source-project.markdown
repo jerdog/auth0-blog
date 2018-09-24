@@ -13,7 +13,7 @@ author:
   avatar: https://avatars1.githubusercontent.com/u/956290?s=200
   mail: luke.oliff@auth0.com
 design:
-  bg_color: "164e36"
+  bg_color: 164e36
   image: https://cdn.auth0.com/blog/a-first-timers-guide-to-an-open-source-project/guide-to-open-source.png
 tags:
 - hacktoberfest
