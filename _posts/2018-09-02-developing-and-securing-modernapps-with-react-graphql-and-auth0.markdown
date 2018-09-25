@@ -1355,9 +1355,69 @@ silentAuth() {
 ...
 ```
 
-This method is responsible for performing the Silent Authentication. It makes a request to AuthO's `checkSession` function and sets a new session. To make sure everything works properly, we need to update one more file.
+This method is responsible for performing the _Silent Authentication_. It makes a request to AuthO's `checkSession` function and sets a new session.
 
-Head over to `App.js` and update it like so:
+Let's refactor the `src/Auth.js` file to ensure the new authentication works properly.
+
+```js
+
+import auth0 from 'auth0-js';
+
+class Auth {
+  constructor() {
+    ...
+    this.authFlag = 'isLoggedIn';
+    ...
+  }
+
+  ...
+  isAuthenticated() {
+    return JSON.parse(localStorage.getItem(this.authFlag));
+  }
+
+  setSession(authResult) {
+    this.idToken = authResult.idToken;
+    localStorage.setItem(this.authFlag, JSON.stringify(true));
+  }
+
+  signIn() {
+    this.auth0.authorize();
+  }
+
+  signOut() {
+    localStorage.setItem(this.authFlag, JSON.stringify(false));
+    this.auth0.logout({
+      returnTo: 'http://localhost:3000',
+      clientID: 'LUft9iOEONnQilP8mFDdmiBHdNljGJ2u',
+    });
+  }
+
+  silentAuth() {
+    if(this.isAuthenticated()) {
+      return new Promise((resolve, reject) => {
+        this.auth0.checkSession({}, (err, authResult) => {
+          if (err) {
+            localStorage.removeItem(this.authFlag);
+            return reject(err);
+          }
+          this.setSession(authResult);
+          resolve();
+        });
+      });
+    }
+  }
+}
+
+const auth = new Auth();
+
+export default auth;
+```
+Let's analyze the change above. The `authFlag` constant is a flag that we store in local storage to indicate whether a user is logged in or not. It is also an indicator for renewing tokens with the Auth0 server after a full-page refresh.
+
+Once the user is authenticated and redirected back to the app from the Auth0 server, the `authFlag` is set to true and stored in local storage so that if the user returns to the app later, we can check whether to ask the authorization server for a fresh token. The `silentAuth` method checks if the user is indeed authorized via the Auth0 `checkSession` method if the `authFlag` is true. If the user is authorized, new authentication data is returned and the `setSession` method is called. If the user is not authorized, the `authFlag` is deleted from local storage and logged out.
+
+
+One more thing. Head over to `App.js` and update it like so:
 
 ```js
 import React, { Component } from 'react';
