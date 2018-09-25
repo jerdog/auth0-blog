@@ -13,7 +13,7 @@ author:
   avatar: https://avatars1.githubusercontent.com/u/956290?s=200
   mail: luke.oliff@auth0.com
 design:
-  bg_color: #164e36
+  bg_color: "#164e36"
   image: https://cdn.auth0.com/blog/a-first-timers-guide-to-an-open-source-project/guide-to-open-source.png
 tags:
 - hacktoberfest
@@ -29,7 +29,7 @@ tags:
 related:
 - 2018-09-20-a-scout-approach-to-software-development
 - 2018-09-21-improve-auth0-new-feedback-page
-
+- 2018-09-24-celebrate-hacktoberfest-with-auth0
 ---
 
 Here at [Auth0, we’re all about open source](https://auth0.com/opensource). As a business, we actively contribute to, and benefit from, open source and have over 25,000 stars across multiple projects. [Our community](https://community.auth0.com/) underpins that initiative with direct access to advice and support for developers who might be working on projects, open source or not.
