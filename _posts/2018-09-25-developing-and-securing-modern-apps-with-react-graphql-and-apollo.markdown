@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "Developing and Securing Modern Apps with GraphQL, React and Auth0"
-description: "Learn how to use GraphQL to build modern apps and add authentication to it with Auth0."
-date: 2018-09-02 8:30
-category: Technical guide, GraphQL, Authentication
+title: "Developing and Securing Modern Apps with GraphQL, React, and Apollo"
+description: "Learn how to use GraphQL, React, and Apollo to build modern apps and add authentication to it with Auth0."
+date: 2018-09-25 8:30
+category: Technical Guide, Stack, Modern Apps
 author:
   name: "Prosper Otemuyiwa"
   url: "https://twitter.com/unicodeveloper"
@@ -13,15 +13,18 @@ design:
   bg_color: "#222228"
   image: "https://cdn.auth0.com/blog/graphql-auth0/logo.png"
 tags:
-- GraphQL
+- graphql
 - auth
 - react
 - apollo
 - authentication
+- javascript
+- modern-apps
+- api
 related:
-- 2017-01-24-optimizing-react
-- 2017-02-21-reactjs-authentication-tutorial
-
+- 2018-08-14-react-context-api-managing-state-with-ease
+- 2018-08-28-react-tutorial-building-and-securing-your-first-app
+- 2018-09-20-a-scout-approach-to-software-development
 ---
 
 **TL;DR:** Modern applications require a different paradigm in the way they are crafted and deployed. GraphQL, in particular, enables developers to take advantage of incredible tooling like the [Apollo platform](https://www.apollographql.com/docs/fundamentals/platform.html) for crafting flexible APIs and shipping client apps with optimistic UI. In this tutorial, we'll explore how to build an application with GraphQL and React. And we'll wrap it up with learning how to add authentication. The [completed code is available on GitHub](https://github.com/auth0-blog/book-app).
