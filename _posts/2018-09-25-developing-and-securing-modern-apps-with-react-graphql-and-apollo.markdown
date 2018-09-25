@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Developing and Securing Modern Apps with GraphQL, React, and Apollo"
-description: "Learn how to use GraphQL, React, and Apollo to build modern apps and add authentication to it with Auth0."
+description: "Learn how to build modern apps with GraphQL, and Apollo, including authentication with Auth0."
 date: 2018-09-25 8:30
 category: Technical Guide, Stack, Modern Apps
 author:
@@ -27,28 +27,19 @@ related:
 - 2018-09-20-a-scout-approach-to-software-development
 ---
 
-**TL;DR:** Modern applications require a different paradigm in the way they are crafted and deployed. GraphQL, in particular, enables developers to take advantage of incredible tooling like the [Apollo platform](https://www.apollographql.com/docs/fundamentals/platform.html) for crafting flexible APIs and shipping client apps with optimistic UI. In this tutorial, we'll explore how to build an application with GraphQL and React. And we'll wrap it up with learning how to add authentication. The [completed code is available on GitHub](https://github.com/auth0-blog/book-app).
+**TL;DR:** Modern applications are increasingly data driven, which leads to a lot of time spent fetching, filtering, and aggregating data. When implemented with the [Apollo platform](https://www.apollographql.com/docs/fundamentals/platform.html), GraphQL reduces the complexity associated with data fetching and enables developers to take advantage of incredible tooling for crafting flexible APIs. In this tutorial, we'll explore how to build a production-ready application with GraphQL, React and Apollo. Finally, we'll wrap it up by learning how to add authentication with Auth0. The [completed code is available on GitHub](https://github.com/auth0-blog/book-app).
 
 {% include tweet_quote.html quote_text="Learn how to develop and secure modern applications with GraphQL, React and Auth0." %}
 
 ---
 
-## The Modern Application Paradigm
-
-Present day applications utilize the client-server design. This architectural design isolates software development into two major groups: **clients** and **servers**. These classifications are also known as **front end** and **back end**. APIs are developed and served from the back end, while the front end consumes them.
-
-The client-server architecture aids productivity by permitting the option of having different clients devour the responses from an API on the server. These clients could be anything from Single Page Applications (SPAs), portable applications, to non-interactive clients such as CLIs or Daemons.
-
-These days, most JavaScript applications are packaged and deployed as Single Page Applications running on vanilla JavaScript, Vue, React, Polymer, Angular, consuming and pushing information to a backend app running on the server. The front end/back end model of developing software is very common and goes way beyond the JavaScript community.
-
-
 ## Introduction to GraphQL
 
-GraphQL is a typed query language for your API. It enables the client to express its data requirements declaratively and the server to send back only what the client requests. It's heavily in use by companies such as Coursera, Shopify and GitHub.
+GraphQL is a specification for client-server communication. It enables the client to express its data requirements declaratively and the server to send back only what the client requests.
 
-A GraphQL server exposes a schema that describes its API including queries to fetch data and mutations to modify data. This allows clients to specify their data requirements with queries and send it to one GraphQL endpoint, instead of collecting information from multiple endpoints as is typical with REST. While queries are a very easy and quick way for clients to get exactly the data they need in one request, the GraphQL server has to parse and validate the query, check which fields are included and return the underlying data from the database.
+A GraphQL server exposes a schema that describes its API including queries to fetch data and mutations to modify data. This allows clients to specify their data requirements with queries and send it to one GraphQL endpoint, instead of collecting information from multiple endpoints as is typical with REST. A GraphQL schema is strongly typed, which unlocks great developer tooling.
 
-The type-safe schema unlocks new possibilities for tooling, as demonstrated by GraphQL which is maintained by Facebook. Check out how GitHub employs [GraphQL for its API](https://githubengineering.com/the-github-graphql-api/).
+Apollo is an implementation of GraphQL that we'll be using in today's tutorial to help us get up and running quickly. It includes two runtime libraries, Apollo Server and Client, for building and querying your API's schema with GraphQL. It also features developer tooling that integrates with your existing workflow and gives you full visibility into the performance and security of your API.
 
 ## What We'll Build
 
@@ -69,9 +60,9 @@ After that, create a directory and run `npm init --y` to create a `package.json`
 
 ## Building CoolReads GraphQL API
 
-### Schema First Driven Development
+### Schema First Development
 
-Schema First Driven development is a recommended approach for designing and building modern UIs that involves the frontend and backend teams agreeing on a Schema first, which serves as a contract between the UI and the backend before any API development commences. GraphQL schemas are at their best when they are designed around the needs of client applications. We'll take this approach in designing a Schema for our API.
+Schema first development is a recommended approach for building applications with GraphQL that involves the frontend and backend teams agreeing on a schema first, which serves as a contract between the UI and the backend before any API development commences. GraphQL schemas are at their best when they are designed around the needs of client applications. We'll take this approach in designing a schema for our API.
 
 ### Building CoolReads Schema
 
@@ -113,7 +104,7 @@ The Schema for our application will look like this:
 
 The `typeDefs` string defines our schema in the [GraphQL Schema Definition Language](https://www.apollographql.com/docs/apollo-server/v2/essentials/schema.html#sdl).
 
-We have the `Author`, `Book`, `Query` and `Mutation` type. The `Query` type informs the server about the queries. that users are allowed to make. The `gql` tag is a JavaScript template literal tag that parses GraphQL queries into an abstract syntax tree during the process of execution by the GraphQL engine.
+We have the `Author`, `Book`, `Query` and `Mutation` type. The `Query` type informs the server about the queries. that users are allowed to make. The `gql` tag is a JavaScript template literal tag that enables syntax highlighting for our schema.
 
 The users of our app should be able to see all the books available at once. This is where the `books` query becomes useful. If we want to retrieve all books, we'll write a query like this:
 
@@ -237,7 +228,7 @@ In the code above, we have the `books` and `authors` data source. We'll go ahead
 
 ### Writing the Resolvers
 
-Resolvers are functions that connect schema fields and types to various backends. As I mentioned earlier, they provide the instructions for turning a GraphQL operation into data. They can retrieve or write data from either an SQL, a No-SQL, graph database, a micro-service or a REST API. Resolvers can also return strings, ints, null, and other primitives.
+Resolvers are functions that connect schema fields and types to various backends. As I mentioned earlier, they provide the instructions for turning a GraphQL operation into data. They can retrieve or write data from anywhere, including a SQL, a No-SQL, graph database, a micro-service or a REST API. Resolvers can also return strings, ints, null, and other primitives.
 
 ```js
 const { find, filter } = require('lodash');
@@ -284,10 +275,10 @@ At this stage, I'm sure you are yearning to see it work. Before shedding more li
 npm install apollo-server graphql lodash --save
 ```
 
-> [Apollo Server](https://www.apollographql.com/docs/apollo-server) provides GraphQL schemas written with it the privilege to be deployed anywhere that other Node.js projects can be deployed. It also has variants, such as apollo-server-express, apollo-server-hapi, apollo-server-koa, and others to support serverless deployment with AWS Lambda. Apollo Server has built-in support for GraphQL subscriptions, powerful error handling tools, schema stitching, file uploads, mocking, schema directives, and easy monitoring integration.
+> [Apollo Server](https://www.apollographql.com/docs/apollo-server) is a library that helps you quickly build and deploy a GraphQL API. It also has variants, such as apollo-server-express, apollo-server-hapi, apollo-server-koa, and others to support serverless deployment with AWS Lambda. Apollo Server has built-in support for GraphQL subscriptions, powerful error handling tools, schema stitching, file uploads, mocking, schema directives, and easy monitoring integration.
 
 
-{% include tweet_quote.html quote_text="Apollo Server provides GraphQL schemas written with it the privilege to be deployed anywhere that other Node.js projects can be deployed." %}
+{% include tweet_quote.html quote_text="Apollo Server is a library that helps you quickly build and deploy a GraphQL API." %}
 
 The full `server.js` should look like this now:
 
