@@ -13,8 +13,8 @@ author:
   mail: "godsonobielum@yahoo.com"
   avatar: https://pbs.twimg.com/profile_images/1022409389272129536/YObVPEqr.jpg
 design:
-  bg_color: "#3666A5
-  image: https://cdn.auth0.com/blog/auth0-pusher/logo.png
+  bg_color: "#2B084A"
+  image: https://cdn.auth0.com/blog/logos/pusher-logo.png
 tags:
 - pusher
 - node.js
