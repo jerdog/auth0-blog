@@ -17,11 +17,11 @@ design:
 tags:
   - idaas
   - identity-management
-  - cloud
-  - forbes
-  - awards
+  - growth
+  - australia
+  - apac
 related:
-  - 2018-06-25-auth0-named-visionary-in-2018-gartner
+  - 2018-09-13-auth0-named-to-forbes-2018-cloud-100
   - 2018-01-29-auth0-announces-record-year
   - 2018-05-15-auth0-announces-55m-series-d-funding
 ---
