@@ -64,9 +64,9 @@ Furthermore, if you’re interested in [hosting your own Hacktoberfest event](ht
 
 Did someone say swag? Yes, there is swag! Swag is great and if you are fortunate enough to be a recipient of one of the exclusive Hacktoberfest t-shirts, we encourage you to wear it with pride knowing you were a part of a great movement for OSS. _That_ is why we encourage you to participate and earn the exclusive 2018 Hacktoberfest t-shirt! 
 
-To qualify for your t-shirt, you just have to make 5 valid contributions as pull requests (PRs) into any public GitHub repository (your pull requests don’t have to be merged in that time). T-shirts get sent out after October and can take a few weeks to a few months to arrive. Not able to make 5 PRs? That’s okay! You can still get some awesome stickers for your efforts. 
+To qualify for your t-shirt, you just have to make 5 valid contributions as pull requests (PRs) into any public GitHub repository (your pull requests don’t have to be merged in that time). T-shirts get sent out after October and can take a few weeks to a few months to arrive. 
 
-Therefore, let’s take a quick look: submit up to **4 pull requests** and get a sweet sticker pack courtesy of DigitalOcean, GitHub and Twilio. Submit **5 or more pull requests** and get an exclusive Hacktoberfest t-shirt (again courtesy DigitalOcean, GitHub & Twilio), as well as that sweet sticker pack.
+Therefore, let’s take a quick look: submit **5 or more pull requests** and get an exclusive Hacktoberfest t-shirt courtesy DigitalOcean, GitHub & Twilio.
 
 {% include tweet_quote.html quote_text="All of our #hacktoberfest projects can be found on our GitHub organization. Join us over in https://community.auth0.com if you have any questions or feedback." %}
 
