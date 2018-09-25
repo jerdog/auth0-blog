@@ -32,7 +32,7 @@ related:
 
 ## The Modern Application Paradigm
 
-Present day applications utilize the client-server design. This architectural design isolates software development into two major groups,**clients** and **servers**. These classifications are also known as **front end** and **back end**. APIs are developed and served from the back end, while the front end consumes them.
+Present day applications utilize the client-server design. This architectural design isolates software development into two major groups: **clients** and **servers**. These classifications are also known as **front end** and **back end**. APIs are developed and served from the back end, while the front end consumes them.
 
 The client-server architecture aids productivity by permitting the option of having different clients devour the responses from an API on the server. These clients could be anything from Single Page Applications (SPAs), portable applications, to non-interactive clients such as CLIs or Daemons.
 
@@ -180,7 +180,7 @@ This query will return a GraphQL response like this:
 
 For the query to return this response, a couple of things such as resolvers, a form of data source (database or external API), and a GraphQL server to execute the schema need to be available.
 
-Resolvers provide the instructions for turning a GraphQL operation into data. They are organized into a one to one mapping to the fields in a GraphQL schema. Without much ado, let's add an in-app memory data source!
+Resolvers provide the instructions for turning a GraphQL operation into data. They are organized into a one to one mapping to the fields in a GraphQL schema. Without further ado, let's add an in-app memory data source!
 
 
 {% include tweet_quote.html quote_text="Resolvers provide the instructions for turning a GraphQL operation into data." %}
@@ -1077,13 +1077,15 @@ Ensure you also replace the value of `<AUTH0_DOMAIN>` in `const AUDIENCE = 'http
 
 ### Create the Auth Service
 
-We'll create an authentication service to handle everything about authentication in our app. Go ahead and create an `Auth.js` file in the root directory.
+We'll create an authentication service to handle everything about authentication in our app. Go ahead and create an `Auth.js` file in the `src` directory.
 
 Before we add code, you need to install `auth0-js` package like so:
 
 ```bash
 npm install auth0-js --save
 ```
+
+_src/Auth.js_
 
 Open up the `Auth.js` file and add code to it like so:
 
