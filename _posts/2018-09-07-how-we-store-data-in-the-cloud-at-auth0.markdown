@@ -4,8 +4,8 @@ title: How We Store Data in the Cloud at Auth0
 metatitle: How We Store Data in the Cloud at Auth0
 description: Learn how Auth0 uses different datastores to serve a wide variety of use cases and power critical features.
 metadescription: Learn how Auth0 uses different datastores, including MongoDB and PostgreSQL, to serve a wide variety of use cases and power critical features for customers.
-date: 2018-09-07 13:26
-category: Auth0 Engineering, Stack, Database
+date: 2018-09-26 13:26
+category: Technical Guide, Auth0 Engineering, Database
 author:
   name: Dirceu Tiegs
   url: https://twitter.com/dirceu
@@ -30,7 +30,7 @@ tags:
   - data
 related:
   - 2018-08-15-auth0-architecture-running-in-multiple-cloud-providers-and-regions
-  - 2018-06-07-developing-well-organized-apis-with-nodejs-joi-and-mongo
+  - 2018-09-20-a-scout-approach-to-software-development
   - 2018-08-08-introduction-to-redis-install-cli-commands-and-data-types
 ---
 
