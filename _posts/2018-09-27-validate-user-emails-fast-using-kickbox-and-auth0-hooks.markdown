@@ -88,7 +88,7 @@ While the Sendex code is useful to verify the quality of an email address, using
 
 Using these two properties with a pre-registration hook, we'll determine if we'll either create the user account or send an error at the moment of the sign-up.
 
-## Building an Auth Hook
+## Building an Auth0 Hook
 
 [Auth0 Hooks](https://auth0.com/docs/hooks) allow us to customize the behavior of Auth0 using [Node.js](https://nodejs.org/en/) code that is executed against extensibility points (which are comparable to webhooks that come with a server). Hooks give us modularity when configuring our Auth0 implementation and extend the functionality of base Auth0 features.
 
