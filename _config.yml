@@ -36,4 +36,4 @@ defaults:
       related:
         - https://auth0.com/blog/vuejs2-authentication-tutorial
         - https://auth0.com/blog/implementing-jwt-authentication-on-spring-boot
-        - https://auth0.com/blog/developing-restful-apis-with-lumen/  
+        - https://auth0.com/blog/developing-restful-apis-with-lumen 
