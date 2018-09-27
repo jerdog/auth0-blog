@@ -34,9 +34,9 @@ related:
 - 2017-06-28-real-world-angular-series-part-1
 ---
 
-<div class="alert alert-danger alert-icon">
+<div class="alert alert-info alert-icon">
   <i class="icon-budicon-487"></i>
-  <strong>WARNING: This article uses Angular 5 and RxJS 5.</strong> Please be aware that angularfire2 is currently not compatible with changes in Angular 6. We will update this tutorial once angularfire2 compatibility is completed. Thank you for your patience!
+  This series was updated to Angular, Angular CLI, and RxJS 6 in October 2018, as well as `@angular/fire` 5.
 </div>
 
 **TL;DR:** In this 2-part tutorial series, we'll learn how to build an application that secures a Node back end and an Angular front end with [Auth0](https://auth0.com) authentication. Our server and app will also authenticate a [Firebase](https://firebase.google.com) [Cloud Firestore database](https://firebase.google.com/docs/firestore/) with custom tokens so that users can leave realtime comments in a secure manner after logging in with Auth0. The Angular application code can be found at the [angular-firebase GitHub repo](https://github.com/auth0-blog/angular-firebase) and the Node API can be found in the [firebase-auth0-nodeserver repo](https://github.com/auth0-blog/firebase-auth0-nodeserver).
@@ -136,12 +136,12 @@ Next, set up an Auth0 Application and API so Auth0 can interface with the Angula
 
 ### Set Up an Auth0 Application
 
-1. Go to your [**Auth0 Dashboard**](https://manage.auth0.com/#/) and click the "[Create a New Application](https://manage.auth0.com/#/applications/create)" button.
+1. Go to your [**Auth0 Dashboard**](https://manage.auth0.com/#/) and click the "New Application" button.
 2. Name your new app (something like `Angular Firebase`) and select "Single Page Web Applications".
 3. In the **Settings** for your new Auth0 application app, add `http://localhost:4200/callback` to the **Allowed Callback URLs**.
-4. Enable the toggle for **Use Auth0 instead of the IdP to do Single Sign On**. 
+4. Enable the toggle for **Use Auth0 instead of the IdP to do Single Sign On**.
 5. At the bottom of the **Settings** section, click "Show Advanced Settings". Choose the **OAuth** tab and verify that the **JsonWebToken Signature Algorithm** is set to "RS256".
-6. If you'd like, you can [set up some social connections](https://manage.auth0.com/#/connections/social). You can then enable them for your app in the **Application** options under the **Connections** tab. The example shown in the screenshot above uses username/password database, Facebook, Google, and Twitter. 
+6. If you'd like, you can [set up some social connections](https://manage.auth0.com/#/connections/social). You can then enable them for your app in the **Application** options under the **Connections** tab. The example shown in the screenshot above uses username/password database, Facebook, Google, and Twitter.
 
 > **Note:** For production, make sure you set up your own social keys and do not leave social connections set to use Auth0 dev keys.
 
@@ -158,7 +158,7 @@ Next you will need a free [Firebase](https://firebase.google.com) project.
 
 ### Create a Firebase Project
 
-1. Go to the **[Firebase Console](https://console.firebase.google.com)** and sign in with your Google account. 
+1. Go to the **[Firebase Console](https://console.firebase.google.com)** and sign in with your Google account.
 2. Click on **Add Project**.
 3. In the dialog that pops up, give your project a name (such as `Angular Firebase Auth0`). A project ID will be generated based on the name you chose. You can then select your country/region.
 4. Click the "Create Project" button.
@@ -193,7 +193,7 @@ firebase-auth0-nodeserver/
   |--dogs.json
   |--package.json
   |--routes.js
-  |--server.js  
+  |--server.js
 ```
 
 You can generate the necessary folders and files with the command line like so:
@@ -353,11 +353,11 @@ module.exports = function(app) {
     const uid = req.user.sub;
     // Mint token using Firebase Admin SDK
     firebaseAdmin.auth().createCustomToken(uid)
-      .then(customToken => 
+      .then(customToken =>
         // Response must be an object or Firebase errors
         res.json({firebaseToken: customToken})
       )
-      .catch(err => 
+      .catch(err =>
         res.status(500).send({
           message: 'Something went wrong acquiring a Firebase token.',
           error: err
@@ -440,10 +440,10 @@ Now let's install our front end dependencies:
 
 ```bash
 $ cd angular-firebase
-$ npm install --save auth0-js@latest firebase@latest angularfire2@latest
+$ npm install --save auth0-js@latest firebase@latest @angular/fire@latest
 ```
 
-We will need the [`auth0-js` library](https://github.com/auth0/auth0.js) to implement Auth0 authentication in our Angular app. We'll also need the [`firebase` JS SDK](https://github.com/firebase/firebase-js-sdk) and the [`angularfire2` Angular Firebase library](https://github.com/angular/angularfire2/) to implement our realtime comments with Firebase.
+We will need the [`auth0-js` library](https://github.com/auth0/auth0.js) to implement Auth0 authentication in our Angular app. We'll also need the [`firebase` JS SDK](https://github.com/firebase/firebase-js-sdk) and the [`angularfire2` Angular Firebase library](https://github.com/angular/angularfire2/) (which was moved to the `@angular/fire` namespace in version 5) to implement our realtime comments with Firebase.
 
 ### Add Bootstrap CSS
 
@@ -616,7 +616,7 @@ export const environment = {
 };
 ```
 
-Replace placeholders in `<angle brackets>` with your appropriate Auth0, Firebase, and API information. 
+Replace placeholders in `<angle brackets>` with your appropriate Auth0, Firebase, and API information.
 
 You can find your Auth0 configuration in your [Auth0 Dashboard](https://manage.auth0.com) in the settings for the application and API you created for this tutorial.
 
@@ -687,7 +687,7 @@ export class CoreModule {
 }
 ```
 
-Since this is a shared module, we'll import the other modules, services, and components that we'll need access to _throughout_ our app. 
+Since this is a shared module, we'll import the other modules, services, and components that we'll need access to _throughout_ our app.
 
 > **Note:** The `CommonModule` is imported in all modules that are _not_ the root module.
 
@@ -705,7 +705,7 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth.guard';
-import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 @NgModule({
   imports: [
@@ -726,7 +726,7 @@ export class AuthModule {
 }
 ```
 
-We'll import `ModuleWithProviders` to implement a `forRoot()` method like we did with our `CoreModule`. Then we'll import our `AuthService` and `AuthGuard`. We also need to import `AngularFireAuthModule` from `angularfire2/auth` so we can secure our Firebase connections in our `AuthService`. The service and guard should then be returned in the `providers` array in the `forRoot()` method.
+We'll import `ModuleWithProviders` to implement a `forRoot()` method like we did with our `CoreModule`. Then we'll import our `AuthService` and `AuthGuard`. We also need to import `AngularFireAuthModule` from `@angular/fire/auth` so we can secure our Firebase connections in our `AuthService`. The service and guard should then be returned in the `providers` array in the `forRoot()` method.
 
 ### Comments Module
 
@@ -738,8 +738,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CoreModule } from '../core/core.module';
 import { environment } from './../../environments/environment';
-import { AngularFireModule } from 'angularfire2';
-import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { CommentsComponent } from './comments/comments.component';
 import { CommentFormComponent } from './comments/comment-form/comment-form.component';
 
@@ -763,7 +763,7 @@ export class CommentsModule { }
 
 We'll need to import the `CoreModule` so we can utilize its exported `FormsModule`, `LoadingComponent`, and `ErrorComponent`. We also need to access our configuration from the `environment.ts` file. Comments use Firebase's Cloud Firestore database, so let's import the `AngularFireModule` and `AngularFirestoreModule` as well as our two components: `CommentsComponent` and `CommentFormComponent`.
 
-When we add `AngularFireModule` to the @NgModule's `imports` array, we'll call its `initializeApp()` method, passing in our Firebase configuration. Both of our components should already be in the `declarations` array, and the `CommentsComponent` should already be added to the `exports` array so that other components from other modules can use it. 
+When we add `AngularFireModule` to the @NgModule's `imports` array, we'll call its `initializeApp()` method, passing in our Firebase configuration. Both of our components should already be in the `declarations` array, and the `CommentsComponent` should already be added to the `exports` array so that other components from other modules can use it.
 
 > **Note:** We don't need to export `CommentsFormComponent` because it's a child of `CommentsComponent`.
 
@@ -1016,9 +1016,9 @@ Before we write any code, we'll determine what the requirements are for this ser
 * Request a Firebase custom token from the API with authorization from the Auth0 access token
 * If successful in acquiring a Firebase token, sign into Firebase using the returned token and establish a way for the app to know whether the user is logged into Firebase or not
 * Custom tokens minted by Firebase expire after an hour, so we should set up a way to automatically renew tokens that expire
-* Create a `logout()` method to clear session and sign out of Firebase 
+* Create a `logout()` method to clear session and sign out of Firebase
 
-Open the `auth.service.ts` file that we generated earlier. 
+Open the `auth.service.ts` file that we generated earlier.
 
 For tutorial brevity, please **check out the full code in the [GitHub repo's `auth.service.ts` file here](https://github.com/auth0-blog/angular-firebase/blob/master/src/app/auth/auth.service.ts)**.
 
@@ -1259,7 +1259,7 @@ Open the `auth.guard.ts` file and make the following changes:
 // src/app/auth/auth.guard.ts
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 
 @Injectable()
@@ -1419,9 +1419,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { environment } from './../../environments/environment';
 import { AuthService } from './../auth/auth.service';
-import { Observable } from 'rxjs/Observable';
+import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import 'rxjs/add/observable/throw';
 import { Dog } from './../core/dog';
 import { DogDetail } from './../core/dog-detail';
 
@@ -1435,7 +1434,7 @@ export class ApiService {
 
   getDogs$(): Observable<Dog[]> {
     return this.http
-      .get(`${this._API}/dogs`)
+      .get<Dog[]>(`${this._API}/dogs`)
       .pipe(
         catchError((err, caught) => this._onError(err, caught))
       );
@@ -1443,7 +1442,7 @@ export class ApiService {
 
   getDogByRank$(rank: number): Observable<DogDetail> {
     return this.http
-      .get(`${this._API}/dog/${rank}`, {
+      .get<DogDetail>(`${this._API}/dog/${rank}`, {
         headers: new HttpHeaders().set('Authorization', `Bearer ${this.auth.accessToken}`)
       })
       .pipe(
@@ -1459,7 +1458,7 @@ export class ApiService {
         this.auth.login();
       }
     }
-    return Observable.throw(errorMsg);
+    return throwError(errorMsg);
   }
 
 }
