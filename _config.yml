@@ -34,6 +34,6 @@ defaults:
       path: ""
     values:
       related:
-        - 2015-05-14-creating-your-first-real-world-angular-2-app-from-authentication-to-calling-an-api-and-everything-in-between
-        - 2015-04-09-adding-authentication-to-your-react-flux-app
-        - 2015-03-31-critical-vulnerabilities-in-json-web-token-libraries
+        - https://auth0.com/blog/vuejs2-authentication-tutorial
+        - https://auth0.com/blog/implementing-jwt-authentication-on-spring-boot
+        - https://auth0.com/blog/developing-restful-apis-with-lumen/  
