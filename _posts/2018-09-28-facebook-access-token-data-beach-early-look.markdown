@@ -43,7 +43,7 @@ One of the ways that Facebook uses access tokens is to persist login. As Faceboo
 - Facebook has reset the access tokens of the almost 50 million accounts that were determined to be at risk in order to diminish any risk to the user data and to ensure their personal and digital security.
 - As a precautionary step, Facebook has also reset the access tokens for another 40 million accounts. These accounts used the "View As" feature in the past year.
 
-As a result of these security measures, about 90 million users will have to log back into the Facebook platform. Other applications that use Facebook login are also impacted and will require users to re-authenticate. Facebook wants to remain transparent and direct in the acknowledgment and communication of this security breach. Once affected users logs back into their account, they will receive a notification at the top of their News Feed with an explanation of what has happened and what actions were taken.
+As a result of these security measures, about 90 million users will have to log back into the Facebook platform. Other applications that use Facebook login are also impacted and will require users to re-authenticate. Facebook wants to remain transparent and direct in the acknowledgment and communication of this security breach. Once affected users log back into their accounts, they will receive a notification at the top of their News Feed with an explanation of what has happened and what actions were taken.
 
 <p style="text-align: center;">
   <img src="https://cdn.auth0.com/blog/facebook-data-breach/facebook-data-breach-notification-access-tokens" alt="Updated on September 28, 2018 at 1:08PM PT to include image of notification.">
@@ -53,7 +53,7 @@ As a result of these security measures, about 90 million users will have to log 
 
 As a final precaution, Facebook has turned off the "View As" feature to run a security review as part of their investigation. As the security investigation is on its early stage, Facebook has yet to determine if any of the compromised accounts had their data accessed or misused. The identity or location of the attackers is also unknown at this time. Facebook vows to keep users updated on the evolution of the investigation. 
 
-On a statement on this personal page, Mark Zuckerberg, Facebook CEO, issued a statement [summarizing the nature of the data breach](https://www.facebook.com/zuck/posts/10105274505136221). Part of his statement includes the assessment that new tools need to be developed to prevent attacks like this from being successful:
+On a statement on his personal page, Mark Zuckerberg, Facebook CEO, issued a statement [summarizing the nature of the data breach](https://www.facebook.com/zuck/posts/10105274505136221). Part of his statement includes the assessment that new tools need to be developed to prevent attacks like this from being successful:
 
 > "We face constant attacks from people who want to take over accounts or steal information around the world. While I'm glad we found this, fixed the vulnerability, and secured the accounts that may be at risk, the reality is we need to continue developing new tools to prevent this from happening in the first place. If you've forgotten your password or are having trouble logging in, you can access your account through the Help Center."
 
