@@ -34,7 +34,13 @@ related:
 
 On September 25th, 2018, Facebook learned from its engineering team that [a security vulnerability compromised around 50 million accounts](https://newsroom.fb.com/news/2018/09/security-update/). While the investigation is still in progress, Facebook already has defined the attack surface and vulnerabilities that led to the attack along with identity data that was compromised.
 
-A feature that allows Facebook users to determine what their profile looks like to other people, known as ["View As"](https://www.facebook.com/help/288066747875915?helpref=faq_content), had a vulnerability that was exploited by attackers. Through this vulnerability, attackers were able to steal Facebook access tokens. An [access token](https://auth0.com/docs/tokens/access-token) is a credential that can be used by an application to access an API. Its main purpose is to inform the API that the bearer of this token has been authorized to access the API and perform specific actions. In this case, an attacker could have used the Facebook access tokens to take over accounts.
+A feature that allows Facebook users to determine what their profile looks like to other people, known as ["View As"](https://www.facebook.com/help/288066747875915?helpref=faq_content), had a vulnerability that was exploited by attackers. 
+
+<p style="text-align: center;">
+  <img src="https://cdn.auth0.com/blog/facebook-breach/facebook-view-as-feature.png" alt="Facebook View As feature.">
+</p>
+
+Through this vulnerability, attackers were able to steal Facebook access tokens. An [access token](https://auth0.com/docs/tokens/access-token) is a credential that can be used by an application to access an API. Its main purpose is to inform the API that the bearer of this token has been authorized to access the API and perform specific actions. In this case, an attacker could have used the Facebook access tokens to take over accounts.
 
 One of the ways that Facebook uses access tokens is to persist login. As Facebook mentions on their [Security Update](https://auth0.com/docs/tokens/access-token), these tokens are the "equivalent of digital keys that keep people logged in to Facebook so they don’t need to re-enter their password every time they use the app." Thus, for this type of data breach, changing the user's password doesn't provide risk mitigation. Instead, the digital keys need to be changed. Once Facebook understood the origin and nature of the attack, the engineering team carried out the following actions to mitigate any damage to the platform and to users:
 
