@@ -34,7 +34,7 @@ related:
 
 Here at [Auth0, we’re all about open source](https://auth0.com/opensource). As a business, we actively contribute to, and benefit from, open source and have over 25,000 stars across multiple projects. [Our community](https://community.auth0.com/) underpins that initiative with direct access to advice and support for developers who might be working on projects, open source or not.
 
-On open source in general, contributions by first-timers and [code newbies](https://www.codenewbie.org/) are encouraged, because that is the essence of open source: Learning and collaboration, together, for the benefit of everyone. It can be scary and a little overwhelming the first time, but there are [projects](https://www.firsttimersonly.com/) and [events](https://hacktoberfest.digitalocean.com/) out there tailored to helping you to get involved and gain confidence in making your first contribution.
+On open source in general, contributions by first-timers and [code newbies](https://www.codenewbie.org/) are encouraged, because that is the essence of open source: Learning and collaboration, together, for the benefit of everyone. It can be scary and a little overwhelming the first time, but there are [projects](https://www.firsttimersonly.com/) and [events like Hacktoberfest](https://auth0.com/blog/celebrate-hacktoberfest-with-auth0/) out there tailored to helping you to get involved and gain confidence in making your first contribution.
 
 <p style="text-align: center;">
   <img src="https://cdn.auth0.com/blog/a-first-timers-guide-to-an-open-source-project/open-source-needs-you.png" alt="Open Source Needs You, Raise a Pull Request Now">
