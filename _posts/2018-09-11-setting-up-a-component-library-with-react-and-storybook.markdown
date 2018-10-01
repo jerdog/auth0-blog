@@ -14,7 +14,7 @@ author:
   name: Dan Arias
   url: http://twitter.com/getDanArias
   mail: dan.arias@auth0.com
-  avatar: https://pbs.twimg.com/profile_images/1002301567490449408/1-tPrAG__400x400.jpg
+  avatar: https://secure.gravatar.com/avatar/d786d3d179f6bd91ce63df956d433588
 tags: 
   - react
   - storybook
