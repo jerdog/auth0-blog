@@ -17,7 +17,6 @@ author:
 design:
   bg_color: "#582D41"
   image: https://cdn.auth0.com/blog/hacktoberfest/auth0-hacktoberfest-2018-logo.png
-  bg_merge: true
 tags:
 - hacktoberfest
 - open-source
@@ -75,6 +74,8 @@ Therefore, let’s take a quick look: submit **5 or more pull requests** and get
 At Auth0, [we’re heavily invested in the open-source software movement](https://auth0.com/opensource). Look out for a kickass 2018 Hacktoberfest t-shirt courtesy of the awesome Auth0 team, along with a psychedelic Auth0 sticker pack!
 
 All of our qualifying projects can be found on [our primary GitHub organization](https://github.com/auth0), as well as [our community organization](https://github.com/auth0-community). Join us over in [community.auth0.com](https://community.auth0.com/) if you have any questions or feedback.
+
+To notify us of your contribution(s), please submit your details in this [Google form]( https://goo.gl/forms/sNo604XkIMhCX8i03) and we will follow up at the end of the event to get your details! 
 
 ## Share Your Journey!
 We want to hear how your Hacktoberfest journey is going, so make sure to use the #Hacktoberfest hashtag and, if you’re working with Auth0 this month, use #Auth0OSS. We will be re-sharing our favorites! 
