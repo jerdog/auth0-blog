@@ -17,7 +17,6 @@ author:
 design:
   bg_color: "#582D41"
   image: https://cdn.auth0.com/blog/hacktoberfest/auth0-hacktoberfest-2018-logo.png
-  bg_merge: true
 tags:
 - hacktoberfest
 - open-source
