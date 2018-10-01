@@ -1,9 +1,9 @@
 ---
 layout: post
-title: A First Timers Guide to an Open Source Project
-metatitle: A First Timers Guide to an Open Source Project
-description: "Open source is the past, present, and future. Pay it forward by learning how to make your first contribution with Auth0"
-metadescription: "Open source is the past, present, and future. Pay it forward by learning how to make your first contribution with Auth0"
+title: "A First Timers Guide to an Open Source Project"
+metatitle: "First Timers Guide to Contributing to an Open Source Project"
+description: "Open source is the past, present, and future. Pay it forward by learning how to make your first contribution with Auth0."
+metadescription: "What is open source? How to contribute to an open source project? Check out the First Timers Guide, here - pay it forward by learning how to make your first contribution to OSS."
 date: 2018-09-24 08:39
 category: Technical Guide, Tips, Open Source
 post_length: 3
