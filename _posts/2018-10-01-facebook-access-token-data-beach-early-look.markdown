@@ -1,21 +1,21 @@
 ---
 layout: post
 title: "Early Look at Facebook Access Token Security Breach"
-metatitle: "Early Look at Facebook Security Breach Involving 50 Million Accounts"
+metatitle: "Facebook's View As Security Breach Impacts 50 Million Accounts"
 description: "Almost 90 millions Facebook users were affected by a breach that compromised access tokens to the platform."
-metadescription: "About 90 millions Facebook users were impacted by a breach that compromised platform access tokens, making it possible for attackers to take over accounts."
-date: 2018-09-28 16:38
-category: Hot Topics Security Breaches
+metadescription: "90 million Facebook users were impacted by a breach that compromised access tokens through the View As feature, making it possible for attackers to take over accounts."
+date: 2018-10-01 08:30
+category: Hot Topics, Security, Breaches
 post_length: 
 auth0_aside: true
 author:
-  name: Diego Poza
-  url: https://twitter.com/diegopoza
-  avatar: https://avatars3.githubusercontent.com/u/604869?v=3&s=200
-  mail: diego.poza@auth0.com
+  name: Dan Arias
+  url: http://twitter.com/getDanArias
+  mail: dan.arias@auth0.com
+  avatar: https://pbs.twimg.com/profile_images/1002301567490449408/1-tPrAG__400x400.jpg
 design: 
-  bg_color: "#203259"
-  image: https://cdn.auth0.com/blog/cambridge-analytica-facebook/logo.png
+  bg_color: "#395185"
+  image: https://cdn.auth0.com/blog/facebook-breach/facebook-access-token-security-breach-logo.png
 tags: 
   - facebook
   - breach
@@ -27,7 +27,7 @@ tags:
   - social-media
   - policy
 related:
-  - 2018-07-02-breaking-down-master-data-management
+  - 2018-09-07-3-critical-lessons-from-the-t-mobile-data-breach
   - 2018-08-02-four-cybersecurity-attacks-you-need-to-know
   - 2018-08-03-what-data-did-facebook-really-give-cambridge-analytica
 ---
@@ -52,7 +52,7 @@ One of the ways that Facebook uses access tokens is to persist login. As Faceboo
 As a result of these security measures, about 90 million users will have to log back into the Facebook platform. Other applications that use Facebook login are also impacted and will require users to re-authenticate. Facebook wants to remain transparent and direct in the acknowledgment and communication of this security breach. Once affected users log back into their accounts, they will receive a notification at the top of their News Feed with an explanation of what has happened and what actions were taken.
 
 <p style="text-align: center;">
-  <img src="https://cdn.auth0.com/blog/facebook-data-breach/facebook-data-breach-notification-access-tokens" alt="Updated on September 28, 2018 at 1:08PM PT to include image of notification.">
+  <img src="https://cdn.auth0.com/blog/facebook-data-breach/facebook-data-breach-notification-access-tokens" alt="Facebook security breach user notification">
 </p>
 
 [Source](https://fbnewsroomus.files.wordpress.com/2018/09/42647794_340201783392972_4207828087510925312_n.png?w=960&h=551)
