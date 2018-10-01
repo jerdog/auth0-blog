@@ -55,7 +55,7 @@ A huge shoutout to DigitalOcean on a happy 5 years of Hacktoberfest.
 
 First of all, sign up to the event on the [DigitalOcean Hacktoberfest site](https://hacktoberfest.digitalocean.com/), then head over to GitHub and take a [look through the projects](https://github.com/topics/hacktoberfest). These are all the open-source projects on GitHub that have the designated ‘hacktoberfest’ label. Another way to get started might be to look at the projects you use every day - they may just be open source!
 
-If you have never contributed to an open-source project before, there is a [Hacktoberfest My-First-PR Starter Project](https://my-first-pr.github.io/hacktoberfest-2018/) available that you can use to practice making changes and creating pull requests, before progressing to adding real value to other repositories that people depend on every day.
+If you have never contributed to an open-source project before, there is a [Hacktoberfest My-First-PR Starter Project](https://auth0.com/blog/a-first-timers-guide-to-an-open-source-project/) available that you can use to practice making changes and creating pull requests, before progressing to adding real value to other repositories that people depend on every day.
 
 Furthermore, if you’re interested in [hosting your own Hacktoberfest event](https://hacktoberfest.digitalocean.com/eventkit), there is an event kit containing a guide on how to get started and run your event in the best possible way. You don’t have to be an expert or professional to host an event, just the passion and the time to get organized!
 
