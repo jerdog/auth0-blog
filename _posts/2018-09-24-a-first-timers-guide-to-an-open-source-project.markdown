@@ -27,9 +27,9 @@ tags:
 - first-contributions
 - my-first-pr
 related:
+- 2018-09-24-celebrate-hacktoberfest-with-auth0
 - 2018-09-20-a-scout-approach-to-software-development
 - 2018-09-21-improve-auth0-new-feedback-page
-- 2018-09-24-celebrate-hacktoberfest-with-auth0
 ---
 
 Here at [Auth0, we’re all about open source](https://auth0.com/opensource). As a business, we actively contribute to, and benefit from, open source and have over 25,000 stars across multiple projects. [Our community](https://community.auth0.com/) underpins that initiative with direct access to advice and support for developers who might be working on projects, open source or not.
