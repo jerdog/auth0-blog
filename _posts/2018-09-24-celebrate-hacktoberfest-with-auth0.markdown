@@ -1,9 +1,9 @@
 ---
 layout: post
 title: "Celebrate Hacktoberfest 2018 with Auth0!"
-metatitle: Celebrate Hacktoberfest 2018 with Auth0!
+metatitle: "Celebrate Open-Source Software and Hacktoberfest 2018 with Auth0"
 description: "What do apple picking, beer festivals, ghosts and goblins, and open-source all have in common?" 
-metadescription: Auth0 is to excited join Hacktoberfest 2018, a month-long celebration of open-source software by Digital Ocean, Github, and Twilio. 
+metadescription: "Auth0 is to excited join Hacktoberfest 2018, a month-long celebration and supporting of open-source software by Digital Ocean, Github, and Twilio. Learn more!"
 date: 2018-09-24 12:07
 category: Technical Guide, Events, Hacktoberfest
 post_length: 1
