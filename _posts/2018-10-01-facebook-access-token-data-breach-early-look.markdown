@@ -6,6 +6,7 @@ description: "Almost 90 millions Facebook users were affected by a breach that c
 metadescription: "90 million Facebook users were impacted by a breach that compromised access tokens through the View As feature, making it possible for attackers to take over accounts."
 date: 2018-10-01 08:30
 category: Hot Topics, Security, Breaches
+alias: /facebook-access-token-data-beach-early-look/
 post_length: 
 auth0_aside: true
 author:
