@@ -48,21 +48,21 @@ const BIRTHDAY_UPDATE = 'BIRTHDAY_UPDATE';
 const initialState = {name: 'Bruno Krebs'};
 
 function reducer(state, action) {
-    const { birthday } = action;
-    switch (action.type) {
-        case BIRTHDAY_UPDATE:
-            return {
-                ...state,
-                birthday
-            };
-        default:
-            return state;
-    }
+  const {birthday} = action;
+  switch (action.type) {
+    case BIRTHDAY_UPDATE:
+      return {
+        ...state,
+        birthday
+      };
+    default:
+      return state;
+  }
 }
 
 const updateAction = {
-    type: BIRTHDAY_UPDATE,
-    birthday: new Date(1984, 10, 20)
+  type: BIRTHDAY_UPDATE,
+  birthday: new Date(1984, 10, 20)
 };
 
 const newState = reducer(initialState, updateAction);
@@ -70,9 +70,9 @@ const newState = reducer(initialState, updateAction);
 console.assert(initialState.birthday === undefined, 'Initial state must not be changed');
 
 console.assert(
-    newState.birthday !== undefined &&
-    newState.birthday.getTime() === new Date(1984, 10, 20).getTime(),
-    'New state must contain 1984/10/20 as the birthday'
+  newState.birthday !== undefined &&
+  newState.birthday.getTime() === new Date(1984, 10, 20).getTime(),
+  'New state must contain 1984/10/20 as the birthday'
 );
 ```
 
@@ -120,13 +120,13 @@ export const REMOVE_EXPENSE = 'REMOVE_EXPENSE';
 
 // action creators
 export const addExpense = expense => ({
-    type: ADD_EXPENSE,
-    expense
+  type: ADD_EXPENSE,
+  expense
 });
 
 export const removeExpense = expense => ({
-    type: REMOVE_EXPENSE,
-    expense
+  type: REMOVE_EXPENSE,
+  expense
 });
 ```
 
@@ -137,41 +137,40 @@ These action creators are quite simple. They simply returns objects that contain
 We are going to add the business logic of our tutorial app in the reducer that we are going to create in this section. This reducer will have a `switch` statement that, based on an action, will trigger the proper function to generate the new state. Let's open the `src/reducers.js` file and add the following reducer definition to it:
 
 ```js
-import {ADD_EXPENSE, REMOVE_EXPENSE} from "./actions";
+import {ADD_EXPENSE, REMOVE_EXPENSE} from './actions';
 
 export default expenses;
 
 export const initialState = {
-    expenses: [],
-    balance: 0
+  expenses: [],
+  balance: 0
 };
 
 function expenses(state = initialState, action = {}) {
-    switch (action.type) {
-        case ADD_EXPENSE:
-            return addExpense(state, action.expense);
-        case REMOVE_EXPENSE:
-            return removeExpense(state, action.expense);
-        default:
-            return state;
-    }
+  switch (action.type) {
+    case ADD_EXPENSE:
+      return addExpense(state, action.expense);
+    case REMOVE_EXPENSE:
+      return removeExpense(state, action.expense);
+    default:
+      return state;
+  }
 }
 
 function addExpense(state, expense) {
-    return {
-        ...state,
-        expenses: [...state.expenses, expense],
-        balance: state.balance + expense.amount
-    }
+  return Object.assign({}, state, {
+    expenses: [...state.expenses, expense],
+    balance: state.balance + expense.amount
+  });
 }
 
 function removeExpense(state, expense) {
-    const persistedExpense = state.expenses.find(item => item.id === expense.id);
-    return {
-        ...state,
-        expenses: state.expenses.filter(item => item.id !== expense.id),
-        balance: state.balance - persistedExpense.amount
-    }
+  const persistedExpense = state.expenses.find(item => item.id === expense.id);
+
+  return Object.assign({}, state, {
+    expenses: state.expenses.filter(item => item.id !== expense.id),
+    balance: state.balance - persistedExpense.amount
+  });
 }
 ```
 
@@ -185,6 +184,14 @@ It is easy to create an automated test to validate the behavior of this reducer.
 npm i -D jest babel-jest babel-preset-es2015
 ```
 
+After that, let's create a file called `.babelrc` in the project root (i.e., alongside with the `package.json` file), and configure Babel to use the `es2015` preset:
+
+```json
+{
+  "presets": ["es2015"]
+}
+```
+
 Also, let's update the `scripts` property in the `package.json` file so we can easily run `jest`:
 
 ```js
@@ -193,7 +200,7 @@ Also, let's update the `scripts` property in the `package.json` file so we can e
   "scripts": {
     "test": "jest",
     "test:watch": "npm test -- --watch"
-  }
+  },
   // ...
 }
 ```
@@ -205,47 +212,47 @@ import {addExpense, removeExpense} from './actions';
 import expenses, {initialState} from './reducers';
 
 describe('reducers', () => {
-    it('should be able to add expenses', () => {
-        const stateStep1 = expenses(initialState, addExpense({
-            id: 1,
-            amount: 20
-        }));
-        expect(stateStep1.expenses.length).toEqual(1);
-        expect(stateStep1.balance).toEqual(20);
+  it('should be able to add expenses', () => {
+    const stateStep1 = expenses(initialState, addExpense({
+      id: 1,
+      amount: 20
+    }));
+    expect(stateStep1.expenses.length).toEqual(1);
+    expect(stateStep1.balance).toEqual(20);
 
-        const stateStep2 = expenses(stateStep1, addExpense({
-            id: 2,
-            amount: 10
-        }));
-        expect(stateStep2.expenses.length).toEqual(2);
-        expect(stateStep2.balance).toEqual(30);
-    });
+    const stateStep2 = expenses(stateStep1, addExpense({
+      id: 2,
+      amount: 10
+    }));
+    expect(stateStep2.expenses.length).toEqual(2);
+    expect(stateStep2.balance).toEqual(30);
+  });
 
-    it('should be able to remove expenses', () => {
-        const stateStep1 = expenses(initialState, addExpense({
-            id: 1,
-            amount: 55
-        }));
-        expect(stateStep1.expenses.length).toEqual(1);
-        expect(stateStep1.balance).toEqual(55);
+  it('should be able to remove expenses', () => {
+    const stateStep1 = expenses(initialState, addExpense({
+      id: 1,
+      amount: 55
+    }));
+    expect(stateStep1.expenses.length).toEqual(1);
+    expect(stateStep1.balance).toEqual(55);
 
-        const stateStep2 = expenses(stateStep1, addExpense({
-            id: 2,
-            amount: 36
-        }));
-        expect(stateStep2.expenses.length).toEqual(2);
-        expect(stateStep2.balance).toEqual(91);
+    const stateStep2 = expenses(stateStep1, addExpense({
+      id: 2,
+      amount: 36
+    }));
+    expect(stateStep2.expenses.length).toEqual(2);
+    expect(stateStep2.balance).toEqual(91);
 
-        const stateStep3 = expenses(stateStep2, removeExpense({
-            id: 1
-        }));
-        expect(stateStep3.expenses.length).toEqual(1);
-        expect(stateStep3.balance).toEqual(36);
-    });
+    const stateStep3 = expenses(stateStep2, removeExpense({
+      id: 1
+    }));
+    expect(stateStep3.expenses.length).toEqual(1);
+    expect(stateStep3.balance).toEqual(36);
+  });
 
-    it('should return the default state', () => {
-        expect(expenses()).toEqual(initialState);
-    });
+  it('should return the default state', () => {
+    expect(expenses()).toEqual(initialState);
+  });
 });
 ```
 
@@ -274,12 +281,17 @@ Ran all test suites.
 
 ### Defining a Redux Store
 
-So far, we haven't used the central piece of Redux, the Redux Store. We have only defined two functions to create Redux Actions and a Redux Reducer. Now it's time to create a Redux Store and put our reducer and our action creators to work.
-
-As we want to use modern JavaScript code, let's install `babel-cli` and a plugin:
+So far, we haven't used the central piece of Redux, the Redux Store. We have only defined two functions to create Redux Actions and a Redux Reducer. Actually, we haven't even installed and used Redux anyhow. So, the first thing we need to do next is to install Redux. To do so, let's issue the following command in our terminal:
 
 ```bash
-npm i -D babel-cli babel-plugin-transform-object-rest-spread
+# from the project root
+npm i redux
+```
+
+Now, it's time to create a Redux Store and put our reducer and our action creators to work. As we want to use modern JavaScript code, let's install `babel-cli` and a plugin:
+
+```bash
+npm i -D babel-cli
 ```
 
 The plugin simply guarantees that we can use the spread operator with Babel. After installing both dependencies, let's open the `index.js` file and add the following code:
@@ -292,22 +304,22 @@ import expenses from './reducers';
 const store = createStore(expenses);
 
 store.dispatch(addExpense({
-    id: 1,
-    amount: 45
+  id: 1,
+  amount: 45
 }));
 
 store.dispatch(addExpense({
-    id: 2,
-    amount: 20
+  id: 2,
+  amount: 20
 }));
 
 store.dispatch(addExpense({
-    id: 3,
-    amount: 30
+  id: 3,
+  amount: 30
 }));
 
 store.dispatch(removeExpense({
-    id: 2
+  id: 2
 }));
 
 console.assert(store.getState().balance === 75);
