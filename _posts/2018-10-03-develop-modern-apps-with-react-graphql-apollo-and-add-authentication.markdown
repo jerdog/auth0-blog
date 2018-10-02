@@ -478,10 +478,10 @@ Go ahead and install the [SQLite browser](https://github.com/sqlitebrowser/sqlit
 
 Open the _sqlite_ file via the SQLite browser. You'll see all the data in it. Now, go ahead and replace that data with the initial data we started with, `books` and `authors` array.
 
-![Books Section](https://cdn.auth0.com/blog/sqlite/books.png)
+![SQLite browser Database view Books Section](https://cdn.auth0.com/blog/sqlite/books.png)
 _SQLite: Coolreads database, Books table_
 
-![Authors Section](https://cdn.auth0.com/blog/sqlite/authors.png)
+![SQLite browser Database view Authors Section](https://cdn.auth0.com/blog/sqlite/authors.png)
 _SQLite: Coolreads database, Authors table_
 
 
@@ -543,9 +543,7 @@ We'll use ReactJS library to build the frontend. Create a new app like so:
 After installing globally, go ahead and scaffold a new **ReactJS** app like so:
 
 ```bash
-
 create-react-app coolreads
-
 ```
 
 **Note:** If you don't have the [CRA tool](https://github.com/facebookincubator/create-react-app), go ahead and install it globally, `npm install -g create-react-app`.
@@ -559,7 +557,7 @@ npm start
 
 Then open [`http://localhost:3000`](http://localhost:3000) to see your app.
 
-![App recently scaffolded and showing at Localhost](https://cdn.auth0.com/blog/react/ready-app.png)
+![Create React App localhost view showing](https://cdn.auth0.com/blog/react/ready-app.png)
 
 **Note:** `create-react-app` automatically invokes Yarn for installation. If you don't have Yarn installed, it falls back to use npm.
 
@@ -910,11 +908,11 @@ Modify the `src/App.css` file to contain the code [here](https://github.com/auth
 
 Now, run your app. There should be a list of books on the landing page. The existing data from our backend is fetched and rendered on our client app.
 
-![List books](https://cdn.auth0.com/blog/coolreads/landing-page.png)
+![React App locally showing our list of books](https://cdn.auth0.com/blog/coolreads/landing-page.png)
 
 Try, to add a book by going to the `/create` route and using the form:
 
-![Create book](https://cdn.auth0.com/blog/coolreads/createbook.png)
+![React App locally showing our create book component page](https://cdn.auth0.com/blog/coolreads/createbook.png)
 
 Awesome! Right now, you can create books. Next, let's make sure only authenticated users can add books.
 
@@ -1054,17 +1052,17 @@ When an [error occurs in Apollo server both inside and outside of resolvers](htt
 
 Now, run your server and try to perform a mutation with a fake token!
 
-![GraphQL API error](https://cdn.auth0.com/blog/coolreadsapi/errors.png)
+![GraphQL mutation with fake token showing API error](https://cdn.auth0.com/blog/coolreadsapi/errors.png)
 _GraphQL API Error_
 
 ## Secure your React App
 
 Auth0 allows us to easily add authentication to applications. Login to your Auth0 [management dashboard](https://manage.auth0.com) and create a [new application](https://manage.auth0.com/#/applications). In the dialog shown, enter the name and select **Single Page Application** as its type:
 
-![Select Application](https://cdn.auth0.com/blog/coolreads/selectapp.png)
+![Auth0 Dashboard Select Application](https://cdn.auth0.com/blog/coolreads/selectapp.png)
 _Select application_
 
-![Check Settings](https://cdn.auth0.com/blog/coolreads/settings.png)
+![Auth0 Dashboard App Settings](https://cdn.auth0.com/blog/coolreads/settings.png)
 _Grab client id_
 
 In the Settings tab, add `http://localhost:3000/callback` in the **Allowed Callback URLs** and `http://localhost:3000` to the **Allowed Origins (CORS)**. Also add `http://localhost:3000` into the **Allowed Logout URLs** field.
