@@ -2,7 +2,7 @@
 layout: post
 title: "Developing and Securing Modern Apps with GraphQL, React, and Apollo"
 description: "Learn how to build modern apps with GraphQL, and Apollo, including authentication with Auth0."
-date: 2018-09-25 8:30
+date: 2018-10-03 8:30
 category: Technical Guide, Stack, Modern Apps
 author:
   name: "Prosper Otemuyiwa"
