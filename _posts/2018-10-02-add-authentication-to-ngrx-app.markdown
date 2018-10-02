@@ -450,7 +450,7 @@ We’ve now got all the basic scaffolding set up for an authenticated state. Let
 ## Adding Authentication with Auth0
 In this section, we're going to set up Auth0, create an Angular authentication service, and wire everything up using NgRx Effects. The Auth0 log in screen will look like this:
 
-![Auth0 login screen](https://cdn.auth0.com/blog/resources/auth0-centralized-login.jpg)
+![Auth0 default login screen](https://cdn.auth0.com/blog/resources/auth0-centralized-login.jpg)
 
 ### Sign Up for Auth0
 The first thing you'll need to do is sign up for an [Auth0](https://auth0.com) account to manage authentication. You can <a href="https://auth0.com/signup" data-amp-replace="CLIENT_ID" data-amp-addparams="anonId=CLIENT_ID(cid-scope-cookie-fallback-name)">sign up for a free Auth0 account here</a>. (If you've already got an account, great! You can simply log in to Auth0.)
@@ -758,7 +758,7 @@ import { LoginPageComponent } from '@app/auth/components/login-page.component';
 
 We should be able to build the application, navigate to `http://localhost:4200/login`, and see the new form.
 
-![The (non-functional) login form for our NgRx application.](https://cdn.auth0.com/blog/add-auth-to-ngrx/ngrx-login-screen.png)
+![Example view of non-functional login form for our NgRx application](https://cdn.auth0.com/blog/add-auth-to-ngrx/ngrx-login-screen.png)
 
 Of course, nothing will happen when we click the button, because we don't have any effects listening for the `Login` action yet. Let's finish building our UI and then come back to that.
 
