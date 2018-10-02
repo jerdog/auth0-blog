@@ -39,7 +39,7 @@ Let’s get started!
 
 {% include tweet_quote.html quote_text="I'm learning about adding authentication to an NgRx application." %}
 
-## NgRx Basics Refresher
+## Basics of NgRx - A Recap
 
 While we have a great tutorial [on managing state with `ngrx/store`](https://auth0.com/blog/managing-state-in-angular-with-ngrx-store/) and implementing Auth0, a lot has changed with NgRx since then. Let’s do a quick recap of what hasn't changed &mdash; the fundamental concepts of NgRx and the Redux pattern.
 
@@ -453,7 +453,7 @@ In this section, we're going to set up Auth0, create an Angular authentication s
 ![Auth0 default login screen](https://cdn.auth0.com/blog/resources/auth0-centralized-login.jpg)
 
 ### Sign Up for Auth0
-The first thing you'll need to do is sign up for an [Auth0](https://auth0.com) account to manage authentication. You can <a href="https://auth0.com/signup" data-amp-replace="CLIENT_ID" data-amp-addparams="anonId=CLIENT_ID(cid-scope-cookie-fallback-name)">sign up for a free Auth0 account here</a>. (If you've already got an account, great! You can simply log in to Auth0.)
+The first thing you'll need to do is sign up for an Auth0 account to manage authentication. You can <a href="https://auth0.com/signup" data-amp-replace="CLIENT_ID" data-amp-addparams="anonId=CLIENT_ID(cid-scope-cookie-fallback-name)">sign up for a free Auth0 account here</a>. (If you've already got an account, great! You can simply log in to Auth0.)
 
 ### Set Up an Application
 Once you've got your account, you can set up an application to use with our NgRx project. We'll only be setting up a Single Page Application (SPA) in Auth0 since we're using the Google Books API as our back end.
