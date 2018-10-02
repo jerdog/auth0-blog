@@ -1,11 +1,11 @@
 ---
 layout: post
-title: Add Authentication to an NgRx Project
+title: NgRx Authentication Tutorial
 metatitle: How to Add Auth0 Authentication to Angular App in an NgRx Project
 description: Learn how to use CLI schematics, effects, Auth0, and more to secure your NgRx application.
 metadescription: Learn how to add auth to Angular app using NgRx schematics. See how to define authentication state and set up effects to control your login flow, while Auth0 handles authentication.
 date: 2018-10-02 08:50
-category: Technical Guide, Angular, NgRx, Authentication
+category: Technical Guide, Authentication, NgRx
 post_length: 5
 author:
   name: Sam Julien
@@ -13,7 +13,7 @@ author:
   mail: sam.julien@auth0.com
   avatar: https://pbs.twimg.com/profile_images/1042806646546739200/WjQvIURg_400x400.jpg
 design:
-  bg_color: "#000000"
+  bg_color: "#2f333b"
   image: https://cdn.auth0.com/blog/logos/ngrx.png
 tags:
 - angular
@@ -27,6 +27,7 @@ related:
 - 2017-03-07-managing-state-in-angular-with-ngrx-store
 - 2018-07-10-upgrade-your-angularjs-authentication-service
 ---
+
 **TL;DR:** In this article, we’ll get a quick refresher on NgRx basics and get up to speed on more features of the NgRx ecosystem. We'll then walk through how to add Auth0 authentication to an NgRx app. You can access the finished code for this tutorial on the [ngrx-auth GitHub repository](https://github.com/auth0-blog/ngrx-auth).
 
 ## NgRx: From Humble Beginnings to a New Ecosystem
