@@ -4,7 +4,7 @@ title: Add Authentication to an NgRx Project
 metatitle: Add Authentication to an NgRx Project with Auth0
 description: Learn how to use CLI schematics, effects, Auth0, and more to secure your NgRx application.
 metadescription: Learn how to use NgRx schematics, define authentication state, and set up effects to control your login flow, while letting Auth0 handle authentication.
-date: 2018-09-20 08:50
+date: 2018-10-02 08:50
 category: Technical Guide, Angular, NgRx, Authentication
 post_length: 5
 author:
