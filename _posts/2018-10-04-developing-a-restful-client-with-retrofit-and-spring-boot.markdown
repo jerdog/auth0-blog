@@ -1,9 +1,9 @@
 ---
 layout: post
 title: "Developing a RESTful Client with Retrofit and Spring Boot"
-metatitle: "Developing a RESTful Client with Retrofit and Spring Boot"
+metatitle: "Learn to Develop a REST API Client with Retrofit and Spring Boot"
 description: "Learn how to use Retrofit and Spring Boot to develop a RESTful HTTP client to GitHub's API."
-metadescription: "Learn how to use Retrofit and Spring Boot to develop a RESTful HTTP client to GitHub's API."
+metadescription: "Learn how to use Retrofit and Spring Boot to develop a RESTful HTTP client to GitHub's API. Plus see how to convert JSON to POJOs using Google Gson."
 date: 2018-10-04 07:56
 category: Technical Guide, First Application, Retrofit
 post_length: 3
