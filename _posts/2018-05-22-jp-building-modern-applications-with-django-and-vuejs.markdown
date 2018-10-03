@@ -4,7 +4,7 @@ title: "Vue.js で最新のアプリケーションを構築する"
 metatitle: "Vue.js で最新のアプリケーションを構築する"
 description: "本書では、Django と Vue.js でフルスタック アプリケーションを着実に作成しましょう"
 metadescription: "本書では、Django と Vue.js でフルスタック アプリケーションを着実に作成しましょう"
-date: 2018-10-22 17:28
+date: 2018-05-22 17:28
 category: Technical Guide, Stack, Fullstack
 author:
   name: "Ahmed Bouchefra"
