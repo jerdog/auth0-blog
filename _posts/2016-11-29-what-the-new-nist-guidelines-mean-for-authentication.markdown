@@ -29,11 +29,11 @@ related:
 
 ## NIST Digital Authentication Guideline
 
-The [US National Institute of Standards and Technology (NIST)](https://www.nist.gov/) is creating new policies for Federal agencies implementing authentication.
+The [US National Institute of Standards and Technology (NIST)](https://www.nist.gov/) has created new policies for Federal agencies implementing authentication.
 
 ![Digital Authentication Guideline: US NIST logo](https://cdn.auth0.com/blog/nist-auth-guideline/nist.png)
 
-The draft, called **Special Publication 800-63-3**, is available [on the NIST website](https://pages.nist.gov/800-63-3) as well as [on NIST's GitHub](https://github.com/usnistgov/800-63-3). The suite of documents includes the following:
+The Digital Identity Guidelines — [**Special Publication 800-63-3** — are available on the NIST website](https://pages.nist.gov/800-63-3/sp800-63-3.html) as well as [on NIST's GitHub](https://github.com/usnistgov/800-63-3). The suite of documents includes the following:
 
 * [800-63-3: Digital Authentication Guideline](https://pages.nist.gov/800-63-3/sp800-63-3.html) (overview)
 * [800-63A: Enrollment & Identity Proofing](https://pages.nist.gov/800-63-3/sp800-63a.html)
@@ -44,7 +44,7 @@ The policies are intended for Federal agency applications, but serve as a standa
 
 ## NIST Improved Password Requirements
 
-The NIST Digital Authentication Guideline strives for improved password requirements. One of the guiding principles is _better user experience_ and shifting the burden to the verifier whenever possible. In order to support the creation of passwords that users will remember while implementing excellent security, several guidelines are important:
+The NIST Digital Authentication Guidelines strives for improved password requirements. One of the guiding principles is _better user experience_ and shifting the burden to the verifier whenever possible. In order to support the creation of passwords that users will remember while implementing excellent security, several guidelines are important:
 
 * Length: 8 character minimum, >64 character maximum
 * Compare new passwords to a [dictionary](https://auth0.com/docs/connections/database/password-options#password-dictionary) and don't allow common, easily-guessed passwords (such as `password`, `abc123`, etc.)
@@ -71,6 +71,4 @@ Examples of non-SMS OOB authenticators include [Auth0 Guardian](https://auth0.co
 
 ## Conclusion
 
-Overall, the new guidelines put the user experience at the forefront while also establishing more robust storage and authentication methods. Although the NIST Digital Authentication Guideline governs Federal sites, its tenets are good standards for _any_ app or site with authentication. The guideline is currently in draft. When the policies are final, Federal agencies as well as many other companies and vendors will make strides to comply with the new guidelines for improved authentication security and user experience. To learn more, check out the [NIST Draft 800-63-3](https://pages.nist.gov/800-63-3) itself and [Jim Fenton's "Toward Better Password Requirements"](http://www.slideshare.net/jim_fenton/toward-better-password-requirements) presentation. 
-
-
+Overall, the new guidelines put the user experience at the forefront while also establishing more robust storage and authentication methods. Although the NIST Digital Authentication Guideline governs Federal sites, its tenets are good standards for _any_ app or site with authentication. Federal agencies as well as many other companies and vendors must make strides to comply with the new guidelines for improved authentication security and user experience. **Auth0 supports the NIST guidelines** with more configurable password policies. To learn more, check out the [NIST Special Publication 800-63-3](https://pages.nist.gov/800-63-3/sp800-63-3.html) itself and [Jim Fenton's "Toward Better Password Requirements"](http://www.slideshare.net/jim_fenton/toward-better-password-requirements) presentation.
