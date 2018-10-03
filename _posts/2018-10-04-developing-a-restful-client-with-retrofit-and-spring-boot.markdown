@@ -82,7 +82,7 @@ To learn about Retrofit's capabilities, you could use many REST APIs out there. 
 - GitHub API version 3 follows the REST architectural design and has a very good documentation.
 - Last, but not least, GitHub allows you to query their API once you have an _access token_, _username and password_, or a _secret key_ without requesting that you submit an application to use their API.
 
-## How to use GitHub API
+## Generate token for use with GitHub API
 
 First, as already mentioned, you will need a [GitHub account](https://github.com/join?source=header-home). After creating (or signing into) your own account, click on your GitHub's profile photo (on the top right corner of the page) and choose [the _Settings_ option](https://github.com/settings/profile).
 
@@ -335,7 +335,7 @@ public class GitHubClientController {
 
 Because of the `@Autowired` annotation on this class, Spring Boot will inject an instance of the `GitHubService` class once you start your Spring Boot application. The `getRepos` method that your new class exposes uses `GitHubService::getRepositories` method to retrieve your GitHub repositories. The `createRepo` method uses `GitHubService::createRepository` to create a new GitHub repository. And, last but not least, `deleteRepo` uses `GitHubService::deleteRepository` method to delete a particular repository in your account.
 
-## Using Your Retrofit Application
+## Testing Your Retrofit Application
 
 With all these classes in place, you are now ready to test your application. To start it, you will need to execute the following commands on the terminal:
 
