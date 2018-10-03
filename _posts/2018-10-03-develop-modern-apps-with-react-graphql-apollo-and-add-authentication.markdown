@@ -2,8 +2,8 @@
 layout: post
 title: "Developing and Securing Modern Apps with GraphQL, React, and Apollo"
 metatitle: "Learn to Develop and Secure React Apps with GraphQL, Apollo, and Auth0"
-description: "Learn how to build modern apps. Follow along to see how to build GraphQL API using resolvers and connect to SQLite database. React app front-end and authentication with Auth0."
-metadescription: ""
+description: "Learn how to develop and secure modern applications with GraphQL, React, Apollo, and Auth0."
+metadescription: "Learn how to build modern apps. Follow along to see how to build GraphQL API using resolvers and connect to SQLite database. React app front-end and authentication with Auth0."
 date: 2018-10-03 8:30
 category: Technical Guide, Stack, Modern Apps
 author:
@@ -12,8 +12,8 @@ author:
   mail: "prosper.otemuyiwa@auth0.com"
   avatar: "https://en.gravatar.com/avatar/1097492785caf9ffeebffeb624202d8f?s=200"
 design:
-  bg_color: "#222228"
-  image: "https://cdn.auth0.com/blog/graphql-auth0/logo.png"
+  bg_color: "#42007d"
+  image: "https://cdn.auth0.com/blog/logos/graphql-reactjs-logo.png"
 tags:
 - graphql
 - auth
@@ -31,7 +31,7 @@ related:
 
 **TL;DR:** Modern applications are increasingly data driven, which leads to a lot of time spent fetching, filtering, and aggregating data. When implemented with the [Apollo platform](https://www.apollographql.com/docs/fundamentals/platform.html), GraphQL reduces the complexity associated with data fetching and enables developers to take advantage of incredible tooling for crafting flexible APIs. In this tutorial, we'll explore how to build a production-ready application with GraphQL, React and Apollo. Finally, we'll wrap it up by learning how to add authentication with Auth0. The [completed code is available on GitHub](https://github.com/auth0-blog/book-app).
 
-{% include tweet_quote.html quote_text="Learn how to develop and secure modern applications with GraphQL, React and Auth0." %}
+{% include tweet_quote.html quote_text="Learn how to develop and secure modern applications with GraphQL, React, Apollo, and Auth0." %}
 
 ---
 
