@@ -28,6 +28,8 @@ related:
 - 2017-11-09-sqlalchemy-orm-tutorial-for-python-developers
 - 2017-09-28-developing-restful-apis-with-python-and-flask
 - 2018-03-29-vuejs-kanban-board-the-development-process
+lang: en
+alternate_locale_ja: jp-building-modern-applications-with-django-and-vuejs
 ---
 
 **TL;DR:** Throughout this article, you'll be using Django, Django REST framework, and Vue.js to develop an application with a REST API back-end and a Vue.js front-end. The API will be consumed by the Vue.js front-end with the help of Axios (the HTTP client library) and JWT authentication will be handled by Auth0.
@@ -731,8 +733,7 @@ npm run dev &
 
 After running both the back-end and the front-end projects, you can head to the Vue.js homepage ([http://localhost:8080/](http://localhost:8080/)) to test it.
 
-In the homepage, you will see the *Log In* button. Clicking on it will redirect you to the
-Auth0 login page.
+In the homepage, you will see the *Log In* button. Clicking on it will redirect you to the Auth0 login page.
 
 ![Auth0 login page](https://cdn.auth0.com/blog/django-vuejs/auth0-authentication.png)
 
