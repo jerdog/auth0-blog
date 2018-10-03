@@ -92,7 +92,7 @@ For that, you can select `repo` and `delete_repo` scopes. Scopes determine the t
 
 To finalize, click on _Generate token_ to create the token. Store this new token somewhere safe on your laptop.
 
-![Generating a new personal access token on GitHub](https://cdn.auth0.com/blog/retrofit-spring-boot/generating-a-personal-access-token-on-github.png)
+![GitHub API - generating a new personal access token](https://cdn.auth0.com/blog/retrofit-spring-boot/generating-a-personal-access-token-on-github.png)
 
 ## Creating a RESTful Client with Retrofit and Spring Boot
 
@@ -103,7 +103,7 @@ In this section, you will create a Spring Boot application that can `GET`, `POST
 - _Artifact_: You can type `github-client` in this one.
 - _Search for dependencies_: Here, you will have to type "web" and choose the first option that appears. This will make a green label named "Web" appear on the _Selected Dependencies_ section.
 
-![Generating a new Spring Boot project.](https://cdn.auth0.com/blog/retrofit/scaffolding-a-spring-boot-app.png)
+![Generating a new JAVA Spring Boot project online](https://cdn.auth0.com/blog/retrofit/scaffolding-a-spring-boot-app.png)
 
 You can leave untouched the other options. After that, click on _Generate Project_. Clicking on this button will make this page send you the `github-client.zip` file with your project. Unzip this file in your preferred location (e.g., `~/Projects/`) and import it in your IDE.
 
@@ -371,7 +371,7 @@ curl -X POST -H 'Content-Type: application/json' -d '{
 
 After that, if you visit `https://github.com/<YOUR-GITHUB-USER>/some-super-cool-repo`, replacing `<YOUR-GITHUB-USER>` accordingly, you will see your brand new GitHub repo.
 
-![GitHub repo created through a Retrofit client.](https://cdn.auth0.com/blog/retrofit/new-github-repo-created.png)
+![GitHub repo created through a Retrofit client](https://cdn.auth0.com/blog/retrofit/new-github-repo-created.png)
 
 > **Note:** There are a lot of different options that you can change while creating your repo. In the example above, you used just a few options available. For more information, take a look at the attributes supported in the [GitHub API documentation](https://developer.github.com/v3/repos/).
 
@@ -383,7 +383,7 @@ curl -X DELETE http://localhost:8080/repos/brunokrebs/some-super-cool-repo
 
 Now, if you reload the page on GitHub, you will get an HTTP `404 Not Found` response.
 
-![GitHub repo deleted through a Retrofit client.](https://cdn.auth0.com/blog/retrofit/github-repo-deleted.png)
+![GitHub repo deleted through a Retrofit client](https://cdn.auth0.com/blog/retrofit/github-repo-deleted.png)
 
 That's it! You just used Retrofit and Spring Boot to create a RESTful client easily. Cool, right?
 
