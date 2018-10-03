@@ -4,7 +4,7 @@ title: "Developing a RESTful Client with Retrofit and Spring Boot"
 metatitle: "Developing a RESTful Client with Retrofit and Spring Boot"
 description: "Learn how to use Retrofit and Spring Boot to develop a RESTful HTTP client to GitHub's API."
 metadescription: "Learn how to use Retrofit and Spring Boot to develop a RESTful HTTP client to GitHub's API."
-date: 2018-09-19 07:56
+date: 2018-10-04 07:56
 category: Technical Guide, First Application, Retrofit
 post_length: 3
 author:
