@@ -13,8 +13,8 @@ author:
   mail: "vladimirfomene@gmail.com"
   avatar: "https://s.gravatar.com/avatar/30b8d1b7c0dab4bb311c121a47a6aae9?s=80"
 design:
-  bg_color: "#3471C0"
-  image: "https://cdn.auth0.com/blog/java-jcp/logo.png"
+  bg_color: "#3f6426"
+  image: "https://cdn.auth0.com/blog/logos/spring-boot.png"
 tags:
 - retrofit
 - spring-boot
