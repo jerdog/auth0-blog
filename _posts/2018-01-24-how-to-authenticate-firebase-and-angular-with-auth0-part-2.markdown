@@ -35,9 +35,9 @@ related:
 - 2017-06-28-real-world-angular-series-part-1
 ---
 
-<div class="alert alert-danger alert-icon">
+<div class="alert alert-info alert-icon">
   <i class="icon-budicon-487"></i>
-  <strong>WARNING: This article uses Angular 5 and RxJS 5.</strong> Please be aware that angularfire2 is currently not compatible with changes in Angular 6. We will update this tutorial once angularfire2 compatibility is completed. Thank you for your patience!
+  This series was updated to Angular, Angular CLI, and RxJS 6 in October 2018, as well as `@angular/fire` 5.
 </div>
 
 **TL;DR:** In this 2-part tutorial series, we'll learn how to build an application that secures a Node back end and an Angular front end with [Auth0](https://auth0.com) authentication. Our server and app will also authenticate a [Firebase](https://firebase.google.com) [Cloud Firestore database](https://firebase.google.com/docs/firestore/) with custom tokens so that users can leave realtime comments in a secure manner after logging in with Auth0. The Angular application code can be found at the [angular-firebase GitHub repo](https://github.com/auth0-blog/angular-firebase) and the Node API can be found in the [firebase-auth0-nodeserver repo](https://github.com/auth0-blog/firebase-auth0-nodeserver).
@@ -87,7 +87,7 @@ import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ApiService } from '../../core/api.service';
 import { Dog } from './../../core/dog';
-import { Observable } from 'rxjs/Observable';
+import { throwError, Observable } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 
 @Component({
@@ -121,7 +121,7 @@ export class DogsComponent implements OnInit {
   private _onError(err, caught): Observable<any> {
     this.loading = false;
     this.error = true;
-    return Observable.throw('An error occurred fetching dogs data.');
+    return throwError('An error occurred fetching dogs data.');
   }
 
 }
@@ -235,8 +235,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { ApiService } from '../../core/api.service';
 import { DogDetail } from './../../core/dog-detail';
-import { Subscription } from 'rxjs/Subscription';
-import { Observable } from 'rxjs/Observable';
+import { throwError, Subscription, Observable } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 
 @Component({
@@ -283,7 +282,7 @@ export class DogComponent implements OnInit, OnDestroy {
   private _onError(err, caught): Observable<any> {
     this.loading = false;
     this.error = true;
-    return Observable.throw('An error occurred fetching detail data for this dog.');
+    return throwError('An error occurred fetching detail data for this dog.');
   }
 
   getPageTitle(dog: DogDetail): string {
@@ -423,7 +422,7 @@ Firestore organizes data as _documents_ in _collections_. This data model should
 
 1. Log into the [Firebase project that you created in Part 1 of this tutorial](https://auth0.com/blog/how-to-authenticate-firebase-and-angular-with-auth0-part-1#firebase-project-service-account).
 2. Click on **Database** in the sidebar menu.
-3. In the dropdown next to the Database page heading, select **Cloud Firestore**.
+3. In the dropdown next to the Database page heading, select **Cloud Firestore**. (If you then see a pop-up related to security rules, you can choose to start in either **locked** or **test** mode. We'll be overriding those rules shortly.)
 
 {% include tweet_quote.html quote_text="Firebase Cloud Firestore organizes data as documents in collections, like other document-oriented NoSQL databases." %}
 
@@ -437,7 +436,7 @@ Click on **+ Add Collection**. Name your collection `comments`, then click the "
 <img src="https://cdn.auth0.com/blog/firebase-auth0/firebase-add-document-fixed.png" alt="Firebase console - add document">
 </p>
 
-In the **Document id** field, click on "Auto-ID". This will automatically populate an ID for you. Next add the fields we <a href="#comment-model" target="_self">established earlier in the `comment.ts` model</a> with the appropriate types and some placeholder data. We only need this seed document until we know that our listing renders properly in our Angular app, then we can delete it using the Firebase console and enter comments properly using a form in the front end. 
+In the **Document id** field, click on "Auto-ID". This will automatically populate an ID for you. Next add the fields we <a href="#comment-model" target="_self">established earlier in the `comment.ts` model</a> with the appropriate types and some placeholder data. We only need this seed document until we know that our listing renders properly in our Angular app, then we can delete it using the Firebase console and enter comments properly using a form in the front end.
 
 However, since we don't have a form built yet, the seed data will be helpful. Once you've entered the correct fields and types, you can populate the values however you like. Here is a suggestion:
 
@@ -461,7 +460,7 @@ Next let's set up our Firestore database's security. Switch to the [**Rules**](h
 
 > _A rule is an expression that is evaluated to determine if a request is allowed to perform a desired action._ -[Cloud Firestore Security Rules Reference](https://firebase.google.com/docs/firestore/reference/security/)
 
-Add the following code in your Firebase Database Rules editor. We'll go over it in more detail below.
+Replace the default code with the following in your Firebase Database Rules editor. We'll go over it in more detail below.
 
 ```js
 // Firebase Database Rules for Cloud Firestore
@@ -498,7 +497,7 @@ Finally, we only want users to be able to _delete their own_ comments. We can `a
 
 Now that our database is prepared, it's time to return to our Angular app and implement realtime commenting!
 
-The first thing we'll do is display comments. We want comments to update asynchronously in realtime, so let's explore how to do that with our Cloud Firestore database and the [angularfire2 SDK](https://github.com/angular/angularfire2).
+The first thing we'll do is display comments. We want comments to update asynchronously in realtime, so let's explore how to do that with our Cloud Firestore database and the [angularfire2 SDK](https://github.com/angular/angularfire2) (which was to the `@angular/fire` namespace with version 5).
 
 ### Comments Component Class
 
@@ -507,8 +506,8 @@ We already created the architecture for our Comments module, so let's start by b
 ```typescript
 // src/app/comments/comments/comments.component.ts
 import { Component } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
-import { Observable } from 'rxjs/Observable';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { throwError, Observable } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { Comment } from './../comment';
 import { AuthService } from '../../auth/auth.service';
@@ -556,7 +555,7 @@ export class CommentsComponent {
   private _onError(err, caught): Observable<any> {
     this.loading = false;
     this.error = true;
-    return Observable.throw('An error occurred while retrieving comments.');
+    return throwError('An error occurred while retrieving comments.');
   }
 
   onPostComment(comment: Comment) {
